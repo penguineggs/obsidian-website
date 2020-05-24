@@ -1073,7 +1073,7 @@ input.prompt-input {
 }
 .pricing-card-price small {
   font-size: 16px;
-  line-height: 22px;
+  line-height: 26px;
   font-weight: normal;
   display: block;
   color: var(--text-muted);
@@ -1390,6 +1390,12 @@ button.mod-float-right {
   border-width: 0 30px 30px 0;
   border-style: solid;
   border-color: var(--background-secondary-alt) var(--background-primary);
+}
+@media only screen and (max-width: 720px) {
+  .eula-text {
+    padding: 40px 15px;
+    width: 92vw;
+  }
 }
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1716,7 +1722,7 @@ span.mod-huge-punctuation {
     padding-left: 18px;
   }
   .static-full-page-container .nav-logo-icon {
-    top: 8px;
+    top: 4px;
   }
   .static-full-page-container .nav-logo-text {
     display: none;
@@ -1725,6 +1731,9 @@ span.mod-huge-punctuation {
     font-size: 16px;
     margin-left: 15px;
     line-height: 50px;
+  }
+  .app-header-link.mod-twitter {
+    display: none;
   }
   .hero-container {
     padding: 150px 0;
@@ -2005,12 +2014,14 @@ body {
   line-height: 30px;
 }
 .static-full-page-container.mod-features .static-container .card-description {
-  color: var(--text-normal);
   display: flex;
   align-items: center;
   font-size: 18px;
   line-height: 30px;
   padding-bottom: 10px;
+}
+.static-full-page-container.mod-features .static-container .card-description b {
+  color: var(--text-normal);
 }
 .static-full-page-container.mod-features .static-container .card-description > div:first-child {
   margin-right: 30px;
@@ -2064,5 +2075,33 @@ body {
 @media only screen and (max-width: 720px) {
   .input-label {
     width: 100px;
+  }
+  .static-full-page-container.mod-community .static-container .card {
+    max-width: 90vw;
+    margin: 20px 0;
+    padding: 20px 0;
+  }
+  .static-full-page-container.mod-community .static-container .card p {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .static-full-page-container.mod-community .static-container .card p.mod-iframe {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .static-full-page-container.mod-community .static-container .card-container {
+    flex-direction: column;
+  }
+  .static-full-page-container.mod-community .static-container iframe {
+    max-width: 90vw !important;
+  }
+  .static-full-page-container.mod-features .static-container .card-description {
+    flex-direction: column;
+  }
+  .static-full-page-container.mod-features .static-container .card-description > div:first-child {
+    margin-right: 0;
+  }
+  .static-full-page-container.mod-features .static-container img {
+    max-width: 80vw !important;
   }
 }
