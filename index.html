@@ -4,13 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Obsidian</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="app/app.css">
-	<link rel="shortcut icon" href="favicon.ico">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+	<link rel="shortcut icon" href="./favicon.ico">
 </head>
 <body class="theme-dark">
-<div class="static-full-page-container">
+<div class="static-full-page-container mod-landing">
 	<div class="app-header">
-		<a class="nav-logo" href="index.html">
+		<a class="nav-logo" href="/">
 			<span class="nav-logo-icon">
 			<svg viewBox="0 0 100 100" width="30" height="30">
 			<defs>
@@ -30,94 +31,181 @@
 		</span>
 			<span class="nav-logo-text">Obsidian</span>
 		</a>
-		<a class="app-header-link" href="pricing.html">Pricing</a>
+
+		<a href="https://twitter.com/obsdmd" class="app-header-link" target="_blank">
+			<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="34px" height="24px">
+				<path
+					d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"/>
+			</svg>
+		</a>
+		<a class="app-header-link" href="/pricing">Pricing</a>
+		<a class="app-header-link" href="/features">Features</a>
+		<a class="app-header-link" href="/community">Community</a>
+		<a class="app-header-link" href="/account">Account</a>
 	</div>
 
 	<div class="hero-container">
 		<div class="hero-inner">
-			<h1 class="hero-headline">Take great notes<br>that outlive you.</h1>
+			<h1 class="hero-headline">A second brain,<br>for you, forever.
+			</h1>
 			<div class="hero-intro-text">
-				<p>Finally, a safe vault for all your notes, in Markdown.</p>
-				<p>Start building your second brain today.</p>
+				<p>Obsidian is a powerful knowledge base that works on top of<br> a local folder of plain text Markdown
+					files.
+				</p>
 			</div>
 			<div class="hero-button-container">
-				<button class="mod-cta">
-					<a href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform"
-					   target="_blank">
-						Request early access
-					</a>
-				</button>
-				<!--				<p class="cta-explanation">Free download with unlimited evaluation</p>-->
+				<a target="_blank"
+				   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">
+					<button class="mod-cta">Request early access</button>
+				</a>
+				<!--				<button class="mod-cta">-->
+				<!--					<a>-->
+				<!--						Get Obsidian for Windows-->
+				<!--						<br>-->
+				<!--						<span class="u-muted u-small">Beta version 0.6.2</span>-->
+				<!--					</a>-->
+				<!--				</button>-->
+				<!--				<p class="cta-explanation">Also available for macOS and Linux</p>-->
 			</div>
+		</div>
+		<div class="hero-screenshot-container">
+			<svg class="hero-guidelines" width="3120" height="868" viewBox="0 0 3120 868" fill="none" stroke="#483699"
+			     xmlns="http://www.w3.org/2000/svg">
+				<line style="animation-delay:0.0s" y1="30.5" x2="3120" y2="30.5"></line>
+				<line style="animation-delay:0.02s" y1="77.5" x2="3120" y2="77.5"></line>
+				<line style="animation-delay:0.04s" y1="810.5" x2="3120" y2="810.5"></line>
+				<line style="animation-delay:0.08s" y1="867.5" x2="3120" y2="867.5"></line>
+				<line style="animation-delay:0.10s" y1="775.5" x2="3120" y2="775.5"></line>
+				<line style="animation-delay:0.12s" x1="1046.5" y1="30" x2="1046.5" y2="775"></line>
+				<line style="animation-delay:0.14s" x1="2071.5" y1="30" x2="2071.5" y2="775"></line>
+				<line style="animation-delay:0.16s" x1="829.758" y1="867.563" x2="1060.76" y2="775.563"></line>
+				<line style="animation-delay:0.18s" x1="1078.68" y1="867.617" x2="1231.68" y2="775.617"></line>
+				<line style="animation-delay:0.20s" x1="1268.59" y1="867.708" x2="1360.59" y2="775.708"></line>
+				<line style="animation-delay:0.22s" x1="1420.54" y1="867.797" x2="1477.54" y2="775.797"></line>
+				<line style="animation-delay:0.24s" x1="2048.25" y1="775.568" x2="2267.25" y2="867.568"></line>
+				<line style="animation-delay:0.26s" x1="1561.5" y1="775" x2="1561.5" y2="867"></line>
+				<line style="animation-delay:0.28s" x1="1885.32" y1="775.616" x2="2042.32" y2="867.62"></line>
+				<line style="animation-delay:0.30s" x1="1751.41" y1="775.708" x2="1843.41" y2="867.708"></line>
+				<line style="animation-delay:0.32s" x1="1652.48" y1="775.844" x2="1694.48" y2="867.844"></line>
+				<rect class="interface" x="1054.5" y="107.5" width="1010" height="668" rx="7.5"></rect>
+				<rect class="interface" x="1058.5" y="111.5" width="1001" height="658" rx="3.5"></rect>
+				<line class="interface" x1="1255.5" y1="112" x2="1255.5" y2="752.001"></line>
+				<line class="interface" x1="1259.5" y1="112" x2="1259.5" y2="752.001"></line>
+				<line class="interface" x1="1860.5" y1="112" x2="1860.5" y2="752.001"></line>
+				<line class="interface" x1="1864.5" y1="112" x2="1864.5" y2="752.001"></line>
+				<line class="interface" x1="1259.5" y1="475" x2="1860.5" y2="475"></line>
+				<line class="interface" x1="1259.5" y1="478" x2="1860.5" y2="478"></line>
+				<line class="interface" x1="1556.5" y1="478" x2="1556.5" y2="752.001"></line>
+				<line class="interface" x1="1560.5" y1="478" x2="1560.5" y2="752.001"></line>
+			</svg>
+			<img class="hero-screenshot" src="images/screenshot.png" alt="Obsidian">
 		</div>
 	</div>
 
-	<div class="feature-row mod-stripe">
+	<div class="feature-row  mod-stripe">
 		<div class="feature-row-inner">
-			<h1 class="feature-title">Control your data</h1>
-			<p class="feature-explanation mod-heading"><b>Future-proof.</b></p>
-			<p class="feature-explanation">Obsidian works with plain text Markdown files that sit on your computer. <b>No
-				vendor lock-in</b>, and <b>zero risk</b> of the service getting bought or shutting down.</p>
-			<p class="feature-explanation mod-heading"><b>Long-lasting.</b></p>
-			<p class="feature-explanation">If you're in it for the long haul, this is the single most important
-				prerequisite for building your second brain.</p>
+			<h1 class="feature-title mod-quote">a second brain</h1>
+			<p class="feature-explanation">The human brain is non-linear: we jump from idea to idea, all the time. Your
+				second brain
+				should work the same.</p>
+			<p class="feature-explanation">In Obsidian, making and following <span class="u-pop">[[connections]]</span>
+				is frictionless. Tend to your
+				notes like a gardener; at the end of the day, sit back and marvel at your own knowledge graph.</p>
 		</div>
 	</div>
 
 	<div class="feature-row">
 		<div class="feature-row-inner">
-			<h1 class="feature-title">Connect the dots</h1>
-			<p class="feature-explanation mod-heading"><b>Together.</b></p>
-			<p class="feature-explanation">Link to any note with <b>[[<a class="landing-link"
-			                                                             href="/index.html">wiki
-				style
-				links</a>]]</b>.
-				See how things are connected with <b>backlinks</b> and <b>graph view</b>.</p>
-			<p class="feature-explanation mod-heading"><b>Synergistic.</b></p>
-			<p class="feature-explanation">The network helps you discover previously unseen connections, and it offers
-				branches for new knowledge to hang on to.</p>
+			<h1 class="feature-title mod-quote">for you</h1>
+			<p class="feature-explanation">Note-taking is incredibly personal. Tried every app, but there's always
+				something not quite right? You deserve better.</p>
+			<p class="feature-explanation">Obsidian is built to be extensible. With <span
+				class="u-pop">18 core plugins</span>
+				and counting, set up your own toolkit and get running in minutes.</p>
+			<p class="feature-explanation">You'll even be able to install third party plugins or build your own once
+				Obsidian reaches v1.0. Sky's the limit.</p>
 		</div>
 	</div>
 
-<!--	<div class="feature-row mod-stripe">-->
-<!--		<div class="feature-row-inner">-->
-<!--			<h1 class="feature-title">Delightful editor</h1>-->
-<!--			<p class="feature-explanation mod-heading"><b>Noteworthy.</b></p>-->
-<!--			<p class="feature-explanation">You spend the most time writing in the editor, so we set out to design the-->
-<!--				best Markdown writing experience ever made.</p>-->
-<!--			<p class="feature-explanation mod-heading"><b>Meticulous.</b></p>-->
-<!--			<p class="feature-explanation">The devil is in the details — give Obsidian a try and fall in love with-->
-<!--				note-taking again.</p>-->
-<!--		</div>-->
-<!--	</div>-->
-
-	<div class="feature-row  mod-stripe">
+	<div class="feature-row mod-stripe">
 		<div class="feature-row-inner">
-			<h1 class="feature-title">It's all about you</h1>
-			<p class="feature-explanation mod-heading"><b>Personal.</b></p>
-			<p class="feature-explanation">Note-taking is an incredibly personal thing. There's truly no
-				"one-size-fits-all" here, and we solve that by letting you tailor your own workflow.</p>
-			<p class="feature-explanation mod-heading"><b>Extensible.</b></p>
-			<p class="feature-explanation">We built Obsidian with extensibility in mind. <b>Plugins are the
-				building blocks</b> — mix and match them to make Obsidian work for you.</p>
+			<h1 class="feature-title mod-quote">forever</h1>
+			<p class="feature-explanation">In our age when cloud services can
+				<a class="u-muted" target="_blank"
+				   href="https://techcrunch.com/2013/07/31/evernote-competitor-catch-com-shuts-down-its-note-taking-apps-company-heading-in-different-direction/">shut</a>
+				<a class="u-muted" target="_blank"
+				   href="https://www.theverge.com/2014/5/22/5741602/one-time-evernote-pinterest-rival-springpad-to-close-its-doors">down</a>,
+				<a class="u-muted" target="_blank"
+				   href="https://gadgets.ndtv.com/apps/news/microsoft-to-do-new-features-wunderlist-shuts-down-2224833">get</a>
+				<a class="u-muted" target="_blank"
+				   href="https://www.theverge.com/2012/3/12/2865638/twitter-acquires-posterous-blogging-platform"
+				>bought</a>, or
+				<a class="u-muted" target="_blank"
+				   href="https://techcrunch.com/2016/12/14/evernotes-new-privacy-policy-allows-employees-to-read-your-notes/">change
+					privacy policy</a> any day, the last thing you want is proprietary formats and data lock-in.</p>
+			<p class="feature-explanation">With Obsidian, <span class="u-pop">your data sits in a local folder</span>.
+				Never leave your life's work
+				held hostage in the cloud again.</p>
+			<p class="feature-explanation">Plain text Markdown also gives you the unparalleled
+				interoperability to use any kind of sync, encryption, or data processing that works with plain text
+				files.</p>
+
 		</div>
 	</div>
+
+	<!--	<div class="feature-row mod-stripe">-->
+	<!--		<div class="feature-row-inner">-->
+	<!--			<h1 class="feature-title">Delightful editor</h1>-->
+	<!--			<p class="feature-explanation mod-heading"><b>Noteworthy.</b></p>-->
+	<!--			<p class="feature-explanation">You spend the most time writing in the editor, so we set out to design the-->
+	<!--				best Markdown writing experience ever made.</p>-->
+	<!--			<p class="feature-explanation mod-heading"><b>Meticulous.</b></p>-->
+	<!--			<p class="feature-explanation">The devil is in the details — give Obsidian a try and fall in love with-->
+	<!--				note-taking again.</p>-->
+	<!--		</div>-->
+	<!--	</div>-->
 
 	<div class="feature-row mod-cta">
 		<div class="feature-row-inner">
-			<h1 class="feature-title">Ready to try Obsidian?</h1>
+			<h1 class="feature-title">A second brain,<br>for you, forever.</h1>
 
 			<div class="feature-button-container">
-				<button class="mod-cta">
-					<a href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform"
-					   target="_blank">
-						Request early access
-					</a>
-				</button>
-				<!--				<p class="cta-explanation">Free download with unlimited evaluation</p>-->
+<!--				<button class="mod-cta">-->
+<!--					<a>-->
+<!--						Get Obsidian for Windows-->
+<!--						<br>-->
+<!--						<span class="u-muted u-small">Stable build 0.6.2</span>-->
+<!--					</a>-->
+<!--				</button>-->
+				<a target="_blank"
+				   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">
+					<button class="mod-cta">Request early access</button>
+				</a>
 			</div>
 		</div>
 	</div>
+
+	<div class="static-footer horizontal-link-group u-center-text">
+		<a href="/eula">License information (EULA)</a>
+		<a href="https://twitter.com/obsdmd" target="_blank">Follow us on twitter</a>
+		<a href="https://alternativeto.net/software/obsidian/" target="_blank">Like us on AlternativeTo</a>
+		<a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian" target="_blank">Like
+			us on Slant</a>
+		<a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
+		<span>© 2020 Obsidian</span>
+	</div>
 </div>
+
+<script src="enhance.js"></script>
+<script>
+	let container = fish('.static-full-page-container');
+	let screenshotContainerEl = fish('.hero-screenshot-container');
+
+	container.addEventListener('scroll', function () {
+		if (container.scrollTop > 400 && !screenshotContainerEl.hasClass('mod-animate')) {
+			screenshotContainerEl.addClass('mod-animate');
+		}
+	}, false);
+</script>
 </body>
 </html>

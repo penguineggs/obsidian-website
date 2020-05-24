@@ -4,13 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Pricing - Obsidian</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="app/app.css">
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./style.css">
+	<link rel="shortcut icon" href="./favicon.ico">
 </head>
 <body class="theme-dark">
 <div class="static-full-page-container">
 	<div class="app-header">
-		<a class="nav-logo" href="index.html">
+		<a class="nav-logo" href="/">
 			<span class="nav-logo-icon">
 			<svg viewBox="0 0 100 100" width="30" height="30">
 			<defs>
@@ -31,84 +31,394 @@
 			<span class="nav-logo-text">Obsidian</span>
 		</a>
 
-		<a class="app-header-link" href="pricing.html">Pricing</a>
+		<a href="https://twitter.com/obsdmd" class="app-header-link" target="_blank">
+			<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="34px" height="24px">
+				<path
+					d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"/>
+			</svg>
+		</a>
+		<a class="app-header-link" href="/pricing">Pricing</a>
+		<a class="app-header-link" href="/features">Features</a>
+		<a class="app-header-link" href="/community">Community</a>
+		<a class="app-header-link" href="/account">Account</a>
 	</div>
 
-	<div class="pricing-container">
-		<h1 class="pricing-header">Pricing
+	<div class="pricing-container static-container">
+		<h1 class="pricing-header">Pricing</h1>
+
+		<div class="pricing-cards-container">
+			<div class="pricing-card mod-evaluation">
+				<h2 class="pricing-card-title">Personal</h2>
+				<div class="pricing-card-description mod-point">100% free for personal use</div>
+				<div class="pricing-card-description mod-point">No account or sign up required</div>
+				<div class="pricing-card-description mod-point">Access to all plugins</div>
+				<div class="pricing-card-description mod-point">Community support</div>
+				<div class="pricing-card-price">
+					<span>$0<small>forever</small></span>
+					<!--					<button class="pricing-link mod-cta">-->
+					<!--						<a href="/">Download Obsidian</a>-->
+					<!--					</button>-->
+					<a target="_blank"
+					   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">
+						<button class="mod-cta">Request early access</button>
+					</a>
+				</div>
+
+				<a class="pricing-link pricing-license-info" href="/eula">License information</a>
+			</div>
+			<div class="pricing-card mod-personal mod-muted">
+				<h2 class="pricing-card-title">Catalyst</h2>
+				<div class="pricing-card-description mod-point">Early access to insider builds</div>
+				<div class="pricing-card-description mod-point">Special badges in our community</div>
+				<div class="pricing-card-description mod-point">Access to exclusive dev channel</div>
+				<div class="pricing-card-description mod-point">Priority support</div>
+				<div class="pricing-card-price">
+					<span>$25+</span>
+					<small>higher tiers available</small>
+					<button class="pricing-link mod-cta js-goto-account">Buy</button>
+				</div>
+
+				<a class="pricing-link pricing-license-info" href="/eula" target="_blank">License information</a>
+			</div>
+			<div class="pricing-card mod-business mod-muted">
+				<h2 class="pricing-card-title">Commercial</h2>
+				<div class="pricing-card-description mod-point">Commercial use</div>
+				<div class="pricing-card-description mod-point">Priority support</div>
+				<hr>
+				<div class="pricing-card-description">For volume discounts and bulk inquires, please contact us.
+				</div>
+				<div class="pricing-card-price">
+					<span>$50</span>
+					<small>per user per year</small>
+					<button class="pricing-link mod-cta js-goto-account">Buy</button>
+				</div>
+
+				<a class="pricing-link pricing-license-info" href="/eula" target="_blank">License information</a>
+			</div>
+		</div>
+
+		<h1 class="pricing-header">Add-on services
 			<small>
-				Obsidian Premium and Publish are add-on services of Obsidian. The Obsidian app does not require them to work.
+				Obsidian Sync and Publish are add-on services. The Obsidian app does not require them nor an
+				account to work.
 			</small>
 		</h1>
 
 		<div class="pricing-cards-container">
-			<div class="pricing-card mod-evaluation">
-				<div>
-					<h2 class="pricing-card-title">Free</h2>
-					<div class="pricing-card-description mod-point">No account required</div>
-					<div class="pricing-card-description mod-point">Access to all plugins</div>
-					<div class="pricing-card-description mod-point">Community support</div>
-					<div class="pricing-card-price">$0<small>forever</small></div>
-					<button class="mod-cta">
-						<a href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform"
-						   target="_blank">
-							Request access
-						</a>
-					</button>
-				</div>
-			</div>
 			<div class="pricing-card mod-personal mod-muted">
-				<div>
-					<h2 class="pricing-card-title">Premium</h2>
-					<div class="pricing-card-description mod-point">End-to-end encryption</div>
-					<div class="pricing-card-description mod-point">Built-in version history</div>
-					<div class="pricing-card-description mod-point">Priority email support</div>
-					<div class="pricing-card-price">
-						<strike>$8</strike> <span class="u-pop">$4</span>
-						<small class="u-pop">with lifetime early bird pricing</small>
-						<small>per month, billed annually</small></div>
-					<button class="mod-cta mod-muted">Coming soon</button>
+				<h2 class="pricing-card-title">Sync</h2>
+				<div class="pricing-card-description mod-point">End-to-end encryption</div>
+				<div class="pricing-card-description mod-point">Built-in version history</div>
+				<div class="pricing-card-description mod-point">Priority email support</div>
+				<div class="pricing-card-price">
+					<strike>$8</strike> <span class="u-pop">$<b>4</b></span>
+					<small class="u-pop">with lifetime early bird pricing</small>
+					<small>per month, billed annually</small>
+					<button class="mod-cta mod-muted js-upgrade-sync">Coming soon</button>
 				</div>
 			</div>
 			<div class="pricing-card mod-business mod-muted">
-				<div>
-					<h2 class="pricing-card-title">Publish</h2>
-					<div class="pricing-card-description">All Premium features plus:</div>
-					<div class="pricing-card-description mod-point">Hosted knowledge base</div>
-					<div class="pricing-card-description mod-point">Selectively publish notes</div>
-					<div class="pricing-card-description mod-point">Team collaboration</div>
-					<div class="pricing-card-price"><strike>$16</strike> <span class="u-pop">$8</span>
-						<small class="u-pop">with lifetime early bird pricing</small>
-						<small>per month, billed annually</small></div>
+				<h2 class="pricing-card-title">Publish</h2>
+				<div class="pricing-card-description mod-point">Hosted knowledge base</div>
+				<div class="pricing-card-description mod-point">Selectively publish notes</div>
+				<div class="pricing-card-description mod-point">Team collaboration</div>
+				<div class="pricing-card-price"><strike>$16</strike> <span class="u-pop">$<b>8</b></span>
+					<small class="u-pop">with lifetime early bird pricing</small>
+					<small>per month, billed annually</small>
 					<button class="mod-cta mod-muted">Coming soon</button>
 				</div>
 			</div>
 		</div>
+
 		<div class="feature-row mod-cta">
 			<div class="feature-row-inner">
-				<h1 class="feature-title">Ready to try Obsidian?</h1>
+				<h1 class="feature-title">A second brain,<br>for you, forever.</h1>
 
 				<div class="feature-button-container">
-					<button class="mod-cta">
-						<a href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform"
-						   target="_blank">
-							Request early access
-						</a>
-					</button>
-					<!--				<p class="cta-explanation">Free download with unlimited evaluation</p>-->
+					<!--					<button class="mod-cta">-->
+					<!--						<a>-->
+					<!--							Get Obsidian for Windows-->
+					<!--							<br>-->
+					<!--							<span class="u-muted u-small">Beta version 0.6.2</span>-->
+					<!--						</a>-->
+					<!--					</button>-->
+					<!--					<p class="cta-explanation">Also available for macOS and Linux</p>-->
+					<a target="_blank"
+					   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">
+						<button class="mod-cta">Request early access</button>
+					</a>
 				</div>
+			</div>
+		</div>
+		<div class="static-footer horizontal-link-group u-center-text">
+			<a href="/eula">License information (EULA)</a>
+			<a href="https://twitter.com/obsdmd" target="_blank">Follow us on twitter</a>
+			<a href="https://alternativeto.net/software/obsidian/" target="_blank">Like us on AlternativeTo</a>
+			<a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
+			   target="_blank">Like
+				us on Slant</a>
+			<a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
+			<span>© 2020 Obsidian</span>
+		</div>
+	</div>
+
+	<div class="modal-container mod-choose-plan" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Choose a plan</div>
+			<div class="modal-content">
+				<div class="card-container">
+					<div class="card u-center-text" data-renew="monthly">
+						<div class="card-title">Monthly</div>
+						<div class="card-description">
+							<p class="u-pop">Early bird pricing!</p>
+							<p><b>$5</b> / month</p>
+							<p><b>$60</b> / year</p>
+						</div>
+					</div>
+					<div class="card u-center-text" data-renew="yearly">
+						<div class="card-title">Yearly</div>
+						<div class="card-description">
+							<p class="u-pop">Early bird pricing!</p>
+							<p><b>$4</b> / month</p>
+							<p><b>$48</b> / year</p>
+							<p class="u-pop">20% off monthly</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-button-container">
+				<button class="mod-cta js-upgrade-sync-confirm">Upgrade</button>
+				<button class="js-close-modal">Cancel</button>
 			</div>
 		</div>
 	</div>
 
+	<!--	<script src="https://js.stripe.com/v3/"></script>-->
+	<script src="enhance.js"></script>
 	<script>
-		let cardsEl = document.querySelectorAll('.pricing-card');
+		function decodeUrlQuery(query) {
+			let object = {};
+			if (!query || query.trim() === '') {
+				return object;
+			}
+			let queries = query.split('&');
+
+			for (let i = 0; i < queries.length; i++) {
+				let parts = queries[i].split('=');
+				if (parts.length >= 1 && parts[0]) {
+					let key = decodeURIComponent(parts[0]);
+					if (parts.length === 2) {
+						object[key] = decodeURIComponent(parts[1]);
+					} else {
+						object[key] = true;
+					}
+				}
+			}
+
+			return object;
+		};
+
+		function request(url, data, callback) {
+			ajax({
+				method: 'post',
+				url: url,
+				data: data,
+				success: (data) => {
+					if (data.error) {
+						callback(data.error);
+						return;
+					}
+					callback(null, data);
+				},
+				error: (err) => {
+					if (err.error) {
+						callback(err.error);
+						return;
+					}
+					callback(err);
+				}
+			});
+		}
+
+		function removeHash() {
+			if (history.pushState) {
+				history.pushState('', document.title, window.location.pathname + window.location.search);
+			} else {
+				location.hash = '';
+			}
+		}
+
+		let cardsEl = fishAll('.pricing-card');
+		let choosePlanModalEl = fish('.modal-container.mod-choose-plan');
+		let planCardsEl = fishAll('.modal-container.mod-choose-plan .card');
+		let closeModalButtonEls = fishAll('.js-close-modal, .modal-close-button, .modal-bg');
+		let upgradeButtonEl = fish('.js-upgrade-sync');
+		let confirmUpgradeButtonEl = fish('.js-upgrade-sync-confirm');
+		let gotoAccountButtonEls = fishAll('.js-goto-account');
+		let pricingLinksEl = fishAll('.pricing-link');
+
+		const BASE_URL = 'https://api.obsidian.md';
+		const USER_INFO_URL = BASE_URL + '/user/info';
+		const LIST_SUBSCRIPTION_URL = BASE_URL + '/subscription/list';
+		const START_SUBSCRIPTION_URL = BASE_URL + '/subscription/start';
+		const GET_STRIPE_SESSION_TOKEN_URL = BASE_URL + '/subscription/stripe/start';
+		const UPDATE_STRIPE_SESSION_TOKEN_URL = BASE_URL + '/subscription/stripe/finish';
+		const SET_PLAN_URL = BASE_URL + '/subscription/plan';
+		const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
+
+		let isLoggedIn = false;
+		let hasSyncSubscription = false;
+		let currentPlan = '';
+
 		cardsEl.forEach((cardEl) => {
 			cardEl.addEventListener('click', (evt) => {
 				cardsEl.forEach(el => el.classList.add('mod-muted'));
 				evt.currentTarget.classList.remove('mod-muted');
 			});
 		});
+
+		pricingLinksEl.forEach((linkEl) => {
+			linkEl.addEventListener('click', (evt) => {
+				evt.stopPropagation();
+			});
+		});
+
+		gotoAccountButtonEls.forEach((buttonEl) => {
+			buttonEl.addEventListener('click', (evt) => {
+				window.location.href = '/account';
+			});
+		});
+
+		closeModalButtonEls.forEach(el => {
+			el.addEventListener('click', () => {
+				choosePlanModalEl.hide();
+			});
+		});
+
+		planCardsEl.forEach(el => {
+			el.addEventListener('click', () => {
+				planCardsEl.forEach(el => el.removeClass('is-selected'));
+				el.addClass('is-selected');
+
+				currentPlan = el.getAttribute('data-renew');
+			});
+		});
+
+		let testLoggedIn = () => {
+			request(USER_INFO_URL, {}, (err, data) => {
+				if (!err) {
+					isLoggedIn = true;
+				}
+			});
+		};
+
+		let getCurrentSubscription = () => {
+			request(LIST_SUBSCRIPTION_URL, {}, (err, data) => {
+				if (err) {
+					// console.log(err);
+					return;
+				}
+				hasSyncSubscription = data.subscriptions.filter(s => s.type === 'sync' && s.expiry_ts > Date.now()).length > 0;
+
+				if (hasSyncSubscription) {
+					upgradeButtonEl.setText('Your plan');
+					upgradeButtonEl.style.cursor = 'default';
+				}
+			});
+		};
+
+		let networkGetStripeSessionId = (callback) => {
+			request(GET_STRIPE_SESSION_TOKEN_URL, {url: location.href}, (err, data) => {
+				if (err) {
+					console.error('Something went wrong. ' + err);
+				} else {
+					callback && callback(data.id);
+				}
+			});
+		};
+
+		let updateStripeSessionId = (sessionId) => {
+			request(UPDATE_STRIPE_SESSION_TOKEN_URL, {session: sessionId}, (err, data) => {
+				// clear hash to avoid double posting on reload
+				removeHash();
+
+				if (err) {
+					// display error message
+					console.error('Something went wrong. ' + err);
+				} else {
+					startSubscription();
+				}
+			});
+		};
+
+		let startSubscription = () => {
+			request(START_SUBSCRIPTION_URL, {type: 'sync'}, (err, data) => {
+				if (err) {
+					console.error('Something went wrong. ' + err);
+				} else {
+					window.location.href = '/account';
+				}
+			});
+		};
+
+		testLoggedIn();
+		getCurrentSubscription();
+
+		let hash = location.hash;
+
+		if (hash && hash.length > 1) {
+			hash = hash.substr(1);
+		}
+
+		let decodedUrl = decodeUrlQuery(hash);
+
+		if (decodedUrl.stripe && decodedUrl.stripe === 'complete') {
+			let paymentSessionId = decodedUrl.session;
+			if (paymentSessionId) {
+				updateStripeSessionId(paymentSessionId);
+			}
+		}
+
+		// upgradeButtonEl.addEventListener('click', () => {
+		// 	if (!isLoggedIn) {
+		// 		window.location.href = '/account';
+		// 	} else {
+		// 		choosePlanModalEl.show();
+		// 	}
+		// });
+
+		confirmUpgradeButtonEl.addEventListener('click', () => {
+			if (!isLoggedIn) {
+				window.location.href = '/account';
+			} else {
+				if (currentPlan !== 'monthly' && currentPlan !== 'yearly') {
+					// TODO: display error
+					return;
+				}
+				request(SET_PLAN_URL, {type: 'sync', renew: currentPlan}, (err, data) => {
+					if (err) {
+						console.error('Something went wrong. ' + err);
+					} else {
+						networkGetStripeSessionId((sessionId) => {
+							let stripe = window.Stripe(STRIPE_PUBLIC_KEY);
+							stripe.redirectToCheckout({
+								// Make the id field from the Checkout Session creation API response
+								// available to this file, so you can provide it as parameter here
+								// instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+								sessionId: sessionId
+							}).then(function (result) {
+								// If `redirectToCheckout` fails due to a browser or network
+								// error, display the localized error message to your customer
+								// using `result.error.message`.
+							});
+						});
+					}
+				});
+
+			}
+		})
 	</script>
 
 </div>

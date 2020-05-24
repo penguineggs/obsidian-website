@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My account - Obsidian</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="shortcut icon" href="./favicon.ico">
+</head>
+<body class="theme-dark">
+<div class="static-full-page-container">
+	<div class="app-header">
+		<a class="nav-logo" href="/">
+			<span class="nav-logo-icon">
+			<svg viewBox="0 0 100 100" width="30" height="30">
+			<defs>
+				<linearGradient id="a" x1="82.85" y1="30.41" x2="51.26" y2="105.9"
+				                gradientTransform="matrix(1, 0, 0, -1, -22.41, 110.97)" gradientUnits="userSpaceOnUse">
+					<stop offset="0" stop-color="#6c56cc"/>
+					<stop offset="1" stop-color="#9785e5"/>
+				</linearGradient>
+			</defs>
+			<polygon points="44.61 0 12.91 17.52 0 45.45 19.57 90.47 47.35 100 52.44 89.8 63 26.39 44.61 0"
+			         fill="#34208c"/>
+			<polygon points="63 26.39 43.44 14.41 16.43 35.7 47.35 100 52.44 89.8 63 26.39" fill="url(#a)"/>
+			<polygon points="63 26.39 63 26.39 44.61 0 43.44 14.41 63 26.39" fill="#af9ff4"/>
+			<polygon points="43.44 14.41 44.61 0 12.91 17.52 16.43 35.7 43.44 14.41" fill="#4a37a0"/>
+			<polygon points="16.43 35.7 19.57 90.47 47.35 100 16.43 35.7" fill="#4a37a0"/>
+		</svg>
+		</span>
+			<span class="nav-logo-text">Obsidian</span>
+		</a>
+
+		<a href="https://twitter.com/obsdmd" class="app-header-link" target="_blank">
+			<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="34px" height="24px">
+				<path
+					d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"/>
+			</svg>
+		</a>
+		<a class="app-header-link" href="/pricing">Pricing</a>
+		<a class="app-header-link" href="/features">Features</a>
+		<a class="app-header-link" href="/community">Community</a>
+		<a class="app-header-link" href="/account">Account</a>
+	</div>
+
+	<div class="account-container page-container">
+		<div class="loader-cube">
+			<div class="sk-cube sk-cube1"></div>
+			<div class="sk-cube sk-cube2"></div>
+			<div class="sk-cube sk-cube3"></div>
+			<div class="sk-cube sk-cube4"></div>
+			<div class="sk-cube sk-cube5"></div>
+			<div class="sk-cube sk-cube6"></div>
+			<div class="sk-cube sk-cube7"></div>
+			<div class="sk-cube sk-cube8"></div>
+			<div class="sk-cube sk-cube9"></div>
+		</div>
+
+		<div class="login-form" style="display: none;">
+			<h1 class="page-header">Sign in</h1>
+			<div class="message-container">
+				<div class="message mod-error" style="display: none;"></div>
+			</div>
+			<form>
+				<p>
+					<label class="input-label" for="labeled-input-email">Email</label>
+					<input type="email" placeholder="Your email..." id="labeled-input-email">
+				</p>
+				<p>
+					<label class="input-label" for="labeled-input-password">Password</label>
+					<input type="password" placeholder="Your password..." id="labeled-input-password">
+				</p>
+				<div class="button-container u-center-text">
+					<button class="mod-cta js-login">Login</button>
+				</div>
+			</form>
+
+			<p class="u-center-text">Don't have an account? <a href="#" class="js-go-to-signup">Sign up now</a>.</p>
+		</div>
+
+		<div class="signup-form" style="display: none;">
+			<h1 class="page-header">Sign up</h1>
+			<p>An Obsidian account lets you purchase Obsidian Catalyst, commercial licenses, or add-on services.</p>
+			<p>Registering an account <span class="u-pop">is <b>not</b> required</span> to download or use the app.</p>
+			<hr>
+			<div class="message-container">
+				<div class="message mod-error" style="display: none;"></div>
+			</div>
+			<form>
+				<p>
+					<label class="input-label">Name</label>
+					<input type="text" placeholder="Your name..." class="signup-name">
+				</p>
+				<p>
+					<label class="input-label">Email</label>
+					<input type="email" placeholder="Your email..." class="signup-email">
+				</p>
+				<p>
+					<label class="input-label">Password</label>
+					<input type="password" placeholder="Your password..." class="signup-password">
+				</p>
+
+				<div class="button-container u-center-text">
+					<button class="mod-cta js-sign-up">Sign up</button>
+				</div>
+			</form>
+
+			<p class="u-center-text">Already have an account? <a href="#" class="js-go-to-login">Sign in</a>.</p>
+		</div>
+
+		<div class="welcome" style="display: none;">
+			<h1 class="page-header">Welcome, <span class="welcome-name"></span>!</h1>
+
+			<p>Your account is <span class="welcome-email u-pop"></span>
+				<button class="js-logout mod-float-right">Log out</button>
+			</p>
+
+			<hr>
+
+			<!--			<p class="setup-sync">-->
+			<!--				You've upgraded to <span class="u-pop">Obsidian Sync</span>. If you haven't already, please enable the-->
+			<!--				"Sync" plugin in your Obsidian desktop app and set up your synced vault in Settings - Sync.-->
+			<!--			</p>-->
+
+			<div class="card-container mod-horizontal">
+				<!--				<div class="card mod-sync u-clickable">-->
+				<!--					<div class="card-title">Obsidian Sync</div>-->
+				<!--					<div class="card-description">-->
+				<!--						<p>Obsidian Sync is an add-on sync service with-->
+				<!--							<span class="u-pop">end-to-end encryption</span> and <span-->
+				<!--								class="u-pop">version history</span>.</p>-->
+				<!--					</div>-->
+				<!--				</div>-->
+				<div class="card mod-catalyst u-clickable">
+					<div class="card-title">Obsidian Catalyst<span
+						class="flair mod-pop catalyst-tier">Your license</span></div>
+					<div class="card-description">
+						<p class="inactive-text">Support the development with a <span class="u-pop">one-time</span>
+							special personal license!
+							Obsidian Catalyst gives you access to early beta versions of Obsidian and special badges in
+							the community.</p>
+						<div class="active-text">
+							<p>
+								You have purchased the Catalyst personal license. Thank you for your support! It helps
+								us
+								stay independent so we can pursue our vision.
+							</p>
+							<p>
+								To get access to insider builds, please sign in under Settings - Account in the app.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="card mod-commercial-license u-clickable">
+					<div class="card-title">Commercial license</div>
+					<div class="card-description">
+						<div class="commercial-license-pitch">
+							<p>Obsidian is 100% free for personal use.</p>
+							<p>For <span class="u-pop">business related use</span>,
+								a commercial license is required.</p>
+							<p class="u-center-text u-pop commercial-license-price"><b>$50 / user / year</b></p>
+						</div>
+						<div class="existing-commercial-license" style="display: none;">
+							<p>Your license key is: </p>
+							<div class="commercial-license-key">License key not found</div>
+							<p>Registered to "<span class="commercial-license-company-name"></span>" for <span
+								class="commercial-license-seat-number"></span> users. Valid until <span
+								class="commercial-license-expiry-date"></span>.</p>
+							<p>To activate the license, go to Settings - About in the Obsidian app.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="static-footer horizontal-link-group u-center-text">
+		<a href="/eula">License information (EULA)</a>
+		<a href="https://twitter.com/obsdmd" target="_blank">Follow us on twitter</a>
+		<a href="https://alternativeto.net/software/obsidian/" target="_blank">Like us on AlternativeTo</a>
+		<a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian" target="_blank">Like
+			us on Slant</a>
+		<a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
+		<span>© 2020 Obsidian</span>
+	</div>
+
+	<div class="modal-container mod-commercial-license" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Commercial license</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="payment-error message mod-error" style="display: none;"></div>
+				</div>
+				<p>
+					<label class="input-label">Business name</label>
+					<input class="business-name-input" type="text" placeholder="Name of your business...">
+				</p>
+				<p>
+					<label class="input-label">Number of users</label>
+					<input class="commercial-license-seat" type="number" placeholder="5" min="1" value="5">
+				</p>
+			</div>
+			<div class="payment-container">
+				<div class="payment-summary">
+					<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
+						class="payment-amount"></span></div>
+					<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
+						class="payment-amount"></span></div>
+					<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
+						class="payment-amount"></span></div>
+					<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
+						class="payment-amount"></span></div>
+				</div>
+				<form class="payment-form">
+					<div class="card-element"><!--Stripe.js injects the Card Element--></div>
+					<button class="submit">
+						<div class="spinner hidden" class="spinner"></div>
+						<span class="button-text">Pay</span>
+					</button>
+					<p class="card-errors" role="alert"></p>
+					<p class="result-message hidden">
+						Payment succeeded, see the result in your
+						<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-personal-license" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Obsidian Catalyst</div>
+			<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our vision.</p>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="payment-error message mod-error" style="display: none;"></div>
+				</div>
+				<div class="card-container">
+					<div class="card" data-tier="insider">
+						<div class="card-title">Insider</div>
+						<div class="card-description">
+							<ul>
+								<li>Early access to insider builds</li>
+								<li><b class="u-pop">"Insider"</b> badge in the community</li>
+							</ul>
+						</div>
+						<div class="button-container u-center-text">
+							<button class="mod-cta"><b>$25</b> one-time</button>
+						</div>
+					</div>
+					<div class="card" data-tier="supporter">
+						<div class="card-title">Supporter</div>
+						<div class="card-description">
+							<ul>
+								<li>Early access to insider builds</li>
+								<li>Access to exclusive dev channel</li>
+								<li><b class="u-pop">"Supporter"</b> badge in the community</li>
+							</ul>
+						</div>
+						<div class="button-container u-center-text">
+							<button class="mod-cta"><b>$50</b> one-time</button>
+						</div>
+					</div>
+					<div class="card" data-tier="vip">
+						<div class="card-title">VIP</div>
+						<div class="card-description">
+							<ul>
+								<li>Early access to insider builds</li>
+								<li>Access to exclusive dev channel</li>
+								<li><b class="u-pop">"VIP"</b> badge in the community</li>
+							</ul>
+						</div>
+						<div class="button-container u-center-text">
+							<button class="mod-cta"><b>$100</b> one-time</button>
+						</div>
+					</div>
+				</div>
+				<div class="payment-container" style="display: none;">
+					<div class="payment-summary">
+						<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
+							class="payment-amount"></span></div>
+					</div>
+					<form class="payment-form">
+						<div class="card-element"><!--Stripe.js injects the Card Element--></div>
+						<button class="submit">
+							<div class="spinner hidden"></div>
+							<span class="button-text">Pay</span>
+						</button>
+						<p class="card-errors" role="alert"></p>
+						<p class="result-message hidden">
+							Payment succeeded, see the result in your
+							<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://js.stripe.com/v3/"></script>
+	<script src="enhance.js"></script>
+	<script>
+		const BASE_URL = 'https://api.obsidian.md';
+		const USER_INFO_URL = BASE_URL + '/user/info';
+		const LOGIN_URL = BASE_URL + '/user/signin';
+		const SIGNUP_URL = BASE_URL + '/user/signup';
+		const LOGOUT_URL = BASE_URL + '/user/signout';
+		const LIST_SUBSCRIPTION_URL = BASE_URL + '/subscription/list';
+		const GET_STRIPE_SECRET_URL = BASE_URL + '/subscription/stripe/start';
+		const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
+		const CHECK_PRICE_URL = BASE_URL + '/subscription/price';
+		const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
+		const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
+
+		function request(url, data, callback) {
+			ajax({
+				method: 'post',
+				url: url,
+				data: data,
+				success: (data) => {
+					if (data.error) {
+						callback(data.error);
+						return;
+					}
+					callback(null, data);
+				},
+				error: (err) => {
+					if (err.error) {
+						callback(err.error);
+						return;
+					}
+					callback(err);
+				}
+			});
+		}
+
+		function decodeUrlQuery(query) {
+			let object = {};
+			if (!query || query.trim() === '') {
+				return object;
+			}
+			let queries = query.split('&');
+
+			for (let i = 0; i < queries.length; i++) {
+				let parts = queries[i].split('=');
+				if (parts.length >= 1 && parts[0]) {
+					let key = decodeURIComponent(parts[0]);
+					if (parts.length === 2) {
+						object[key] = decodeURIComponent(parts[1]);
+					} else {
+						object[key] = true;
+					}
+				}
+			}
+
+			return object;
+		}
+
+		function removeHash() {
+			if (history.pushState) {
+				history.pushState('', document.title, window.location.pathname + window.location.search);
+			} else {
+				location.hash = '';
+			}
+		}
+
+		function formatPrice(price) {
+			return (price / 100).toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		}
+
+		function copyTextToClipboard(text) {
+			let text_area_el = document.createElement('textarea');
+			text_area_el.value = text;
+			document.body.appendChild(text_area_el);
+			text_area_el.focus();
+			text_area_el.select();
+
+			let success = false;
+
+			try {
+				success = document.execCommand('copy');
+			} catch (err) {
+			}
+
+			document.body.removeChild(text_area_el);
+
+			return success;
+		}
+
+		let hash = location.hash;
+
+		if (hash && hash.length > 1) {
+			hash = hash.substr(1);
+		}
+
+		window.setTimeout(() => {
+			ready(() => {
+				let loginFormEl = fish('.login-form');
+				let loginErrorEl = fish('.login-form .message.mod-error');
+				let signupFormEl = fish('.signup-form');
+				let signupErrorEl = fish('.signup-form .message.mod-error');
+				let welcomeEl = fish('.welcome');
+				let loginButtonEl = fish('.js-login');
+				let signupButtonEl = fish('.js-sign-up');
+				let emailEl = fish('#labeled-input-email');
+				let passwordEl = fish('#labeled-input-password');
+				let signupNameEl = fish('.signup-name');
+				let signupEmailEl = fish('.signup-email');
+				let signupPasswordEl = fish('.signup-password');
+				let userNameEl = fish('.welcome-name');
+				let userEmailEl = fish('.welcome-email');
+				let logoutButtonEl = fish('.js-logout');
+				let syncInstructionEl = fish('.setup-sync');
+				let getSyncCardEl = fish('.card.mod-sync');
+				let commercialLicensePitchEl = fish('.commercial-license-pitch');
+				let existingCommercialLicenseEl = fish('.existing-commercial-license');
+				let businessNameInputEl = fish('.business-name-input');
+				let commercialLicenseKeyEl = fish('.commercial-license-key');
+				let commercialLicenseCompanyEl = fish('.commercial-license-company-name');
+				let commercialLicenseSeatNumberEl = fish('.commercial-license-seat-number');
+				let commercialLicenseExpiryEl = fish('.commercial-license-expiry-date');
+				let commercialLicenseCardEl = fish('.card.mod-commercial-license');
+				let commercialLicenseModal = fish('.modal-container.mod-commercial-license');
+				let personalLicenseModal = fish('.modal-container.mod-personal-license');
+				let personalLicenseTierEl = fish('.catalyst-tier');
+				let closeModalButtonEls = fishAll('.js-close-modal, .modal-close-button, .modal-bg');
+				let buyCatalystLicenseCardEl = fish('.card.mod-catalyst');
+				let catalystTierCardsEl = fishAll('.modal-container.mod-personal-license .card');
+				let stripeCatalystFormEl = fish('.modal-container.mod-personal-license .payment-form');
+				let stripeBizFormEl = fish('.modal-container.mod-commercial-license .payment-form');
+				let spinnerEl = fish('.loader-cube');
+				let gotoSignupEl = fish('.js-go-to-signup');
+				let gotoLoginEl = fish('.js-go-to-login');
+				let personalLicensePaymentContainerEl = fish('.modal-container.mod-personal-license .payment-container');
+				let commercialLicenseSeatEl = fish('.commercial-license-seat');
+				let subTotalPaymentLineEl = fish('.modal-container.mod-personal-license .payment-line.mod-subtotal');
+				let subTotalPaymentDescEl = fish('.modal-container.mod-personal-license .payment-line.mod-subtotal .payment-desc');
+				let subTotalPaymentAmountEl = fish('.modal-container.mod-personal-license .payment-line.mod-subtotal .payment-amount');
+				let discountPaymentLineEl = fish('.modal-container.mod-personal-license .payment-line.mod-discount');
+				let discountPaymentDescEl = fish('.modal-container.mod-personal-license .payment-line.mod-discount .payment-desc');
+				let discountPaymentAmountEl = fish('.modal-container.mod-personal-license .payment-line.mod-discount .payment-amount');
+				let taxPaymentLineEl = fish('.modal-container.mod-personal-license .payment-line.mod-tax');
+				let taxPaymentDescEl = fish('.modal-container.mod-personal-license .payment-line.mod-tax .payment-desc');
+				let taxPaymentAmountEl = fish('.modal-container.mod-personal-license .payment-line.mod-tax .payment-amount');
+				let totalPaymentDescEl = fish('.modal-container.mod-personal-license .payment-line.mod-total .payment-desc');
+				let totalPaymentAmountEl = fish('.modal-container.mod-personal-license .payment-line.mod-total .payment-amount');
+				let bizSubTotalPaymentLineEl = fish('.modal-container.mod-commercial-license .payment-line.mod-subtotal');
+				let bizSubTotalPaymentDescEl = fish('.modal-container.mod-commercial-license .payment-line.mod-subtotal .payment-desc');
+				let bizSubTotalPaymentAmountEl = fish('.modal-container.mod-commercial-license .payment-line.mod-subtotal .payment-amount');
+				let bizDiscountPaymentLineEl = fish('.modal-container.mod-commercial-license .payment-line.mod-discount');
+				let bizDiscountPaymentDescEl = fish('.modal-container.mod-commercial-license .payment-line.mod-discount .payment-desc');
+				let bizDiscountPaymentAmountEl = fish('.modal-container.mod-commercial-license .payment-line.mod-discount .payment-amount');
+				let bizTaxPaymentLineEl = fish('.modal-container.mod-commercial-license .payment-line.mod-tax');
+				let bizTaxPaymentDescEl = fish('.modal-container.mod-commercial-license .payment-line.mod-tax .payment-desc');
+				let bizTaxPaymentAmountEl = fish('.modal-container.mod-commercial-license .payment-line.mod-tax .payment-amount');
+				let bizTotalPaymentDescEl = fish('.modal-container.mod-commercial-license .payment-line.mod-total .payment-desc');
+				let bizTotalPaymentAmountEl = fish('.modal-container.mod-commercial-license .payment-line.mod-total .payment-amount');
+				let paymentErrorEl = null;
+
+				let stripeStyles = {
+					base: {
+						color: '#dcddde',
+						iconColor: '#dcddde',
+						fontFamily: 'Inter, sans-serif',
+						fontSmoothing: 'antialiased',
+						fontSize: '16px',
+						'::placeholder': {
+							color: '#888888'
+						}
+					},
+					invalid: {
+						fontFamily: 'Inter, sans-serif',
+						color: '#fa755a',
+						iconColor: '#fa755a'
+					}
+				};
+
+				let hasSyncSubscription = false;
+				let hasPersonalLicense = false;
+				let hasCommercialLicense = false;
+				let buyingLicense = null;
+				let buyingVariation = null;
+				let signupMode = false;
+
+				let stripe = window.Stripe(STRIPE_PUBLIC_KEY);
+				let elements = stripe.elements();
+				let card = elements.create('card', {style: stripeStyles});
+
+				let decodedUrl = decodeUrlQuery(hash);
+				if (decodedUrl.mode && decodedUrl.mode === 'signup') {
+					removeHash();
+					spinnerEl.hide();
+					signupFormEl.show();
+					signupMode = true;
+				} else if (decodedUrl.stripe && decodedUrl.stripe === 'complete') {
+					let paymentSessionId = decodedUrl.session;
+					if (paymentSessionId) {
+						// continue to charge for commercial/personal license
+					}
+				}
+
+				// syncInstructionEl.hide();
+
+				stripeCatalystFormEl.addEventListener('submit', function (event) {
+					event.preventDefault();
+
+					fishAll('.payment-error').forEach(e => e.hide());
+					// Complete payment when the submit button is clicked
+					// payWithCard(stripe, card, data.clientSecret);
+					setLoading(true);
+					networkGetStripeSecret((secret) => {
+						payWithCard(stripe, card, secret);
+					});
+				});
+
+				stripeBizFormEl.addEventListener('submit', function (event) {
+					event.preventDefault();
+
+					fishAll('.payment-error').forEach(e => e.hide());
+
+					let companyName = businessNameInputEl.value;
+
+					if (!companyName) {
+						paymentErrorEl.setText(`Please enter a business name.`);
+						paymentErrorEl.show();
+						return;
+					}
+
+					// Complete payment when the submit button is clicked
+					// payWithCard(stripe, card, data.clientSecret);
+					setLoading(true);
+					networkGetStripeSecret((secret) => {
+						payWithCard(stripe, card, secret);
+					});
+				});
+
+				let payWithCard = function (stripe, card, clientSecret) {
+					stripe.confirmCardPayment(clientSecret, {
+						payment_method: {
+							card: card
+						}
+					}).then(function (result) {
+						if (result.error) {
+							// Show error to your customer
+							setLoading(false);
+							paymentErrorEl.setText(result.error.message);
+							paymentErrorEl.show();
+						} else {
+							// The payment succeeded!
+							orderComplete(result.paymentIntent.id);
+						}
+					});
+				};
+
+				/* ------- UI helpers ------- */
+				// Shows a success message when the payment is complete
+				let orderComplete = function (paymentIntentId) {
+					request(FINISH_STRIPE_URL, {intent_id: paymentIntentId}, (err, data) => {
+						setLoading(false);
+
+						if (err) {
+							paymentErrorEl.setText(err);
+							paymentErrorEl.show();
+						} else {
+							let companyName = businessNameInputEl.value;
+							if (buyingLicense === 'business') {
+								request(BIZ_RENAME_URL, {company: companyName}, (err, data) => {
+									if (err) {
+										paymentErrorEl.setText(err);
+										paymentErrorEl.show();
+									} else {
+										window.location.reload();
+									}
+								})
+							} else {
+								window.location.reload();
+							}
+						}
+					});
+				};
+				// Show a spinner on payment submission
+				let setLoading = function (isLoading) {
+					if (isLoading) {
+						// Disable the button and show a spinner
+						fishAll('.spinner').forEach(s => s.removeClass('hidden'));
+						fishAll('.button-text').forEach(s => s.addClass('hidden'));
+					} else {
+						fishAll('.spinner').forEach(s => s.addClass('hidden'));
+						fishAll('.button-text').forEach(s => s.removeClass('hidden'));
+					}
+				};
+
+				let testLoggedIn = () => {
+					request(USER_INFO_URL, {}, (err, data) => {
+						if (err) {
+							if (!signupMode) {
+								spinnerEl.hide();
+								loginFormEl.show();
+							}
+						} else {
+							userNameEl.setText(data.name);
+							userEmailEl.setText(data.email);
+							signupFormEl.hide();
+							spinnerEl.hide();
+							welcomeEl.show();
+
+							hasPersonalLicense = !!data.license;
+
+							if (hasPersonalLicense) {
+								buyCatalystLicenseCardEl.addClass('is-active');
+								personalLicenseTierEl.setText(data.license);
+							} else {
+								buyCatalystLicenseCardEl.addEventListener('click', () => {
+									paymentErrorEl = fish('.modal-container.mod-personal-license .payment-error');
+									personalLicenseModal.show();
+								});
+							}
+						}
+					});
+				};
+
+				let getCurrentSubscription = () => {
+					request(LIST_SUBSCRIPTION_URL, {}, (err, data) => {
+						if (err) {
+							console.log(err);
+							return;
+						}
+						hasSyncSubscription = data.subscriptions.filter(s => s.type === 'sync' && s.expiry_ts > Date.now()).length > 0;
+
+						if (data.business && data.business !== null) {
+							let bizLicense = data.business;
+
+							commercialLicenseKeyEl.setText(bizLicense.key);
+							commercialLicenseCompanyEl.setText(bizLicense.company);
+							commercialLicenseSeatNumberEl.setText(bizLicense.seats);
+							commercialLicenseExpiryEl.setText((new Date(bizLicense.expiry).toLocaleDateString()));
+							commercialLicensePitchEl.hide();
+							existingCommercialLicenseEl.show();
+							commercialLicenseCardEl.addClass('is-active');
+						} else {
+							commercialLicenseCardEl.addEventListener('click', () => {
+								buyingLicense = 'business';
+								buyingVariation = parseInt(commercialLicenseSeatEl.value).toString();
+								paymentErrorEl = fish('.modal-container.mod-commercial-license .payment-error');
+								commercialLicenseModal.show();
+
+								card.mount('.modal-container.mod-commercial-license .card-element');
+
+								updateBizPrice();
+							});
+						}
+
+						if (hasSyncSubscription) {
+							// syncInstructionEl.show();
+							// getSyncCardEl.hide();
+						} else {
+							// syncInstructionEl.hide();
+							// getSyncCardEl.show();
+						}
+					});
+				};
+
+				let attemptLogin = () => {
+					loginErrorEl.hide();
+
+					let email = emailEl.value;
+					let password = passwordEl.value;
+					let showError = false;
+
+					if (email === '') {
+						loginErrorEl.setText('Email cannot be empty.');
+						showError = true;
+					} else if (email.indexOf('@') === -1) {
+						loginErrorEl.setText('Email is not valid.');
+						showError = true;
+					} else if (password === '') {
+						loginErrorEl.setText('Password cannot be empty.');
+						showError = true;
+					}
+
+					if (showError) {
+						loginErrorEl.show();
+						return;
+					}
+
+					request(LOGIN_URL, {
+						email: emailEl.value,
+						password: passwordEl.value
+					}, (err, data) => {
+						if (!err) {
+							window.location.reload();
+						} else {
+							if (err === 'Login failed') {
+								loginErrorEl.setText('Login failed, please double check your email and password.');
+								loginErrorEl.show();
+							}
+						}
+					});
+				};
+
+				let attemptSignup = () => {
+					signupErrorEl.hide();
+
+					let name = signupNameEl.value;
+					let email = signupEmailEl.value;
+					let password = signupPasswordEl.value;
+
+					let showError = false;
+
+					if (name === '') {
+						signupErrorEl.setText('Name cannot be empty.');
+						showError = true;
+					} else if (email === '') {
+						signupErrorEl.setText('Email cannot be empty.');
+						showError = true;
+					} else if (email.indexOf('@') === -1) {
+						signupErrorEl.setText('Email is not valid.');
+						showError = true;
+					} else if (password === '') {
+						signupErrorEl.setText('Password cannot be empty.');
+						showError = true;
+					}
+
+					if (showError) {
+						signupErrorEl.show();
+						return;
+					}
+
+					request(SIGNUP_URL, {
+						name, email, password
+					}, (err, data) => {
+						if (err) {
+							if (err === 'Invalid email address') {
+								signupErrorEl.setText('The email address you entered was invalid.');
+							} else if (err === 'Already signed up') {
+								signupErrorEl.setText('Seems like you already have an account! Please log in.')
+							}
+
+							signupErrorEl.show();
+						} else {
+							window.location.reload();
+						}
+					});
+				};
+
+				let attemptLogout = () => {
+					request(LOGOUT_URL, {}, (err, data) => {
+						if (!err) {
+							window.location.reload();
+						} else {
+							console.log(data);
+						}
+					});
+				};
+
+				let networkGetStripeSecret = (callback) => {
+					request(GET_STRIPE_SECRET_URL, {
+						type: buyingLicense,
+						variation: buyingVariation
+					}, (err, data) => {
+						if (err) {
+							paymentErrorEl.setText(err);
+							paymentErrorEl.show();
+						} else {
+							callback && callback(data.secret);
+						}
+					});
+				};
+
+				let updateBizPrice = () => {
+					request(CHECK_PRICE_URL, {
+						type: buyingLicense,
+						variation: buyingVariation
+					}, (err, data) => {
+						console.log(err, data, paymentErrorEl);
+						if (err) {
+							paymentErrorEl.setText(err);
+							paymentErrorEl.show();
+						} else {
+							let {subtotal, desc, tax, taxDesc, discount, discountDesc, total} = data;
+
+							if (discount === 0) {
+								bizDiscountPaymentLineEl.hide();
+							} else {
+								bizDiscountPaymentAmountEl.setText(formatPrice(discount));
+
+								if (discountDesc) {
+									bizDiscountPaymentDescEl.setText(discountDesc);
+								}
+							}
+
+							if (tax === 0) {
+								bizTaxPaymentLineEl.hide();
+							} else {
+								bizTaxPaymentAmountEl.setText(formatPrice(tax));
+
+								if (taxDesc) {
+									bizTaxPaymentDescEl.setText(taxDesc);
+								}
+							}
+
+							if (subtotal === total && discount === 0 && tax === 0) {
+								bizSubTotalPaymentLineEl.hide();
+								bizTotalPaymentDescEl.setText(desc);
+								bizTotalPaymentAmountEl.setText(formatPrice(total));
+							} else {
+								bizSubTotalPaymentAmountEl.setText(formatPrice(subtotal));
+
+								if (desc) {
+									bizSubTotalPaymentDescEl.setText(desc);
+								}
+
+								bizTotalPaymentAmountEl.setText(formatPrice(total));
+							}
+						}
+					});
+				};
+
+				testLoggedIn();
+				getCurrentSubscription();
+
+				logoutButtonEl.addEventListener('click', () => {
+					attemptLogout();
+				});
+
+				// getSyncCardEl.addEventListener('click', () => {
+				// 	window.location.href = './pricing.html';
+				// });
+
+				commercialLicenseKeyEl.addEventListener('click', () => {
+					let licenseKey = commercialLicenseKeyEl.getText();
+					let copySuccess = copyTextToClipboard(licenseKey);
+
+					if (copySuccess) {
+						commercialLicenseKeyEl.setText('Copied!');
+						commercialLicenseKeyEl.addClass('is-copied');
+						setTimeout(() => {
+							commercialLicenseKeyEl.removeClass('is-copied');
+							commercialLicenseKeyEl.setText(licenseKey);
+						}, 500)
+					}
+				});
+
+				commercialLicenseSeatEl.addEventListener('input', () => {
+					buyingLicense = 'business';
+					buyingVariation = parseInt(commercialLicenseSeatEl.value).toString();
+
+					updateBizPrice();
+				});
+
+				catalystTierCardsEl.forEach(el => {
+					el.addEventListener('click', () => {
+						catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
+						el.addClass('is-selected');
+
+						buyingLicense = 'catalyst';
+						buyingVariation = el.getAttribute('data-tier');
+
+						if (!['insider', 'supporter', 'vip'].contains(buyingVariation)) {
+							return;
+						}
+
+						request(CHECK_PRICE_URL, {
+							type: buyingLicense,
+							variation: buyingVariation
+						}, (err, data) => {
+							if (err) {
+								paymentErrorEl.setText(err);
+								paymentErrorEl.show();
+							} else {
+								let {subtotal, desc, tax, taxDesc, discount, discountDesc, total} = data;
+
+								if (discount === 0) {
+									discountPaymentLineEl.hide();
+								} else {
+									discountPaymentAmountEl.setText(formatPrice(discount));
+
+									if (discountDesc) {
+										discountPaymentDescEl.setText(discountDesc);
+									}
+								}
+
+								if (tax === 0) {
+									taxPaymentLineEl.hide();
+								} else {
+									taxPaymentAmountEl.setText(formatPrice(tax));
+
+									if (taxDesc) {
+										taxPaymentDescEl.setText(taxDesc);
+									}
+								}
+
+								if (subtotal === total && discount === 0 && tax === 0) {
+									subTotalPaymentLineEl.hide();
+									totalPaymentDescEl.setText(desc);
+									totalPaymentAmountEl.setText(formatPrice(total));
+								} else {
+									subTotalPaymentAmountEl.setText(formatPrice(subtotal));
+									subTotalPaymentDescEl.setText(desc);
+									totalPaymentAmountEl.setText(formatPrice(total));
+								}
+
+								personalLicensePaymentContainerEl.show();
+								card.mount('.modal-container.mod-personal-license .card-element');
+							}
+						});
+					});
+				});
+
+				closeModalButtonEls.forEach(el => {
+					el.addEventListener('click', () => {
+						commercialLicenseModal.hide();
+						personalLicenseModal.hide();
+						card.unmount();
+						personalLicensePaymentContainerEl.hide();
+						catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
+					});
+				});
+
+				gotoSignupEl.addEventListener('click', () => {
+					location.hash = '#mode=signup';
+					location.reload();
+				});
+
+				gotoLoginEl.addEventListener('click', () => {
+					location.hash = '';
+					location.reload();
+				});
+
+				loginFormEl.find('form').addEventListener('submit', (evt) => {
+					evt.preventDefault();
+					attemptLogin();
+				});
+
+				signupFormEl.find('form').addEventListener('submit', (evt) => {
+					evt.preventDefault();
+					attemptSignup();
+				});
+			});
+		}, 500);
+	</script>
+
+</div>
+</body>
+</html>
