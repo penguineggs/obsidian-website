@@ -1037,13 +1037,9 @@ input.prompt-input {
 }
 .pricing-card.mod-muted {
   transform: scale(0.9);
-  opacity: 0.6;
   position: relative;
   bottom: 0;
   border-color: transparent;
-}
-.pricing-card.mod-muted:hover {
-  opacity: 0.9;
 }
 .pricing-card.mod-muted:hover:after {
   background-color: rgba(var(--interactive-accent-rgb), 0.2);
