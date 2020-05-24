@@ -63,7 +63,9 @@ function removeHash() {
 }
 
 function formatPrice(price) {
-	return (price / 100).toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+	let parts = (price / 100).toFixed(2).toString().toString().split(".");
+	parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return parts.join(".");
 }
 
 function copyTextToClipboard(text) {
