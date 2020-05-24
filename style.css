@@ -1318,11 +1318,6 @@ button.mod-float-right {
     transform: rotate(360deg);
   }
 }
-@media only screen and (max-width: 600px) {
-  form {
-    width: 80vw;
-  }
-}
 @media only screen and (max-width: 720px) {
   .pricing-container {
     padding: 60px 0 0 0;
@@ -1625,6 +1620,7 @@ span.mod-huge-punctuation {
 .account-container {
   background-color: var(--background-secondary);
   width: 520px;
+  max-width: 100%;
 }
 .account-container .page-header {
   margin: 50px 0 30px 0;
@@ -2064,4 +2060,9 @@ body {
 }
 .static-footer a:hover {
   color: var(--text-accent);
+}
+@media only screen and (max-width: 720px) {
+  .input-label {
+    width: 100px;
+  }
 }
