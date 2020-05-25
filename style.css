@@ -317,6 +317,7 @@ input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 .checkbox-container {
+  cursor: pointer;
   background-color: var(--background-secondary-alt);
   border-radius: 14px;
   display: inline-block;
@@ -568,7 +569,7 @@ p.mod-warning {
 .horizontal-tab-nav-item,
 .vertical-tab-nav-item {
   background-color: var(--background-secondary-alt);
-  padding: 10px 16px;
+  padding: 10px 6px 10px 24px;
   cursor: default;
   font-size: 16px;
 }
@@ -601,15 +602,30 @@ p.mod-warning {
   display: flex;
 }
 .vertical-tab-header {
+  background-color: var(--background-secondary-alt);
+}
+.vertical-tab-header-group-items {
   display: flex;
   flex-direction: column;
-  background-color: var(--background-secondary-alt);
+}
+.vertical-tab-header-group-title {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 6px 16px;
+  user-select: none;
 }
 .vertical-tab-nav-item {
   border-left: 3px solid transparent;
+  user-select: none;
+  cursor: pointer;
 }
 .vertical-tab-nav-item.is-active {
   border-left-color: var(--interactive-accent);
+}
+.vertical-tab-header-group {
+  padding: 10px 0;
 }
 .prompt {
   display: flex;
@@ -1289,6 +1305,9 @@ button.mod-float-right {
 }
 .modal-container.mod-personal-license .modal {
   width: 800px;
+}
+.modal-container.mod-personal-license .modal .input-label {
+  width: 200px;
 }
 .modal-container.mod-commercial-license .modal {
   width: 600px;

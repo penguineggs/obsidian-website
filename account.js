@@ -8,6 +8,7 @@ const GET_STRIPE_SECRET_URL = BASE_URL + '/subscription/stripe/start';
 const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
 const CHECK_PRICE_URL = BASE_URL + '/subscription/price';
 const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
+const PERSONAL_ROLES_URL = BASE_URL + '/subscription/personal/roles';
 const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
 
 function request(url, data, callback) {
@@ -132,6 +133,9 @@ window.setTimeout(() => {
 		let gotoSignupEl = fish('.js-go-to-signup');
 		let gotoLoginEl = fish('.js-go-to-login');
 		let personalLicensePaymentContainerEl = fish('.modal-container.mod-personal-license .payment-container');
+		let personalLicenseUserInfoEl = fish('.modal-container.mod-personal-license .personal-license-user-info');
+		let discordUsernameInputEl = fish('.discord-username-input');
+		let forumUsernameInputEl = fish('.forum-username-input');
 		let commercialLicenseSeatEl = fish('.commercial-license-seat');
 		let subTotalPaymentLineEl = fish('.modal-container.mod-personal-license .payment-line.mod-subtotal');
 		let subTotalPaymentDescEl = fish('.modal-container.mod-personal-license .payment-line.mod-subtotal .payment-desc');
@@ -271,9 +275,18 @@ window.setTimeout(() => {
 							} else {
 								window.location.reload();
 							}
-						})
+						});
 					} else {
-						window.location.reload();
+						let discordName = discordUsernameInputEl.value;
+						let forumName = forumUsernameInputEl.value;
+
+						request(PERSONAL_ROLES_URL, {
+							discord: discordName,
+							forum: forumName
+						}, () => {
+							// best effort, do not need to show error for this
+							window.location.reload();
+						});
 					}
 				}
 			});
@@ -600,6 +613,7 @@ window.setTimeout(() => {
 						}
 
 						personalLicensePaymentContainerEl.show();
+						personalLicenseUserInfoEl.show();
 						card.mount('.modal-container.mod-personal-license .card-element');
 					}
 				});
@@ -612,6 +626,7 @@ window.setTimeout(() => {
 				personalLicenseModal.hide();
 				card.unmount();
 				personalLicensePaymentContainerEl.hide();
+				personalLicenseUserInfoEl.hide();
 				catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
 			});
 		});
