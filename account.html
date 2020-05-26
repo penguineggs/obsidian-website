@@ -76,6 +76,7 @@
 			</form>
 
 			<p class="u-center-text">Don't have an account? <a href="#" class="js-go-to-signup">Sign up now</a>.</p>
+			<p class="u-center-text"><a href="#" class="js-go-to-forgot-pass">Forgot your password?</a></p>
 		</div>
 
 		<div class="signup-form" style="display: none;">
@@ -106,6 +107,44 @@
 			</form>
 
 			<p class="u-center-text">Already have an account? <a href="#" class="js-go-to-login">Sign in</a>.</p>
+		</div>
+
+		<div class="forgot-pass-form" style="display: none;">
+			<h1 class="page-header">Reset your password</h1>
+			<hr>
+			<div class="message-container">
+				<div class="message mod-success" style="display: none;"></div>
+				<div class="message mod-error" style="display: none;"></div>
+			</div>
+			<form>
+				<p>
+					<label class="input-label">Email</label>
+					<input type="email" placeholder="Your email..." class="forgot-pass-email">
+				</p>
+
+				<div class="button-container u-center-text">
+					<button class="mod-cta js-request-forgot">Request reset</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="reset-pass-form" style="display: none;">
+			<h1 class="page-header">Set a new password</h1>
+			<hr>
+			<div class="message-container">
+				<div class="message mod-success" style="display: none;"></div>
+				<div class="message mod-error" style="display: none;"></div>
+			</div>
+			<form>
+				<p>
+					<label class="input-label">New password</label>
+					<input type="password" placeholder="New password..." class="reset-pass-password">
+				</p>
+
+				<div class="button-container u-center-text">
+					<button class="mod-cta js-reset-password">Reset</button>
+				</div>
+			</form>
 		</div>
 
 		<div class="welcome" style="display: none;">

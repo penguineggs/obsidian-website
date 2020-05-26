@@ -3,6 +3,8 @@ const USER_INFO_URL = BASE_URL + '/user/info';
 const LOGIN_URL = BASE_URL + '/user/signin';
 const SIGNUP_URL = BASE_URL + '/user/signup';
 const LOGOUT_URL = BASE_URL + '/user/signout';
+const FORGOT_PASS_URL = BASE_URL + '/user/forgetpass';
+const RESET_PASS_URL = BASE_URL + '/user/resetpass';
 const LIST_SUBSCRIPTION_URL = BASE_URL + '/subscription/list';
 const GET_STRIPE_SECRET_URL = BASE_URL + '/subscription/stripe/start';
 const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
@@ -101,8 +103,6 @@ window.setTimeout(() => {
 		let signupFormEl = fish('.signup-form');
 		let signupErrorEl = fish('.signup-form .message.mod-error');
 		let welcomeEl = fish('.welcome');
-		let loginButtonEl = fish('.js-login');
-		let signupButtonEl = fish('.js-sign-up');
 		let emailEl = fish('#labeled-input-email');
 		let passwordEl = fish('#labeled-input-password');
 		let signupNameEl = fish('.signup-name');
@@ -132,6 +132,15 @@ window.setTimeout(() => {
 		let spinnerEl = fish('.loader-cube');
 		let gotoSignupEl = fish('.js-go-to-signup');
 		let gotoLoginEl = fish('.js-go-to-login');
+		let gotoForgotPassEl = fish('.js-go-to-forgot-pass');
+		let forgotPassFormEl = fish('.forgot-pass-form');
+		let forgotPassSuccessMsgEl = fish('.forgot-pass-form .message.mod-success');
+		let forgotPassErrorMsgEl = fish('.forgot-pass-form .message.mod-error');
+		let forgotPasswordInputEl = fish('.forgot-pass-email');
+		let resetPassFormEl = fish('.reset-pass-form');
+		let resetPassNewPasswordEl = fish('.reset-pass-password');
+		let resetPassSuccessMsgEl = fish('.reset-pass-form .message.mod-success');
+		let resetPassErrorMsgEl = fish('.reset-pass-form .message.mod-error');
 		let personalLicensePaymentContainerEl = fish('.modal-container.mod-personal-license .payment-container');
 		let personalLicenseUserInfoEl = fish('.modal-container.mod-personal-license .personal-license-user-info');
 		let discordUsernameInputEl = fish('.discord-username-input');
@@ -185,6 +194,8 @@ window.setTimeout(() => {
 		let buyingLicense = null;
 		let buyingVariation = null;
 		let signupMode = false;
+		let resetPasswordId = null;
+		let resetPasswordKey = null;
 
 		let stripe = window.Stripe(STRIPE_PUBLIC_KEY);
 		let elements = stripe.elements();
@@ -195,6 +206,18 @@ window.setTimeout(() => {
 			removeHash();
 			spinnerEl.hide();
 			signupFormEl.show();
+			signupMode = true;
+		} else if (decodedUrl.mode && decodedUrl.mode === 'forgotpass') {
+			removeHash();
+			spinnerEl.hide();
+			forgotPassFormEl.show();
+			signupMode = true;
+		} else if (decodedUrl.forgetpw && decodedUrl.id && decodedUrl.key) {
+			removeHash();
+			resetPasswordId = decodedUrl.id;
+			resetPasswordKey = decodedUrl.key;
+			spinnerEl.hide();
+			resetPassFormEl.show();
 			signupMode = true;
 		} else if (decodedUrl.stripe && decodedUrl.stripe === 'complete') {
 			let paymentSessionId = decodedUrl.session;
@@ -456,6 +479,61 @@ window.setTimeout(() => {
 			});
 		};
 
+		let attemptForgotPassword = () => {
+			forgotPassErrorMsgEl.hide();
+			forgotPassSuccessMsgEl.hide();
+
+			let email = forgotPasswordInputEl.value;
+
+			if (!email) {
+				forgotPassErrorMsgEl.setText('Please fill out your email.');
+				forgotPassErrorMsgEl.show();
+				return;
+			} else if (email.indexOf('@') === -1) {
+				forgotPassErrorMsgEl.setText('Email address is not valid and must contain "@".');
+				forgotPassErrorMsgEl.show();
+				return;
+			}
+			request(FORGOT_PASS_URL, {email, captcha: 'captcha'}, (err, data) => {
+				if (err) {
+					forgotPassErrorMsgEl.setText('Something went wrong, please try again.');
+					forgotPassErrorMsgEl.show();
+					return;
+				}
+
+				forgotPassSuccessMsgEl.setText(`We have sent an email to ${email} to reset your password.`);
+				forgotPassSuccessMsgEl.show();
+			});
+		};
+
+		let attemptResetPassword = () => {
+			resetPassSuccessMsgEl.hide();
+			resetPassErrorMsgEl.hide();
+
+			let password = resetPassNewPasswordEl.value;
+
+			if (!password) {
+				resetPassErrorMsgEl.setText('Please set a new password.');
+				resetPassErrorMsgEl.show();
+				return;
+			}
+
+			request(RESET_PASS_URL, {
+				password,
+				id: resetPasswordId,
+				key: resetPasswordKey
+			}, (err, data) => {
+				if (err) {
+					resetPassErrorMsgEl.setText('Something went wrong, please try again.');
+					resetPassErrorMsgEl.show();
+					return;
+				}
+
+				resetPassSuccessMsgEl.innerHTML = `Your password has been successfully set. <a href="/account">Log in</a>`;
+				resetPassSuccessMsgEl.show();
+			});
+		};
+
 		let attemptLogout = () => {
 			request(LOGOUT_URL, {}, (err, data) => {
 				if (!err) {
@@ -641,6 +719,11 @@ window.setTimeout(() => {
 			location.reload();
 		});
 
+		gotoForgotPassEl.addEventListener('click', () => {
+			location.hash = '#mode=forgotpass';
+			location.reload();
+		});
+
 		loginFormEl.find('form').addEventListener('submit', (evt) => {
 			evt.preventDefault();
 			attemptLogin();
@@ -649,6 +732,16 @@ window.setTimeout(() => {
 		signupFormEl.find('form').addEventListener('submit', (evt) => {
 			evt.preventDefault();
 			attemptSignup();
+		});
+
+		forgotPassFormEl.find('form').addEventListener('submit', (evt) => {
+			evt.preventDefault();
+			attemptForgotPassword();
+		});
+
+		resetPassFormEl.find('form').addEventListener('submit', (evt) => {
+			evt.preventDefault();
+			attemptResetPassword();
 		});
 	});
 }, 500);
