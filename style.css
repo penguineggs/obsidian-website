@@ -558,7 +558,7 @@ p.mod-warning {
 .footer-link-group {
   list-style: none;
   display: inline-block;
-  margin: 0 60px 0 0;
+  margin: 0 30px;
   padding: 0;
 }
 .footer-header {
@@ -1977,20 +1977,21 @@ body {
   text-align: center;
   width: 100%;
 }
+.page-header {
+  text-align: center;
+}
 .static-full-page-container.mod-community .static-container {
   width: 900px;
   max-width: 90vw;
   margin: 0 auto;
   text-align: left;
 }
-.static-full-page-container.mod-community .static-container .page-header {
-  text-align: center;
-}
 .static-full-page-container.mod-community .static-container .card-container {
   margin-top: 40px;
 }
 .static-full-page-container.mod-community .static-container .card {
   cursor: default;
+  width: 50%;
 }
 .static-full-page-container.mod-community .static-container .card:hover {
   background-color: var(--background-secondary-alt);
@@ -2016,8 +2017,23 @@ body {
 .static-full-page-container.mod-features .static-container {
   width: 900px;
   max-width: 90vw;
+  margin: 0 auto;
+  text-align: left;
+}
+.static-full-page-container.mod-features .static-container .card-container {
+  margin-top: 40px;
+}
+.static-full-page-container.mod-features .static-container .card {
+  cursor: default;
+  flex-grow: 1;
 }
 .static-full-page-container.mod-features .static-container .card:hover {
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-secondary-alt);
+}
+.static-full-page-container.mod-features .static-container img {
+  margin-top: 10px;
+  border-radius: 2px;
   border: 1px solid var(--background-modifier-border);
 }
 .static-full-page-container.mod-features .static-container .card ul {
@@ -2081,9 +2097,10 @@ body {
 }
 .static-footer {
   color: var(--text-muted);
-  padding: 60px 0 40px 0;
+  padding: 60px 20px 40px 20px;
   line-height: 32px;
   user-select: none;
+  text-align: left;
 }
 .static-footer a {
   color: var(--text-muted);
@@ -2091,6 +2108,13 @@ body {
 }
 .static-footer a:hover {
   color: var(--text-accent);
+}
+.footer-groups {
+  display: flex;
+  justify-content: center;
+}
+.footer-copyright {
+  margin-top: 20px;
 }
 @media only screen and (max-width: 720px) {
   .input-label {
