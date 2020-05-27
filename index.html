@@ -54,18 +54,26 @@
 				</p>
 			</div>
 			<div class="hero-button-container">
-				<a target="_blank"
-				   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">
-					<button class="mod-cta">Request early access</button>
+				<!--				<a target="_blank"-->
+				<!--				   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">-->
+				<!--					<button class="mod-cta">Request early access</button>-->
+				<!--				</a>-->
+				<a class="download-button" href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/Obsidian.0.6.4.exe">
+					<button class="mod-cta">
+						Get Obsidian for <span class="download-os">Windows</span>
+						<br>
+						<span class="u-muted u-small">Beta version 0.6.4</span>
+					</button>
 				</a>
-				<!--				<button class="mod-cta">-->
-				<!--					<a>-->
-				<!--						Get Obsidian for Windows-->
-				<!--						<br>-->
-				<!--						<span class="u-muted u-small">Beta version 0.6.2</span>-->
-				<!--					</a>-->
-				<!--				</button>-->
-				<!--				<p class="cta-explanation">Also available for macOS and Linux</p>-->
+				<p class="cta-explanation">Also available for
+					<a href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/Obsidian-0.6.4.dmg"
+					   class="alt-os-1">macOS</a>,
+					<a href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/Obsidian-0.6.4.AppImage"
+					   class="alt-os-2">Linux (AppImage)</a>,
+					and <a
+						href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/obsidian_0.6.4_amd64.snap"
+						class="alt-os-3">Linux (Snap)</a>.
+				</p>
 			</div>
 		</div>
 		<div class="hero-screenshot-container">
@@ -170,17 +178,26 @@
 			<h1 class="feature-title">A second brain,<br>for you, forever.</h1>
 
 			<div class="feature-button-container">
-				<!--				<button class="mod-cta">-->
-				<!--					<a>-->
-				<!--						Get Obsidian for Windows-->
-				<!--						<br>-->
-				<!--						<span class="u-muted u-small">Stable build 0.6.2</span>-->
-				<!--					</a>-->
-				<!--				</button>-->
-				<a target="_blank"
-				   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">
-					<button class="mod-cta">Request early access</button>
+				<a class="download-button" href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/Obsidian.0.6.4.exe">
+					<button class="mod-cta">
+						Get Obsidian for <span class="download-os">Windows</span>
+						<br>
+						<span class="u-muted u-small">Beta version 0.6.4</span>
+					</button>
 				</a>
+				<p class="cta-explanation">Also available for
+					<a href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/Obsidian-0.6.4.dmg"
+					   class="alt-os-1">macOS</a>,
+					<a href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/Obsidian-0.6.4.AppImage"
+					   class="alt-os-2">Linux (AppImage)</a>,
+					and <a
+						href="https://github.com/obsidianmd/obsidian-releases/releases/download/v0.6.4/obsidian_0.6.4_amd64.snap"
+						class="alt-os-3">Linux (Snap)</a>.
+				</p>
+<!--				<a target="_blank"-->
+<!--				   href="https://docs.google.com/forms/d/e/1FAIpQLSerZmxQJD4Uv6DF_2UyTib7_txbSIhERyfgfzrJwHMXFLjPRw/viewform">-->
+<!--					<button class="mod-cta">Request early access</button>-->
+<!--				</a>-->
 			</div>
 		</div>
 	</div>
@@ -219,6 +236,7 @@
 </div>
 
 <script src="enhance.js"></script>
+<script src="download.js"></script>
 <script>
 	let container = fish('.static-full-page-container');
 	let screenshotContainerEl = fish('.hero-screenshot-container');

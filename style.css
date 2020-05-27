@@ -1084,6 +1084,7 @@ input.prompt-input {
   font-weight: 200;
   margin-top: auto;
   line-height: 64px;
+  padding-top: 30px;
 }
 .pricing-card-price strike {
   text-decoration-color: var(--text-accent);
@@ -1454,6 +1455,7 @@ button.mod-float-right {
   margin-left: 30px;
   line-height: 66px;
   text-decoration: none;
+  color: var(--text-muted);
 }
 .hero-container {
   padding: 220px 0 100px 0;
@@ -1505,6 +1507,7 @@ button.mod-float-right {
   font-size: 70px;
   line-height: 86px;
   margin-bottom: 24px;
+  color: #f8f8f8;
 }
 .hero-intro-text {
   font-size: 24px;
@@ -1584,14 +1587,6 @@ button.mod-float-right {
   background-color: var(--background-secondary-alt);
   box-shadow: inset 0 8px 8px -10px #050505, inset 0 -8px 8px -10px #050505;
 }
-span.mod-huge-punctuation,
-.feature-title.mod-quote:before,
-.feature-title.mod-quote:after {
-  color: var(--text-accent);
-  font-family: 'Playfair Display', serif;
-  font-size: 120px;
-  font-weight: normal;
-}
 span.mod-huge-punctuation {
   line-height: 0;
   position: relative;
@@ -1612,6 +1607,9 @@ span.mod-huge-punctuation {
   top: 20px;
   line-height: 20px;
   font-size: 100px;
+  color: var(--text-accent);
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
 }
 .feature-title.mod-quote:before {
   content: '“';
@@ -1798,6 +1796,10 @@ span.mod-huge-punctuation {
   .feature-title {
     font-size: 42px;
     line-height: 50px;
+  }
+  .feature-title.mod-quote:before,
+  .feature-title.mod-quote:after {
+    display: none;
   }
   .feature-explanation {
     padding: 0 20px;
