@@ -1458,7 +1458,7 @@ button.mod-float-right {
   color: var(--text-muted);
 }
 .hero-container {
-  padding: 220px 0 100px 0;
+  padding: 220px 0 80px 0;
   text-align: center;
   background-image: url('images/starfield.svg');
   background-position: 50% 180px;
@@ -1518,61 +1518,14 @@ button.mod-float-right {
   margin: 4px 0;
 }
 .hero-screenshot-container {
-  position: relative;
-  overflow-x: hidden;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 .hero-screenshot {
   width: 1000px;
   height: auto;
-  position: absolute;
-  bottom: 107px;
-  left: calc(50% - 500px);
-  opacity: 0;
-  transition: opacity 500ms ease-in-out 750ms;
-}
-.hero-screenshot-container.mod-animate .hero-screenshot {
-  opacity: 1;
-}
-.hero-guidelines {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0px -1000px 0px -1000px;
-  position: relative;
-  z-index: 2;
-}
-.hero-guidelines line,
-.hero-guidelines rect {
-  stroke-opacity: 0;
-}
-.hero-screenshot-container.mod-animate svg line,
-.hero-screenshot-container.mod-animate svg rect {
-  animation: lineAppear 1.5s ease-out 0s both;
-}
-@keyframes lineAppear {
-  0% {
-    stroke-dasharray: 4000;
-    stroke-dashoffset: 4000;
-    stroke-opacity: 0;
-  }
-  40% {
-    stroke-opacity: 0.8;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 4000;
-    stroke-opacity: 0.5;
-    stroke: #4d3ca6;
-  }
-}
-@keyframes interfaceAppear {
-  0% {
-    stroke: #fff;
-  }
-  100% {
-    stroke-opacity: 0.7;
-  }
+  border-radius: 30px 3px 30px 3px;
+  border: 1px solid var(--interactive-accent-rgb, 0.5);
+  box-shadow: 0 0 8px var(--interactive-accent);
 }
 .feature-row {
   text-align: center;
@@ -1754,7 +1707,7 @@ span.mod-huge-punctuation {
     display: none;
   }
   .hero-container {
-    padding: 150px 0;
+    padding: 150px 0 100px 0;
     background-image: none;
   }
   .hero-button-container {

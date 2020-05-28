@@ -77,35 +77,6 @@
 			</div>
 		</div>
 		<div class="hero-screenshot-container">
-			<svg class="hero-guidelines" width="3120" height="868" viewBox="0 0 3120 868" fill="none" stroke="#483699"
-			     xmlns="http://www.w3.org/2000/svg">
-				<line style="animation-delay:0.0s" y1="30.5" x2="3120" y2="30.5"></line>
-				<line style="animation-delay:0.02s" y1="77.5" x2="3120" y2="77.5"></line>
-				<line style="animation-delay:0.04s" y1="810.5" x2="3120" y2="810.5"></line>
-				<line style="animation-delay:0.08s" y1="867.5" x2="3120" y2="867.5"></line>
-				<line style="animation-delay:0.10s" y1="775.5" x2="3120" y2="775.5"></line>
-				<line style="animation-delay:0.12s" x1="1046.5" y1="30" x2="1046.5" y2="775"></line>
-				<line style="animation-delay:0.14s" x1="2071.5" y1="30" x2="2071.5" y2="775"></line>
-				<line style="animation-delay:0.16s" x1="829.758" y1="867.563" x2="1060.76" y2="775.563"></line>
-				<line style="animation-delay:0.18s" x1="1078.68" y1="867.617" x2="1231.68" y2="775.617"></line>
-				<line style="animation-delay:0.20s" x1="1268.59" y1="867.708" x2="1360.59" y2="775.708"></line>
-				<line style="animation-delay:0.22s" x1="1420.54" y1="867.797" x2="1477.54" y2="775.797"></line>
-				<line style="animation-delay:0.24s" x1="2048.25" y1="775.568" x2="2267.25" y2="867.568"></line>
-				<line style="animation-delay:0.26s" x1="1561.5" y1="775" x2="1561.5" y2="867"></line>
-				<line style="animation-delay:0.28s" x1="1885.32" y1="775.616" x2="2042.32" y2="867.62"></line>
-				<line style="animation-delay:0.30s" x1="1751.41" y1="775.708" x2="1843.41" y2="867.708"></line>
-				<line style="animation-delay:0.32s" x1="1652.48" y1="775.844" x2="1694.48" y2="867.844"></line>
-				<rect class="interface" x="1054.5" y="107.5" width="1010" height="668" rx="7.5"></rect>
-				<rect class="interface" x="1058.5" y="111.5" width="1001" height="658" rx="3.5"></rect>
-				<line class="interface" x1="1255.5" y1="112" x2="1255.5" y2="752.001"></line>
-				<line class="interface" x1="1259.5" y1="112" x2="1259.5" y2="752.001"></line>
-				<line class="interface" x1="1860.5" y1="112" x2="1860.5" y2="752.001"></line>
-				<line class="interface" x1="1864.5" y1="112" x2="1864.5" y2="752.001"></line>
-				<line class="interface" x1="1259.5" y1="475" x2="1860.5" y2="475"></line>
-				<line class="interface" x1="1259.5" y1="478" x2="1860.5" y2="478"></line>
-				<line class="interface" x1="1556.5" y1="478" x2="1556.5" y2="752.001"></line>
-				<line class="interface" x1="1560.5" y1="478" x2="1560.5" y2="752.001"></line>
-			</svg>
 			<img class="hero-screenshot" src="images/screenshot.png" alt="Obsidian">
 		</div>
 	</div>
@@ -238,15 +209,5 @@
 
 <script src="enhance.js"></script>
 <script src="download.js"></script>
-<script>
-	let container = fish('.static-full-page-container');
-	let screenshotContainerEl = fish('.hero-screenshot-container');
-
-	container.addEventListener('scroll', function () {
-		if (container.scrollTop > 400 && !screenshotContainerEl.hasClass('mod-animate')) {
-			screenshotContainerEl.addClass('mod-animate');
-		}
-	}, false);
-</script>
 </body>
 </html>
