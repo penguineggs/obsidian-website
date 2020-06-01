@@ -642,7 +642,7 @@ p.mod-warning {
   z-index: 1;
   position: absolute;
   top: 80px;
-  width: 600px;
+  width: 700px;
   max-width: 80vw;
 }
 input.prompt-input {
@@ -827,33 +827,39 @@ input.prompt-input {
   flex-grow: 1;
 }
 .empty-state-container {
-  text-align: center;
-  padding: 30px 50px;
-  border: 5px dashed var(--interactive-accent);
-  border-radius: 10px;
-  cursor: pointer;
   max-width: 480px;
   max-height: 280px;
   margin: 20px;
 }
-.empty-state-container:hover {
-  background-color: rgba(var(--interactive-accent-rgb), 0.4);
-  border: 5px solid rgba(var(--interactive-accent-rgb), 0.4);
-}
-.empty-state-container:hover .empty-state-label-description {
-  color: var(--text-normal);
-}
-.empty-state-label-action {
+.empty-state-title {
   margin-top: 20px;
   font-weight: 800;
   font-size: 32px;
+  position: relative;
 }
-.empty-state-label-description {
+.empty-state-action-list {
   font-size: 17px;
   line-height: 24px;
   color: var(--text-muted);
   margin-top: 20px;
-  text-align: left;
+}
+.empty-state-action {
+  cursor: pointer;
+  line-height: 36px;
+}
+.empty-state-action:hover {
+  color: var(--text-accent-hover);
+}
+.empty-state-close-button {
+  margin-left: 8px;
+  position: absolute;
+  top: -2px;
+  left: -46px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.empty-state-close-button:hover {
+  color: var(--text-normal);
 }
 .flair {
   border-radius: 4px;
@@ -2103,4 +2109,11 @@ body {
   .static-full-page-container.mod-features .static-container img {
     max-width: 80vw !important;
   }
+}
+.stripe-badge {
+  opacity: 0.5;
+  margin: 20px 0 0 0;
+}
+.stripe-badge img {
+  width: 120px;
 }
