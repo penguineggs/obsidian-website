@@ -1317,12 +1317,14 @@ button.mod-float-right {
   color: var(--text-on-accent);
 }
 .modal-container.mod-personal-license .modal {
+  max-width: 100vw;
   width: 800px;
 }
 .modal-container.mod-personal-license .modal .input-label {
   width: 200px;
 }
 .modal-container.mod-commercial-license .modal {
+  max-width: 100vw;
   width: 600px;
 }
 @-webkit-keyframes loading {
