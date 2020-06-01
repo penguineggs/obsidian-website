@@ -1533,7 +1533,11 @@ button.mod-float-right {
   height: auto;
   border-radius: 30px 3px 30px 3px;
   border: 1px solid var(--interactive-accent-rgb, 0.5);
-  box-shadow: 0 0 8px var(--interactive-accent);
+  transition: box-shadow 250ms ease-in-out;
+  box-shadow: 0 0 5px var(--interactive-accent);
+}
+.hero-screenshot:hover {
+  box-shadow: 0 0 10px var(--interactive-accent);
 }
 .feature-row {
   text-align: center;
