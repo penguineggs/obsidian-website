@@ -124,8 +124,11 @@ window.setTimeout(() => {
 		let commercialLicenseModal = fish('.modal-container.mod-commercial-license');
 		let personalLicenseModal = fish('.modal-container.mod-personal-license');
 		let personalLicenseTierEl = fish('.catalyst-tier');
+		let personalLicenseUpgradeButtonEl = fish('.catalyst-upgrade-button');
 		let closeModalButtonEls = fishAll('.js-close-modal, .modal-close-button, .modal-bg');
 		let buyCatalystLicenseCardEl = fish('.card.mod-catalyst');
+		let insiderOptionEl = fish('.card[data-tier="insider"]');
+		let supporterOptionEl = fish('.card[data-tier="supporter"]');
 		let catalystTierCardsEl = fishAll('.modal-container.mod-personal-license .card');
 		let stripeCatalystFormEl = fish('.modal-container.mod-personal-license .payment-form');
 		let stripeBizFormEl = fish('.modal-container.mod-commercial-license .payment-form');
@@ -189,7 +192,7 @@ window.setTimeout(() => {
 		};
 
 		let hasSyncSubscription = false;
-		let hasPersonalLicense = false;
+		let catalystLicenseTier = '';
 		let hasCommercialLicense = false;
 		let buyingLicense = null;
 		let buyingVariation = null;
@@ -340,11 +343,30 @@ window.setTimeout(() => {
 					spinnerEl.hide();
 					welcomeEl.show();
 
-					hasPersonalLicense = !!data.license;
+					if (data.license) {
+						catalystLicenseTier = data.license;
+					}
 
-					if (hasPersonalLicense) {
+					if (catalystLicenseTier) {
 						buyCatalystLicenseCardEl.addClass('is-active');
 						personalLicenseTierEl.setText(data.license);
+
+						// VIP can't upgrade any more
+						if (catalystLicenseTier !== 'vip') {
+							personalLicenseUpgradeButtonEl.addEventListener('click', () => {
+								paymentErrorEl = fish('.modal-container.mod-personal-license .payment-error');
+								personalLicenseModal.show();
+							});
+							personalLicenseUpgradeButtonEl.show();
+
+							if (catalystLicenseTier === 'supporter') {
+								insiderOptionEl.hide();
+								supporterOptionEl.hide();
+							}
+							else if (catalystLicenseTier === 'insider') {
+								insiderOptionEl.hide();
+							}
+						}
 					} else {
 						buyCatalystLicenseCardEl.addEventListener('click', () => {
 							paymentErrorEl = fish('.modal-container.mod-personal-license .payment-error');
