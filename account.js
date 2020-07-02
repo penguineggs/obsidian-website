@@ -265,6 +265,7 @@ window.setTimeout(() => {
 		});
 
 		let payWithCard = function (stripe, card, clientSecret) {
+			paymentErrorEl.hide();
 			stripe.confirmCardPayment(clientSecret, {
 				payment_method: {
 					card: card
