@@ -582,6 +582,7 @@ window.setTimeout(() => {
 		};
 
 		let updateBizPrice = () => {
+			paymentErrorEl.hide();
 			request(CHECK_PRICE_URL, {
 				type: buyingLicense,
 				variation: buyingVariation
