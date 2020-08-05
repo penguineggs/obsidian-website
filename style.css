@@ -87,6 +87,12 @@
   src: url('./fonts/flow-circular.woff');
   font-display: swap;
 }
+:root {
+  --default-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
+  --mermaid-font: var(--default-font);
+  --reveal-font: var(--default-font);
+  --font-monospace: 'Source Code Pro', monospace;
+}
 .theme-dark {
   --background-primary: #202020;
   --background-primary-alt: #1a1a1a;
@@ -131,9 +137,9 @@
   --background-modifier-form-field-highlighted: #fff;
   --background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
   --background-modifier-success: #A4E7C3;
-  --background-modifier-error: #e68787;
+  --background-modifier-error: #990000;
   --background-modifier-error-rgb: 230, 135, 135;
-  --background-modifier-error-hover: #FF9494;
+  --background-modifier-error-hover: #bb0000;
   --background-modifier-cover: rgba(0, 0, 0, 0.8);
   --text-accent: #705dcf;
   --text-accent-hover: #7a6ae6;
@@ -164,7 +170,6 @@ body {
   --layer-modal: 50;
   --layer-notice: 60;
   --layer-tooltip: 70;
-  --font-monospace: 'Source Code Pro', monospace;
 }
 .page-container {
   width: 50vw;
@@ -235,6 +240,7 @@ button.mod-cta:hover {
 }
 button.mod-warning {
   background-color: var(--background-modifier-error);
+  color: var(--text-on-accent);
 }
 button.mod-warning:hover {
   background-color: var(--background-modifier-error-hover);
@@ -503,6 +509,7 @@ kbd {
 }
 .message.mod-error {
   background-color: var(--background-modifier-error);
+  color: var(--text-on-accent);
 }
 .message.mod-error a {
   color: var(--text-normal);
@@ -1407,7 +1414,7 @@ button.mod-float-right {
   color: var(--text-normal);
 }
 .eula-text p {
-  margin: 6px 0;
+  margin: 10px 0;
 }
 .eula-text li {
   margin: 10px 0 20px 0;
