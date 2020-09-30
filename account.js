@@ -1,3 +1,4 @@
+// const BASE_URL = 'http://127.0.0.1:3000';
 const BASE_URL = 'https://api.obsidian.md';
 const USER_INFO_URL = BASE_URL + '/user/info';
 const LOGIN_URL = BASE_URL + '/user/signin';
@@ -12,6 +13,8 @@ const CHECK_PRICE_URL = BASE_URL + '/subscription/price';
 const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
 const PERSONAL_ROLES_URL = BASE_URL + '/subscription/personal/roles';
 const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
+// const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
+
 
 function request(url, data, callback) {
 	ajax({
@@ -113,6 +116,8 @@ window.setTimeout(() => {
 		let logoutButtonEl = fish('.js-logout');
 		let syncInstructionEl = fish('.setup-sync');
 		let getSyncCardEl = fish('.card.mod-sync');
+		let getPublishCardEl = fish('.card.mod-publish');
+		let publishBoughtSiteNumEl = fish('.publish-site-num');
 		let commercialLicensePitchEl = fish('.commercial-license-pitch');
 		let existingCommercialLicenseEl = fish('.existing-commercial-license');
 		let businessNameInputEl = fish('.business-name-input');
@@ -171,7 +176,23 @@ window.setTimeout(() => {
 		let bizTaxPaymentAmountEl = fish('.modal-container.mod-commercial-license .payment-line.mod-tax .payment-amount');
 		let bizTotalPaymentDescEl = fish('.modal-container.mod-commercial-license .payment-line.mod-total .payment-desc');
 		let bizTotalPaymentAmountEl = fish('.modal-container.mod-commercial-license .payment-line.mod-total .payment-amount');
+		let publishSubTotalPaymentLineEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-subtotal');
+		let publishSubTotalPaymentDescEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-subtotal .payment-desc');
+		let publishSubTotalPaymentAmountEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-subtotal .payment-amount');
+		let publishDiscountPaymentLineEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-discount');
+		let publishDiscountPaymentDescEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-discount .payment-desc');
+		let publishDiscountPaymentAmountEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-discount .payment-amount');
+		let publishTaxPaymentLineEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-tax');
+		let publishTaxPaymentDescEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-tax .payment-desc');
+		let publishTaxPaymentAmountEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-tax .payment-amount');
+		let publishTotalPaymentDescEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-total .payment-desc');
+		let publishTotalPaymentAmountEl = fish('.modal-container.mod-choose-publish-plan .payment-line.mod-total .payment-amount');
 		let paymentErrorEl = null;
+		let publishUpgradeButtonEl = fish('.js-upgrade-publish');
+		let publishUpgradeModal = fish('.modal-container.mod-choose-publish-plan');
+		let publishPlansCardsEl = publishUpgradeModal.findAll('.card');
+		let publishSiteNumEl = publishUpgradeModal.find('.publish-sites-num');
+		let stripePublishFormEl = fish('.modal-container.mod-choose-publish-plan .payment-form');
 
 		let stripeStyles = {
 			base: {
@@ -196,6 +217,7 @@ window.setTimeout(() => {
 		let hasCommercialLicense = false;
 		let buyingLicense = null;
 		let buyingVariation = null;
+		let buyingRenew = null;
 		let signupMode = false;
 		let resetPasswordId = null;
 		let resetPasswordKey = null;
@@ -350,6 +372,7 @@ window.setTimeout(() => {
 
 					if (catalystLicenseTier) {
 						buyCatalystLicenseCardEl.addClass('is-active');
+						getPublishCardEl.addClass('is-insider');
 						personalLicenseTierEl.setText(data.license);
 
 						// VIP can't upgrade any more
@@ -384,8 +407,6 @@ window.setTimeout(() => {
 					// console.log(err);
 					return;
 				}
-				hasSyncSubscription = data.subscriptions.filter(s => s.type === 'sync' && s.expiry_ts > Date.now()).length > 0;
-
 				if (data.business && data.business !== null) {
 					let bizLicense = data.business;
 
@@ -409,12 +430,15 @@ window.setTimeout(() => {
 					});
 				}
 
-				if (hasSyncSubscription) {
-					// syncInstructionEl.show();
-					// getSyncCardEl.hide();
-				} else {
-					// syncInstructionEl.hide();
-					// getSyncCardEl.show();
+				if (data.publish) {
+					getPublishCardEl.addClass('is-active');
+
+					if (data.publish.sites === 1) {
+						publishBoughtSiteNumEl.setText('1 site');
+					}
+					else {
+						publishBoughtSiteNumEl.setText(`${data.publish.sites} sites`);
+					}
 				}
 			});
 		};
@@ -570,7 +594,8 @@ window.setTimeout(() => {
 		let networkGetStripeSecret = (callback) => {
 			request(GET_STRIPE_SECRET_URL, {
 				type: buyingLicense,
-				variation: buyingVariation
+				variation: buyingVariation,
+				renew: buyingRenew
 			}, (err, data) => {
 				if (err) {
 					paymentErrorEl.setText(err);
@@ -729,6 +754,7 @@ window.setTimeout(() => {
 				card.unmount();
 				personalLicensePaymentContainerEl.hide();
 				personalLicenseUserInfoEl.hide();
+				publishUpgradeModal.hide();
 				catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
 			});
 		});
@@ -766,6 +792,105 @@ window.setTimeout(() => {
 		resetPassFormEl.find('form').addEventListener('submit', (evt) => {
 			evt.preventDefault();
 			attemptResetPassword();
+		});
+
+		let updatePublishPrice = () => {
+			let selectedCardEls = publishPlansCardsEl.filter(el => el.hasClass('is-selected'));
+			if (selectedCardEls.length === 0) {
+				return;
+			}
+			let renewal = selectedCardEls[0].getAttribute('data-renew');
+			let numSites = publishSiteNumEl.value.toString();
+			
+			buyingLicense = 'publish';
+			buyingVariation = numSites;
+			buyingRenew = renewal;
+
+			paymentErrorEl.hide();
+			request(CHECK_PRICE_URL, {
+				type: 'publish',
+				renew: renewal,
+				variation: numSites
+			}, (err, data) => {
+				if (err) {
+					paymentErrorEl.setText(err);
+					paymentErrorEl.show();
+				} else {
+					console.log(data);
+					let {subtotal, desc, tax, taxDesc, discount, discountDesc, total} = data;
+
+					if (discount === 0) {
+						publishDiscountPaymentLineEl.hide();
+					} else {
+						publishDiscountPaymentLineEl.show();
+						publishDiscountPaymentAmountEl.setText(formatPrice(discount));
+
+						if (discountDesc) {
+							publishDiscountPaymentDescEl.setText(discountDesc);
+						}
+					}
+
+					if (tax === 0) {
+						publishTaxPaymentLineEl.hide();
+					} else {
+						publishTaxPaymentLineEl.show();
+						publishTaxPaymentAmountEl.setText(formatPrice(tax));
+
+						if (taxDesc) {
+							publishTaxPaymentDescEl.setText(taxDesc);
+						}
+					}
+
+					if (subtotal === total && discount === 0 && tax === 0) {
+						publishSubTotalPaymentLineEl.hide();
+						publishTotalPaymentDescEl.setText(desc);
+						publishTotalPaymentAmountEl.setText(formatPrice(total));
+					} else {
+						publishSubTotalPaymentLineEl.show();
+						publishSubTotalPaymentAmountEl.setText(formatPrice(subtotal));
+
+						if (desc) {
+							publishSubTotalPaymentDescEl.setText(desc);
+						}
+
+						publishTotalPaymentAmountEl.setText(formatPrice(total));
+					}
+				}
+			});
+		};
+
+		publishUpgradeButtonEl.addEventListener('click', () => {
+			publishUpgradeModal.show();
+			card.mount('.modal-container.mod-choose-publish-plan .card-element');
+
+			paymentErrorEl = fish('.modal-container.mod-choose-publish-plan .payment-error');
+			updatePublishPrice();
+		});
+
+		publishPlansCardsEl.forEach((cardEl) => {
+			cardEl.addEventListener('click', () => {
+				publishPlansCardsEl.forEach(el => el.removeClass('is-selected'));
+				cardEl.addClass('is-selected');
+
+				updatePublishPrice();
+			});
+		});
+
+		publishSiteNumEl.addEventListener('change', () => {
+			updatePublishPrice();
+		});
+
+		stripePublishFormEl.addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			fishAll('.payment-error').forEach(e => e.hide());
+
+			// Complete payment when the submit button is clicked
+			// payWithCard(stripe, card, data.clientSecret);
+			setLoading(true);
+			networkGetStripeSecret((secret) => {
+				payWithCard(stripe, card, secret);
+			});
 		});
 	});
 }, 500);

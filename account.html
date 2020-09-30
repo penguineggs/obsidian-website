@@ -9,7 +9,7 @@
 
 	<meta name="description" content="Obsidian: A knowledge base that works on local Markdown files.">
 	<meta name="twitter:description" content="Obsidian – A knowledge base that works on local Markdown files.">
-	<meta property="og:title" content="Obsidian: A knowledge base that works on local Markdown files." />
+	<meta property="og:title" content="Obsidian: A knowledge base that works on local Markdown files."/>
 	<meta name="twitter:title" content="Obsidian: A knowledge base that works on local Markdown files.">
 	<meta property="og:description" content="Obsidian – A knowledge base that works on local Markdown files.">
 	<meta name="twitter:site" content="@obsdmd">
@@ -17,8 +17,8 @@
 	<meta name="twitter:creator" content="@obsdmd">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="https://obsidian.md/images/banner.png">
-	<meta property="og:type" content="website" />
-	<meta property="og:image" content="https://obsidian.md/images/banner.png" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="https://obsidian.md/images/banner.png"/>
 </head>
 <body class="theme-dark">
 <div class="static-full-page-container">
@@ -175,6 +175,7 @@
 			<!--			</p>-->
 
 			<div class="card-container mod-horizontal">
+				<h1 class="u-center-text">Your license</h1>
 				<!--				<div class="card mod-sync u-clickable">-->
 				<!--					<div class="card-title">Obsidian Sync</div>-->
 				<!--					<div class="card-description">-->
@@ -226,6 +227,119 @@
 					</div>
 				</div>
 			</div>
+
+			<hr>
+
+			<div class="card-container mod-horizontal">
+				<h1 class="u-center-text">Add-on services</h1>
+				<div class="card mod-publish u-clickable js-upgrade-publish">
+					<div class="card-title">Obsidian Publish<span
+						class="flair mod-pop catalyst-tier">Upgraded</span></div>
+					<div class="card-description">
+						<div class="inactive-text">
+							<p>Obsidian Publish lets you publish your notes onto a website.</p>
+							<ul>
+								<li>No technical knowledge required</li>
+								<li>Selectively publish notes</li>
+								<li>Graph view and outline</li>
+								<li>Priority email support</li>
+							</ul>
+							<div class="insider-text">
+								<p class="u-center-text">
+									<button class="mod-cta">Buy</button>
+								</p>
+							</div>
+							<div class="non-insider-text">
+								<p>Obsidian Publish is in insider phase right now, please check back later in 1-2 weeks,
+									or become an insider (see above) if you'd like to test drive it.</p>
+							</div>
+						</div>
+						<div class="active-text">
+							<p>You have purchased Obsidian Publish for <span class="publish-site-num">0 sites</span>.
+							</p>
+							<p>To publish your vault, log into your account in Obsidian and enable the "Publish"
+								plugin.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card mod-sync is-coming-soon">
+					<div class="card-title">Obsidian Sync</div>
+					<div class="card-description">
+						<p>Features include:</p>
+						<ul>
+							<li>End-to-end encryption</li>
+							<li>Built-in version history</li>
+							<li>Priority email support</li>
+						</ul>
+						<p class="u-center-text">
+							<button>Coming soon</button>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-choose-publish-plan" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Choose a plan</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="payment-error message mod-error" style="display: none;"></div>
+				</div>
+				<div class="card-container mod-horizontal">
+					<div class="card u-center-text is-selected" data-renew="yearly">
+						<div class="card-title" style="text-align: left;">Yearly<span
+							class="flair mod-pop">20% off</span></div>
+						<div class="card-description">
+							<!--							<p class="u-pop">Early bird pricing!</p>-->
+							<div style="float:right;"><b>$8</b> / month</div>
+							<div style="float:left;"><b>$96</b> / year</div>
+						</div>
+					</div>
+					<div class="card u-center-text" data-renew="monthly">
+						<div class="card-title" style="text-align: left;">Monthly</div>
+						<div class="card-description">
+							<!--							<p class="u-pop">Early bird pricing!</p>-->
+							<div style="float:right;"><b>$10</b> / month</div>
+							<div style="float:left;"><b>$120</b> / year</div>
+						</div>
+					</div>
+				</div>
+				<p>
+					<label class="input-label">Number of sites</label>
+					<input class="publish-sites-num" type="number" placeholder="Enter a number..." min="1" value="1">
+				</p>
+				<div class="payment-container">
+					<div class="payment-summary">
+						<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
+							class="payment-amount"></span></div>
+					</div>
+					<form class="payment-form">
+						<div class="card-element"><!--Stripe.js injects the Card Element--></div>
+						<button class="submit">
+							<div class="spinner hidden" class="spinner"></div>
+							<span class="button-text">Pay</span>
+						</button>
+						<p class="card-errors" role="alert"></p>
+						<p class="result-message hidden">
+							Payment succeeded, see the result in your
+							<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+						</p>
+						<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
+						                                           alt="Powered by Stripe"></p>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -249,13 +363,16 @@
 
 			<ul class="footer-link-group">
 				<li class="footer-header">Spread the word</li>
-				<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product Hunt</a>
-				<li><a href="https://alternativeto.net/software/obsidian/" target="_blank">Like us on AlternativeTo</a>
+				<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product
+					Hunt</a>
+				<li><a href="https://alternativeto.net/software/obsidian/" target="_blank">Like us on
+					AlternativeTo</a>
 				</li>
 				<li><a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
 				       target="_blank">Like
 					us on Slant</a></li>
-				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a></li>
+				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
+				</li>
 			</ul>
 		</div>
 
@@ -302,7 +419,8 @@
 						Payment succeeded, see the result in your
 						<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
 					</p>
-					<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png" alt="Powered by Stripe"></p>
+					<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
+					                                           alt="Powered by Stripe"></p>
 				</form>
 			</div>
 		</div>
@@ -313,7 +431,8 @@
 		<div class="modal">
 			<div class="modal-close-button"></div>
 			<div class="modal-title">Obsidian Catalyst</div>
-			<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our vision.</p>
+			<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our
+				vision.</p>
 			<div class="modal-content">
 				<div class="message-container">
 					<div class="payment-error message mod-error" style="display: none;"></div>
@@ -359,7 +478,8 @@
 					</div>
 				</div>
 				<div class="personal-license-user-info" style="display: none;">
-					<p>To get the badges, please <a target="_blank" href="/community">join our community</a> and let us know your ID below:</p>
+					<p>To get the badges, please <a target="_blank" href="/community">join our community</a> and let
+						us know your ID below:</p>
 					<p>
 						<label class="input-label">Discord (optional)</label>
 						<input class="discord-username-input" type="text" placeholder="Example: Silver#8456">
@@ -391,7 +511,8 @@
 							Payment succeeded, see the result in your
 							<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
 						</p>
-						<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png" alt="Powered by Stripe"></p>
+						<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
+						                                           alt="Powered by Stripe"></p>
 					</form>
 				</div>
 			</div>

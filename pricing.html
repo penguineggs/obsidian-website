@@ -122,7 +122,7 @@
 		</h1>
 
 		<div class="pricing-cards-container">
-			<div class="pricing-card mod-personal mod-muted">
+			<div class="pricing-card mod-muted mod-not-available">
 				<h2 class="pricing-card-title">Sync</h2>
 				<div class="pricing-card-description mod-point">End-to-end encryption</div>
 				<div class="pricing-card-description mod-point">Built-in version history</div>
@@ -131,18 +131,19 @@
 					<strike>$8</strike> <span class="u-pop">$<b>4</b></span>
 					<small class="u-pop">with lifetime early bird pricing</small>
 					<small>per month, billed annually</small>
-					<button class="mod-cta mod-muted js-upgrade-sync">Coming soon</button>
+					<button class="mod-cta mod-muted">Coming soon</button>
 				</div>
 			</div>
-			<div class="pricing-card mod-business mod-muted">
+			<div class="pricing-card mod-muted">
 				<h2 class="pricing-card-title">Publish</h2>
-				<div class="pricing-card-description mod-point">Hosted knowledge base</div>
+				<div class="pricing-card-description mod-point">No technical knowledge required</div>
 				<div class="pricing-card-description mod-point">Selectively publish notes</div>
-				<div class="pricing-card-description mod-point">Team collaboration</div>
+				<div class="pricing-card-description mod-point">Graph view and outline</div>
+				<div class="pricing-card-description mod-point">Priority email support</div>
 				<div class="pricing-card-price"><strike>$16</strike> <span class="u-pop">$<b>8</b></span>
 					<small class="u-pop">with lifetime early bird pricing</small>
 					<small>per month, billed annually</small>
-					<button class="mod-cta mod-muted">Coming soon</button>
+					<button class="mod-cta js-upgrade-publish">Buy</button>
 				</div>
 			</div>
 		</div>
@@ -218,17 +219,16 @@
 						<div class="card-title">Monthly</div>
 						<div class="card-description">
 							<p class="u-pop">Early bird pricing!</p>
-							<p><b>$5</b> / month</p>
-							<p><b>$60</b> / year</p>
+							<p><b>$10</b> / month</p>
 						</div>
 					</div>
 					<div class="card u-center-text" data-renew="yearly">
 						<div class="card-title">Yearly</div>
 						<div class="card-description">
 							<p class="u-pop">Early bird pricing!</p>
-							<p><b>$4</b> / month</p>
-							<p><b>$48</b> / year</p>
-							<p class="u-pop">20% off monthly</p>
+							<p><b>$8</b> / month on average</p>
+							<p><b>$96</b> / year</p>
+							<p class="u-pop">20% off monthly price</p>
 						</div>
 					</div>
 				</div>
@@ -300,7 +300,7 @@
 		let choosePlanModalEl = fish('.modal-container.mod-choose-plan');
 		let planCardsEl = fishAll('.modal-container.mod-choose-plan .card');
 		let closeModalButtonEls = fishAll('.js-close-modal, .modal-close-button, .modal-bg');
-		let upgradeButtonEl = fish('.js-upgrade-sync');
+		let upgradeButtonEl = fish('.js-upgrade-publish');
 		let confirmUpgradeButtonEl = fish('.js-upgrade-sync-confirm');
 		let gotoAccountButtonEls = fishAll('.js-goto-account');
 		let pricingLinksEl = fishAll('.pricing-link');
@@ -427,13 +427,14 @@
 			}
 		}
 
-		// upgradeButtonEl.addEventListener('click', () => {
-		// 	if (!isLoggedIn) {
-		// 		window.location.href = '/account';
-		// 	} else {
-		// 		choosePlanModalEl.show();
-		// 	}
-		// });
+		upgradeButtonEl.addEventListener('click', () => {
+			window.location.href = '/account';
+			// if (!isLoggedIn) {
+			// 	window.location.href = '/account';
+			// } else {
+			// 	choosePlanModalEl.show();
+			// }
+		});
 
 		confirmUpgradeButtonEl.addEventListener('click', () => {
 			if (!isLoggedIn) {
