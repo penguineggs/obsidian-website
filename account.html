@@ -232,7 +232,7 @@
 
 			<div class="card-container mod-horizontal">
 				<h1 class="u-center-text">Add-on services</h1>
-				<div class="card mod-publish u-clickable js-upgrade-publish">
+				<div class="card mod-publish u-clickable">
 					<div class="card-title">Obsidian Publish<span
 						class="flair mod-pop catalyst-tier">Upgraded</span></div>
 					<div class="card-description">
@@ -246,7 +246,7 @@
 							</ul>
 							<div class="insider-text">
 								<p class="u-center-text">
-									<button class="mod-cta">Buy</button>
+									<button class="mod-cta js-upgrade-publish">Buy</button>
 								</p>
 							</div>
 							<div class="non-insider-text">
@@ -308,6 +308,9 @@
 							<div style="float:left;"><b>$120</b> / year</div>
 						</div>
 					</div>
+				</div>
+				<div class="wechat-pay-container">
+					<img class="wechat-pay-image" src="images/wechat-pay-badge.png" alt="Pay with Wechat Pay">
 				</div>
 				<p>
 					<label class="input-label">Number of sites</label>
@@ -431,12 +434,12 @@
 		<div class="modal">
 			<div class="modal-close-button"></div>
 			<div class="modal-title">Obsidian Catalyst</div>
-			<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our
-				vision.</p>
 			<div class="modal-content">
 				<div class="message-container">
 					<div class="payment-error message mod-error" style="display: none;"></div>
 				</div>
+				<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our
+					vision.</p>
 				<div class="card-container">
 					<div class="card" data-tier="insider">
 						<div class="card-title">Insider</div>
@@ -477,6 +480,9 @@
 						</div>
 					</div>
 				</div>
+				<div class="wechat-pay-container">
+					<img class="wechat-pay-image" src="images/wechat-pay-badge.png" alt="Pay with Wechat Pay">
+				</div>
 				<div class="personal-license-user-info" style="display: none;">
 					<p>To get the badges, please <a target="_blank" href="/community">join our community</a> and let
 						us know your ID below:</p>
@@ -514,6 +520,35 @@
 						<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
 						                                           alt="Powered by Stripe"></p>
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-wechat-pay" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">微信支付</div>
+			<div class="modal-content">
+				<p>感谢支持 Obsidian！请按如下方式用微信支付升级：</p>
+
+				<p class="u-center-text">
+					<img class="wechat-pay-qr-code" src="images/wechat-qr-code.png" alt="微信收款码">
+				</p>
+
+				<ol>
+					<li>以当日汇率，将你想购买的服务价格从美元转换为人民币。Insider 价格为 25 美元，Supporter 价格为 50 美元，VIP 价格为 100 美元；Publish 服务每年为 96 美元（暂不接受月付）。</li>
+					<li>扫一扫上图的收款码，进行支付。</li>
+					<li>发送邮件到 <a href="mailto:support@obsidian.md">support@obsidian.md</a>，告知我们您的转账单号最后四位、购买服务名称、Obsidian.md 账户邮箱、Discord 用户名（如有）、论坛用户名（如有）。</li>
+				</ol>
+
+				<p>
+					衷心感谢支持！
+				</p>
+
+				<div class="modal-button-container">
+					<button class="js-close-modal">关闭</button>
 				</div>
 			</div>
 		</div>

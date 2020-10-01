@@ -479,6 +479,7 @@ kbd {
   max-width: 70vw;
   padding: 30px 50px;
   position: relative;
+  min-width: 560px;
 }
 .modal button:not(.mod-cta):not(.mod-warning) {
   background-color: var(--background-secondary-alt);
@@ -495,8 +496,8 @@ kbd {
   content: '\D7';
 }
 .modal-title {
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: 600;
   text-align: center;
   line-height: 40px;
 }
@@ -1245,6 +1246,22 @@ button.mod-float-right {
 }
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+.wechat-pay-container {
+  text-align: center;
+  margin: 10px 0;
+}
+.wechat-pay-image {
+  height: 40px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+.wechat-pay-qr-code {
+  height: 120px;
+  width: 120px;
+}
+.modal-container.mod-wechat-pay .modal {
+  width: 500px;
 }
 .payment-form {
   width: 30vw;

@@ -13,6 +13,7 @@ const CHECK_PRICE_URL = BASE_URL + '/subscription/price';
 const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
 const PERSONAL_ROLES_URL = BASE_URL + '/subscription/personal/roles';
 const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
+
 // const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
 
 
@@ -193,6 +194,8 @@ window.setTimeout(() => {
 		let publishPlansCardsEl = publishUpgradeModal.findAll('.card');
 		let publishSiteNumEl = publishUpgradeModal.find('.publish-sites-num');
 		let stripePublishFormEl = fish('.modal-container.mod-choose-publish-plan .payment-form');
+		let wechatPayImageEl = fishAll('.wechat-pay-image');
+		let wechatPayModalEl = fish('.modal-container.mod-wechat-pay');
 
 		let stripeStyles = {
 			base: {
@@ -386,8 +389,7 @@ window.setTimeout(() => {
 							if (catalystLicenseTier === 'supporter') {
 								insiderOptionEl.hide();
 								supporterOptionEl.hide();
-							}
-							else if (catalystLicenseTier === 'insider') {
+							} else if (catalystLicenseTier === 'insider') {
 								insiderOptionEl.hide();
 							}
 						}
@@ -435,8 +437,7 @@ window.setTimeout(() => {
 
 					if (data.publish.sites === 1) {
 						publishBoughtSiteNumEl.setText('1 site');
-					}
-					else {
+					} else {
 						publishBoughtSiteNumEl.setText(`${data.publish.sites} sites`);
 					}
 				}
@@ -755,6 +756,7 @@ window.setTimeout(() => {
 				personalLicensePaymentContainerEl.hide();
 				personalLicenseUserInfoEl.hide();
 				publishUpgradeModal.hide();
+				wechatPayModalEl.hide();
 				catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
 			});
 		});
@@ -801,7 +803,7 @@ window.setTimeout(() => {
 			}
 			let renewal = selectedCardEls[0].getAttribute('data-renew');
 			let numSites = publishSiteNumEl.value.toString();
-			
+
 			buyingLicense = 'publish';
 			buyingVariation = numSites;
 			buyingRenew = renewal;
@@ -892,5 +894,9 @@ window.setTimeout(() => {
 				payWithCard(stripe, card, secret);
 			});
 		});
+
+		wechatPayImageEl.forEach(el => el.addEventListener('click', () => {
+			wechatPayModalEl.show();
+		}));
 	});
 }, 500);
