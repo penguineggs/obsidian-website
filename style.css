@@ -2196,8 +2196,6 @@ body {
   font-size: 18px;
   line-height: 30px;
   padding-bottom: 10px;
-}
-.static-full-page-container.mod-features .static-container .card-description b {
   color: var(--text-normal);
 }
 .static-full-page-container.mod-features .static-container .card-description > div:first-child {
