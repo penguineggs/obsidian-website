@@ -1711,11 +1711,7 @@ button.mod-float-right {
   transition: border-color 250ms ease-in-out;
   width: 1500px;
   max-width: calc(100vw - 100px);
-  /* box-shadow: 0 0 5px var(--interactive-accent); */
   border: 2px solid var(--background-secondary-alt);
-}
-.hero-screenshot:hover {
-  border: 2px solid var(--interactive-accent);
 }
 .feature-row {
   text-align: center;
