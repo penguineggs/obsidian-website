@@ -967,6 +967,18 @@ input[type='range']::-webkit-slider-thumb {
 input[type='range'] {
   outline: none;
 }
+textarea {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  outline: none;
+  font-size: 16px;
+  line-height: 24px;
+  resize: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
 .clickable-icon {
   color: var(--text-muted);
   cursor: pointer;
@@ -1256,6 +1268,9 @@ button.mod-float-right {
   opacity: 0.3;
   cursor: pointer;
 }
+.wechat-pay-image:hover {
+  opacity: 0.5;
+}
 .wechat-pay-qr-code {
   height: 120px;
   width: 120px;
@@ -1308,6 +1323,8 @@ button.mod-float-right {
   width: 100%;
 }
 .payment-form button:hover {
+  background: var(--text-accent);
+  color: var(--text-normal);
   filter: contrast(115%);
 }
 .payment-form button:disabled {
@@ -1401,18 +1418,6 @@ button.mod-float-right {
 }
 .card.mod-catalyst.is-active .inactive-text,
 .card.mod-publish.is-active .inactive-text {
-  display: none;
-}
-.card.mod-catalyst .insider-text,
-.card.mod-publish .insider-text {
-  display: none;
-}
-.card.mod-catalyst.is-insider .insider-text,
-.card.mod-publish.is-insider .insider-text {
-  display: block;
-}
-.card.mod-catalyst.is-insider .non-insider-text,
-.card.mod-publish.is-insider .non-insider-text {
   display: none;
 }
 .commercial-license-price {

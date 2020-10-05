@@ -12,8 +12,9 @@ const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
 const CHECK_PRICE_URL = BASE_URL + '/subscription/price';
 const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
 const PERSONAL_ROLES_URL = BASE_URL + '/subscription/personal/roles';
+const UPDATE_PLAN_URL = BASE_URL + '/subscription/renew';
+const REDUCE_SITES_URL = BASE_URL + '/subscription/publish/reduce';
 const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
-
 // const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
 
 
@@ -119,6 +120,16 @@ window.setTimeout(() => {
 		let getSyncCardEl = fish('.card.mod-sync');
 		let getPublishCardEl = fish('.card.mod-publish');
 		let publishBoughtSiteNumEl = fish('.publish-site-num');
+		let publishRenewSiteNumEl = fish('.publish-renew-site-num');
+		let publishRenewTimeEl = fish('.publish-renewal-time');
+		let publishRenewInfoEl = fish('.publish-renew-info');
+		let publishChangeNumOfSitesEl = fish('.js-change-number-of-publish-sites');
+		let publishReduceNumOfSitesEl = fish('.js-reduce-number-of-publish-sites');
+		let publishChangeToMonthlyEl = fish('.js-change-publish-to-monthly');
+		let publishChangeToYearlyEl = fish('.js-change-publish-to-yearly');
+		let reduceSiteNumInputEl = fish('.publish-reduce-sites-num');
+		let reduceSiteConfirmButtonEl = fish('.js-update-reduce-sites');
+		let publishStopRenewalEl = fish('.js-stop-publish-auto-renewal');
 		let commercialLicensePitchEl = fish('.commercial-license-pitch');
 		let existingCommercialLicenseEl = fish('.existing-commercial-license');
 		let businessNameInputEl = fish('.business-name-input');
@@ -191,6 +202,7 @@ window.setTimeout(() => {
 		let paymentErrorEl = null;
 		let publishUpgradeButtonEl = fish('.js-upgrade-publish');
 		let publishUpgradeModal = fish('.modal-container.mod-choose-publish-plan');
+		let publishReduceSitesModal = fish('.modal-container.mod-publish-reduce-sites');
 		let publishPlansCardsEl = publishUpgradeModal.findAll('.card');
 		let publishSiteNumEl = publishUpgradeModal.find('.publish-sites-num');
 		let stripePublishFormEl = fish('.modal-container.mod-choose-publish-plan .payment-form');
@@ -375,7 +387,6 @@ window.setTimeout(() => {
 
 					if (catalystLicenseTier) {
 						buyCatalystLicenseCardEl.addClass('is-active');
-						getPublishCardEl.addClass('is-insider');
 						personalLicenseTierEl.setText(data.license);
 
 						// VIP can't upgrade any more
@@ -433,13 +444,38 @@ window.setTimeout(() => {
 				}
 
 				if (data.publish) {
+					let {sites, renew, renew_sites, expiry_ts} = data.publish;
 					getPublishCardEl.addClass('is-active');
 
-					if (data.publish.sites === 1) {
+					if (sites === 1) {
 						publishBoughtSiteNumEl.setText('1 site');
 					} else {
-						publishBoughtSiteNumEl.setText(`${data.publish.sites} sites`);
+						publishBoughtSiteNumEl.setText(`${sites} sites`);
 					}
+
+					if (renew_sites === 1) {
+						publishRenewSiteNumEl.setText('1 site');
+						publishReduceNumOfSitesEl.hide();
+					} else {
+						publishRenewSiteNumEl.setText(`${renew_sites} sites`);
+						publishReduceNumOfSitesEl.show();
+					}
+
+					if (expiry_ts) {
+						let date = new Date(expiry_ts);
+						publishRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
+					}
+
+					if (renew === 'yearly') {
+						publishChangeToYearlyEl.hide();
+					} else if (renew === 'monthly') {
+						publishChangeToMonthlyEl.hide();
+					} else if (renew === '') {
+						publishStopRenewalEl.hide();
+						publishRenewInfoEl.hide();
+					}
+
+					reduceSiteNumInputEl.value = sites;
 				}
 			});
 		};
@@ -756,6 +792,7 @@ window.setTimeout(() => {
 				personalLicensePaymentContainerEl.hide();
 				personalLicenseUserInfoEl.hide();
 				publishUpgradeModal.hide();
+				publishReduceSitesModal.hide();
 				wechatPayModalEl.hide();
 				catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
 			});
@@ -898,5 +935,42 @@ window.setTimeout(() => {
 		wechatPayImageEl.forEach(el => el.addEventListener('click', () => {
 			wechatPayModalEl.show();
 		}));
+
+		publishChangeToMonthlyEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'publish', renew: 'monthly'}, () => {
+				window.location.reload()
+			});
+		});
+
+		publishChangeToYearlyEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'publish', renew: 'yearly'}, () => {
+				window.location.reload()
+			});
+		});
+
+		publishStopRenewalEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'publish', renew: ''}, () => {
+				window.location.reload()
+			});
+		});
+
+		publishChangeNumOfSitesEl.addEventListener('click', () => {
+			publishUpgradeModal.show();
+			card.mount('.modal-container.mod-choose-publish-plan .card-element');
+
+			paymentErrorEl = fish('.modal-container.mod-choose-publish-plan .payment-error');
+			updatePublishPrice();
+		});
+
+		publishReduceNumOfSitesEl.addEventListener('click', () => {
+			publishReduceSitesModal.show();
+		});
+
+		reduceSiteConfirmButtonEl.addEventListener('click', () => {
+			let newNumberOfSites = parseInt(reduceSiteNumInputEl.value);
+			request(REDUCE_SITES_URL, {sites: newNumberOfSites}, () => {
+				window.location.reload();
+			});
+		});
 	});
 }, 500);
