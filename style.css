@@ -1109,6 +1109,270 @@ textarea {
 .components-container .prompt {
   position: static;
 }
+.modal.mod-settings {
+  padding: 0;
+  width: 80vw;
+  height: 70vh;
+  max-width: 90vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.modal.mod-settings .vertical-tab-header {
+  padding: 20px 0;
+  flex: 0 0 200px;
+  height: 70vh;
+  overflow: auto;
+}
+.modal.mod-settings .vertical-tab-content-container {
+  padding: 35px 40px 20px 0;
+  height: 70vh;
+}
+.modal.mod-settings .modal-content {
+  margin-top: 0;
+}
+.modal.mod-settings button:not(.mod-cta) {
+  background-color: var(--background-secondary-alt);
+}
+.modal.mod-plugin-options .modal-content {
+  margin: 25px 0;
+}
+.vertical-tab-content-container {
+  overflow: hidden;
+  flex-grow: 1;
+}
+.vertical-tab-content {
+  overflow-y: auto;
+  height: 100%;
+  display: none;
+}
+.vertical-tab-content.is-active {
+  display: block;
+}
+.vertical-tab-content h2 {
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+}
+.setting-item {
+  display: flex;
+  padding: 18px 0 18px 0;
+  border-top: 1px solid var(--background-modifier-border);
+}
+.setting-item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+.setting-item-info {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+.setting-item-description {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.setting-item-description code {
+  font-family: var(--font-monospace);
+  font-size: 0.85em;
+  border-radius: 3px;
+  background-color: var(--background-secondary-alt);
+  padding: 0 3px 2px 3px;
+  position: relative;
+  bottom: 1px;
+}
+.setting-item-name {
+  color: var(--text-normal);
+  font-size: 16px;
+}
+.setting-item-control {
+  padding-top: 8px;
+  flex-shrink: 1;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-start;
+}
+.setting-item-control.mod-vertical {
+  flex-direction: column;
+}
+.setting-item-control.mod-vertical > * {
+  margin-bottom: 10px;
+  margin-right: 0;
+}
+.setting-item-control.mod-hotkey {
+  padding-top: 0;
+  cursor: default;
+}
+.setting-item-control.mod-hotkey input {
+  font-family: var(--font-monospace);
+  font-size: 0.85em;
+}
+.setting-item-control.mod-hotkey input:focus {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.setting-item-control button {
+  font-size: 15px;
+  padding: 6px 20px;
+}
+.setting-item-control a {
+  cursor: pointer;
+}
+.setting-command-hotkeys {
+  display: flex;
+  flex-direction: column;
+  margin-right: 6px;
+}
+.setting-hotkey {
+  font-family: -apple-system, BlinkMacSystemFont, var(--font-monospace);
+  font-size: 12px;
+  background-color: var(--background-secondary-alt);
+  border-radius: 4px;
+  padding: 0 25px 0 10px;
+  min-height: 24px;
+  align-self: flex-end;
+  position: relative;
+}
+.setting-hotkey.mod-active {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.setting-hotkey.mod-empty {
+  padding-right: 10px;
+}
+.setting-hotkey:not(:first-child) {
+  margin-top: 10px;
+}
+.setting-delete-hotkey {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  line-height: 15px;
+  text-align: center;
+}
+.setting-hotkey.mod-empty .setting-delete-hotkey {
+  display: none;
+}
+.setting-delete-hotkey:hover {
+  background-color: var(--background-modifier-error);
+  color: var(--text-on-accent);
+}
+.setting-add-hotkey-button,
+.setting-restore-hotkey-button {
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: var(--text-faint);
+  cursor: pointer;
+  height: 26px;
+}
+.setting-add-hotkey-button svg,
+.setting-restore-hotkey-button svg {
+  position: relative;
+  bottom: 2px;
+}
+.setting-add-hotkey-button.mod-active,
+.setting-restore-hotkey-button.mod-active {
+  color: var(--text-accent);
+}
+.setting-add-hotkey-button:hover,
+.setting-restore-hotkey-button:hover {
+  background-color: var(--background-secondary-alt);
+  color: var(--text-normal);
+}
+.setting-restore-hotkey-button {
+  padding: 6px;
+}
+.setting-editor-extra-setting-button {
+  order: -1;
+  height: 24px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.setting-message {
+  font-size: 16px;
+  line-height: 24px;
+}
+.community-theme-container,
+.hotkey-settings-container {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.community-theme-container hr,
+.hotkey-settings-container hr {
+  margin: 20px 0 10px 0;
+}
+.community-theme-filters-container,
+.hotkey-search-container {
+  padding: 10px 10px 20px 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.community-theme-mode-toggle-label {
+  margin-right: 10px;
+  position: relative;
+  bottom: 1px;
+}
+.community-theme-search-container {
+  flex-grow: 1;
+}
+.community-theme-list,
+.hotkey-list-container {
+  overflow: auto;
+}
+.hotkey-search-container {
+  padding-left: 0;
+}
+.hotkey-list-container {
+  padding-right: 20px;
+}
+.community-theme {
+  padding: 4px 10px;
+}
+.community-theme .modal-button-container {
+  margin-top: 10px;
+}
+.community-theme a {
+  font-size: 14px;
+  vertical-align: bottom;
+}
+.community-theme-title {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: bold;
+}
+.community-theme-screenshot {
+  width: 100%;
+  height: auto;
+}
+.login-field {
+  max-width: 500px;
+  margin: 1em auto;
+}
+.spellchecker-dictionary-container {
+  max-height: 60vh;
+  overflow: auto;
+}
+.spellchecker-dictionary-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+.spellchecker-dictionary-word {
+  flex-grow: 1;
+}
+.spellchecker-dictionary-remove-button {
+  cursor: pointer;
+  color: var(--text-muted);
+  margin-right: 10px;
+}
+.spellchecker-dictionary-remove-button:hover {
+  color: var(--text-normal);
+}
 .pricing-header {
   font-size: 42px;
   line-height: 76px;
@@ -1977,6 +2241,10 @@ span.mod-huge-punctuation {
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-bg);
 }
 /* Add this attribute to the element that needs a tooltip */
 .tooltip {

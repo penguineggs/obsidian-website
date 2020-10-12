@@ -14,6 +14,8 @@ const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
 const PERSONAL_ROLES_URL = BASE_URL + '/subscription/personal/roles';
 const UPDATE_PLAN_URL = BASE_URL + '/subscription/renew';
 const REDUCE_SITES_URL = BASE_URL + '/subscription/publish/reduce';
+const GET_PAYMENT_INFO_URL = BASE_URL + '/subscription/paymentmethod';
+const UPDATE_PAYMENT_INFO_URL = BASE_URL + '/subscription/stripe/paymentmethod';
 const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
 // const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
 
@@ -122,7 +124,13 @@ window.setTimeout(() => {
 		let publishBoughtSiteNumEl = fish('.publish-site-num');
 		let publishRenewSiteNumEl = fish('.publish-renew-site-num');
 		let publishRenewTimeEl = fish('.publish-renewal-time');
-		let publishRenewInfoEl = fish('.publish-renew-info');
+		let publishRenewInfoRenewingEl = fish('.publish-renew-info-renewing');
+		let publishRenewInfoNotRenewingEl = fish('.publish-renew-info-not-renewing');
+		let publishViewPaymentLinkEl = fish('.js-view-payment-info');
+		let publishOpenChangePaymentButtonEl = fish('.js-open-change-payment');
+		let currentCardInfoTextEl = fish('.current-card-info');
+		let updatePaymentMethodModalEl = fish('.modal-container.mod-change-payment-method');
+		let updatePaymentMethodFormEl = fish('.modal-container.mod-change-payment-method .payment-form');
 		let publishChangeNumOfSitesEl = fish('.js-change-number-of-publish-sites');
 		let publishReduceNumOfSitesEl = fish('.js-reduce-number-of-publish-sites');
 		let publishChangeToMonthlyEl = fish('.js-change-publish-to-monthly');
@@ -203,11 +211,13 @@ window.setTimeout(() => {
 		let publishUpgradeButtonEl = fish('.js-upgrade-publish');
 		let publishUpgradeModal = fish('.modal-container.mod-choose-publish-plan');
 		let publishReduceSitesModal = fish('.modal-container.mod-publish-reduce-sites');
+		let publishViewPaymentMethodModal = fish('.modal-container.mod-view-payment-method');
 		let publishPlansCardsEl = publishUpgradeModal.findAll('.card');
 		let publishSiteNumEl = publishUpgradeModal.find('.publish-sites-num');
 		let stripePublishFormEl = fish('.modal-container.mod-choose-publish-plan .payment-form');
 		let wechatPayImageEl = fishAll('.wechat-pay-image');
 		let wechatPayModalEl = fish('.modal-container.mod-wechat-pay');
+		let modalsEl = fishAll('.modal-container');
 
 		let stripeStyles = {
 			base: {
@@ -466,13 +476,15 @@ window.setTimeout(() => {
 						publishRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
 					}
 
+					publishRenewInfoNotRenewingEl.hide();
 					if (renew === 'yearly') {
 						publishChangeToYearlyEl.hide();
 					} else if (renew === 'monthly') {
 						publishChangeToMonthlyEl.hide();
 					} else if (renew === '') {
 						publishStopRenewalEl.hide();
-						publishRenewInfoEl.hide();
+						publishRenewInfoNotRenewingEl.show();
+						publishRenewInfoRenewingEl.hide();
 					}
 
 					reduceSiteNumInputEl.value = sites;
@@ -786,14 +798,10 @@ window.setTimeout(() => {
 
 		closeModalButtonEls.forEach(el => {
 			el.addEventListener('click', () => {
-				commercialLicenseModal.hide();
-				personalLicenseModal.hide();
 				card.unmount();
 				personalLicensePaymentContainerEl.hide();
 				personalLicenseUserInfoEl.hide();
-				publishUpgradeModal.hide();
-				publishReduceSitesModal.hide();
-				wechatPayModalEl.hide();
+				modalsEl.forEach(el => el.hide());
 				catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
 			});
 		});
@@ -970,6 +978,45 @@ window.setTimeout(() => {
 			let newNumberOfSites = parseInt(reduceSiteNumInputEl.value);
 			request(REDUCE_SITES_URL, {sites: newNumberOfSites}, () => {
 				window.location.reload();
+			});
+		});
+
+		publishViewPaymentLinkEl.addEventListener('click', () => {
+			request(GET_PAYMENT_INFO_URL, {}, (error, data) => {
+				if (data.info) {
+					currentCardInfoTextEl.setText(`You're currently using a ${data.info}.`);
+				} else {
+					currentCardInfoTextEl.setText(`You currently do not have any payment methods on file.`);
+				}
+
+				publishViewPaymentMethodModal.show();
+
+			})
+		});
+
+		publishOpenChangePaymentButtonEl.addEventListener('click', () => {
+			updatePaymentMethodModalEl.show();
+			paymentErrorEl = updatePaymentMethodModalEl.find('.payment-error');
+			card.mount('.modal-container.mod-change-payment-method .card-element');
+		});
+
+		updatePaymentMethodFormEl.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			stripe.createPaymentMethod({
+				type: 'card',
+				card: card,
+			}).then((data) => {
+				if (data.paymentMethod && data.paymentMethod.id) {
+					request(UPDATE_PAYMENT_INFO_URL, {
+						payment_method_id: data.paymentMethod.id
+					}, () => {
+						window.location.reload();
+					});
+				} else {
+					paymentErrorEl.setText('Could not update your payment method.');
+					paymentErrorEl.show();
+				}
 			});
 		});
 	});

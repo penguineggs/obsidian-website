@@ -249,29 +249,62 @@
 							</p>
 						</div>
 						<div class="active-text">
-							<p>You have purchased Obsidian Publish for <span class="publish-site-num">0 sites</span>.
-							</p>
 							<p class="publish-renew-info">
-								You'll be renewed for <span class="publish-renew-site-num">0 sites</span> <span
-								class="publish-renewal-time">in the future</span>.
-							</p>
 							<p>To publish your vault, log into your account in Obsidian and enable the "Publish"
 								plugin.</p>
-							<div class="u-center-text">
-								<p>
-									<button class="mod-cta js-change-number-of-publish-sites">Pay for more sites
+
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Your sites</div>
+									<div class="setting-item-description">You have purchased Obsidian Publish for <span
+										class="publish-site-num">0 sites</span>.
+									</div>
+								</div>
+								<div class="setting-item-control mod-vertical">
+									<button class="mod-cta js-change-number-of-publish-sites">More sites
 									</button>
-								</p>
-								<p>
-									<button class="js-reduce-number-of-publish-sites">Pay for fewer sites</button>
-								</p>
-								<p>
-									<button class="js-change-publish-to-monthly">Change to monthly</button>
-									<button class="js-change-publish-to-yearly">Change to yearly</button>
-								</p>
-								<p>
-									<button class="js-stop-publish-auto-renewal">Stop auto-renewal</button>
-								</p>
+									<a class="js-reduce-number-of-publish-sites">Fewer sites</a>
+								</div>
+							</div>
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Change renewal frequency</div>
+									<div class="setting-item-description">Change to either billed monthly or yearly.
+									</div>
+								</div>
+								<div class="setting-item-control mod-vertical">
+									<a class="js-change-publish-to-monthly">Bill monthly</a>
+									<a class="js-change-publish-to-yearly">Bill yearly</a>
+								</div>
+							</div>
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Manage auto-renewal</div>
+									<div class="setting-item-description">
+										<div class="publish-renew-info-renewing">
+											You'll be renewed for <span class="publish-renew-site-num">0 sites</span> <span
+											class="publish-renewal-time">in the future</span>.
+										</div>
+										<div class="publish-renew-info-not-renewing">
+											Your sites will not be renewed in the future.
+										</div>
+									</div>
+								</div>
+								<div class="setting-item-control">
+									<a class="js-stop-publish-auto-renewal">Stop</a>
+								</div>
+							</div>
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Manage payment</div>
+									<div class="setting-item-description">
+										View or change the card you use for payment.
+									</div>
+								</div>
+								<div class="setting-item-control mod-vertical">
+									<button class="js-open-change-payment">Change</button>
+									<a class="js-view-payment-info">View card info</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -591,6 +624,52 @@
 				<div class="modal-button-container">
 					<button class="js-close-modal">关闭</button>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-view-payment-method" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">View payment payment</div>
+			<div class="modal-content">
+				<p class="current-card-info">You're currently using a credit card.</p>
+
+				<div class="modal-button-container">
+					<button class="js-close-modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-change-payment-method" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Change payment method</div>
+			<div class="modal-content">
+				<p>Please enter the details of your new card below.</p>
+				<p>Your card will not be charged until the next renewal date.</p>
+
+				<div class="message-container">
+					<div class="payment-error message mod-error" style="display: none;"></div>
+				</div>
+
+				<form class="payment-form">
+					<div class="card-element"><!--Stripe.js injects the Card Element--></div>
+					<button class="submit mod-cta">
+						<div class="spinner hidden" class="spinner"></div>
+						<span class="button-text">Update</span>
+					</button>
+					<p class="card-errors" role="alert"></p>
+					<p class="result-message hidden">
+						Payment succeeded, see the result in your
+						<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+					</p>
+					<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
+					                                           alt="Powered by Stripe"></p>
+				</form>
 			</div>
 		</div>
 	</div>
