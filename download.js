@@ -27,7 +27,7 @@ let osDownloadInfo = {
 		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.9.4/Obsidian-0.9.4.dmg',
 	},
 	'Linux': {
-		buttonName: 'Linux',
+		buttonName: 'Linux (AppImage)',
 		descriptionName: 'Linux (AppImage)',
 		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.9.4/Obsidian-0.9.4.AppImage'
 	},
@@ -35,10 +35,15 @@ let osDownloadInfo = {
 		buttonName: 'Linux',
 		descriptionName: 'Linux (Snap)',
 		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.9.4/obsidian_0.9.4_amd64.snap'
+	},
+	'Linux-Flatpak': {
+		buttonName: 'Linux',
+		descriptionName: 'Linux (Flatpak)',
+		downloadLink: 'https://flathub.org/apps/details/md.obsidian.Obsidian'
 	}
 };
 
-let allPlatforms = ['Windows', 'MacOS', 'Linux', 'Linux-Snap'];
+let allPlatforms = ['Windows', 'MacOS', 'Linux', 'Linux-Snap', 'Linux-Flatpak'];
 
 if (detectedOS !== 'Windows' && detectedOS !== 'Unknown OS') {
 	let downloadData = osDownloadInfo[detectedOS];
