@@ -118,8 +118,6 @@ window.setTimeout(() => {
 		let userNameEl = fish('.welcome-name');
 		let userEmailEl = fish('.welcome-email');
 		let logoutButtonEl = fish('.js-logout');
-		let syncInstructionEl = fish('.setup-sync');
-		let getSyncCardEl = fish('.card.mod-sync');
 		let getPublishCardEl = fish('.card.mod-publish');
 		let publishBoughtSiteNumEl = fish('.publish-site-num');
 		let publishRenewSiteNumEl = fish('.publish-renew-site-num');
@@ -217,6 +215,11 @@ window.setTimeout(() => {
 		let stripePublishFormEl = fish('.modal-container.mod-choose-publish-plan .payment-form');
 		let wechatPayImageEl = fishAll('.wechat-pay-image');
 		let wechatPayModalEl = fish('.modal-container.mod-wechat-pay');
+		let openUnlimitedEl = fish('.js-open-unlimited');
+		let donationModalEl = fish('.modal-container.mod-donation');
+		let donationFormEl = fish('.modal-container.mod-donation .payment-form');
+		let unlimitedDonationAmountEl = fish('.donation-amount-input');
+		let unlimitedDonatedAmountEl = fish('.donation-amount');
 		let modalsEl = fishAll('.modal-container');
 
 		let stripeStyles = {
@@ -387,6 +390,9 @@ window.setTimeout(() => {
 				} else {
 					userNameEl.setText(data.name);
 					userEmailEl.setText(data.email);
+					if (data.donation) {
+						unlimitedDonatedAmountEl.setText(formatPrice(data.donation));
+					}
 					signupFormEl.hide();
 					spinnerEl.hide();
 					welcomeEl.show();
@@ -494,6 +500,8 @@ window.setTimeout(() => {
 
 		let attemptLogin = () => {
 			loginErrorEl.hide();
+			loginFormEl.hide();
+			spinnerEl.show();
 
 			let email = emailEl.value;
 			let password = passwordEl.value;
@@ -511,6 +519,8 @@ window.setTimeout(() => {
 			}
 
 			if (showError) {
+				loginFormEl.show();
+				spinnerEl.hide();
 				loginErrorEl.show();
 				return;
 			}
@@ -522,6 +532,9 @@ window.setTimeout(() => {
 				if (!err) {
 					window.location.reload();
 				} else {
+					loginFormEl.show();
+					spinnerEl.hide();
+
 					if (err === 'Login failed') {
 						loginErrorEl.setText('Login failed, please double check your email and password.');
 						loginErrorEl.show();
@@ -532,6 +545,8 @@ window.setTimeout(() => {
 
 		let attemptSignup = () => {
 			signupErrorEl.hide();
+			signupFormEl.hide();
+			spinnerEl.show();
 
 			let name = signupNameEl.value;
 			let email = signupEmailEl.value;
@@ -555,12 +570,17 @@ window.setTimeout(() => {
 
 			if (showError) {
 				signupErrorEl.show();
+				signupFormEl.show();
+				spinnerEl.hide();
 				return;
 			}
 
 			request(SIGNUP_URL, {
 				name, email, password
 			}, (err, data) => {
+				signupFormEl.show();
+				spinnerEl.hide();
+
 				if (err) {
 					if (err === 'Invalid email address') {
 						signupErrorEl.setText('The email address you entered was invalid.');
@@ -1018,6 +1038,32 @@ window.setTimeout(() => {
 					paymentErrorEl.show();
 				}
 			});
+		});
+
+		openUnlimitedEl.addEventListener('click', () => {
+			donationModalEl.show();
+			paymentErrorEl = donationModalEl.find('.payment-error');
+			card.mount('.modal-container.mod-donation .card-element');
+		});
+
+		donationFormEl.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			fishAll('.payment-error').forEach(e => e.hide());
+
+			// Complete payment when the submit button is clicked
+			// payWithCard(stripe, card, data.clientSecret);
+			setLoading(true);
+			networkGetStripeSecret((secret) => {
+				payWithCard(stripe, card, secret);
+			});
+		});
+
+		unlimitedDonationAmountEl.addEventListener('change', () => {
+			buyingLicense = 'donation';
+			buyingVariation = (unlimitedDonationAmountEl.value * 100).toString();
+
+			console.log(buyingVariation);
 		});
 	});
 }, 500);

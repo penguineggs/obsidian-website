@@ -170,21 +170,8 @@
 
 			<hr>
 
-			<!--			<p class="setup-sync">-->
-			<!--				You've upgraded to <span class="u-pop">Obsidian Sync</span>. If you haven't already, please enable the-->
-			<!--				"Sync" plugin in your Obsidian desktop app and set up your synced vault in Settings - Sync.-->
-			<!--			</p>-->
-
 			<div class="card-container mod-horizontal">
 				<h1 class="u-center-text">Your license</h1>
-				<!--				<div class="card mod-sync u-clickable">-->
-				<!--					<div class="card-title">Obsidian Sync</div>-->
-				<!--					<div class="card-description">-->
-				<!--						<p>Obsidian Sync is an add-on sync service with-->
-				<!--							<span class="u-pop">end-to-end encryption</span> and <span-->
-				<!--								class="u-pop">version history</span>.</p>-->
-				<!--					</div>-->
-				<!--				</div>-->
 				<div class="card mod-catalyst u-clickable">
 					<div class="card-title">Obsidian Catalyst<span
 						class="flair mod-pop catalyst-tier">Your license</span></div>
@@ -283,8 +270,9 @@
 									<div class="setting-item-name">Manage auto-renewal</div>
 									<div class="setting-item-description">
 										<div class="publish-renew-info-renewing">
-											You'll be renewed for <span class="publish-renew-site-num">0 sites</span> <span
-											class="publish-renewal-time">in the future</span>.
+											You'll be renewed for <span class="publish-renew-site-num">0 sites</span>
+											<span
+												class="publish-renewal-time">in the future</span>.
 										</div>
 										<div class="publish-renew-info-not-renewing">
 											Your sites will not be renewed in the future.
@@ -322,6 +310,25 @@
 						</ul>
 						<p class="u-center-text">
 							<button>Coming soon</button>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="card-container mod-horizontal">
+				<div class="card u-clickable js-open-unlimited">
+					<div class="card-title">Obsidian Unlimited</div>
+					<div class="card-description">
+						<p><span class="u-pop">Pay what you want</span> to support Obsidian's development.</p>
+						<p>We strongly recommend purchasing a <span class="u-pop">Catalyst license</span> if you haven't
+							already. You should also consider upgrading to the VIP tier first before going for Obsidian
+							Unlimited, so that you don't miss out on the cool badges.</p>
+						<p>You have contributed <span class="u-pop">$<span class="donation-amount">0</span></span> to
+							Obsidian Unlimited.</p>
+						<p class="u-center-text">
+							<button class="mod-cta">Pay</button>
 						</p>
 					</div>
 				</div>
@@ -662,6 +669,40 @@
 					<button class="submit mod-cta">
 						<div class="spinner hidden" class="spinner"></div>
 						<span class="button-text">Update</span>
+					</button>
+					<p class="card-errors" role="alert"></p>
+					<p class="result-message hidden">
+						Payment succeeded, see the result in your
+						<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+					</p>
+					<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
+					                                           alt="Powered by Stripe"></p>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-donation" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Obsidian Unlimited</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="payment-error message mod-error" style="display: none;"></div>
+				</div>
+				<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our
+					vision.</p>
+				<p>
+					<label class="input-label">Amount</label>
+					<input class="donation-amount-input" type="number" placeholder="Pay what you want..." min="5"
+					       step="1">
+				</p>
+				<form class="payment-form">
+					<div class="card-element"><!--Stripe.js injects the Card Element--></div>
+					<button class="submit mod-cta">
+						<div class="spinner hidden"></div>
+						<span class="button-text">Pay</span>
 					</button>
 					<p class="card-errors" role="alert"></p>
 					<p class="result-message hidden">
