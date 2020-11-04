@@ -68,6 +68,8 @@
 				<a href="/account">
 					<button class="mod-cta">
 						Buy now
+						<br>
+						<span class="u-muted u-small">$8/month/site, billed annually</span>
 					</button>
 				</a>
 				<p class="cta-explanation">With 50% early bird pricing for a limited time
@@ -80,6 +82,39 @@
 			<p class="cta-explanation">See <a href="https://publish.obsidian.md/help" target="_blank">Obsidian official
 				help</a> for live demo
 			</p>
+		</div>
+		<div class="hero-gallery">
+			<h2 class="u-center-text">Published site gallery</h2>
+			<div class="hero-gallery-inner-container">
+				<a class="hero-gallery-item" href="https://publish.obsidian.md/andymatuschak" target="_blank">
+					<img src="images/site-demo-andy-matuschak.png" alt="Andy Matuschak notes">
+					<span>Andy Matuschak notes</span>
+				</a>
+				<a class="hero-gallery-item" href="https://publish.obsidian.md/santi" target="_blank">
+					<img src="images/site-demo-santi.png" alt="Santi Younger notes">
+					<span>Santi Younger notes</span>
+				</a>
+				<a class="hero-gallery-item" href="https://publish.obsidian.md/myquantumwell" target="_blank">
+					<img src="images/site-demo-my-quantum-well.png" alt="My Quantum Well">
+					<span>The Quantum Well</span>
+				</a>
+				<a class="hero-gallery-item" href="https://publish.obsidian.md/alexisrondeau" target="_blank">
+					<img src="images/site-demo-alexis-rondeau.png" alt="Alexis Rondeau">
+					<span>Alexis Rondeau</span>
+				</a>
+				<a class="hero-gallery-item" href="https://publish.obsidian.md/anthony-agbay" target="_blank">
+					<img src="images/site-demo-anthony-agbay.png" alt="Anthony Agbay">
+					<span>Anthony Agbay</span>
+				</a>
+				<a class="hero-gallery-item" href="https://publish.obsidian.md/mobydiction" target="_blank">
+					<img src="images/site-demo-moby-diction.png" alt="Moby Diction">
+					<span>Moby Diction</span>
+				</a>
+				<a class="hero-gallery-item" href="https://publish.obsidian.md/ericgregorich" target="_blank">
+					<img src="images/site-demo-eric-gregorich.png" alt="Eric Gregorich">
+					<span>Eric Gregorich</span>
+				</a>
+			</div>
 		</div>
 	</div>
 
@@ -137,10 +172,11 @@
 				<a href="/account">
 					<button class="mod-cta">
 						Buy now
+						<br>
+						<span class="u-muted u-small">$8/month/site, billed annually</span>
 					</button>
 				</a>
-				<p class="cta-explanation">With 50% early bird pricing for a limited time
-				</p>
+				<p class="cta-explanation">With 50% early bird pricing for a limited time</p>
 			</div>
 		</div>
 	</div>
@@ -182,6 +218,10 @@
 </div>
 
 <script src="enhance.js"></script>
-<script src="download.js"></script>
+<script>
+	let galleryEl = fish('.hero-gallery');
+	let galleryInnerContainer = fish('.hero-gallery-inner-container');
+	galleryInnerContainer.scrollLeft = (galleryInnerContainer.scrollWidth - galleryEl.scrollWidth) / 2 + 50;
+</script>
 </body>
 </html>
