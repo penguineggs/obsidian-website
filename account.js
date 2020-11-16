@@ -133,6 +133,7 @@ window.setTimeout(() => {
 		let publishReduceNumOfSitesEl = fish('.js-reduce-number-of-publish-sites');
 		let publishChangeToMonthlyEl = fish('.js-change-publish-to-monthly');
 		let publishChangeToYearlyEl = fish('.js-change-publish-to-yearly');
+		let publishRenewalFrequencyEl = fish('.setting-item-description.mod-publish-frequency');
 		let reduceSiteNumInputEl = fish('.publish-reduce-sites-num');
 		let reduceSiteConfirmButtonEl = fish('.js-update-reduce-sites');
 		let publishStopRenewalEl = fish('.js-stop-publish-auto-renewal');
@@ -483,15 +484,27 @@ window.setTimeout(() => {
 					}
 
 					publishRenewInfoNotRenewingEl.hide();
+
+					let renewalFrequencyEl = document.createDocumentFragment();
 					if (renew === 'yearly') {
 						publishChangeToYearlyEl.hide();
+						renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
+						renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'yearly'});
+						renewalFrequencyEl.createEl('span', {text: ' plan.'});
 					} else if (renew === 'monthly') {
 						publishChangeToMonthlyEl.hide();
+						renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
+						renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'monthly'});
+						renewalFrequencyEl.createEl('span', {text: ' plan.'});
 					} else if (renew === '') {
 						publishStopRenewalEl.hide();
 						publishRenewInfoNotRenewingEl.show();
 						publishRenewInfoRenewingEl.hide();
+						renewalFrequencyEl.createEl('span', {text: `You\'re not currently being renewed.`});
 					}
+
+					publishRenewalFrequencyEl.empty();
+					publishRenewalFrequencyEl.appendChild(renewalFrequencyEl);
 
 					reduceSiteNumInputEl.value = sites;
 				}
