@@ -764,6 +764,11 @@ window.setTimeout(() => {
 
 		commercialLicenseSeatEl.addEventListener('input', () => {
 			buyingLicense = 'business';
+
+			if (commercialLicenseSeatEl.value === '') {
+				return;
+			}
+
 			buyingVariation = parseInt(commercialLicenseSeatEl.value).toString();
 
 			updateBizPrice();
