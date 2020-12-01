@@ -462,51 +462,54 @@ window.setTimeout(() => {
 
 				if (data.publish) {
 					let {sites, renew, renew_sites, expiry_ts} = data.publish;
-					getPublishCardEl.addClass('is-active');
 
-					if (sites === 1) {
-						publishBoughtSiteNumEl.setText('1 site');
-					} else {
-						publishBoughtSiteNumEl.setText(`${sites} sites`);
+					if (expiry_ts >= Date.now()) {
+						getPublishCardEl.addClass('is-active');
+
+						if (sites === 1) {
+							publishBoughtSiteNumEl.setText('1 site');
+						} else {
+							publishBoughtSiteNumEl.setText(`${sites} sites`);
+						}
+
+						if (renew_sites === 1) {
+							publishRenewSiteNumEl.setText('1 site');
+							publishReduceNumOfSitesEl.hide();
+						} else {
+							publishRenewSiteNumEl.setText(`${renew_sites} sites`);
+							publishReduceNumOfSitesEl.show();
+						}
+
+						if (expiry_ts) {
+							let date = new Date(expiry_ts);
+							publishRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
+						}
+
+						publishRenewInfoNotRenewingEl.hide();
+
+						let renewalFrequencyEl = document.createDocumentFragment();
+						if (renew === 'yearly') {
+							publishChangeToYearlyEl.hide();
+							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
+							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'yearly'});
+							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+						} else if (renew === 'monthly') {
+							publishChangeToMonthlyEl.hide();
+							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
+							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'monthly'});
+							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+						} else if (renew === '') {
+							publishStopRenewalEl.hide();
+							publishRenewInfoNotRenewingEl.show();
+							publishRenewInfoRenewingEl.hide();
+							renewalFrequencyEl.createEl('span', {text: `You\'re not currently being renewed.`});
+						}
+
+						publishRenewalFrequencyEl.empty();
+						publishRenewalFrequencyEl.appendChild(renewalFrequencyEl);
+
+						reduceSiteNumInputEl.value = sites;
 					}
-
-					if (renew_sites === 1) {
-						publishRenewSiteNumEl.setText('1 site');
-						publishReduceNumOfSitesEl.hide();
-					} else {
-						publishRenewSiteNumEl.setText(`${renew_sites} sites`);
-						publishReduceNumOfSitesEl.show();
-					}
-
-					if (expiry_ts) {
-						let date = new Date(expiry_ts);
-						publishRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
-					}
-
-					publishRenewInfoNotRenewingEl.hide();
-
-					let renewalFrequencyEl = document.createDocumentFragment();
-					if (renew === 'yearly') {
-						publishChangeToYearlyEl.hide();
-						renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
-						renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'yearly'});
-						renewalFrequencyEl.createEl('span', {text: ' plan.'});
-					} else if (renew === 'monthly') {
-						publishChangeToMonthlyEl.hide();
-						renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
-						renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'monthly'});
-						renewalFrequencyEl.createEl('span', {text: ' plan.'});
-					} else if (renew === '') {
-						publishStopRenewalEl.hide();
-						publishRenewInfoNotRenewingEl.show();
-						publishRenewInfoRenewingEl.hide();
-						renewalFrequencyEl.createEl('span', {text: `You\'re not currently being renewed.`});
-					}
-
-					publishRenewalFrequencyEl.empty();
-					publishRenewalFrequencyEl.appendChild(renewalFrequencyEl);
-
-					reduceSiteNumInputEl.value = sites;
 				}
 			});
 		};
