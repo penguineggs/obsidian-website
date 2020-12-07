@@ -221,7 +221,7 @@
 
 			<div class="card-container mod-horizontal">
 				<h1 class="u-center-text">Add-on services</h1>
-				<div class="card mod-publish u-clickable">
+				<div class="card mod-publish">
 					<div class="card-title">Obsidian Publish<span
 						class="flair mod-pop catalyst-tier">Upgraded</span></div>
 					<div class="card-description">
@@ -300,18 +300,68 @@
 					</div>
 				</div>
 
-				<div class="card mod-sync is-coming-soon">
-					<div class="card-title">Obsidian Sync</div>
+				<div class="card mod-sync">
+					<div class="card-title">Obsidian Sync<span
+						class="flair mod-pop catalyst-tier">Upgraded</span></div>
 					<div class="card-description">
-						<p>Features include:</p>
-						<ul>
-							<li>End-to-end encryption</li>
-							<li>Built-in version history</li>
-							<li>Priority email support</li>
-						</ul>
-						<p class="u-center-text">
-							<button>Coming soon</button>
-						</p>
+						<div class="inactive-text">
+							<p>Obsidian Sync lets you sync your vault between multiple devices.</p>
+							<ul>
+								<li>End-to-end encryption</li>
+								<li>Version history</li>
+								<li>Priority email support</li>
+							</ul>
+							<p class="u-center-text">
+								<button class="mod-cta js-upgrade-sync">Buy</button>
+							</p>
+						</div>
+
+						<div class="active-text">
+							<p class="publish-renew-info">
+							<p>To start syncing, log into your account in Obsidian and enable the "Sync"
+								plugin.</p>
+
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Change renewal frequency</div>
+									<div class="setting-item-description mod-sync-frequency">Change to either billed monthly or yearly.
+									</div>
+								</div>
+								<div class="setting-item-control mod-vertical">
+									<a class="js-change-sync-to-monthly">Change to monthly</a>
+									<a class="js-change-sync-to-yearly">Change to yearly</a>
+								</div>
+							</div>
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Manage auto-renewal</div>
+									<div class="setting-item-description">
+										<div class="sync-renew-info-renewing">
+											You'll be renewed <span
+											class="sync-renewal-time">in the future</span>.
+										</div>
+										<div class="sync-renew-info-not-renewing">
+											You will not be renewed in the future.
+										</div>
+									</div>
+								</div>
+								<div class="setting-item-control">
+									<a class="js-stop-sync-auto-renewal">Stop</a>
+								</div>
+							</div>
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Manage payment</div>
+									<div class="setting-item-description">
+										View or change the card you use for payment.
+									</div>
+								</div>
+								<div class="setting-item-control mod-vertical">
+									<button class="js-open-change-payment">Change</button>
+									<a class="js-view-payment-info">View card info</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -424,41 +474,63 @@
 		</div>
 	</div>
 
-	<div class="static-footer">
-		<div class="footer-groups">
-			<ul class="footer-link-group">
-				<li class="footer-header">Obsidian</li>
-				<li><a href="https://publish.obsidian.md/help" target="_blank">Help</a></li>
-				<li><a href="/eula">License information</a></li>
-				<li><a href="/about">About us</a></li>
-				<li><a href="/faq">FAQ</a></li>
-				<li><a href="/privacy">Privacy</a></li>
-				<li><a href="https://trello.com/b/Psqfqp7I/obsidian-roadmap">Roadmap</a></li>
-			</ul>
-
-			<ul class="footer-link-group">
-				<li class="footer-header">Social</li>
-				<li><a href="https://twitter.com/obsdmd" target="_blank">Follow us on Twitter</a></li>
-				<li><a href="https://discord.gg/veuWUTm" target="_blank">Community Discord</a></li>
-				<li><a href="https://forum.obsidian.md" target="_blank">Community forum</a></li>
-			</ul>
-
-			<ul class="footer-link-group">
-				<li class="footer-header">Spread the word</li>
-				<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product
-					Hunt</a>
-				<li><a href="https://alternativeto.net/software/obsidian/" target="_blank">Like us on
-					AlternativeTo</a>
-				</li>
-				<li><a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
-				       target="_blank">Like
-					us on Slant</a></li>
-				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
-				</li>
-			</ul>
+	<div class="modal-container mod-choose-sync-plan" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Choose a plan</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="payment-error message mod-error" style="display: none;"></div>
+				</div>
+				<div class="card-container mod-horizontal">
+					<div class="card u-center-text is-selected" data-renew="yearly">
+						<div class="card-title" style="text-align: left;">Yearly<span
+							class="flair mod-pop">20% off</span></div>
+						<div class="card-description">
+							<div style="float:right;"><b>$4</b> / month</div>
+							<div style="float:left;"><b>$48</b> / year</div>
+						</div>
+					</div>
+					<div class="card u-center-text" data-renew="monthly">
+						<div class="card-title" style="text-align: left;">Monthly</div>
+						<div class="card-description">
+							<div style="float:right;"><b>$5</b> / month</div>
+							<div style="float:left;"><b>60</b> / year</div>
+						</div>
+					</div>
+				</div>
+				<div class="wechat-pay-container">
+					<img class="wechat-pay-image" src="images/wechat-pay-badge.png" alt="Pay with Wechat Pay">
+				</div>
+				<div class="payment-container">
+					<div class="payment-summary">
+						<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
+							class="payment-amount"></span></div>
+						<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
+							class="payment-amount"></span></div>
+					</div>
+					<form class="payment-form">
+						<div class="card-element"><!--Stripe.js injects the Card Element--></div>
+						<button class="submit mod-cta">
+							<div class="spinner hidden" class="spinner"></div>
+							<span class="button-text">Pay</span>
+						</button>
+						<p class="card-errors" role="alert"></p>
+						<p class="result-message hidden">
+							Payment succeeded, see the result in your
+							<a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+						</p>
+						<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
+						                                           alt="Powered by Stripe"></p>
+					</form>
+				</div>
+			</div>
 		</div>
-
-		<div class="footer-copyright u-center-text"><span>© 2020 Obsidian</span></div>
 	</div>
 
 	<div class="modal-container mod-commercial-license" style="display: none;">
@@ -477,6 +549,10 @@
 				<p>
 					<label class="input-label">Number of users</label>
 					<input class="commercial-license-seat" type="number" placeholder="1" min="1" value="1">
+				</p>
+				<p>
+					<label class="input-label">Auto-renewal</label>
+					<span class="checkbox-container commercial-license-auto-renewal"></span>
 				</p>
 			</div>
 			<div class="payment-container">
@@ -618,7 +694,7 @@
 
 				<ol>
 					<li>以当日汇率，将你想购买的服务价格从美元转换为人民币。Insider 价格为 25 美元，Supporter 价格为 50 美元，VIP 价格为 100 美元；Publish 服务每年为 96
-						美元（暂不接受月付）。
+						美元（暂不接受月付）；Sync 服务每年为 48 美元（暂不接受月付）。
 					</li>
 					<li>扫一扫上图的收款码，进行支付。</li>
 					<li>发送邮件到 <a href="mailto:support@obsidian.md">support@obsidian.md</a>，告知我们您的转账单号最后四位、购买服务名称、Obsidian.md
@@ -715,6 +791,43 @@
 				</form>
 			</div>
 		</div>
+	</div>
+
+	<div class="static-footer">
+		<div class="footer-groups">
+			<ul class="footer-link-group">
+				<li class="footer-header">Obsidian</li>
+				<li><a href="https://publish.obsidian.md/help" target="_blank">Help</a></li>
+				<li><a href="/eula">License information</a></li>
+				<li><a href="/about">About us</a></li>
+				<li><a href="/faq">FAQ</a></li>
+				<li><a href="/privacy">Privacy</a></li>
+				<li><a href="https://trello.com/b/Psqfqp7I/obsidian-roadmap">Roadmap</a></li>
+			</ul>
+
+			<ul class="footer-link-group">
+				<li class="footer-header">Social</li>
+				<li><a href="https://twitter.com/obsdmd" target="_blank">Follow us on Twitter</a></li>
+				<li><a href="https://discord.gg/veuWUTm" target="_blank">Community Discord</a></li>
+				<li><a href="https://forum.obsidian.md" target="_blank">Community forum</a></li>
+			</ul>
+
+			<ul class="footer-link-group">
+				<li class="footer-header">Spread the word</li>
+				<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product
+					Hunt</a>
+				<li><a href="https://alternativeto.net/software/obsidian/" target="_blank">Like us on
+					AlternativeTo</a>
+				</li>
+				<li><a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
+				       target="_blank">Like
+					us on Slant</a></li>
+				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="footer-copyright u-center-text"><span>© 2020 Obsidian</span></div>
 	</div>
 
 	<script src="https://js.stripe.com/v3/"></script>

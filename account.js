@@ -119,13 +119,14 @@ window.setTimeout(() => {
 		let userEmailEl = fish('.welcome-email');
 		let logoutButtonEl = fish('.js-logout');
 		let getPublishCardEl = fish('.card.mod-publish');
+		let getSyncCardEl = fish('.card.mod-sync');
 		let publishBoughtSiteNumEl = fish('.publish-site-num');
 		let publishRenewSiteNumEl = fish('.publish-renew-site-num');
 		let publishRenewTimeEl = fish('.publish-renewal-time');
 		let publishRenewInfoRenewingEl = fish('.publish-renew-info-renewing');
 		let publishRenewInfoNotRenewingEl = fish('.publish-renew-info-not-renewing');
-		let publishViewPaymentLinkEl = fish('.js-view-payment-info');
-		let publishOpenChangePaymentButtonEl = fish('.js-open-change-payment');
+		let publishViewPaymentLinkEl = fishAll('.js-view-payment-info');
+		let publishOpenChangePaymentButtonEl = fishAll('.js-open-change-payment');
 		let currentCardInfoTextEl = fish('.current-card-info');
 		let updatePaymentMethodModalEl = fish('.modal-container.mod-change-payment-method');
 		let updatePaymentMethodFormEl = fish('.modal-container.mod-change-payment-method .payment-form');
@@ -156,6 +157,7 @@ window.setTimeout(() => {
 		let catalystTierCardsEl = fishAll('.modal-container.mod-personal-license .card');
 		let stripeCatalystFormEl = fish('.modal-container.mod-personal-license .payment-form');
 		let stripeBizFormEl = fish('.modal-container.mod-commercial-license .payment-form');
+		let commercialLicenseRenewalToggleEl = fish('.commercial-license-auto-renewal');
 		let spinnerEl = fish('.loader-cube');
 		let gotoSignupEl = fish('.js-go-to-signup');
 		let gotoLoginEl = fish('.js-go-to-login');
@@ -222,6 +224,29 @@ window.setTimeout(() => {
 		let unlimitedDonationAmountEl = fish('.donation-amount-input');
 		let unlimitedDonatedAmountEl = fish('.donation-amount');
 		let modalsEl = fishAll('.modal-container');
+		let syncUpgradeButtonEl = fish('.js-upgrade-sync');
+		let syncUpgradeModal = fish('.modal-container.mod-choose-sync-plan');
+		let syncPlansCardsEl = syncUpgradeModal.findAll('.card');
+		let stripeSyncFormEl = syncUpgradeModal.find('.payment-form');
+		let syncSubTotalPaymentLineEl = syncUpgradeModal.find('.payment-line.mod-subtotal');
+		let syncSubTotalPaymentDescEl = syncUpgradeModal.find('.payment-line.mod-subtotal .payment-desc');
+		let syncSubTotalPaymentAmountEl = syncUpgradeModal.find('.payment-line.mod-subtotal .payment-amount');
+		let syncDiscountPaymentLineEl = syncUpgradeModal.find('.payment-line.mod-discount');
+		let syncDiscountPaymentDescEl = syncUpgradeModal.find('.payment-line.mod-discount .payment-desc');
+		let syncDiscountPaymentAmountEl = syncUpgradeModal.find('.payment-line.mod-discount .payment-amount');
+		let syncTaxPaymentLineEl = syncUpgradeModal.find('.payment-line.mod-tax');
+		let syncTaxPaymentDescEl = syncUpgradeModal.find('.payment-line.mod-tax .payment-desc');
+		let syncTaxPaymentAmountEl = syncUpgradeModal.find('.payment-line.mod-tax .payment-amount');
+		let syncTotalPaymentDescEl = syncUpgradeModal.find('.payment-line.mod-total .payment-desc');
+		let syncTotalPaymentAmountEl = syncUpgradeModal.find('.payment-line.mod-total .payment-amount');
+		let syncChangeToMonthlyEl = fish('.js-change-sync-to-monthly');
+		let syncChangeToYearlyEl = fish('.js-change-sync-to-yearly');
+		let syncStopRenewalEl = fish('.js-stop-sync-auto-renewal');
+		let syncRenewTimeEl = fish('.sync-renewal-time');
+		let syncRenewInfoRenewingEl = fish('.sync-renew-info-renewing');
+		let syncRenewInfoNotRenewingEl = fish('.sync-renew-info-not-renewing');
+		let syncRenewalFrequencyEl = fish('.setting-item-description.mod-sync-frequency');
+		let toggleEls = fishAll('.checkbox-container');
 
 		let stripeStyles = {
 			base: {
@@ -305,6 +330,14 @@ window.setTimeout(() => {
 				paymentErrorEl.setText(`Please enter a business name.`);
 				paymentErrorEl.show();
 				return;
+			}
+
+			let autoRenewal = commercialLicenseRenewalToggleEl.hasClass('is-enabled');
+
+			if (autoRenewal) {
+				buyingRenew = 'yearly';
+			} else {
+				buyingRenew = '';
 			}
 
 			// Complete payment when the submit button is clicked
@@ -509,6 +542,50 @@ window.setTimeout(() => {
 						publishRenewalFrequencyEl.appendChild(renewalFrequencyEl);
 
 						reduceSiteNumInputEl.value = sites;
+					}
+				}
+
+				if (data.sync) {
+					let {renew, expiry_ts} = data.sync;
+
+					if (expiry_ts >= Date.now()) {
+						getSyncCardEl.addClass('is-active');
+
+						if (expiry_ts) {
+							let date = new Date(expiry_ts);
+							syncRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
+						}
+
+						syncRenewInfoNotRenewingEl.hide();
+						if (renew === 'yearly') {
+						} else if (renew === 'monthly') {
+							syncChangeToMonthlyEl.hide();
+						} else if (renew === '') {
+							syncStopRenewalEl.hide();
+							syncRenewInfoNotRenewingEl.show();
+							syncRenewInfoRenewingEl.hide();
+						}
+
+						let renewalFrequencyEl = document.createDocumentFragment();
+						if (renew === 'yearly') {
+							syncChangeToYearlyEl.hide();
+							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
+							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'yearly'});
+							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+						} else if (renew === 'monthly') {
+							syncChangeToMonthlyEl.hide();
+							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
+							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'monthly'});
+							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+						} else if (renew === '') {
+							syncStopRenewalEl.hide();
+							syncRenewInfoNotRenewingEl.show();
+							syncRenewInfoRenewingEl.hide();
+							renewalFrequencyEl.createEl('span', {text: `You\'re not currently being renewed.`});
+						}
+
+						syncRenewalFrequencyEl.empty();
+						syncRenewalFrequencyEl.appendChild(renewalFrequencyEl);
 					}
 				}
 			});
@@ -747,10 +824,6 @@ window.setTimeout(() => {
 			attemptLogout();
 		});
 
-		// getSyncCardEl.addEventListener('click', () => {
-		// 	window.location.href = './pricing.html';
-		// });
-
 		commercialLicenseKeyEl.addEventListener('click', () => {
 			let licenseKey = commercialLicenseKeyEl.getText();
 			let copySuccess = copyTextToClipboard(licenseKey);
@@ -904,7 +977,6 @@ window.setTimeout(() => {
 					paymentErrorEl.setText(err);
 					paymentErrorEl.show();
 				} else {
-					console.log(data);
 					let {subtotal, desc, tax, taxDesc, discount, discountDesc, total} = data;
 
 					if (discount === 0) {
@@ -942,6 +1014,67 @@ window.setTimeout(() => {
 						}
 
 						publishTotalPaymentAmountEl.setText(formatPrice(total));
+					}
+				}
+			});
+		};
+
+		let updateSyncPrice = () => {
+			let selectedCardEls = syncPlansCardsEl.filter(el => el.hasClass('is-selected'));
+			if (selectedCardEls.length === 0) {
+				return;
+			}
+			let renewal = selectedCardEls[0].getAttribute('data-renew');
+
+			buyingLicense = 'sync';
+			buyingRenew = renewal;
+
+			paymentErrorEl.hide();
+			request(CHECK_PRICE_URL, {
+				type: 'sync',
+				renew: renewal
+			}, (err, data) => {
+				if (err) {
+					paymentErrorEl.setText(err);
+					paymentErrorEl.show();
+				} else {
+					let {subtotal, desc, tax, taxDesc, discount, discountDesc, total} = data;
+
+					if (discount === 0) {
+						syncDiscountPaymentLineEl.hide();
+					} else {
+						syncDiscountPaymentLineEl.show();
+						syncDiscountPaymentAmountEl.setText(formatPrice(discount));
+
+						if (discountDesc) {
+							syncDiscountPaymentDescEl.setText(discountDesc);
+						}
+					}
+
+					if (tax === 0) {
+						syncTaxPaymentLineEl.hide();
+					} else {
+						syncTaxPaymentLineEl.show();
+						syncTaxPaymentAmountEl.setText(formatPrice(tax));
+
+						if (taxDesc) {
+							syncTaxPaymentDescEl.setText(taxDesc);
+						}
+					}
+
+					if (subtotal === total && discount === 0 && tax === 0) {
+						syncSubTotalPaymentLineEl.hide();
+						syncTotalPaymentDescEl.setText(desc);
+						syncTotalPaymentAmountEl.setText(formatPrice(total));
+					} else {
+						syncSubTotalPaymentLineEl.show();
+						syncSubTotalPaymentAmountEl.setText(formatPrice(subtotal));
+
+						if (desc) {
+							syncSubTotalPaymentDescEl.setText(desc);
+						}
+
+						syncTotalPaymentAmountEl.setText(formatPrice(total));
 					}
 				}
 			});
@@ -1022,7 +1155,7 @@ window.setTimeout(() => {
 			});
 		});
 
-		publishViewPaymentLinkEl.addEventListener('click', () => {
+		publishViewPaymentLinkEl.forEach(el => el.addEventListener('click', () => {
 			request(GET_PAYMENT_INFO_URL, {}, (error, data) => {
 				if (data.info) {
 					currentCardInfoTextEl.setText(`You're currently using a ${data.info}.`);
@@ -1031,15 +1164,14 @@ window.setTimeout(() => {
 				}
 
 				publishViewPaymentMethodModal.show();
+			});
+		}));
 
-			})
-		});
-
-		publishOpenChangePaymentButtonEl.addEventListener('click', () => {
+		publishOpenChangePaymentButtonEl.forEach(el => el.addEventListener('click', () => {
 			updatePaymentMethodModalEl.show();
 			paymentErrorEl = updatePaymentMethodModalEl.find('.payment-error');
 			card.mount('.modal-container.mod-change-payment-method .card-element');
-		});
+		}));
 
 		updatePaymentMethodFormEl.addEventListener('submit', (event) => {
 			event.preventDefault();
@@ -1083,8 +1215,65 @@ window.setTimeout(() => {
 		unlimitedDonationAmountEl.addEventListener('change', () => {
 			buyingLicense = 'donation';
 			buyingVariation = (unlimitedDonationAmountEl.value * 100).toString();
+		});
 
-			console.log(buyingVariation);
+		syncUpgradeButtonEl.addEventListener('click', () => {
+			syncUpgradeModal.show();
+			card.mount('.modal-container.mod-choose-sync-plan .card-element');
+
+			paymentErrorEl = fish('.modal-container.mod-choose-sync-plan .payment-error');
+			updateSyncPrice();
+		});
+
+		syncPlansCardsEl.forEach((cardEl) => {
+			cardEl.addEventListener('click', () => {
+				syncPlansCardsEl.forEach(el => el.removeClass('is-selected'));
+				cardEl.addClass('is-selected');
+
+				updateSyncPrice();
+			});
+		});
+
+		stripeSyncFormEl.addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			fishAll('.payment-error').forEach(e => e.hide());
+
+			// Complete payment when the submit button is clicked
+			// payWithCard(stripe, card, data.clientSecret);
+			setLoading(true);
+			networkGetStripeSecret((secret) => {
+				payWithCard(stripe, card, secret);
+			});
+		});
+
+		syncChangeToMonthlyEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'sync', renew: 'monthly'}, () => {
+				window.location.reload()
+			});
+		});
+
+		syncChangeToYearlyEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'sync', renew: 'yearly'}, () => {
+				window.location.reload()
+			});
+		});
+
+		syncStopRenewalEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'sync', renew: ''}, () => {
+				window.location.reload()
+			});
+		});
+
+		toggleEls.forEach(el => {
+			el.addEventListener('click', () => {
+				let currentChecked = el.hasClass('is-enabled');
+				if (currentChecked) {
+					el.removeClass('is-enabled');
+				} else {
+					el.addClass('is-enabled');
+				}
+			});
 		});
 	});
 }, 500);

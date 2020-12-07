@@ -123,7 +123,7 @@
 		</h1>
 
 		<div class="pricing-cards-container">
-			<div class="pricing-card mod-muted mod-not-available">
+			<div class="pricing-card mod-muted">
 				<h2 class="pricing-card-title">Sync</h2>
 				<div class="pricing-card-description mod-point">End-to-end encryption</div>
 				<div class="pricing-card-description mod-point">Built-in version history</div>
@@ -132,7 +132,7 @@
 					<strike>$8</strike> <span class="u-pop">$<b>4</b></span>
 					<small class="u-pop">with lifetime early bird pricing</small>
 					<small>per month, billed annually</small>
-					<button class="mod-cta mod-muted">Coming soon</button>
+					<button class="mod-cta js-upgrade-sync">Buy</button>
 				</div>
 			</div>
 			<div class="pricing-card mod-muted">
@@ -305,7 +305,8 @@
 		let choosePlanModalEl = fish('.modal-container.mod-choose-plan');
 		let planCardsEl = fishAll('.modal-container.mod-choose-plan .card');
 		let closeModalButtonEls = fishAll('.js-close-modal, .modal-close-button, .modal-bg');
-		let upgradeButtonEl = fish('.js-upgrade-publish');
+		let upgradePublishButtonEl = fish('.js-upgrade-publish');
+		let upgradeSyncButtonEl = fish('.js-upgrade-sync');
 		let confirmUpgradeButtonEl = fish('.js-upgrade-sync-confirm');
 		let gotoAccountButtonEls = fishAll('.js-goto-account');
 		let pricingLinksEl = fishAll('.pricing-link');
@@ -321,6 +322,7 @@
 
 		let isLoggedIn = false;
 		let hasSyncSubscription = false;
+		let hasPublishSubscription = false;
 		let currentPlan = '';
 
 		cardsEl.forEach((cardEl) => {
@@ -372,10 +374,16 @@
 					return;
 				}
 				hasSyncSubscription = data.subscriptions.filter(s => s.type === 'sync' && s.expiry_ts > Date.now()).length > 0;
+				hasPublishSubscription = data.subscriptions.filter(s => s.type === 'publish' && s.expiry_ts > Date.now()).length > 0;
 
 				if (hasSyncSubscription) {
-					upgradeButtonEl.setText('Your plan');
-					upgradeButtonEl.style.cursor = 'default';
+					upgradeSyncButtonEl.setText('Your plan');
+					upgradeSyncButtonEl.style.cursor = 'default';
+				}
+
+				if (hasPublishSubscription) {
+					upgradePublishButtonEl.setText('Your plan');
+					upgradePublishButtonEl.style.cursor = 'default';
 				}
 			});
 		};
@@ -432,13 +440,12 @@
 			}
 		}
 
-		upgradeButtonEl.addEventListener('click', () => {
+		upgradePublishButtonEl.addEventListener('click', () => {
 			window.location.href = '/account';
-			// if (!isLoggedIn) {
-			// 	window.location.href = '/account';
-			// } else {
-			// 	choosePlanModalEl.show();
-			// }
+		});
+
+		upgradeSyncButtonEl.addEventListener('click', () => {
+			window.location.href = '/account';
 		});
 
 		confirmUpgradeButtonEl.addEventListener('click', () => {

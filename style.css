@@ -543,7 +543,8 @@ kbd {
 .message.mod-error a {
   color: var(--text-normal);
 }
-p.mod-warning {
+p.mod-warning,
+b.mod-warning {
   color: var(--text-error);
 }
 .horizontal-link-group {
@@ -749,6 +750,7 @@ input.prompt-input {
   opacity: 1;
 }
 .collapse-icon svg {
+  vertical-align: middle;
   transition: transform 100ms ease-in-out;
 }
 .is-collapsed .collapse-icon svg {
@@ -2147,9 +2149,6 @@ button.mod-float-right {
   margin: 0 auto;
   padding: 100px 30px;
 }
-.feature-row.mod-cta .feature-row-inner {
-  width: 800px;
-}
 .feature-row.mod-stripe {
   background-color: var(--background-secondary-alt);
   box-shadow: inset 0 8px 8px -10px #050505, inset 0 -8px 8px -10px #050505;
@@ -2557,38 +2556,31 @@ body {
   margin: 10px auto;
   display: block;
 }
-.static-full-page-container.mod-download .static-container,
 .static-full-page-container.mod-features .static-container {
   width: 900px;
   max-width: 90vw;
   margin: 0 auto;
   text-align: left;
 }
-.static-full-page-container.mod-download .static-container .card-container,
 .static-full-page-container.mod-features .static-container .card-container {
   margin-top: 40px;
 }
-.static-full-page-container.mod-download .static-container .card,
 .static-full-page-container.mod-features .static-container .card {
   cursor: default;
   flex-grow: 1;
 }
-.static-full-page-container.mod-download .static-container .card:hover,
 .static-full-page-container.mod-features .static-container .card:hover {
   border: 1px solid var(--background-modifier-border);
   background-color: var(--background-secondary-alt);
 }
-.static-full-page-container.mod-download .static-container img,
 .static-full-page-container.mod-features .static-container img {
   margin-top: 10px;
   border-radius: 2px;
   border: 1px solid var(--background-modifier-border);
 }
-.static-full-page-container.mod-download .static-container .card ul,
 .static-full-page-container.mod-features .static-container .card ul {
   padding-left: 40px;
 }
-.static-full-page-container.mod-download .static-container .card-title,
 .static-full-page-container.mod-features .static-container .card-title {
   color: var(--text-muted);
   margin: 20px 0 10px 0;
@@ -2599,7 +2591,6 @@ body {
   letter-spacing: 2px;
   line-height: 30px;
 }
-.static-full-page-container.mod-download .static-container .card-description,
 .static-full-page-container.mod-features .static-container .card-description {
   display: flex;
   align-items: center;
@@ -2608,35 +2599,11 @@ body {
   padding-bottom: 10px;
   color: var(--text-normal);
 }
-.static-full-page-container.mod-download .static-container .card-description > div:first-child,
 .static-full-page-container.mod-features .static-container .card-description > div:first-child {
   margin-right: 30px;
 }
-.static-full-page-container.mod-download .static-container img:hover,
 .static-full-page-container.mod-features .static-container img:hover {
   border: 1px solid var(--interactive-accent);
-}
-.static-full-page-container.mod-download .card-description {
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-.static-full-page-container.mod-download a {
-  text-decoration: none;
-}
-.static-full-page-container.mod-download .button-container {
-  text-align: center;
-}
-.static-full-page-container.mod-download button {
-  background-color: var(--interactive-accent);
-  font-size: 18px;
-  padding: 14px 40px;
-  border-radius: 6px;
-  border: 1px solid var(--background-modifier-border);
-  margin-bottom: 16px;
-}
-.static-full-page-container.mod-download button:hover {
-  background-color: var(--interactive-accent-hover);
 }
 .static-full-page-container {
   background-color: var(--background-secondary);
