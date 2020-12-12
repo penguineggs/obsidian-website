@@ -465,7 +465,7 @@ kbd {
   z-index: var(--layer-modal);
 }
 .modal-container.mod-confirmation .modal {
-  width: 600px;
+  width: 700px;
   max-width: 90vw;
 }
 .modal-bg {
@@ -543,8 +543,7 @@ kbd {
 .message.mod-error a {
   color: var(--text-normal);
 }
-p.mod-warning,
-b.mod-warning {
+.mod-warning {
   color: var(--text-error);
 }
 .horizontal-link-group {
@@ -789,6 +788,8 @@ input.prompt-input {
   position: fixed;
   z-index: var(--layer-menu);
   user-select: none;
+  max-height: calc(100% - 25px);
+  overflow: hidden;
 }
 .menu.mod-no-icon .menu-item-icon {
   display: none;
@@ -1161,6 +1162,27 @@ textarea {
 }
 .components-container .prompt {
   position: static;
+}
+.drag-ghost {
+  position: fixed;
+  border-radius: 4px;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-secondary-alt);
+  box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
+  z-index: var(--layer-dragged-item);
+}
+.drag-ghost-self {
+  padding: 4px 6px;
+  display: flex;
+}
+.drag-ghost-self svg {
+  vertical-align: middle;
+  align-self: center;
+  margin-right: 4px;
+}
+.drag-ghost-action {
+  padding: 4px 6px;
+  color: var(--text-muted);
 }
 .modal.mod-settings {
   padding: 0;
@@ -1925,12 +1947,25 @@ button.mod-float-right {
   border-radius: 4px 0 4px 4px;
   text-align: left;
   width: 80vw;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 17px;
+  line-height: 23px;
   position: relative;
+  color: #bbb;
   background-color: var(--background-secondary);
+}
+.eula-text h2,
+.eula-text h3 {
+  color: var(--text-normal);
+  line-height: 30px;
+}
+.eula-text h2 {
+  text-align: center;
+  margin-top: 40px;
+}
+.eula-text h3 {
+  margin-top: 30px;
 }
 .eula-text b {
   color: var(--text-normal);
