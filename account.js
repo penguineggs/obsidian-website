@@ -167,9 +167,11 @@ window.setTimeout(() => {
 		let forgotPassErrorMsgEl = fish('.forgot-pass-form .message.mod-error');
 		let forgotPasswordInputEl = fish('.forgot-pass-email');
 		let resetPassFormEl = fish('.reset-pass-form');
+		let resetPassFieldContainerEl = fish('.forgot-pass-email-container');
 		let resetPassNewPasswordEl = fish('.reset-pass-password');
 		let resetPassSuccessMsgEl = fish('.reset-pass-form .message.mod-success');
 		let resetPassErrorMsgEl = fish('.reset-pass-form .message.mod-error');
+		let resetPassButtonEl = fish('.js-request-forgot');
 		let personalLicensePaymentContainerEl = fish('.modal-container.mod-personal-license .payment-container');
 		let personalLicenseUserInfoEl = fish('.modal-container.mod-personal-license .personal-license-user-info');
 		let discordUsernameInputEl = fish('.discord-username-input');
@@ -523,19 +525,19 @@ window.setTimeout(() => {
 						let renewalFrequencyEl = document.createDocumentFragment();
 						if (renew === 'yearly') {
 							publishChangeToYearlyEl.hide();
-							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
-							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'yearly'});
-							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+							renewalFrequencyEl.createSpan({text: `You\'re currently on a `});
+							renewalFrequencyEl.createSpan({cls: 'u-pop', text: 'yearly'});
+							renewalFrequencyEl.createSpan({text: ' plan.'});
 						} else if (renew === 'monthly') {
 							publishChangeToMonthlyEl.hide();
-							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
-							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'monthly'});
-							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+							renewalFrequencyEl.createSpan({text: `You\'re currently on a `});
+							renewalFrequencyEl.createSpan({cls: 'u-pop', text: 'monthly'});
+							renewalFrequencyEl.createSpan({text: ' plan.'});
 						} else if (renew === '') {
 							publishStopRenewalEl.hide();
 							publishRenewInfoNotRenewingEl.show();
 							publishRenewInfoRenewingEl.hide();
-							renewalFrequencyEl.createEl('span', {text: `You\'re not currently being renewed.`});
+							renewalFrequencyEl.createSpan({text: `You\'re not currently being renewed.`});
 						}
 
 						publishRenewalFrequencyEl.empty();
@@ -569,19 +571,19 @@ window.setTimeout(() => {
 						let renewalFrequencyEl = document.createDocumentFragment();
 						if (renew === 'yearly') {
 							syncChangeToYearlyEl.hide();
-							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
-							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'yearly'});
-							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+							renewalFrequencyEl.createSpan({text: `You\'re currently on a `});
+							renewalFrequencyEl.createSpan({cls: 'u-pop', text: 'yearly'});
+							renewalFrequencyEl.createSpan({text: ' plan.'});
 						} else if (renew === 'monthly') {
 							syncChangeToMonthlyEl.hide();
-							renewalFrequencyEl.createEl('span', {text: `You\'re currently on a `});
-							renewalFrequencyEl.createEl('span', {cls: 'u-pop', text: 'monthly'});
-							renewalFrequencyEl.createEl('span', {text: ' plan.'});
+							renewalFrequencyEl.createSpan({text: `You\'re currently on a `});
+							renewalFrequencyEl.createSpan({cls: 'u-pop', text: 'monthly'});
+							renewalFrequencyEl.createSpan({text: ' plan.'});
 						} else if (renew === '') {
 							syncStopRenewalEl.hide();
 							syncRenewInfoNotRenewingEl.show();
 							syncRenewInfoRenewingEl.hide();
-							renewalFrequencyEl.createEl('span', {text: `You\'re not currently being renewed.`});
+							renewalFrequencyEl.createSpan({text: `You\'re not currently being renewed.`});
 						}
 
 						syncRenewalFrequencyEl.empty();
@@ -704,14 +706,19 @@ window.setTimeout(() => {
 				return;
 			}
 			request(FORGOT_PASS_URL, {email, captcha: 'captcha'}, (err, data) => {
+				spinnerEl.show();
 				if (err) {
 					forgotPassErrorMsgEl.setText('Something went wrong, please try again.');
 					forgotPassErrorMsgEl.show();
+					spinnerEl.hide();
 					return;
 				}
 
 				forgotPassSuccessMsgEl.setText(`We have sent an email to ${email} to reset your password.`);
 				forgotPassSuccessMsgEl.show();
+				resetPassFieldContainerEl.hide();
+				resetPassButtonEl.hide();
+				spinnerEl.hide();
 			});
 		};
 

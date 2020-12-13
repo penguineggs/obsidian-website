@@ -217,8 +217,14 @@ Node.prototype.createEl = function (tag, o, callback) {
 	o.parent = this;
 	return createEl(tag, o, callback);
 };
+Node.prototype.createDiv = function (o, callback) {
+	return this.createEl('div', o, callback);
+};
+Node.prototype.createSpan = function (o, callback) {
+	return this.createEl('span', o, callback);
+};
 window.createEl = function createEl(tag, o, callback) {
-	let { cls, text, attr, title, value, type, parent } = o || {};
+	let {cls, text, attr, title, value, type, parent} = o || {};
 	let el = document.createElement(tag);
 	if (cls) {
 		if (Array.isArray(cls)) {
@@ -250,6 +256,12 @@ window.createEl = function createEl(tag, o, callback) {
 		parent.appendChild(el);
 	}
 	return el;
+};
+window.createDiv = function createDiv(o, callback) {
+	return createEl('div', o, callback);
+};
+window.createSpan = function createSpan(o, callback) {
+	return createEl('span', o, callback);
 };
 function matchPath(element, selector, lastParent) {
 	if (!element) {
