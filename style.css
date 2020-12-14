@@ -135,7 +135,6 @@
   --background-primary-alt: #f5f6f8;
   --background-secondary: #f2f3f5;
   --background-secondary-alt: #e3e5e8;
-  --background-accent: #fff;
   --background-modifier-border: #ddd;
   --background-modifier-form-field: #fff;
   --background-modifier-form-field-highlighted: #fff;
@@ -485,6 +484,9 @@ kbd {
   padding: 30px 50px;
   position: relative;
   min-width: 560px;
+}
+.modal.mod-narrow {
+  max-width: 600px;
 }
 .modal button:not(.mod-cta):not(.mod-warning) {
   background-color: var(--background-secondary-alt);
@@ -1165,24 +1167,35 @@ textarea {
 }
 .drag-ghost {
   position: fixed;
+  padding: 6px 12px;
   border-radius: 4px;
   background-color: var(--background-secondary);
   border: 1px solid var(--background-secondary-alt);
   box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
   z-index: var(--layer-dragged-item);
+  max-width: 300px;
 }
 .drag-ghost-self {
-  padding: 4px 6px;
   display: flex;
 }
 .drag-ghost-self svg {
   vertical-align: middle;
   align-self: center;
-  margin-right: 4px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.drag-ghost-self span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .drag-ghost-action {
-  padding: 4px 6px;
+  padding: 2px 0;
+  font-size: 14px;
   color: var(--text-muted);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .modal.mod-settings {
   padding: 0;
@@ -1270,6 +1283,7 @@ textarea {
   font-size: 16px;
 }
 .setting-item-control {
+  flex-grow: 1;
   flex-shrink: 1;
   text-align: right;
   display: flex;
@@ -2666,14 +2680,27 @@ body {
 }
 .static-full-page-container.mod-download .card-description {
   justify-content: center;
-  flex-wrap: wrap;
   flex-direction: column;
 }
-.static-full-page-container.mod-download a {
+.static-full-page-container.mod-download .card-description p {
+  text-align: center;
+}
+.static-full-page-container.mod-download .card-title {
+  text-transform: none !important;
+}
+.static-full-page-container.mod-download a.mod-button {
   text-decoration: none;
 }
 .static-full-page-container.mod-download .button-container {
   text-align: center;
+}
+.static-full-page-container.mod-download .secondary-links {
+  margin-top: 0;
+  border-top: 1px solid var(--background-modifier-border);
+  padding-top: 20px;
+}
+.static-full-page-container.mod-download .secondary-links a {
+  margin: 0 6px;
 }
 .static-full-page-container.mod-download button {
   background-color: var(--interactive-accent);
