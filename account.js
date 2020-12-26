@@ -248,6 +248,11 @@ window.setTimeout(() => {
 		let syncRenewInfoRenewingEl = fish('.sync-renew-info-renewing');
 		let syncRenewInfoNotRenewingEl = fish('.sync-renew-info-not-renewing');
 		let syncRenewalFrequencyEl = fish('.setting-item-description.mod-sync-frequency');
+		let commercialRenewTimeEl = fish('.commercial-renewal-time');
+		let commercialResumeRenewalEl = fish('.js-resume-commercial-auto-renewal');
+		let commercialStopRenewalEl = fish('.js-stop-commercial-auto-renewal');
+		let commercialRenewInfoRenewingEl = fish('.commercial-renew-info-renewing');
+		let commercialRenewInfoNotRenewingEl = fish('.commercial-renew-info-not-renewing');
 		let toggleEls = fishAll('.checkbox-container');
 
 		let stripeStyles = {
@@ -481,7 +486,6 @@ window.setTimeout(() => {
 					commercialLicenseExpiryEl.setText((new Date(bizLicense.expiry).toLocaleDateString()));
 					commercialLicensePitchEl.hide();
 					existingCommercialLicenseEl.show();
-					commercialLicenseCardEl.addClass('is-active');
 				} else {
 					commercialLicenseCardEl.addEventListener('click', () => {
 						buyingLicense = 'business';
@@ -588,6 +592,42 @@ window.setTimeout(() => {
 
 						syncRenewalFrequencyEl.empty();
 						syncRenewalFrequencyEl.appendChild(renewalFrequencyEl);
+					}
+				}
+
+				if (data.business) {
+					let {renew, expiry} = data.business;
+
+					if (expiry >= Date.now()) {
+						commercialLicenseCardEl.addClass('is-active');
+
+						if (expiry) {
+							let date = new Date(expiry);
+							commercialRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
+						}
+
+						commercialRenewInfoNotRenewingEl.hide();
+						if (renew === 'yearly') {
+							commercialResumeRenewalEl.hide();
+							commercialStopRenewalEl.show();
+							commercialRenewInfoNotRenewingEl.hide();
+							commercialRenewInfoRenewingEl.show();
+						}
+						else if (renew === '') {
+							commercialResumeRenewalEl.show();
+							commercialStopRenewalEl.hide();
+							commercialRenewInfoNotRenewingEl.show();
+							commercialRenewInfoRenewingEl.hide();
+						}
+
+						if (renew === 'yearly') {
+							syncChangeToYearlyEl.hide();
+
+						}  else if (renew === '') {
+							commercialStopRenewalEl.hide();
+							commercialRenewInfoNotRenewingEl.show();
+							commercialRenewInfoRenewingEl.hide();
+						}
 					}
 				}
 			});
@@ -1268,6 +1308,18 @@ window.setTimeout(() => {
 
 		syncStopRenewalEl.addEventListener('click', () => {
 			request(UPDATE_PLAN_URL, {type: 'sync', renew: ''}, () => {
+				window.location.reload()
+			});
+		});
+
+		commercialStopRenewalEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'business', renew: ''}, () => {
+				window.location.reload()
+			});
+		});
+
+		commercialResumeRenewalEl.addEventListener('click', () => {
+			request(UPDATE_PLAN_URL, {type: 'business', renew: 'yearly'}, () => {
 				window.location.reload()
 			});
 		});
