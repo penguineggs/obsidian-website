@@ -724,38 +724,65 @@ input.prompt-input {
   font-weight: 900;
   margin-right: 4px;
 }
-.collapsible-item-self {
-  position: relative;
-  padding: 2px 15px 2px 20px;
-  border-radius: 3px;
+.collapse-icon {
+  display: flex;
+  align-items: center;
+  color: var(--text-faint);
+}
+.collapse-icon:hover {
   color: var(--text-muted);
 }
-.collapsible-item-self.is-clickable {
-  cursor: pointer;
-}
-.collapsible-item-self.is-clickable:hover {
-  background-color: var(--background-secondary-alt);
-  color: var(--text-normal);
-}
-.collapsible-item-children {
-  margin-left: 20px;
-}
-.collapsible-item-collapse {
-  position: absolute;
-  left: -1px;
-  top: -2px;
-  padding: 2px 6px;
-  opacity: 0.6;
-}
-.collapsible-item-collapse:hover {
-  opacity: 1;
-}
 .collapse-icon svg {
-  vertical-align: middle;
   transition: transform 100ms ease-in-out;
 }
 .is-collapsed .collapse-icon svg {
   transform: rotate(-90deg);
+}
+.tree-item-self {
+  display: flex;
+  align-items: flex-start;
+  padding: 2px 6px 2px 20px;
+  border-radius: 3px;
+  color: var(--text-muted);
+}
+.tree-item-self.is-clickable {
+  cursor: pointer;
+}
+.tree-item-self.is-clickable:hover {
+  background-color: var(--background-secondary-alt);
+  color: var(--text-normal);
+}
+.tree-item-self .collapse-icon {
+  margin-left: -20px;
+  width: 20px;
+  padding-left: 6px;
+  flex: 0 0 auto;
+}
+.tree-item-self .collapse-icon:after {
+  content: '\00a0';
+}
+.tree-item-flair-outer {
+  flex: 0 0 auto;
+}
+.tree-item-flair-outer:after {
+  content: '\00a0';
+}
+.tree-item-flair {
+  font-size: 12px;
+  line-height: 12px;
+  border-radius: 3px;
+  padding: 2px 4px;
+  background-color: var(--background-secondary-alt);
+}
+.tree-item-self:hover .tree-item-flair {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.tree-item-inner {
+  flex: 1 1 auto;
+}
+.tree-item-children {
+  margin-left: 20px;
 }
 .popover {
   background-color: var(--background-primary);
@@ -1147,6 +1174,18 @@ textarea {
 .u-clickable {
   cursor: pointer;
 }
+.u-pop-bg {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  display: inline-block;
+  padding: 3px 16px;
+  border-radius: 20px;
+  opacity: 0.6;
+  cursor: default;
+}
+.u-pop-bg:hover {
+  opacity: 1;
+}
 .components-container h3 {
   font-weight: 600;
   font-size: 30px;
@@ -1326,10 +1365,15 @@ textarea {
   font-size: 12px;
   background-color: var(--background-secondary-alt);
   border-radius: 4px;
-  padding: 0 25px 0 10px;
+  padding: 0 10px;
   min-height: 24px;
   align-self: flex-end;
   position: relative;
+}
+.theme-dark .setting-hotkey.has-conflict,
+.theme-light .setting-hotkey.has-conflict {
+  background-color: var(--background-modifier-error);
+  color: var(--text-on-accent);
 }
 .setting-hotkey.mod-active {
   background-color: var(--interactive-accent);
@@ -1341,19 +1385,14 @@ textarea {
 .setting-hotkey:not(:first-child) {
   margin-top: 10px;
 }
-.setting-delete-hotkey {
-  position: absolute;
-  top: 5px;
-  right: 3px;
+.setting-hotkey-icon {
+  display: inline-block;
   cursor: pointer;
   width: 16px;
   height: 16px;
   border-radius: 10px;
-  line-height: 15px;
+  line-height: 16px;
   text-align: center;
-}
-.setting-hotkey.mod-empty .setting-delete-hotkey {
-  display: none;
 }
 .setting-delete-hotkey:hover {
   background-color: var(--background-modifier-error);
@@ -2435,14 +2474,14 @@ span.mod-huge-punctuation {
   font-size: 14px;
   left: 50%;
   line-height: 20px;
-  max-width: 400px;
+  max-width: 300px;
   padding: 5px 14px;
   position: fixed;
   text-align: center;
   transform: translateX(-50%);
-  white-space: nowrap;
   z-index: var(--layer-tooltip);
   pointer-events: none;
+  white-space: pre-wrap;
 }
 .tooltip.mod-right {
   animation: pop-right 200ms forwards ease-in-out;
@@ -2457,12 +2496,8 @@ span.mod-huge-punctuation {
 }
 .tooltip.mod-error {
   width: 200px;
-  white-space: normal;
   background-color: var(--background-modifier-error);
   color: var(--text-on-accent);
-}
-.tooltip.mod-multiline {
-  white-space: normal;
 }
 .tooltip.mod-wide {
   max-width: 450px;
@@ -2666,6 +2701,9 @@ body {
 .static-full-page-container.mod-download .static-container img:hover,
 .static-full-page-container.mod-features .static-container img:hover {
   border: 1px solid var(--interactive-accent);
+}
+.input-label + .checkbox-container {
+  vertical-align: middle;
 }
 .static-full-page-container {
   background-color: var(--background-secondary);
