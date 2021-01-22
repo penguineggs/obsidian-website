@@ -1,5 +1,5 @@
-const BASE_URL = 'http://127.0.0.1:3000';
-// const BASE_URL = 'https://api.obsidian.md';
+// const BASE_URL = 'http://127.0.0.1:3000';
+const BASE_URL = 'https://api.obsidian.md';
 const USER_INFO_URL = BASE_URL + '/user/info';
 const LOGIN_URL = BASE_URL + '/user/signin';
 const SIGNUP_URL = BASE_URL + '/user/signup';
@@ -16,8 +16,8 @@ const UPDATE_PLAN_URL = BASE_URL + '/subscription/renew';
 const REDUCE_SITES_URL = BASE_URL + '/subscription/publish/reduce';
 const GET_PAYMENT_INFO_URL = BASE_URL + '/subscription/paymentmethod';
 const UPDATE_PAYMENT_INFO_URL = BASE_URL + '/subscription/stripe/paymentmethod';
-// const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
-const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
+const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
+// const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
 
 
 function request(url, data, callback) {
