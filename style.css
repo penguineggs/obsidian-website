@@ -1480,8 +1480,8 @@ textarea {
   margin: 0 10px;
 }
 .modal.mod-community-theme {
-  max-width: 90vw;
-  height: 90vh;
+  width: 90vw;
+  min-height: 90vh;
 }
 .modal.mod-community-theme .modal-content {
   height: calc(90vh - 120px);
@@ -1684,17 +1684,29 @@ button.mod-float-right {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
-.wechat-pay-container {
+.alternative-pay-container {
   text-align: center;
   margin: 10px 0;
 }
-.wechat-pay-image {
-  height: 40px;
-  opacity: 0.3;
+.wechat-pay-image,
+.paypal-pay-image {
+  border-radius: 24px;
+  height: 48px;
+  opacity: 0.2;
   cursor: pointer;
+  padding: 8px 20px;
+  margin: 0 6px;
+  transition: opacity 150ms ease-in-out;
 }
-.wechat-pay-image:hover {
-  opacity: 0.5;
+.wechat-pay-image:hover,
+.paypal-pay-image:hover {
+  opacity: 0.6;
+}
+.wechat-pay-image {
+  background-color: #ffffff;
+}
+.paypal-pay-image {
+  background-color: #FFC439;
 }
 .wechat-pay-qr-code {
   height: 120px;
