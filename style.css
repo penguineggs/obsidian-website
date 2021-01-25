@@ -1686,7 +1686,7 @@ button.mod-float-right {
 }
 .alternative-pay-container {
   text-align: center;
-  margin: 10px 0;
+  margin: 20px 0 10px 0;
 }
 .wechat-pay-image,
 .paypal-pay-image {
@@ -2713,10 +2713,6 @@ body {
   line-height: 30px;
   padding-bottom: 10px;
   color: var(--text-normal);
-}
-.static-full-page-container.mod-download .static-container .card-description > div:first-child,
-.static-full-page-container.mod-features .static-container .card-description > div:first-child {
-  margin-right: 30px;
 }
 .static-full-page-container.mod-download .static-container img:hover,
 .static-full-page-container.mod-features .static-container img:hover {
