@@ -171,13 +171,13 @@ body {
   --layer-cover: 5;
   --layer-sidedock: 10;
   --layer-status-bar: 15;
-  --layer-dragged-item: 20;
   --layer-popover: 30;
-  --layer-menu: 40;
   --layer-slides: 45;
   --layer-modal: 50;
   --layer-notice: 60;
+  --layer-menu: 65;
   --layer-tooltip: 70;
+  --layer-dragged-item: 80;
 }
 .theme-dark {
   --opacity-translucency: 0.75;
@@ -1244,6 +1244,23 @@ textarea {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+input[type="color"] {
+  -webkit-appearance: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: 2px solid var(--background-modifier-border);
+  border-radius: 14px;
+  height: 24px;
+}
 .modal.mod-settings {
   padding: 0;
   width: 80vw;
@@ -1266,7 +1283,7 @@ textarea {
 .modal.mod-settings .modal-content {
   margin-top: 0;
 }
-.modal.mod-settings button:not(.mod-cta) {
+.modal.mod-settings button:not(.mod-cta):not(.mod-warning) {
   background-color: var(--background-secondary-alt);
 }
 .modal.mod-plugin-options .modal-content {
@@ -1991,6 +2008,7 @@ button.mod-float-right {
     flex-direction: column;
     margin: 15px;
     border-radius: 18px;
+    flex: 0 0 auto;
   }
   .pricing-card.mod-muted {
     transform: scale(1);
@@ -2366,6 +2384,26 @@ span.mod-huge-punctuation {
   user-select: none;
   color: var(--text-muted);
 }
+.static-header-menu {
+  color: #888;
+  display: none;
+  font-size: 24px;
+  height: 50px;
+  line-height: 48px;
+  text-align: center;
+  text-decoration: none;
+  width: 60px;
+}
+.static-header-pop-up-nav {
+  padding: 0 30px;
+}
+.header-pop-up-nav-link {
+  display: block;
+  color: var(--text-muted);
+  font-size: 19px;
+  text-decoration: none;
+  margin: 6px 0;
+}
 @media only screen and (max-width: 1130px) {
   .hero-screenshot-container {
     display: none;
@@ -2436,7 +2474,8 @@ span.mod-huge-punctuation {
   .hero-intro-text p {
     margin: 5px 0;
   }
-  .feature-row-inner {
+  .feature-row-inner,
+  .feature-row.mod-cta .feature-row-inner {
     width: 100%;
     padding: 60px 10px;
   }
@@ -2456,6 +2495,72 @@ span.mod-huge-punctuation {
   }
   .feature-explanation.mod-heading {
     font-size: 22px;
+  }
+  .static-header-pop-up-nav-container {
+    background-color: var(--background-primary-alt);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
+    left: 20px;
+    line-height: 40px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 35px 0 15px 0;
+    perspective: 2000px;
+    pointer-events: none;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    transform-origin: 100% 0;
+    transform: scale(0.95);
+    transition-duration: 0.25s;
+    transition-property: transform, opacity;
+    white-space: nowrap;
+    width: calc(100% - 40px);
+    will-change: transform, opacity;
+    z-index: 2;
+  }
+  .static-header-pop-up-nav-container ul {
+    list-style: none;
+  }
+  .static-header-pop-up-nav-container.is-active {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .static-header-pop-up-nav-close-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+  .static-header-pop-up-nav-close-button:before,
+  .static-header-pop-up-nav-close-button:after {
+    content: '';
+    position: absolute;
+    background-color: var(--text-faint);
+    left: 14px;
+    right: 14px;
+    top: 24px;
+    height: 2px;
+    transition: background 0.1s;
+  }
+  .static-header-pop-up-nav-close-button:before {
+    transform: rotate(45deg);
+  }
+  .static-header-pop-up-nav-close-button:after {
+    transform: rotate(-45deg);
+  }
+  .static-header-pop-up-nav-close-button:hover:before,
+  .static-header-pop-up-nav-close-button:hover:after {
+    background: #999;
+  }
+  .static-header-menu {
+    display: inline-block;
+  }
+  .app-header-link {
+    display: none;
   }
 }
 ::-webkit-scrollbar-thumb {
