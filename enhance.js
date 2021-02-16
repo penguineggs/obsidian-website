@@ -357,6 +357,7 @@ function ajaxPromise(options) {
 	return new Promise((resolve, reject) => {
 		options.success = resolve;
 		options.error = (resp, request) => reject(request);
+		options.withCredentials = false;
 		ajax(options);
 	});
 }
