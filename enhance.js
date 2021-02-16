@@ -353,7 +353,15 @@ function ajax(options) {
 		request.send();
 	}
 }
+function ajaxPromise(options) {
+	return new Promise((resolve, reject) => {
+		options.success = resolve;
+		options.error = (resp, request) => reject(request);
+		ajax(options);
+	});
+}
 window.ajax = ajax;
+window.ajaxPromise = ajaxPromise;
 function ready(fn) {
 	if (document.readyState !== 'loading') {
 		fn();

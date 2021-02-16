@@ -125,7 +125,10 @@
 				something not quite right? You deserve better.</p>
 			<p class="feature-explanation">Obsidian is built to be extensible. With <a
 				class="u-pop" href="https://publish.obsidian.md/help/Plugins/List%20of%20plugins" target="_blank">22
-				core plugins</a> and counting, set up your own toolkit and get running in minutes.</p>
+				core plugins</a> and <a
+				href="https://help.obsidian.md/Advanced+topics/Third-party+plugins#Discover+and+install+community+plugins"
+				class="u-pop"><span class="community-plugin-count">116</span> community plugins</a>, set up your own
+				toolkit and get running in minutes.</p>
 			<p class="feature-explanation">You'll even be able to install third party plugins or build your own once
 				Obsidian reaches v1.0. Sky's the limit.</p>
 		</div>
@@ -261,6 +264,29 @@
 <script src="enhance.js"></script>
 <script src="download.js"></script>
 <script src="static.js"></script>
+<script>
+	(async () => {
+		function getRawGithubUrl(repo, branch, file) {
+			return 'https://raw.githubusercontent.com/' + repo + '/' + (branch || 'master') + '/' + file;
+		}
+
+		const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
+		let getCommunityPlugins = async () => {
+			let result = await ajaxPromise({url: COMMUNITY_PLUGIN_URL});
+			let resultParsed = JSON.parse(result);
+
+			if (!Array.isArray(resultParsed)) {
+				throw new Error('Failed to parse community plugins.');
+			}
+
+			return resultParsed;
+		};
+
+		let communityPlugins = await getCommunityPlugins();
+
+		fish('.community-plugin-count').setText(communityPlugins.length.toString());
+	})();
+</script>
 
 </body>
 </html>
