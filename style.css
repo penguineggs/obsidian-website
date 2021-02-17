@@ -2109,6 +2109,9 @@ button.mod-float-right {
 .app-header .nav-logo-text {
   right: 6px;
 }
+.static-header-pop-up-nav-container {
+  display: none;
+}
 .static-full-page-container .nav-logo {
   position: absolute;
   left: 100px;
@@ -2518,9 +2521,6 @@ span.mod-huge-punctuation {
     width: calc(100% - 40px);
     will-change: transform, opacity;
     z-index: 2;
-  }
-  .static-header-pop-up-nav-container ul {
-    list-style: none;
   }
   .static-header-pop-up-nav-container.is-active {
     transform: none;
