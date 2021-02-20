@@ -273,18 +273,17 @@
 		const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
 		let getCommunityPlugins = async () => {
 			let result = await ajaxPromise({url: COMMUNITY_PLUGIN_URL});
-			let resultParsed = JSON.parse(result);
 
-			if (!Array.isArray(resultParsed)) {
+			if (!Array.isArray(result)) {
 				throw new Error('Failed to parse community plugins.');
 			}
 
-			return resultParsed;
+			return result.length;
 		};
 
 		let communityPlugins = await getCommunityPlugins();
 
-		fish('.community-plugin-count').setText(communityPlugins.length.toString());
+		fish('.community-plugin-count').setText(communityPlugins);
 	})();
 </script>
 
