@@ -2508,6 +2508,7 @@ span.mod-huge-punctuation {
     font-size: 22px;
   }
   .static-header-pop-up-nav-container {
+    display: block;
     background-color: var(--background-primary-alt);
     border-radius: 4px;
     box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
