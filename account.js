@@ -449,23 +449,22 @@ window.setTimeout(() => {
 						buyCatalystLicenseCardEl.addClass('is-active');
 						personalLicenseTierEl.setText(data.license);
 
-							personalLicenseUpgradeButtonEl.addEventListener('click', () => {
-								paymentErrorEl = fish('.modal-container.mod-personal-license .payment-error');
-								personalLicenseModal.show();
-							});
-							personalLicenseUpgradeButtonEl.show();
+						personalLicenseUpgradeButtonEl.addEventListener('click', () => {
+							paymentErrorEl = fish('.modal-container.mod-personal-license .payment-error');
+							personalLicenseModal.show();
+						});
+						personalLicenseUpgradeButtonEl.show();
 
-							if (catalystLicenseTier === 'vip') {
-								insiderOptionEl.hide();
-								supporterOptionEl.hide();
-								vipOptionEl.hide();
-							}
-							else if (catalystLicenseTier === 'supporter') {
-								insiderOptionEl.hide();
-								supporterOptionEl.hide();
-							} else if (catalystLicenseTier === 'insider') {
-								insiderOptionEl.hide();
-							}
+						if (catalystLicenseTier === 'vip') {
+							insiderOptionEl.hide();
+							supporterOptionEl.hide();
+							vipOptionEl.hide();
+						} else if (catalystLicenseTier === 'supporter') {
+							insiderOptionEl.hide();
+							supporterOptionEl.hide();
+						} else if (catalystLicenseTier === 'insider') {
+							insiderOptionEl.hide();
+						}
 					} else {
 						buyCatalystLicenseCardEl.addEventListener('click', () => {
 							paymentErrorEl = fish('.modal-container.mod-personal-license .payment-error');
