@@ -952,6 +952,17 @@ input.prompt-input {
   line-height: 20px;
   flex-grow: 1;
 }
+.empty-state {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .empty-state-container {
   max-width: 480px;
   max-height: 280px;
@@ -1662,6 +1673,19 @@ input[type="color"]::-webkit-color-swatch {
 }
 .pricing-card-price strike {
   text-decoration-color: var(--text-accent);
+}
+.pricing-card-price .flair {
+  font-size: 0.3em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  bottom: 0.4em;
+  padding: 4px 6px 3px 5px;
+  border-radius: 20px;
+}
+.pricing-card:hover .pricing-card-price .flair {
+  color: var(--text-on-accent);
+  background-color: var(--interactive-accent);
 }
 .pricing-card-price small {
   font-size: 16px;
