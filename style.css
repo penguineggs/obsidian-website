@@ -1876,14 +1876,17 @@ button.mod-float-right {
 .card.mod-catalyst .flair,
 .card.mod-publish .flair,
 .card.mod-sync .flair,
+.card.mod-commercial-license .flair,
 .card.mod-catalyst .active-text,
 .card.mod-publish .active-text,
-.card.mod-sync .active-text {
+.card.mod-sync .active-text,
+.card.mod-commercial-license .active-text {
   display: none;
 }
 .card.mod-catalyst.is-active,
 .card.mod-publish.is-active,
-.card.mod-sync.is-active {
+.card.mod-sync.is-active,
+.card.mod-commercial-license.is-active {
   cursor: default;
   border: 2px solid var(--interactive-accent);
   background-color: rgba(var(--interactive-accent-rgb), 0.15);
@@ -1891,17 +1894,20 @@ button.mod-float-right {
 }
 .card.mod-catalyst.is-active .flair,
 .card.mod-publish.is-active .flair,
-.card.mod-sync.is-active .flair {
+.card.mod-sync.is-active .flair,
+.card.mod-commercial-license.is-active .flair {
   display: inline;
 }
 .card.mod-catalyst.is-active .active-text,
 .card.mod-publish.is-active .active-text,
-.card.mod-sync.is-active .active-text {
+.card.mod-sync.is-active .active-text,
+.card.mod-commercial-license.is-active .active-text {
   display: block;
 }
 .card.mod-catalyst.is-active .inactive-text,
 .card.mod-publish.is-active .inactive-text,
-.card.mod-sync.is-active .inactive-text {
+.card.mod-sync.is-active .inactive-text,
+.card.mod-commercial-license.is-active .inactive-text {
   display: none;
 }
 .commercial-license-price {

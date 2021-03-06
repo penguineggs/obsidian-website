@@ -208,48 +208,52 @@
 				<div class="card mod-commercial-license u-clickable">
 					<div class="card-title">Commercial license</div>
 					<div class="card-description">
-						<div class="commercial-license-pitch">
-							<p>Obsidian is 100% free for personal use.</p>
-							<p>For <span class="u-pop">business related use</span>,
-								a commercial license is required.</p>
-							<p class="u-center-text u-pop commercial-license-price"><b>$50 / user / year</b></p>
+						<div class="inactive-text">
+							<div class="commercial-license-pitch">
+								<p>Obsidian is 100% free for personal use.</p>
+								<p>For <span class="u-pop">business related use</span>,
+									a commercial license is required.</p>
+								<p class="u-center-text u-pop commercial-license-price"><b>$50 USD / user / year</b></p>
+							</div>
 						</div>
-						<div class="existing-commercial-license" style="display: none;">
-							<p>Your license key is: </p>
-							<div class="commercial-license-key">License key not found</div>
-							<p>Registered to "<span class="commercial-license-company-name"></span>" for <span
-								class="commercial-license-seat-number"></span> users. Valid until <span
-								class="commercial-license-expiry-date"></span>.</p>
-							<p>To activate the license, go to Settings -> About in Obsidian.</p>
-						</div>
-						<div class="setting-item">
-							<div class="setting-item-info">
-								<div class="setting-item-name">Manage auto-renewal</div>
-								<div class="setting-item-description">
-									<div class="commercial-renew-info-renewing">
-										You'll be renewed <span
-										class="commercial-renewal-time">in the future</span>.
-									</div>
-									<div class="commercial-renew-info-not-renewing">
-										You will not be renewed in the future.
+						<div class="active-text">
+							<div class="existing-commercial-license" style="display: none;">
+								<p>Your license key is: </p>
+								<div class="commercial-license-key">License key not found</div>
+								<p>Registered to "<span class="commercial-license-company-name"></span>" for <span
+									class="commercial-license-seat-number"></span> users. Valid until <span
+									class="commercial-license-expiry-date"></span>.</p>
+								<p>To activate the license, go to Settings -> About in Obsidian.</p>
+							</div>
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Manage auto-renewal</div>
+									<div class="setting-item-description">
+										<div class="commercial-renew-info-renewing">
+											You'll be renewed <span
+											class="commercial-renewal-time">in the future</span>.
+										</div>
+										<div class="commercial-renew-info-not-renewing">
+											You will not be renewed in the future.
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="setting-item-control">
-								<a class="js-resume-commercial-auto-renewal">Resume</a>
-								<a class="js-stop-commercial-auto-renewal">Stop</a>
-							</div>
-						</div>
-						<div class="setting-item">
-							<div class="setting-item-info">
-								<div class="setting-item-name">Manage payment</div>
-								<div class="setting-item-description">
-									View or change the card you use for payment.
+								<div class="setting-item-control">
+									<a class="js-resume-commercial-auto-renewal">Resume</a>
+									<a class="js-stop-commercial-auto-renewal">Stop</a>
 								</div>
 							</div>
-							<div class="setting-item-control mod-vertical">
-								<button class="js-open-change-payment">Change</button>
-								<a class="js-view-payment-info">View card info</a>
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Manage payment</div>
+									<div class="setting-item-description">
+										View or change the card you use for payment.
+									</div>
+								</div>
+								<div class="setting-item-control mod-vertical">
+									<button class="js-open-change-payment">Change</button>
+									<a class="js-view-payment-info">View card info</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -417,7 +421,8 @@
 						<p>We strongly recommend purchasing a <span class="u-pop">Catalyst license</span> if you haven't
 							already. You should also consider upgrading to the VIP tier first before going for Obsidian
 							Unlimited, so that you don't miss out on the cool badges.</p>
-						<p>You have contributed <span class="u-pop">$<span class="donation-amount">0</span></span> to
+						<p>You have contributed <span class="u-pop">$<span class="donation-amount">0</span></span> (USD)
+							to
 							Obsidian Unlimited.</p>
 						<p class="u-center-text">
 							<button class="mod-cta">Pay</button>
@@ -443,16 +448,16 @@
 							class="flair mod-pop">20% off</span></div>
 						<div class="card-description">
 							<!--							<p class="u-pop">Early bird pricing!</p>-->
-							<div style="float:right;"><b>$8</b> / month</div>
-							<div style="float:left;"><b>$96</b> / year</div>
+							<div style="float:right;"><b>$8</b> USD / month</div>
+							<div style="float:left;"><b>$96</b> USD / year</div>
 						</div>
 					</div>
 					<div class="card u-center-text" data-renew="monthly">
 						<div class="card-title" style="text-align: left;">Monthly</div>
 						<div class="card-description">
 							<!--							<p class="u-pop">Early bird pricing!</p>-->
-							<div style="float:right;"><b>$10</b> / month</div>
-							<div style="float:left;"><b>$120</b> / year</div>
+							<div style="float:right;"><b>$10</b> USD / month</div>
+							<div style="float:left;"><b>$120</b> USD / year</div>
 						</div>
 					</div>
 				</div>
@@ -467,13 +472,17 @@
 				<div class="payment-container">
 					<div class="payment-summary">
 						<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 					</div>
 					<form class="payment-form">
 						<div class="card-element"><!--Stripe.js injects the Card Element--></div>
@@ -530,15 +539,15 @@
 						<div class="card-title" style="text-align: left;">Yearly<span
 							class="flair mod-pop">20% off</span></div>
 						<div class="card-description">
-							<div style="float:right;"><b>$4</b> / month</div>
-							<div style="float:left;"><b>$48</b> / year</div>
+							<div style="float:right;"><b>$4</b> USD / month</div>
+							<div style="float:left;"><b>$48</b> USD / year</div>
 						</div>
 					</div>
 					<div class="card u-center-text" data-renew="monthly">
 						<div class="card-title" style="text-align: left;">Monthly</div>
 						<div class="card-description">
-							<div style="float:right;"><b>$5</b> / month</div>
-							<div style="float:left;"><b>$60</b> / year</div>
+							<div style="float:right;"><b>$5</b> USD / month</div>
+							<div style="float:left;"><b>$60</b> USD / year</div>
 						</div>
 					</div>
 				</div>
@@ -549,13 +558,17 @@
 				<div class="payment-container">
 					<div class="payment-summary">
 						<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 					</div>
 					<form class="payment-form">
 						<div class="card-element"><!--Stripe.js injects the Card Element--></div>
@@ -601,13 +614,17 @@
 			<div class="payment-container">
 				<div class="payment-summary">
 					<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-						class="payment-amount"></span></div>
+						class="payment-amount"></span> USD
+					</div>
 					<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
-						class="payment-amount"></span></div>
+						class="payment-amount"></span> USD
+					</div>
 					<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-						class="payment-amount"></span></div>
+						class="payment-amount"></span> USD
+					</div>
 					<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-						class="payment-amount"></span></div>
+						class="payment-amount"></span> USD
+					</div>
 				</div>
 				<form class="payment-form">
 					<div class="card-element"><!--Stripe.js injects the Card Element--></div>
@@ -648,7 +665,7 @@
 							</ul>
 						</div>
 						<div class="button-container u-center-text">
-							<button class="mod-cta"><b>$25</b> one-time</button>
+							<button class="mod-cta"><b>$25</b> USD one-time</button>
 						</div>
 					</div>
 					<div class="card" data-tier="supporter">
@@ -661,7 +678,7 @@
 							</ul>
 						</div>
 						<div class="button-container u-center-text">
-							<button class="mod-cta"><b>$50</b> one-time</button>
+							<button class="mod-cta"><b>$50</b> USD one-time</button>
 						</div>
 					</div>
 					<div class="card" data-tier="vip">
@@ -674,7 +691,7 @@
 							</ul>
 						</div>
 						<div class="button-container u-center-text">
-							<button class="mod-cta"><b>$100</b> one-time</button>
+							<button class="mod-cta"><b>$100</b> USD one-time</button>
 						</div>
 					</div>
 
@@ -701,24 +718,30 @@
 					<p>To get the badges, please <b class="u-pop">join our community first</b> and let
 						us know your ID below:</p>
 					<p>
-						<label class="input-label"><a href="https://discord.gg/veuWUTm" target="_blank">Discord</a> (optional)</label>
+						<label class="input-label"><a href="https://discord.gg/veuWUTm" target="_blank">Discord</a>
+							(optional)</label>
 						<input class="discord-username-input" type="text" placeholder="Example: Silver#8456">
 					</p>
 					<p>
-						<label class="input-label"><a href="https://forum.obsidian.md" target="_blank">Forum username</a> (optional)</label>
+						<label class="input-label"><a href="https://forum.obsidian.md" target="_blank">Forum
+							username</a> (optional)</label>
 						<input class="forum-username-input" type="text" placeholder="Your forum username...">
 					</p>
 				</div>
 				<div class="payment-container" style="display: none;">
 					<div class="payment-summary">
 						<div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 						<div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-							class="payment-amount"></span></div>
+							class="payment-amount"></span> USD
+						</div>
 					</div>
 					<form class="payment-form">
 						<div class="card-element"><!--Stripe.js injects the Card Element--></div>
