@@ -2061,6 +2061,13 @@ button.mod-float-right {
     font-size: 32px;
     line-height: 40px;
   }
+  .card-container.mod-catalyst {
+    flex-direction: column;
+  }
+  .card[data-tier] {
+    margin: 10px 20px;
+    max-width: 100%;
+  }
 }
 .eula-container {
   padding: 120px 0 50px 0;
@@ -2396,6 +2403,7 @@ span.mod-huge-punctuation {
   background-color: var(--background-secondary);
   width: 520px;
   max-width: 100%;
+  padding: 50px 20px;
 }
 .account-container .page-header {
   margin: 50px 0 30px 0;
@@ -2600,6 +2608,16 @@ span.mod-huge-punctuation {
   }
   .app-header-link {
     display: none;
+  }
+  .modal {
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+  }
+  .modal-content {
+    flex: 1 1 auto;
+    overflow: auto;
   }
 }
 ::-webkit-scrollbar-thumb {
