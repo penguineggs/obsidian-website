@@ -185,6 +185,74 @@ body {
 .theme-light {
   --opacity-translucency: 0.6;
 }
+.is-mobile .menu {
+  max-height: calc(100% - 100px);
+  width: calc(100% - 20px);
+  max-width: calc(100% - 20px);
+  min-width: unset;
+  position: absolute;
+  bottom: 0;
+  border-radius: 6px 6px 0 0;
+  padding: 10px 20px;
+  left: 10px !important;
+  top: unset !important;
+}
+.is-mobile .menu-item {
+  font-size: 18px;
+  padding: 12px 16px;
+  height: unset;
+  line-height: unset;
+}
+.menu {
+  background-color: var(--background-primary);
+  border-radius: 4px;
+  border: 1px solid var(--background-modifier-border);
+  box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
+  position: fixed;
+  z-index: var(--layer-menu);
+  user-select: none;
+  max-height: calc(100% - 25px);
+  overflow: hidden;
+}
+.menu.mod-no-icon .menu-item-icon {
+  display: none;
+}
+.menu {
+  padding: 4px 0;
+}
+.menu-separator {
+  height: 0;
+  margin: 4px 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.menu-separator:last-child {
+  display: none;
+}
+.menu-item {
+  padding: 2px 14px 3px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 32px;
+  line-height: 31px;
+  white-space: nowrap;
+}
+.menu-item.is-disabled {
+  cursor: default;
+  color: var(--text-faint);
+}
+.menu-item:hover {
+  background-color: var(--background-secondary);
+}
+.menu-item-icon {
+  display: inline-block;
+  width: 28px;
+  color: var(--text-muted);
+  position: relative;
+  top: 2px;
+}
+.menu-item-title {
+  display: inline-block;
+}
 .page-container {
   width: 50vw;
   max-width: 1000px;
@@ -817,56 +885,6 @@ input.prompt-input {
   position: relative;
   display: inline-block;
 }
-.menu {
-  background-color: var(--background-primary);
-  border-radius: 4px;
-  border: 1px solid var(--background-modifier-border);
-  box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
-  position: fixed;
-  z-index: var(--layer-menu);
-  user-select: none;
-  max-height: calc(100% - 25px);
-  overflow: hidden;
-}
-.menu.mod-no-icon .menu-item-icon {
-  display: none;
-}
-.menu {
-  padding: 4px 0;
-}
-.menu-separator {
-  height: 0;
-  margin: 4px 0;
-  border-bottom: 1px solid var(--background-modifier-border);
-}
-.menu-separator:last-child {
-  display: none;
-}
-.menu-item {
-  padding: 2px 14px 3px 14px;
-  cursor: pointer;
-  font-size: 14px;
-  height: 32px;
-  line-height: 31px;
-  white-space: nowrap;
-}
-.menu-item.is-disabled {
-  cursor: default;
-  color: var(--text-faint);
-}
-.menu-item:hover {
-  background-color: var(--background-secondary);
-}
-.menu-item-icon {
-  display: inline-block;
-  width: 28px;
-  color: var(--text-muted);
-  position: relative;
-  top: 2px;
-}
-.menu-item-title {
-  display: inline-block;
-}
 .changelog-item {
   margin: 10px 0;
   font-size: 16px;
@@ -897,6 +915,7 @@ input.prompt-input {
 }
 .is-flashing * {
   background-color: transparent !important;
+  color: var(--text-normal);
 }
 .card-container {
   display: flex;
@@ -1307,10 +1326,6 @@ input[type="color"]::-webkit-color-swatch {
 .vertical-tab-content {
   overflow-y: auto;
   height: 100%;
-  display: none;
-}
-.vertical-tab-content.is-active {
-  display: block;
 }
 .vertical-tab-content h2 {
   font-size: 24px;
@@ -1358,8 +1373,7 @@ input[type="color"]::-webkit-color-swatch {
   font-size: 16px;
 }
 .setting-item-control {
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: 1 1 auto;
   text-align: right;
   display: flex;
   justify-content: flex-end;
@@ -2313,6 +2327,37 @@ button.mod-float-right {
 }
 .hero-gallery-item span {
   margin-top: 10px;
+}
+.mobile-store-badge {
+  display: inline-block;
+  margin: 10px 15px;
+  position: relative;
+  opacity: 0.7;
+}
+.mobile-store-badge:hover {
+  opacity: 1;
+}
+.mobile-store-badge .flair {
+  position: absolute;
+  top: -10px;
+  right: -28px;
+  padding: 0 8px;
+  transform: rotate(10deg);
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.mobile-store-badge .flair:hover {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.mobile-store-badge a {
+  text-decoration: none;
+}
+.mobile-store-badge img {
+  height: 54px;
+}
+.hero-mobile-app {
+  margin-top: 50px;
 }
 .feature-row {
   text-align: center;
