@@ -1929,7 +1929,7 @@ button.mod-float-right {
 }
 .payment-summary {
   margin: 30px auto 10px auto;
-  width: 30vw;
+  width: 1200px;
   min-width: 500px;
   max-width: 100%;
   display: flex;
@@ -2020,6 +2020,10 @@ button.mod-float-right {
 .card.is-coming-soon:hover {
   border: 1px solid var(--background-modifier-border);
   background-color: var(--background-primary-alt);
+}
+button.mod-disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 @-webkit-keyframes loading {
   0% {

@@ -202,6 +202,10 @@
 							<p class="catalyst-upgrade-button u-center-text" style="display: none;">
 								<button class="mod-cta">Upgrade to a higher tier</button>
 							</p>
+							<p class="u-center-text">
+								<button class="claim-discord-badge-button">Get Discord badge</button>
+								<button class="claim-forum-badge-button">Get forum badge</button>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -714,19 +718,10 @@
 					<img class="wechat-pay-image" src="images/wechat-pay-badge.png" alt="Pay with Wechat Pay">
 					<img class="paypal-pay-image" src="images/paypal-badge.png" alt="Pay with PayPal">
 				</div>
-				<div class="personal-license-user-info" style="display: none;">
-					<p>To get the badges, please <b class="u-pop">join our community first</b> and let
-						us know your ID below:</p>
-					<p>
-						<label class="input-label"><a href="https://discord.gg/veuWUTm" target="_blank">Discord</a>
-							(optional)</label>
-						<input class="discord-username-input" type="text" placeholder="Example: Silver#8456">
-					</p>
-					<p>
-						<label class="input-label"><a href="https://forum.obsidian.md" target="_blank">Forum
-							username</a> (optional)</label>
-						<input class="forum-username-input" type="text" placeholder="Your forum username...">
-					</p>
+				<div class="u-muted">
+					<p>Please select a tier to purchase or upgrade. When upgrading you only need to pay the difference.</p>
+					<p>You will be able to claim your Discord and forum badges in the Catalyst section immediately after
+						paying.</p>
 				</div>
 				<div class="payment-container" style="display: none;">
 					<div class="payment-summary">
@@ -894,6 +889,66 @@
 					<p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
 					                                           alt="Powered by Stripe"></p>
 				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-discord-success" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Added Discord badge</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-success">Successfully added badge for you!</div>
+				</div>
+				<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our
+					vision.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-discord-failure" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Couldn't add Discord badge</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-error"></div>
+				</div>
+				<p>Please contact us for support or try again later. We're really sorry for the inconvenience!</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-forum-success" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Added forum badge</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-success">Successfully added badge for you!</div>
+				</div>
+				<p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue our
+					vision.</p>
+				<p>P.S. Your forum badge is not a "badge" in the forum system, but a shiny gold tag right next to
+					your name in all of your posts. Hope that helps!</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-forum-failure" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Couldn't add forum badge</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-error"></div>
+				</div>
+				<p>Please contact us for support or try again later. We're really sorry for the inconvenience!</p>
 			</div>
 		</div>
 	</div>

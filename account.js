@@ -11,11 +11,12 @@ const GET_STRIPE_SECRET_URL = BASE_URL + '/subscription/stripe/start';
 const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
 const CHECK_PRICE_URL = BASE_URL + '/subscription/price';
 const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
-const PERSONAL_ROLES_URL = BASE_URL + '/subscription/personal/roles';
 const UPDATE_PLAN_URL = BASE_URL + '/subscription/renew';
 const REDUCE_SITES_URL = BASE_URL + '/subscription/publish/reduce';
 const GET_PAYMENT_INFO_URL = BASE_URL + '/subscription/paymentmethod';
 const UPDATE_PAYMENT_INFO_URL = BASE_URL + '/subscription/stripe/paymentmethod';
+const CLAIM_DISCORD_ROLE_URL = BASE_URL + '/subscription/role/discord';
+const CLAIM_FORUM_ROLE_URL = BASE_URL + '/subscription/role/forum';
 const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
 // const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
 
@@ -103,6 +104,12 @@ if (hash && hash.length > 1) {
 	hash = hash.substr(1);
 }
 
+let query = location.search;
+
+if (query && query.length > 1) {
+	query = query.substr(1);
+}
+
 window.setTimeout(() => {
 	ready(() => {
 		let loginFormEl = fish('.login-form');
@@ -174,9 +181,6 @@ window.setTimeout(() => {
 		let resetPassErrorMsgEl = fish('.reset-pass-form .message.mod-error');
 		let resetPassButtonEl = fish('.js-request-forgot');
 		let personalLicensePaymentContainerEl = fish('.modal-container.mod-personal-license .payment-container');
-		let personalLicenseUserInfoEl = fish('.modal-container.mod-personal-license .personal-license-user-info');
-		let discordUsernameInputEl = fish('.discord-username-input');
-		let forumUsernameInputEl = fish('.forum-username-input');
 		let commercialLicenseSeatEl = fish('.commercial-license-seat');
 		let subTotalPaymentLineEl = fish('.modal-container.mod-personal-license .payment-line.mod-subtotal');
 		let subTotalPaymentDescEl = fish('.modal-container.mod-personal-license .payment-line.mod-subtotal .payment-desc');
@@ -257,6 +261,14 @@ window.setTimeout(() => {
 		let commercialRenewInfoRenewingEl = fish('.commercial-renew-info-renewing');
 		let commercialRenewInfoNotRenewingEl = fish('.commercial-renew-info-not-renewing');
 		let toggleEls = fishAll('.checkbox-container');
+		let claimDiscordBadgeButton = fish('.claim-discord-badge-button');
+		let claimForumBadgeButton = fish('.claim-forum-badge-button');
+		let discordSuccessModal = fish('.modal-container.mod-discord-success');
+		let discordFailureModal = fish('.modal-container.mod-discord-failure');
+		let forumSuccessModal = fish('.modal-container.mod-forum-success');
+		let forumFailureModal = fish('.modal-container.mod-forum-failure');
+		let discordErrorMessageEl = fish('.modal-container.mod-discord-failure .message.mod-error');
+		let forumErrorMessageEl = fish('.modal-container.mod-forum-failure .message.mod-error');
 
 		let stripeStyles = {
 			base: {
@@ -290,6 +302,13 @@ window.setTimeout(() => {
 		let elements = stripe.elements();
 		let card = elements.create('card', {style: stripeStyles});
 
+		let closeModal = () => {
+			card.unmount();
+			personalLicensePaymentContainerEl.hide();
+			modalsEl.forEach(el => el.hide());
+			catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
+		};
+
 		let decodedUrl = decodeUrlQuery(hash);
 		if (decodedUrl.mode && decodedUrl.mode === 'signup') {
 			removeHash();
@@ -313,6 +332,23 @@ window.setTimeout(() => {
 			if (paymentSessionId) {
 				// continue to charge for commercial/personal license
 			}
+		}
+
+		let decodedQuery = decodeUrlQuery(query);
+
+		// User just authorized Discord to know their identity, now grant the badges
+		if (decodedQuery.code) {
+			request(CLAIM_DISCORD_ROLE_URL, {
+				code: decodedQuery.code
+			}, (err, data) => {
+				if (err) {
+					discordErrorMessageEl.setText(err);
+					discordFailureModal.show();
+				} else {
+					discordSuccessModal.show();
+				}
+				window.history.replaceState(null, null, window.location.pathname);
+			})
 		}
 
 		// syncInstructionEl.hide();
@@ -396,17 +432,6 @@ window.setTimeout(() => {
 							} else {
 								window.location.reload();
 							}
-						});
-					} else {
-						let discordName = discordUsernameInputEl.value;
-						let forumName = forumUsernameInputEl.value;
-
-						request(PERSONAL_ROLES_URL, {
-							discord: discordName,
-							forum: forumName
-						}, () => {
-							// best effort, do not need to show error for this
-							window.location.reload();
 						});
 					}
 				}
@@ -909,6 +934,7 @@ window.setTimeout(() => {
 				buyingVariation = el.getAttribute('data-tier');
 
 				if (buyingVariation === 'unlimited') {
+					closeModal();
 					donationModalEl.show();
 					paymentErrorEl = donationModalEl.find('.payment-error');
 					card.mount('.modal-container.mod-donation .card-element');
@@ -960,7 +986,6 @@ window.setTimeout(() => {
 						}
 
 						personalLicensePaymentContainerEl.show();
-						personalLicenseUserInfoEl.show();
 						card.mount('.modal-container.mod-personal-license .card-element');
 					}
 				});
@@ -968,13 +993,7 @@ window.setTimeout(() => {
 		});
 
 		closeModalButtonEls.forEach(el => {
-			el.addEventListener('click', () => {
-				card.unmount();
-				personalLicensePaymentContainerEl.hide();
-				personalLicenseUserInfoEl.hide();
-				modalsEl.forEach(el => el.hide());
-				catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
-			});
+			el.addEventListener('click', closeModal);
 		});
 
 		gotoSignupEl.addEventListener('click', () => {
@@ -1346,6 +1365,26 @@ window.setTimeout(() => {
 				} else {
 					el.addClass('is-enabled');
 				}
+			});
+		});
+
+		claimDiscordBadgeButton.addEventListener('click', () => {
+			let discordClientId = '823279137640415263';
+			let redirectUrl = location.protocol + '//' + location.host + location.pathname;
+			claimDiscordBadgeButton.addClass('mod-disabled');
+			location.href= `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code&scope=guilds.join%20identify`;
+		});
+
+		claimForumBadgeButton.addEventListener('click', () => {
+			claimForumBadgeButton.addClass('mod-disabled');
+			request(CLAIM_FORUM_ROLE_URL, {}, (err, data) => {
+				if (err) {
+					forumErrorMessageEl.setText(err);
+					forumFailureModal.show();
+				} else {
+					forumSuccessModal.show();
+				}
+				claimForumBadgeButton.removeClass('mod-disabled');
 			});
 		});
 	});
