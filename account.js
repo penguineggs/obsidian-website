@@ -1372,7 +1372,7 @@ window.setTimeout(() => {
 			let discordClientId = '823279137640415263';
 			let redirectUrl = location.protocol + '//' + location.host + location.pathname;
 			claimDiscordBadgeButton.addClass('mod-disabled');
-			location.href= `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code&scope=guilds.join%20identify`;
+			location.href= `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code&scope=identify`;
 		});
 
 		claimForumBadgeButton.addEventListener('click', () => {
