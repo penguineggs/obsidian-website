@@ -351,8 +351,6 @@ window.setTimeout(() => {
 			})
 		}
 
-		// syncInstructionEl.hide();
-
 		stripeCatalystFormEl.addEventListener('submit', function (event) {
 			event.preventDefault();
 
@@ -433,6 +431,8 @@ window.setTimeout(() => {
 								window.location.reload();
 							}
 						});
+					} else {
+						window.location.reload();
 					}
 				}
 			});
@@ -441,9 +441,11 @@ window.setTimeout(() => {
 		let setLoading = function (isLoading) {
 			if (isLoading) {
 				// Disable the button and show a spinner
+				fishAll('button.submit').forEach(s => s.addClass('mod-disabled'));
 				fishAll('.spinner').forEach(s => s.removeClass('hidden'));
 				fishAll('.button-text').forEach(s => s.addClass('hidden'));
 			} else {
+				fishAll('button.submit').forEach(s => s.removeClass('mod-disabled'));
 				fishAll('.spinner').forEach(s => s.addClass('hidden'));
 				fishAll('.button-text').forEach(s => s.removeClass('hidden'));
 			}
