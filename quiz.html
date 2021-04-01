@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Obsidian Quiz</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+	<link rel="shortcut icon" href="./favicon.ico">
+
+	<meta name="description" content="Obsidian: A knowledge base that works on local Markdown files.">
+	<meta name="twitter:description" content="Obsidian – A knowledge base that works on local Markdown files.">
+	<meta property="og:title" content="Obsidian: A knowledge base that works on local Markdown files."/>
+	<meta name="twitter:title" content="Obsidian: A knowledge base that works on local Markdown files.">
+	<meta property="og:description" content="Obsidian – A knowledge base that works on local Markdown files.">
+	<meta name="twitter:site" content="@obsdmd">
+	<meta name="twitter:domain" content="obsidian.md">
+	<meta name="twitter:creator" content="@obsdmd">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://obsidian.md/images/banner.png">
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="https://obsidian.md/images/banner.png"/>
+	<style>
+		.quiz-area {
+			width: 90vw;
+			max-width: 1000px;
+			margin: 10px auto;
+			border-radius: 8px;
+			border: 1px solid var(--background-modifier-border);
+			background-color: var(--background-primary);
+			padding: 20px 40px;
+			cursor: default;
+			position: relative;
+		}
+
+		.quiz-result {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			background-color: rgba(0, 0, 0, 0.9);
+			border-radius: 10px;
+		}
+
+		.quiz-result-text {
+			font-size: 24px;
+			padding: 40px;
+			line-height: 40px;
+		}
+
+		.quiz-result.mod-success {
+			color: var(--interactive-success);
+		}
+
+		.quiz-result.mod-error {
+			color: var(--text-error);
+		}
+
+		.quiz-question {
+			font-size: 20px;
+			line-height: 40px;
+		}
+
+		.quiz-question img {
+			margin-top: 20px;
+			max-width: 80%;
+		}
+
+		.quiz-options {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-size: 18px;
+		}
+
+		.quiz-option {
+			border-radius: 8px;
+			cursor: pointer;
+			background-color: var(--background-primary-alt);
+			margin: 6px 0;
+			padding: 10px 20px;
+		}
+
+		.quiz-option:hover {
+			background-color: var(--interactive-accent);
+			color: var(--text-on-accent)
+		}
+	</style>
+</head>
+<body class="theme-dark">
+<div class="static-full-page-container mod-publish">
+	<div class="app-header">
+		<a class="nav-logo" href="/">
+			<span class="nav-logo-icon">
+			<svg viewBox="0 0 100 100" width="30" height="30">
+			<defs>
+				<linearGradient id="a" x1="82.85" y1="30.41" x2="51.26" y2="105.9"
+				                gradientTransform="matrix(1, 0, 0, -1, -22.41, 110.97)" gradientUnits="userSpaceOnUse">
+					<stop offset="0" stop-color="#6c56cc"/>
+					<stop offset="1" stop-color="#9785e5"/>
+				</linearGradient>
+			</defs>
+			<polygon points="44.61 0 12.91 17.52 0 45.45 19.57 90.47 47.35 100 52.44 89.8 63 26.39 44.61 0"
+			         fill="#34208c"/>
+			<polygon points="63 26.39 43.44 14.41 16.43 35.7 47.35 100 52.44 89.8 63 26.39" fill="url(#a)"/>
+			<polygon points="63 26.39 63 26.39 44.61 0 43.44 14.41 63 26.39" fill="#af9ff4"/>
+			<polygon points="43.44 14.41 44.61 0 12.91 17.52 16.43 35.7 43.44 14.41" fill="#4a37a0"/>
+			<polygon points="16.43 35.7 19.57 90.47 47.35 100 16.43 35.7" fill="#4a37a0"/>
+		</svg>
+		</span>
+			<span class="nav-logo-text">Obsidian</span>
+		</a>
+
+		<a href="https://twitter.com/obsdmd" class="app-header-link mod-twitter" target="_blank">
+			<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="34px" height="24px">
+				<path
+					d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"/>
+			</svg>
+		</a>
+		<a class="app-header-link" href="/pricing">Pricing</a>
+		<a class="app-header-link" href="/features">Features</a>
+		<a class="app-header-link" href="/publish">Publish</a>
+		<a class="app-header-link" href="/sync">Sync</a>
+		<a class="app-header-link" href="/community">Community</a>
+		<a class="app-header-link" href="/account">Account</a>
+
+		<a href="#" class="static-header-menu">
+			<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34px" height="24px">
+				<path fill="currentColor" stroke="currentColor"
+				      d="M6,18c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1s0.4-1.4,0-2 c-0.4-0.6-1-1-1.8-1H6z M6,48c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1 c0.4-0.6,0.4-1.4,0-2s-1-1-1.8-1H6z M6,78c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1 s0.4-1.4,0-2s-1-1-1.8-1H6z"/>
+			</svg>
+		</a>
+	</div>
+
+	<div class="hero-container">
+		<div class="hero-inner">
+			<h1 class="hero-headline">Can't keep up with<br> plugins & themes?</h1>
+			<div class="hero-intro-text">
+				<p>Obsidian Quiz is here to help. Quiz your knowledge<br> on our awesome community plugins and themes!
+				</p>
+			</div>
+			<div class="hero-button-container">
+				<button class="mod-cta js-start-quiz">
+					Start quiz
+				</button>
+			</div>
+		</div>
+		<div class="quiz-area" style="display: none">
+			<div class="quiz-question"></div>
+			<div class="quiz-options"></div>
+			<div class="quiz-result">
+				<div class="quiz-result-text"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="static-footer">
+		<div class="footer-groups">
+			<ul class="footer-link-group">
+				<li class="footer-header">Obsidian</li>
+				<li><a href="https://publish.obsidian.md/help" target="_blank">Help</a></li>
+				<li><a href="/faq">FAQ</a></li>
+				<li><a href="https://forum.obsidian.md/c/announcements" target="_blank">Release notes</a></li>
+				<li><a href="https://trello.com/b/Psqfqp7I/obsidian-roadmap" target="_blank">Roadmap</a></li>
+			</ul>
+
+			<ul class="footer-link-group">
+				<li class="footer-header">Social</li>
+				<li><a href="/about">About us</a></li>
+				<li><a href="https://twitter.com/obsdmd" target="_blank">Follow us on Twitter</a></li>
+				<li><a href="https://discord.gg/veuWUTm" target="_blank">Community Discord</a></li>
+				<li><a href="https://forum.obsidian.md" target="_blank">Community forum</a></li>
+			</ul>
+
+			<ul class="footer-link-group">
+				<li class="footer-header">Spread the word</li>
+				<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product
+					Hunt</a>
+				<li><a href="https://alternativeto.net/software/obsidian/about/" target="_blank">Like us on
+					AlternativeTo</a>
+				</li>
+				<li><a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
+				       target="_blank">Like
+					us on Slant</a></li>
+				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
+				</li>
+			</ul>
+
+			<ul class="footer-link-group">
+				<li class="footer-header">Legal</li>
+				<li><a href="/eula">License information (EULA)</a></li>
+				<li><a href="/terms">Terms of Service</a></li>
+				<li><a href="/privacy">Privacy policy</a></li>
+				<li><a href="/privacy-statement">Privacy statement</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-copyright u-center-text"><span>© 2021 Obsidian</span></div>
+	</div>
+
+</div>
+<div class="static-header-pop-up-nav-container">
+	<div class="static-header-pop-up-nav-close-button"></div>
+	<div class="static-header-pop-up-nav">
+		<a class="header-pop-up-nav-link" href="/pricing">Pricing</a>
+		<a class="header-pop-up-nav-link" href="/features">Features</a>
+		<a class="header-pop-up-nav-link" href="/publish">Publish</a>
+		<a class="header-pop-up-nav-link" href="/sync">Sync</a>
+		<a class="header-pop-up-nav-link" href="/community">Community</a>
+		<a class="header-pop-up-nav-link" href="/account">Account</a>
+	</div>
+</div>
+
+<script src="enhance.js"></script>
+<script src="static.js"></script>
+<script>
+	(async () => {
+		function getRawGithubUrl(repo, branch, file) {
+			return 'https://raw.githubusercontent.com/' + repo + '/' + (branch || 'master') + '/' + file;
+		}
+
+		function getRandomIndex(array) {
+			return Math.floor(Math.random() * array.length);
+		}
+
+		const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
+		const THEMES_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-css-themes.json');
+		const PLUGIN_GUESS_NAME_BY_DESC = 'GUESS_NAME_BY_DESC';
+		const PLUGIN_GUESS_DESC_BY_NAME = 'GUESS_DESC_BY_NAME';
+		const PLUGIN_GUESS_AUTHOR_BY_NAME = 'GUESS_AUTHOR_BY_NAME';
+		const PLUGIN_GUESS_AUTHOR_BY_DESC = 'GUESS_AUTHOR_BY_DESC';
+		const PLUGIN_QUESTION_TYPES = [
+			PLUGIN_GUESS_NAME_BY_DESC,
+			PLUGIN_GUESS_DESC_BY_NAME,
+			PLUGIN_GUESS_AUTHOR_BY_NAME,
+			PLUGIN_GUESS_AUTHOR_BY_DESC
+		];
+
+		const THEME_GUESS_NAME_BY_IMAGE = 'GUESS_NAME_BY_IMAGE';
+		const THEME_GUESS_DARK_MODE_BY_NAME = 'GUESS_DARK_MODE_BY_NAME';
+		const THEME_GUESS_LIGHT_MODE_BY_NAME = 'GUESS_LIGHT_MODE_BY_NAME';
+		const THEME_GUESS_AUTHOR_BY_IMAGE = 'GUESS_AUTHOR_BY_IMAGE';
+		const THEME_QUESTION_TYPES = [
+			THEME_GUESS_NAME_BY_IMAGE,
+			THEME_GUESS_DARK_MODE_BY_NAME,
+			THEME_GUESS_LIGHT_MODE_BY_NAME,
+			THEME_GUESS_AUTHOR_BY_IMAGE
+		];
+
+		let getCommunityPlugins = async () => {
+			let result = await ajaxPromise({url: COMMUNITY_PLUGIN_URL});
+
+			if (!Array.isArray(result)) {
+				throw new Error('Failed to parse community plugins.');
+			}
+
+			return result;
+		};
+
+		let getCommunityThemes = async () => {
+			let result = await ajaxPromise({url: THEMES_URL});
+
+			if (!Array.isArray(result)) {
+				throw new Error('Failed to parse community plugins.');
+			}
+
+			return result;
+		};
+
+		let quizAreaEl = fish('.quiz-area');
+		let quizQuestionEl = fish('.quiz-question');
+		let quizOptionsEl = fish('.quiz-options');
+		let quizResultEl = fish('.quiz-result');
+		let quizResultTextEl = fish('.quiz-result-text');
+		quizResultEl.addEventListener('click', () => {
+			nextQuestion();
+		});
+
+		let startQuiz = fish('.js-start-quiz');
+		startQuiz.addEventListener('click', () => {
+			nextQuestion();
+		});
+
+		let plugins = await getCommunityPlugins();
+		let themes = await getCommunityThemes();
+
+		let showSuccess = () => {
+			quizResultTextEl.setText('🎉 Correct!');
+			quizResultEl.removeClass('mod-error');
+			quizResultEl.addClass('mod-success');
+			quizResultEl.show();
+		};
+
+		let showError = (correctAnswer) => {
+			quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}".`);
+			quizResultEl.removeClass('mod-success');
+			quizResultEl.addClass('mod-error');
+			quizResultEl.show();
+		};
+
+		let nextQuestion = () => {
+			quizAreaEl.show();
+			startQuiz.hide();
+			quizResultEl.hide();
+			let isPluginQuestion = Math.random() > 0.5;
+			quizOptionsEl.empty();
+
+			// plugin question
+			if (isPluginQuestion) {
+				let questionType = PLUGIN_QUESTION_TYPES[getRandomIndex(PLUGIN_QUESTION_TYPES)];
+				let existingIndices = [];
+				let optionsCount = 4, remainingOptions = 4;
+
+				while (remainingOptions > 0) {
+					let selectedPluginIndex = getRandomIndex(plugins);
+					if (!existingIndices.contains(selectedPluginIndex)) {
+						existingIndices.push(selectedPluginIndex);
+						remainingOptions -= 1;
+					}
+				}
+
+				let correctIndex = getRandomIndex(existingIndices);
+				let correctPlugin = plugins[existingIndices[correctIndex]];
+
+				if (questionType === PLUGIN_GUESS_AUTHOR_BY_DESC) {
+					quizQuestionEl.innerHTML = `Who is the author of the plugin that does this?<br>"${correctPlugin.description}"`;
+
+					for (let i = 0; i < optionsCount; i++) {
+						let index = existingIndices[i];
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].author}, el => {
+							el.addEventListener('click', () => {
+								if (i === correctIndex) {
+									showSuccess();
+								} else {
+									showError(correctPlugin.author);
+								}
+							});
+						});
+					}
+				} else if (questionType === PLUGIN_GUESS_AUTHOR_BY_NAME) {
+					quizQuestionEl.innerHTML = `Who is the author of the "${correctPlugin.name}" plugin?`;
+
+					for (let i = 0; i < optionsCount; i++) {
+						let index = existingIndices[i];
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].author}, el => {
+							el.addEventListener('click', () => {
+								if (i === correctIndex) {
+									showSuccess();
+								} else {
+									showError(correctPlugin.author);
+								}
+							});
+						});
+					}
+				} else if (questionType === PLUGIN_GUESS_DESC_BY_NAME) {
+					quizQuestionEl.innerHTML = `What does the "${correctPlugin.name}" plugin do?`;
+
+					for (let i = 0; i < optionsCount; i++) {
+						let index = existingIndices[i];
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].description}, el => {
+							el.addEventListener('click', () => {
+								if (i === correctIndex) {
+									showSuccess();
+								} else {
+									showError(correctPlugin.description);
+								}
+							});
+						});
+					}
+				} else if (questionType === PLUGIN_GUESS_NAME_BY_DESC) {
+					quizQuestionEl.innerHTML = `What's the name of the plugin that does this?<br>"${correctPlugin.description}"?`;
+
+					for (let i = 0; i < optionsCount; i++) {
+						let index = existingIndices[i];
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].name}, el => {
+							el.addEventListener('click', () => {
+								if (i === correctIndex) {
+									showSuccess();
+								} else {
+									showError(correctPlugin.name);
+								}
+							});
+						});
+					}
+				}
+			}
+			// theme question
+			else {
+				let questionType = THEME_QUESTION_TYPES[getRandomIndex(THEME_QUESTION_TYPES)];
+				let existingIndices = [];
+				let optionsCount = 4, remainingOptions = 4;
+
+				while (remainingOptions > 0) {
+					let selectedThemeIndex = getRandomIndex(themes);
+					if (!existingIndices.contains(selectedThemeIndex)) {
+						existingIndices.push(selectedThemeIndex);
+						remainingOptions -= 1;
+					}
+				}
+
+				let correctIndex = getRandomIndex(existingIndices);
+				let correctTheme = themes[existingIndices[correctIndex]];
+				console.log(correctIndex, correctTheme);
+
+				if (questionType === THEME_GUESS_AUTHOR_BY_IMAGE) {
+					let screenshotUrl = getRawGithubUrl(correctTheme.repo, correctTheme.branch, correctTheme.screenshot);
+					quizQuestionEl.innerHTML = `Who is the author of this theme?<br><img src="${screenshotUrl}">`;
+
+					for (let i = 0; i < optionsCount; i++) {
+						let index = existingIndices[i];
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: themes[index].author}, el => {
+							el.addEventListener('click', () => {
+								if (i === correctIndex) {
+									showSuccess();
+								} else {
+									showError(correctTheme.author);
+								}
+							});
+						});
+					}
+				} else if (questionType === THEME_GUESS_DARK_MODE_BY_NAME) {
+					quizQuestionEl.innerHTML = `Does the "${correctTheme.name}" theme have a dark mode?`;
+					let hasDarkMode = correctTheme.modes.contains('dark');
+
+					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'Yes'}, el => {
+						el.addEventListener('click', () => {
+							if (hasDarkMode) {
+								showSuccess();
+							} else {
+								showError('no');
+							}
+						});
+					});
+					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'No'}, el => {
+						el.addEventListener('click', () => {
+							if (!hasDarkMode) {
+								showSuccess();
+							} else {
+								showError('yes');
+							}
+						});
+					});
+				} else if (questionType === THEME_GUESS_LIGHT_MODE_BY_NAME) {
+					quizQuestionEl.innerHTML = `Does the "${correctTheme.name}" theme have a light mode?`;
+					let hasLightMode = correctTheme.modes.contains('light');
+
+					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'Yes'}, el => {
+						el.addEventListener('click', () => {
+							if (hasLightMode) {
+								showSuccess();
+							} else {
+								showError('no');
+							}
+						});
+					});
+					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'No'}, el => {
+						el.addEventListener('click', () => {
+							if (!hasLightMode) {
+								showSuccess();
+							} else {
+								showError('yes');
+							}
+						});
+					});
+				} else if (questionType === THEME_GUESS_NAME_BY_IMAGE) {
+					let screenshotUrl = getRawGithubUrl(correctTheme.repo, correctTheme.branch, correctTheme.screenshot);
+					quizQuestionEl.innerHTML = `What's the name of this theme?<br><img src="${screenshotUrl}">`;
+
+					for (let i = 0; i < optionsCount; i++) {
+						let index = existingIndices[i];
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: themes[index].name}, el => {
+							el.addEventListener('click', () => {
+								if (i === correctIndex) {
+									showSuccess();
+								} else {
+									showError(correctTheme.name);
+								}
+							});
+						});
+					}
+				}
+			}
+		};
+
+	})();
+</script>
+</body>
+</html>
