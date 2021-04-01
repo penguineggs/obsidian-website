@@ -376,7 +376,7 @@
 			};
 
 			let endGame = () => {
-				quizResultTextEl.setText(`That was the last question! Your final score is ${score}.`);
+				quizResultTextEl.innerHTML = `That was the last question! Your final score is ${score}.<br>Click to play again!`;
 				quizResultEl.removeClasses(['mod-error', 'mod-success']);
 				quizResultEl.addClass('mod-end');
 				quizResultEl.show();
