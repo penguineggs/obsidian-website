@@ -21,6 +21,10 @@
 	<meta property="og:type" content="website"/>
 	<meta property="og:image" content="https://obsidian.md/images/banner.png"/>
 	<style>
+		.hero-inner {
+			margin-bottom: 120px;
+		}
+
 		.quiz-area {
 			width: 90vw;
 			max-width: 1000px;
@@ -33,13 +37,20 @@
 			position: relative;
 		}
 
-		.quiz-scoreboard {
+		.quiz-scoreboard, .quiz-progress {
 			font-size: 22px;
 			position: absolute;
-			right: 20px;
 			top: 14px;
 			color: var(--text-accent);
 			font-weight: 800;
+		}
+
+		.quiz-scoreboard {
+			right: 20px;
+		}
+
+		.quiz-progress {
+			left: 20px;
 		}
 
 		.current-score {
@@ -76,6 +87,10 @@
 
 		.quiz-result.mod-error .quiz-result-text {
 			background-color: var(--background-modifier-error);
+		}
+
+		.quiz-result.mod-end .quiz-result-text {
+			background-color: var(--interactive-accent);
 		}
 
 		.quiz-question {
@@ -167,7 +182,7 @@
 		<div class="hero-inner">
 			<h1 class="hero-headline">Can't keep up with<br> plugins & themes?</h1>
 			<div class="hero-intro-text">
-				<p>Obsidian Quiz is here to help. Quiz your knowledge<br> on our awesome community plugins and themes!
+				<p>Obsidian Quiz is here to help. Quiz your knowledge<br> of our awesome community plugins and themes!
 				</p>
 			</div>
 			<div class="hero-button-container">
@@ -177,7 +192,9 @@
 			</div>
 		</div>
 		<div class="quiz-area" style="display: none">
-			<div class="quiz-scoreboard">
+			<div class="quiz-progress"><span class="current-question">1</span> / 15</div>
+			<div>
+				<div class="quiz-scoreboard">
 				<span class="crystal-icon"><svg viewBox="0 0 100 100" width="24" height="24">
 			<defs>
 				<linearGradient id="a" x1="82.85" y1="30.41" x2="51.26" y2="105.9"
@@ -193,352 +210,373 @@
 			<polygon points="43.44 14.41 44.61 0 12.91 17.52 16.43 35.7 43.44 14.41" fill="#4a37a0"></polygon>
 			<polygon points="16.43 35.7 19.57 90.47 47.35 100 16.43 35.7" fill="#4a37a0"></polygon>
 		</svg></span> × <span class="current-score">0</span>
+				</div>
+				<div class="quiz-question"></div>
+				<div class="quiz-options"></div>
+				<div class="quiz-result">
+					<div class="quiz-result-text"></div>
+				</div>
 			</div>
-			<div class="quiz-question"></div>
-			<div class="quiz-options"></div>
-			<div class="quiz-result">
-				<div class="quiz-result-text"></div>
+		</div>
+
+		<div class="static-footer">
+			<div class="footer-groups">
+				<ul class="footer-link-group">
+					<li class="footer-header">Obsidian</li>
+					<li><a href="https://publish.obsidian.md/help" target="_blank">Help</a></li>
+					<li><a href="/faq">FAQ</a></li>
+					<li><a href="https://forum.obsidian.md/c/announcements" target="_blank">Release notes</a></li>
+					<li><a href="https://trello.com/b/Psqfqp7I/obsidian-roadmap" target="_blank">Roadmap</a></li>
+				</ul>
+
+				<ul class="footer-link-group">
+					<li class="footer-header">Social</li>
+					<li><a href="/about">About us</a></li>
+					<li><a href="https://twitter.com/obsdmd" target="_blank">Follow us on Twitter</a></li>
+					<li><a href="https://discord.gg/veuWUTm" target="_blank">Community Discord</a></li>
+					<li><a href="https://forum.obsidian.md" target="_blank">Community forum</a></li>
+				</ul>
+
+				<ul class="footer-link-group">
+					<li class="footer-header">Spread the word</li>
+					<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product
+						Hunt</a>
+					<li><a href="https://alternativeto.net/software/obsidian/about/" target="_blank">Like us on
+						AlternativeTo</a>
+					</li>
+					<li><a
+						href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
+						target="_blank">Like
+						us on Slant</a></li>
+					<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on
+						YourStack</a>
+					</li>
+				</ul>
+
+				<ul class="footer-link-group">
+					<li class="footer-header">Legal</li>
+					<li><a href="/eula">License information (EULA)</a></li>
+					<li><a href="/terms">Terms of Service</a></li>
+					<li><a href="/privacy">Privacy policy</a></li>
+					<li><a href="/privacy-statement">Privacy statement</a></li>
+				</ul>
 			</div>
+
+			<div class="footer-copyright u-center-text"><span>© 2021 Obsidian</span></div>
+		</div>
+
+	</div>
+	<div class="static-header-pop-up-nav-container">
+		<div class="static-header-pop-up-nav-close-button"></div>
+		<div class="static-header-pop-up-nav">
+			<a class="header-pop-up-nav-link" href="/pricing">Pricing</a>
+			<a class="header-pop-up-nav-link" href="/features">Features</a>
+			<a class="header-pop-up-nav-link" href="/publish">Publish</a>
+			<a class="header-pop-up-nav-link" href="/sync">Sync</a>
+			<a class="header-pop-up-nav-link" href="/community">Community</a>
+			<a class="header-pop-up-nav-link" href="/account">Account</a>
 		</div>
 	</div>
 
-	<div class="static-footer">
-		<div class="footer-groups">
-			<ul class="footer-link-group">
-				<li class="footer-header">Obsidian</li>
-				<li><a href="https://publish.obsidian.md/help" target="_blank">Help</a></li>
-				<li><a href="/faq">FAQ</a></li>
-				<li><a href="https://forum.obsidian.md/c/announcements" target="_blank">Release notes</a></li>
-				<li><a href="https://trello.com/b/Psqfqp7I/obsidian-roadmap" target="_blank">Roadmap</a></li>
-			</ul>
-
-			<ul class="footer-link-group">
-				<li class="footer-header">Social</li>
-				<li><a href="/about">About us</a></li>
-				<li><a href="https://twitter.com/obsdmd" target="_blank">Follow us on Twitter</a></li>
-				<li><a href="https://discord.gg/veuWUTm" target="_blank">Community Discord</a></li>
-				<li><a href="https://forum.obsidian.md" target="_blank">Community forum</a></li>
-			</ul>
-
-			<ul class="footer-link-group">
-				<li class="footer-header">Spread the word</li>
-				<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product
-					Hunt</a>
-				<li><a href="https://alternativeto.net/software/obsidian/about/" target="_blank">Like us on
-					AlternativeTo</a>
-				</li>
-				<li><a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
-				       target="_blank">Like
-					us on Slant</a></li>
-				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
-				</li>
-			</ul>
-
-			<ul class="footer-link-group">
-				<li class="footer-header">Legal</li>
-				<li><a href="/eula">License information (EULA)</a></li>
-				<li><a href="/terms">Terms of Service</a></li>
-				<li><a href="/privacy">Privacy policy</a></li>
-				<li><a href="/privacy-statement">Privacy statement</a></li>
-			</ul>
-		</div>
-
-		<div class="footer-copyright u-center-text"><span>© 2021 Obsidian</span></div>
-	</div>
-
-</div>
-<div class="static-header-pop-up-nav-container">
-	<div class="static-header-pop-up-nav-close-button"></div>
-	<div class="static-header-pop-up-nav">
-		<a class="header-pop-up-nav-link" href="/pricing">Pricing</a>
-		<a class="header-pop-up-nav-link" href="/features">Features</a>
-		<a class="header-pop-up-nav-link" href="/publish">Publish</a>
-		<a class="header-pop-up-nav-link" href="/sync">Sync</a>
-		<a class="header-pop-up-nav-link" href="/community">Community</a>
-		<a class="header-pop-up-nav-link" href="/account">Account</a>
-	</div>
-</div>
-
-<script src="enhance.js"></script>
-<script src="static.js"></script>
-<script>
-	(async () => {
-		function getRawGithubUrl(repo, branch, file) {
-			return 'https://raw.githubusercontent.com/' + repo + '/' + (branch || 'master') + '/' + file;
-		}
-
-		function getRandomIndex(array) {
-			return Math.floor(Math.random() * array.length);
-		}
-
-		const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
-		const THEMES_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-css-themes.json');
-		const PLUGIN_GUESS_NAME_BY_DESC = 'GUESS_NAME_BY_DESC';
-		const PLUGIN_GUESS_DESC_BY_NAME = 'GUESS_DESC_BY_NAME';
-		const PLUGIN_GUESS_AUTHOR_BY_NAME = 'GUESS_AUTHOR_BY_NAME';
-		const PLUGIN_GUESS_AUTHOR_BY_DESC = 'GUESS_AUTHOR_BY_DESC';
-		const PLUGIN_QUESTION_TYPES = [
-			PLUGIN_GUESS_NAME_BY_DESC,
-			PLUGIN_GUESS_DESC_BY_NAME,
-			PLUGIN_GUESS_AUTHOR_BY_NAME,
-			PLUGIN_GUESS_AUTHOR_BY_DESC
-		];
-
-		const THEME_GUESS_NAME_BY_IMAGE = 'GUESS_NAME_BY_IMAGE';
-		const THEME_GUESS_DARK_MODE_BY_NAME = 'GUESS_DARK_MODE_BY_NAME';
-		const THEME_GUESS_LIGHT_MODE_BY_NAME = 'GUESS_LIGHT_MODE_BY_NAME';
-		const THEME_GUESS_AUTHOR_BY_IMAGE = 'GUESS_AUTHOR_BY_IMAGE';
-		const THEME_QUESTION_TYPES = [
-			THEME_GUESS_NAME_BY_IMAGE,
-			THEME_GUESS_DARK_MODE_BY_NAME,
-			THEME_GUESS_LIGHT_MODE_BY_NAME,
-			THEME_GUESS_AUTHOR_BY_IMAGE
-		];
-
-		let getCommunityPlugins = async () => {
-			let result = await ajaxPromise({url: COMMUNITY_PLUGIN_URL});
-
-			if (!Array.isArray(result)) {
-				throw new Error('Failed to parse community plugins.');
+	<script src="enhance.js"></script>
+	<script src="static.js"></script>
+	<script>
+		(async () => {
+			function getRawGithubUrl(repo, branch, file) {
+				return 'https://raw.githubusercontent.com/' + repo + '/' + (branch || 'master') + '/' + file;
 			}
 
-			return result;
-		};
-
-		let getCommunityThemes = async () => {
-			let result = await ajaxPromise({url: THEMES_URL});
-
-			if (!Array.isArray(result)) {
-				throw new Error('Failed to parse community plugins.');
+			function getRandomIndex(array) {
+				return Math.floor(Math.random() * array.length);
 			}
 
-			return result;
-		};
+			const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
+			const THEMES_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-css-themes.json');
+			const PLUGIN_GUESS_NAME_BY_DESC = 'GUESS_NAME_BY_DESC';
+			const PLUGIN_GUESS_DESC_BY_NAME = 'GUESS_DESC_BY_NAME';
+			const PLUGIN_GUESS_AUTHOR_BY_NAME = 'GUESS_AUTHOR_BY_NAME';
+			const PLUGIN_GUESS_AUTHOR_BY_DESC = 'GUESS_AUTHOR_BY_DESC';
+			const PLUGIN_QUESTION_TYPES = [
+				PLUGIN_GUESS_NAME_BY_DESC,
+				PLUGIN_GUESS_DESC_BY_NAME,
+				PLUGIN_GUESS_AUTHOR_BY_NAME,
+				PLUGIN_GUESS_AUTHOR_BY_DESC
+			];
 
-		let quizAreaEl = fish('.quiz-area');
-		let quizQuestionEl = fish('.quiz-question');
-		let quizOptionsEl = fish('.quiz-options');
-		let quizResultEl = fish('.quiz-result');
-		let quizResultTextEl = fish('.quiz-result-text');
-		let currentScore = fish('.current-score');
-		let score = 0;
+			const THEME_GUESS_NAME_BY_IMAGE = 'GUESS_NAME_BY_IMAGE';
+			const THEME_GUESS_DARK_MODE_BY_NAME = 'GUESS_DARK_MODE_BY_NAME';
+			const THEME_GUESS_LIGHT_MODE_BY_NAME = 'GUESS_LIGHT_MODE_BY_NAME';
+			const THEME_GUESS_AUTHOR_BY_IMAGE = 'GUESS_AUTHOR_BY_IMAGE';
+			const THEME_QUESTION_TYPES = [
+				THEME_GUESS_NAME_BY_IMAGE,
+				THEME_GUESS_DARK_MODE_BY_NAME,
+				THEME_GUESS_LIGHT_MODE_BY_NAME,
+				THEME_GUESS_AUTHOR_BY_IMAGE
+			];
 
-		quizResultEl.addEventListener('click', () => {
-			nextQuestion();
-		});
+			let getCommunityPlugins = async () => {
+				let result = await ajaxPromise({url: COMMUNITY_PLUGIN_URL});
 
-		let startQuiz = fish('.js-start-quiz');
-		startQuiz.addEventListener('click', () => {
-			nextQuestion();
-		});
-
-		let plugins = await getCommunityPlugins();
-		let themes = await getCommunityThemes();
-
-		let showSuccess = () => {
-			quizResultTextEl.setText('🎉 Correct! You mined 1 crystal!');
-			quizResultEl.removeClass('mod-error');
-			quizResultEl.addClass('mod-success');
-			quizResultEl.show();
-
-			score += 1;
-			currentScore.setText(score);
-		};
-
-		let showError = (correctAnswer, penalty) => {
-			quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}". You dropped ${penalty === 1 ? '1 crystal' : penalty + ' crystals'}!`);
-			quizResultEl.removeClass('mod-success');
-			quizResultEl.addClass('mod-error');
-			quizResultEl.show();
-
-			score -= penalty;
-			currentScore.setText(score);
-		};
-
-		let nextQuestion = () => {
-			quizAreaEl.show();
-			startQuiz.hide();
-			quizResultEl.hide();
-			let isPluginQuestion = Math.random() > 0.5;
-			quizOptionsEl.empty();
-
-			// plugin question
-			if (isPluginQuestion) {
-				let questionType = PLUGIN_QUESTION_TYPES[getRandomIndex(PLUGIN_QUESTION_TYPES)];
-				let existingIndices = [];
-				let optionsCount = 4, remainingOptions = 4;
-
-				while (remainingOptions > 0) {
-					let selectedPluginIndex = getRandomIndex(plugins);
-					if (!existingIndices.contains(selectedPluginIndex)) {
-						existingIndices.push(selectedPluginIndex);
-						remainingOptions -= 1;
-					}
+				if (!Array.isArray(result)) {
+					throw new Error('Failed to parse community plugins.');
 				}
 
-				let correctIndex = getRandomIndex(existingIndices);
-				let correctPlugin = plugins[existingIndices[correctIndex]];
+				return result;
+			};
 
-				if (questionType === PLUGIN_GUESS_AUTHOR_BY_DESC) {
-					quizQuestionEl.innerHTML = `Who is the author of the plugin that does this?<br>"${correctPlugin.description}"`;
+			let getCommunityThemes = async () => {
+				let result = await ajaxPromise({url: THEMES_URL});
 
-					for (let i = 0; i < optionsCount; i++) {
-						let index = existingIndices[i];
-						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].author}, el => {
-							el.addEventListener('click', () => {
-								if (i === correctIndex) {
-									showSuccess();
-								} else {
-									showError(correctPlugin.author, 1);
-								}
-							});
-						});
-					}
-				} else if (questionType === PLUGIN_GUESS_AUTHOR_BY_NAME) {
-					quizQuestionEl.innerHTML = `Who is the author of the "${correctPlugin.name}" plugin?`;
-
-					for (let i = 0; i < optionsCount; i++) {
-						let index = existingIndices[i];
-						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].author}, el => {
-							el.addEventListener('click', () => {
-								if (i === correctIndex) {
-									showSuccess();
-								} else {
-									showError(correctPlugin.author, 1);
-								}
-							});
-						});
-					}
-				} else if (questionType === PLUGIN_GUESS_DESC_BY_NAME) {
-					quizQuestionEl.innerHTML = `What does the "${correctPlugin.name}" plugin do?`;
-
-					for (let i = 0; i < optionsCount; i++) {
-						let index = existingIndices[i];
-						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].description}, el => {
-							el.addEventListener('click', () => {
-								if (i === correctIndex) {
-									showSuccess();
-								} else {
-									showError(correctPlugin.description, 3);
-								}
-							});
-						});
-					}
-				} else if (questionType === PLUGIN_GUESS_NAME_BY_DESC) {
-					quizQuestionEl.innerHTML = `What's the name of the plugin that does this?<br>"${correctPlugin.description}"?`;
-
-					for (let i = 0; i < optionsCount; i++) {
-						let index = existingIndices[i];
-						quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].name}, el => {
-							el.addEventListener('click', () => {
-								if (i === correctIndex) {
-									showSuccess();
-								} else {
-									showError(correctPlugin.name, 3);
-								}
-							});
-						});
-					}
-				}
-			}
-			// theme question
-			else {
-				let questionType = THEME_QUESTION_TYPES[getRandomIndex(THEME_QUESTION_TYPES)];
-				let existingIndices = [];
-				let optionsCount = 4, remainingOptions = 4;
-
-				while (remainingOptions > 0) {
-					let selectedThemeIndex = getRandomIndex(themes);
-					if (!existingIndices.contains(selectedThemeIndex)) {
-						existingIndices.push(selectedThemeIndex);
-						remainingOptions -= 1;
-					}
+				if (!Array.isArray(result)) {
+					throw new Error('Failed to parse community plugins.');
 				}
 
-				let correctIndex = getRandomIndex(existingIndices);
-				let correctTheme = themes[existingIndices[correctIndex]];
+				return result;
+			};
 
-				if (questionType === THEME_GUESS_AUTHOR_BY_IMAGE) {
-					let screenshotUrl = getRawGithubUrl(correctTheme.repo, correctTheme.branch, correctTheme.screenshot);
-					quizQuestionEl.innerHTML = `Who is the author of this theme?<br><img src="${screenshotUrl}">`;
+			let quizAreaEl = fish('.quiz-area');
+			let quizQuestionEl = fish('.quiz-question');
+			let quizOptionsEl = fish('.quiz-options');
+			let quizResultEl = fish('.quiz-result');
+			let quizResultTextEl = fish('.quiz-result-text');
+			let currentScore = fish('.current-score');
+			let currentProgress = fish('.current-question');
+			let score = 0;
+			let currentQuestion = 0;
+			let questionLimit = 15;
 
-					for (let i = 0; i < optionsCount; i++) {
-						let index = existingIndices[i];
-						quizOptionsEl.createDiv({cls: 'quiz-option', text: themes[index].author}, el => {
-							el.addEventListener('click', () => {
-								if (i === correctIndex) {
-									showSuccess();
-								} else {
-									showError(correctTheme.author, 1);
-								}
-							});
-						});
+			quizResultEl.addEventListener('click', () => {
+				nextQuestion();
+			});
+
+			let startQuiz = fish('.js-start-quiz');
+			startQuiz.addEventListener('click', () => {
+				nextQuestion();
+			});
+
+			let plugins = await getCommunityPlugins();
+			let themes = await getCommunityThemes();
+
+			let showSuccess = () => {
+				quizResultTextEl.setText('🎉 Correct! You mined 1 crystal!');
+				quizResultEl.removeClasses(['mod-error', 'mod-end']);
+				quizResultEl.addClass('mod-success');
+				quizResultEl.show();
+
+				score += 1;
+			};
+
+			let showError = (correctAnswer, penalty) => {
+				quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}". You dropped ${penalty === 1 ? '1 crystal' : penalty + ' crystals'}!`);
+				quizResultEl.removeClasses(['mod-success', 'mod-end']);
+				quizResultEl.addClass('mod-error');
+				quizResultEl.show();
+
+				score -= penalty;
+			};
+
+			let endGame = () => {
+				quizResultTextEl.setText(`That was the last question! Your final score is ${score}.`);
+				quizResultEl.removeClasses(['mod-error', 'mod-success']);
+				quizResultEl.addClass('mod-end');
+				quizResultEl.show();
+			};
+
+			let nextQuestion = () => {
+				currentQuestion++;
+				currentProgress.setText(currentQuestion);
+				currentScore.setText(score);
+
+				if (currentQuestion > questionLimit) {
+					endGame();
+					score = 0;
+					currentQuestion = 0;
+					return;
+				}
+
+				quizAreaEl.show();
+				startQuiz.hide();
+				quizResultEl.hide();
+				let isPluginQuestion = Math.random() > 0.5;
+				quizOptionsEl.empty();
+
+				// plugin question
+				if (isPluginQuestion) {
+					let questionType = PLUGIN_QUESTION_TYPES[getRandomIndex(PLUGIN_QUESTION_TYPES)];
+					let existingIndices = [];
+					let optionsCount = 4, remainingOptions = 4;
+
+					while (remainingOptions > 0) {
+						let selectedPluginIndex = getRandomIndex(plugins);
+						if (!existingIndices.contains(selectedPluginIndex)) {
+							existingIndices.push(selectedPluginIndex);
+							remainingOptions -= 1;
+						}
 					}
-				} else if (questionType === THEME_GUESS_DARK_MODE_BY_NAME) {
-					quizQuestionEl.innerHTML = `Does the "${correctTheme.name}" theme have a dark mode?`;
-					let hasDarkMode = correctTheme.modes.contains('dark');
 
-					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'Yes'}, el => {
-						el.addEventListener('click', () => {
-							if (hasDarkMode) {
-								showSuccess();
-							} else {
-								showError('no', 2);
-							}
-						});
-					});
-					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'No'}, el => {
-						el.addEventListener('click', () => {
-							if (!hasDarkMode) {
-								showSuccess();
-							} else {
-								showError('yes', 2);
-							}
-						});
-					});
-				} else if (questionType === THEME_GUESS_LIGHT_MODE_BY_NAME) {
-					quizQuestionEl.innerHTML = `Does the "${correctTheme.name}" theme have a light mode?`;
-					let hasLightMode = correctTheme.modes.contains('light');
+					let correctIndex = getRandomIndex(existingIndices);
+					let correctPlugin = plugins[existingIndices[correctIndex]];
 
-					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'Yes'}, el => {
-						el.addEventListener('click', () => {
-							if (hasLightMode) {
-								showSuccess();
-							} else {
-								showError('no', 2);
-							}
-						});
-					});
-					quizOptionsEl.createDiv({cls: 'quiz-option', text: 'No'}, el => {
-						el.addEventListener('click', () => {
-							if (!hasLightMode) {
-								showSuccess();
-							} else {
-								showError('yes', 2);
-							}
-						});
-					});
-				} else if (questionType === THEME_GUESS_NAME_BY_IMAGE) {
-					let screenshotUrl = getRawGithubUrl(correctTheme.repo, correctTheme.branch, correctTheme.screenshot);
-					quizQuestionEl.innerHTML = `What's the name of this theme?<br><img src="${screenshotUrl}">`;
+					if (questionType === PLUGIN_GUESS_AUTHOR_BY_DESC) {
+						quizQuestionEl.innerHTML = `Who is the author of the plugin that does this?<br>"${correctPlugin.description}"`;
 
-					for (let i = 0; i < optionsCount; i++) {
-						let index = existingIndices[i];
-						quizOptionsEl.createDiv({cls: 'quiz-option', text: themes[index].name}, el => {
-							el.addEventListener('click', () => {
-								if (i === correctIndex) {
-									showSuccess();
-								} else {
-									showError(correctTheme.name, 3);
-								}
+						for (let i = 0; i < optionsCount; i++) {
+							let index = existingIndices[i];
+							quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].author}, el => {
+								el.addEventListener('click', () => {
+									if (i === correctIndex) {
+										showSuccess();
+									} else {
+										showError(correctPlugin.author, 1);
+									}
+								});
 							});
-						});
+						}
+					} else if (questionType === PLUGIN_GUESS_AUTHOR_BY_NAME) {
+						quizQuestionEl.innerHTML = `Who is the author of the "${correctPlugin.name}" plugin?`;
+
+						for (let i = 0; i < optionsCount; i++) {
+							let index = existingIndices[i];
+							quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].author}, el => {
+								el.addEventListener('click', () => {
+									if (i === correctIndex) {
+										showSuccess();
+									} else {
+										showError(correctPlugin.author, 1);
+									}
+								});
+							});
+						}
+					} else if (questionType === PLUGIN_GUESS_DESC_BY_NAME) {
+						quizQuestionEl.innerHTML = `What does the "${correctPlugin.name}" plugin do?`;
+
+						for (let i = 0; i < optionsCount; i++) {
+							let index = existingIndices[i];
+							quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].description}, el => {
+								el.addEventListener('click', () => {
+									if (i === correctIndex) {
+										showSuccess();
+									} else {
+										showError(correctPlugin.description, 3);
+									}
+								});
+							});
+						}
+					} else if (questionType === PLUGIN_GUESS_NAME_BY_DESC) {
+						quizQuestionEl.innerHTML = `What's the name of the plugin that does this?<br>"${correctPlugin.description}"`;
+
+						for (let i = 0; i < optionsCount; i++) {
+							let index = existingIndices[i];
+							quizOptionsEl.createDiv({cls: 'quiz-option', text: plugins[index].name}, el => {
+								el.addEventListener('click', () => {
+									if (i === correctIndex) {
+										showSuccess();
+									} else {
+										showError(correctPlugin.name, 3);
+									}
+								});
+							});
+						}
 					}
 				}
-			}
-		};
+				// theme question
+				else {
+					let questionType = THEME_QUESTION_TYPES[getRandomIndex(THEME_QUESTION_TYPES)];
+					let existingIndices = [];
+					let optionsCount = 4, remainingOptions = 4;
 
-	})();
-</script>
+					while (remainingOptions > 0) {
+						let selectedThemeIndex = getRandomIndex(themes);
+						if (!existingIndices.contains(selectedThemeIndex)) {
+							existingIndices.push(selectedThemeIndex);
+							remainingOptions -= 1;
+						}
+					}
+
+					let correctIndex = getRandomIndex(existingIndices);
+					let correctTheme = themes[existingIndices[correctIndex]];
+
+					if (questionType === THEME_GUESS_AUTHOR_BY_IMAGE) {
+						let screenshotUrl = getRawGithubUrl(correctTheme.repo, correctTheme.branch, correctTheme.screenshot);
+						quizQuestionEl.innerHTML = `Who is the author of this theme?<br><img src="${screenshotUrl}">`;
+
+						for (let i = 0; i < optionsCount; i++) {
+							let index = existingIndices[i];
+							quizOptionsEl.createDiv({cls: 'quiz-option', text: themes[index].author}, el => {
+								el.addEventListener('click', () => {
+									if (i === correctIndex) {
+										showSuccess();
+									} else {
+										showError(correctTheme.author, 1);
+									}
+								});
+							});
+						}
+					} else if (questionType === THEME_GUESS_DARK_MODE_BY_NAME) {
+						quizQuestionEl.innerHTML = `Does the "${correctTheme.name}" theme have a dark mode?`;
+						let hasDarkMode = correctTheme.modes.contains('dark');
+
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: 'Yes'}, el => {
+							el.addEventListener('click', () => {
+								if (hasDarkMode) {
+									showSuccess();
+								} else {
+									showError('no', 2);
+								}
+							});
+						});
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: 'No'}, el => {
+							el.addEventListener('click', () => {
+								if (!hasDarkMode) {
+									showSuccess();
+								} else {
+									showError('yes', 2);
+								}
+							});
+						});
+					} else if (questionType === THEME_GUESS_LIGHT_MODE_BY_NAME) {
+						quizQuestionEl.innerHTML = `Does the "${correctTheme.name}" theme have a light mode?`;
+						let hasLightMode = correctTheme.modes.contains('light');
+
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: 'Yes'}, el => {
+							el.addEventListener('click', () => {
+								if (hasLightMode) {
+									showSuccess();
+								} else {
+									showError('no', 2);
+								}
+							});
+						});
+						quizOptionsEl.createDiv({cls: 'quiz-option', text: 'No'}, el => {
+							el.addEventListener('click', () => {
+								if (!hasLightMode) {
+									showSuccess();
+								} else {
+									showError('yes', 2);
+								}
+							});
+						});
+					} else if (questionType === THEME_GUESS_NAME_BY_IMAGE) {
+						let screenshotUrl = getRawGithubUrl(correctTheme.repo, correctTheme.branch, correctTheme.screenshot);
+						quizQuestionEl.innerHTML = `What's the name of this theme?<br><img src="${screenshotUrl}">`;
+
+						for (let i = 0; i < optionsCount; i++) {
+							let index = existingIndices[i];
+							quizOptionsEl.createDiv({cls: 'quiz-option', text: themes[index].name}, el => {
+								el.addEventListener('click', () => {
+									if (i === correctIndex) {
+										showSuccess();
+									} else {
+										showError(correctTheme.name, 3);
+									}
+								});
+							});
+						}
+					}
+				}
+			};
+
+		})();
+	</script>
 </body>
 </html>
