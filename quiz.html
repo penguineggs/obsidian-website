@@ -368,12 +368,10 @@
 			};
 
 			let showError = (correctAnswer, penalty) => {
-				quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}". You dropped ${penalty === 1 ? '1 crystal' : penalty + ' crystals'}!`);
+				quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}".`);
 				quizResultEl.removeClasses(['mod-success', 'mod-end']);
 				quizResultEl.addClass('mod-error');
 				quizResultEl.show();
-
-				score -= penalty;
 			};
 
 			let endGame = () => {
