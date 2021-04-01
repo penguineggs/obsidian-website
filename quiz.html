@@ -28,9 +28,17 @@
 			border-radius: 8px;
 			border: 1px solid var(--background-modifier-border);
 			background-color: var(--background-primary);
-			padding: 20px 40px;
+			padding: 50px 40px 20px 40px;
 			cursor: default;
 			position: relative;
+		}
+
+		.quiz-scoreboard {
+			font-size: 22px;
+			position: absolute;
+			right: 14px;
+			top: 14px;
+			color: var(--text-muted);
 		}
 
 		.quiz-result {
@@ -62,8 +70,10 @@
 		}
 
 		.quiz-question {
-			font-size: 20px;
+			font-size: 22px;
 			line-height: 40px;
+			font-weight: 600;
+			margin-bottom: 20px;
 		}
 
 		.quiz-question img {
@@ -89,6 +99,13 @@
 		.quiz-option:hover {
 			background-color: var(--interactive-accent);
 			color: var(--text-on-accent)
+		}
+
+		.crystal-icon {
+			height: 30px;
+			width: 30px;
+			position: relative;
+			top: 2px;
 		}
 	</style>
 </head>
@@ -151,6 +168,23 @@
 			</div>
 		</div>
 		<div class="quiz-area" style="display: none">
+			<div class="quiz-scoreboard">
+				<span class="crystal-icon"><svg viewBox="0 0 100 100" width="24" height="24">
+			<defs>
+				<linearGradient id="a" x1="82.85" y1="30.41" x2="51.26" y2="105.9"
+				                gradientTransform="matrix(1, 0, 0, -1, -22.41, 110.97)" gradientUnits="userSpaceOnUse">
+					<stop offset="0" stop-color="#6c56cc"></stop>
+					<stop offset="1" stop-color="#9785e5"></stop>
+				</linearGradient>
+			</defs>
+			<polygon points="44.61 0 12.91 17.52 0 45.45 19.57 90.47 47.35 100 52.44 89.8 63 26.39 44.61 0"
+			         fill="#34208c"></polygon>
+			<polygon points="63 26.39 43.44 14.41 16.43 35.7 47.35 100 52.44 89.8 63 26.39" fill="url(#a)"></polygon>
+			<polygon points="63 26.39 63 26.39 44.61 0 43.44 14.41 63 26.39" fill="#af9ff4"></polygon>
+			<polygon points="43.44 14.41 44.61 0 12.91 17.52 16.43 35.7 43.44 14.41" fill="#4a37a0"></polygon>
+			<polygon points="16.43 35.7 19.57 90.47 47.35 100 16.43 35.7" fill="#4a37a0"></polygon>
+		</svg></span> × <span class="current-score">0</span>
+			</div>
 			<div class="quiz-question"></div>
 			<div class="quiz-options"></div>
 			<div class="quiz-result">
@@ -277,6 +311,9 @@
 		let quizOptionsEl = fish('.quiz-options');
 		let quizResultEl = fish('.quiz-result');
 		let quizResultTextEl = fish('.quiz-result-text');
+		let currentScore = fish('.current-score');
+		let score = 0;
+
 		quizResultEl.addEventListener('click', () => {
 			nextQuestion();
 		});
@@ -290,17 +327,23 @@
 		let themes = await getCommunityThemes();
 
 		let showSuccess = () => {
-			quizResultTextEl.setText('🎉 Correct!');
+			quizResultTextEl.setText('🎉 Correct! You mined 1 crystal!');
 			quizResultEl.removeClass('mod-error');
 			quizResultEl.addClass('mod-success');
 			quizResultEl.show();
+
+			score += 1;
+			currentScore.setText(score);
 		};
 
 		let showError = (correctAnswer) => {
-			quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}".`);
+			quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}". You dropped 3 crystals!`);
 			quizResultEl.removeClass('mod-success');
 			quizResultEl.addClass('mod-error');
 			quizResultEl.show();
+
+			score -= 3;
+			currentScore.setText(score);
 		};
 
 		let nextQuestion = () => {
