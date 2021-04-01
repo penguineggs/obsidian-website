@@ -36,9 +36,14 @@
 		.quiz-scoreboard {
 			font-size: 22px;
 			position: absolute;
-			right: 14px;
+			right: 20px;
 			top: 14px;
-			color: var(--text-muted);
+			color: var(--text-accent);
+			font-weight: 800;
+		}
+
+		.current-score {
+			margin-left: 1px;
 		}
 
 		.quiz-result {
@@ -56,17 +61,21 @@
 		}
 
 		.quiz-result-text {
-			font-size: 24px;
-			padding: 40px;
-			line-height: 40px;
+			font-size: 22px;
+			line-height: 34px;
+			padding: 20px 40px;
+			background-color: var(--background-primary);
+			border-radius: 20px;
+			color: var(--text-on-accent);
+			max-width: 80%;
 		}
 
-		.quiz-result.mod-success {
-			color: var(--interactive-success);
+		.quiz-result.mod-success .quiz-result-text {
+			background-color: var(--interactive-success);
 		}
 
-		.quiz-result.mod-error {
-			color: var(--text-error);
+		.quiz-result.mod-error .quiz-result-text {
+			background-color: var(--background-modifier-error);
 		}
 
 		.quiz-question {
@@ -336,13 +345,13 @@
 			currentScore.setText(score);
 		};
 
-		let showError = (correctAnswer) => {
-			quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}". You dropped 3 crystals!`);
+		let showError = (correctAnswer, penalty) => {
+			quizResultTextEl.setText(`🙅 Wrong! The correct answer is "${correctAnswer}". You dropped ${penalty === 1 ? '1 crystal' : penalty + ' crystals'}!`);
 			quizResultEl.removeClass('mod-success');
 			quizResultEl.addClass('mod-error');
 			quizResultEl.show();
 
-			score -= 3;
+			score -= penalty;
 			currentScore.setText(score);
 		};
 
@@ -380,7 +389,7 @@
 								if (i === correctIndex) {
 									showSuccess();
 								} else {
-									showError(correctPlugin.author);
+									showError(correctPlugin.author, 1);
 								}
 							});
 						});
@@ -395,7 +404,7 @@
 								if (i === correctIndex) {
 									showSuccess();
 								} else {
-									showError(correctPlugin.author);
+									showError(correctPlugin.author, 1);
 								}
 							});
 						});
@@ -410,7 +419,7 @@
 								if (i === correctIndex) {
 									showSuccess();
 								} else {
-									showError(correctPlugin.description);
+									showError(correctPlugin.description, 3);
 								}
 							});
 						});
@@ -425,7 +434,7 @@
 								if (i === correctIndex) {
 									showSuccess();
 								} else {
-									showError(correctPlugin.name);
+									showError(correctPlugin.name, 3);
 								}
 							});
 						});
@@ -448,7 +457,6 @@
 
 				let correctIndex = getRandomIndex(existingIndices);
 				let correctTheme = themes[existingIndices[correctIndex]];
-				console.log(correctIndex, correctTheme);
 
 				if (questionType === THEME_GUESS_AUTHOR_BY_IMAGE) {
 					let screenshotUrl = getRawGithubUrl(correctTheme.repo, correctTheme.branch, correctTheme.screenshot);
@@ -461,7 +469,7 @@
 								if (i === correctIndex) {
 									showSuccess();
 								} else {
-									showError(correctTheme.author);
+									showError(correctTheme.author, 1);
 								}
 							});
 						});
@@ -475,7 +483,7 @@
 							if (hasDarkMode) {
 								showSuccess();
 							} else {
-								showError('no');
+								showError('no', 2);
 							}
 						});
 					});
@@ -484,7 +492,7 @@
 							if (!hasDarkMode) {
 								showSuccess();
 							} else {
-								showError('yes');
+								showError('yes', 2);
 							}
 						});
 					});
@@ -497,7 +505,7 @@
 							if (hasLightMode) {
 								showSuccess();
 							} else {
-								showError('no');
+								showError('no', 2);
 							}
 						});
 					});
@@ -506,7 +514,7 @@
 							if (!hasLightMode) {
 								showSuccess();
 							} else {
-								showError('yes');
+								showError('yes', 2);
 							}
 						});
 					});
@@ -521,7 +529,7 @@
 								if (i === correctIndex) {
 									showSuccess();
 								} else {
-									showError(correctTheme.name);
+									showError(correctTheme.name, 3);
 								}
 							});
 						});
