@@ -261,14 +261,17 @@ window.setTimeout(() => {
 		let commercialRenewInfoRenewingEl = fish('.commercial-renew-info-renewing');
 		let commercialRenewInfoNotRenewingEl = fish('.commercial-renew-info-not-renewing');
 		let toggleEls = fishAll('.checkbox-container');
-		let claimDiscordBadgeButton = fish('.claim-discord-badge-button');
-		let claimForumBadgeButton = fish('.claim-forum-badge-button');
+		let claimDiscordBadgeButtons = fishAll('.claim-discord-badge-button');
+		let claimForumBadgeButtons = fishAll('.claim-forum-badge-button');
 		let discordSuccessModal = fish('.modal-container.mod-discord-success');
 		let discordFailureModal = fish('.modal-container.mod-discord-failure');
 		let forumSuccessModal = fish('.modal-container.mod-forum-success');
 		let forumFailureModal = fish('.modal-container.mod-forum-failure');
 		let discordErrorMessageEl = fish('.modal-container.mod-discord-failure .message.mod-error');
 		let forumErrorMessageEl = fish('.modal-container.mod-forum-failure .message.mod-error');
+		let catalystPaymentSuccessModal = fish('.modal-container.mod-catalyst-payment-success');
+		let publishPaymentSuccessModal = fish('.modal-container.mod-publish-payment-success');
+		let syncPaymentSuccessModal = fish('.modal-container.mod-sync-payment-success');
 
 		let stripeStyles = {
 			base: {
@@ -431,6 +434,15 @@ window.setTimeout(() => {
 								window.location.reload();
 							}
 						});
+					} else if (buyingLicense === 'catalyst') {
+						closeModal();
+						catalystPaymentSuccessModal.show();
+					} else if (buyingLicense === 'publish') {
+						closeModal();
+						publishPaymentSuccessModal.show();
+					} else if (buyingLicense === 'sync') {
+						closeModal();
+						syncPaymentSuccessModal.show();
 					} else {
 						window.location.reload();
 					}
@@ -1370,15 +1382,15 @@ window.setTimeout(() => {
 			});
 		});
 
-		claimDiscordBadgeButton.addEventListener('click', () => {
+		claimDiscordBadgeButtons.forEach(el => el.addEventListener('click', () => {
 			let discordClientId = '823279137640415263';
 			let redirectUrl = location.protocol + '//' + location.host + location.pathname;
-			claimDiscordBadgeButton.addClass('mod-disabled');
-			location.href= `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code&scope=identify`;
-		});
+			el.addClass('mod-disabled');
+			location.href = `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code&scope=identify`;
+		}));
 
-		claimForumBadgeButton.addEventListener('click', () => {
-			claimForumBadgeButton.addClass('mod-disabled');
+		claimForumBadgeButtons.forEach(el => el.addEventListener('click', () => {
+			el.addClass('mod-disabled');
 			request(CLAIM_FORUM_ROLE_URL, {}, (err, data) => {
 				if (err) {
 					forumErrorMessageEl.setText(err);
@@ -1386,8 +1398,8 @@ window.setTimeout(() => {
 				} else {
 					forumSuccessModal.show();
 				}
-				claimForumBadgeButton.removeClass('mod-disabled');
+				el.removeClass('mod-disabled');
 			});
-		});
+		}));
 	});
 }, 500);
