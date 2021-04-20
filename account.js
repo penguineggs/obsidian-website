@@ -913,19 +913,23 @@ window.setTimeout(() => {
 			attemptLogout();
 		});
 
-		commercialLicenseKeyEl.addEventListener('click', () => {
+		let copyCommercialLicenseKey = () => {
 			let licenseKey = commercialLicenseKeyEl.getText();
 			let copySuccess = copyTextToClipboard(licenseKey);
 
 			if (copySuccess) {
 				commercialLicenseKeyEl.setText('Copied!');
 				commercialLicenseKeyEl.addClass('is-copied');
+				commercialLicenseKeyEl.removeEventListener('click', copyCommercialLicenseKey);
 				setTimeout(() => {
 					commercialLicenseKeyEl.removeClass('is-copied');
 					commercialLicenseKeyEl.setText(licenseKey);
+					commercialLicenseKeyEl.addEventListener('click', copyCommercialLicenseKey);
 				}, 500)
 			}
-		});
+		};
+
+		commercialLicenseKeyEl.addEventListener('click', copyCommercialLicenseKey);
 
 		commercialLicenseSeatEl.addEventListener('input', () => {
 			buyingLicense = 'business';
