@@ -300,16 +300,22 @@ window.setTimeout(() => {
 		let signupMode = false;
 		let resetPasswordId = null;
 		let resetPasswordKey = null;
+		let refreshAfterClosing = false;
 
 		let stripe = window.Stripe(STRIPE_PUBLIC_KEY);
 		let elements = stripe.elements();
 		let card = elements.create('card', {style: stripeStyles});
 
 		let closeModal = () => {
+			if (refreshAfterClosing) {
+				window.location.reload();
+				return;
+			}
 			card.unmount();
 			personalLicensePaymentContainerEl.hide();
 			modalsEl.forEach(el => el.hide());
 			catalystTierCardsEl.forEach(el => el.removeClass('is-selected'));
+			refreshAfterClosing = false;
 		};
 
 		let decodedUrl = decodeUrlQuery(hash);
@@ -436,12 +442,15 @@ window.setTimeout(() => {
 						});
 					} else if (buyingLicense === 'catalyst') {
 						closeModal();
+						refreshAfterClosing = true;
 						catalystPaymentSuccessModal.show();
 					} else if (buyingLicense === 'publish') {
 						closeModal();
+						refreshAfterClosing = true;
 						publishPaymentSuccessModal.show();
 					} else if (buyingLicense === 'sync') {
 						closeModal();
+						refreshAfterClosing = true;
 						syncPaymentSuccessModal.show();
 					} else {
 						window.location.reload();
