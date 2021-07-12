@@ -333,7 +333,7 @@
 
 		function renderPlugins(query) {
 			query = (query || '').trim();
-			let words = query.split(' ');
+			let words = query.toLowerCase().split(' ');
 			pluginsEl.empty();
 
 			let results = [];
