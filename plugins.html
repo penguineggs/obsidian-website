@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Obsidian Sync</title>
+	<title>Plugins - Obsidian</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./style.css">
@@ -20,6 +20,51 @@
 	<meta name="twitter:image" content="https://obsidian.md/images/banner.png">
 	<meta property="og:type" content="website"/>
 	<meta property="og:image" content="https://obsidian.md/images/banner.png"/>
+	<style>
+		.plugins-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.plugins-container .subfeature {
+			width: 400px;
+			max-width: 100%;
+			cursor: pointer;
+		}
+
+		.plugins-container .subfeature-title {
+			margin-bottom: 0;
+			line-height: 30px;
+		}
+
+		.plugins-container .subfeature-title span {
+			vertical-align: baseline;
+		}
+
+		.plugins-container .author-container {
+			margin-top: 6px;
+		}
+
+		.plugins-container .author-name {
+			font-weight: 600;
+			transition: all 100ms ease-in-out;
+		}
+
+		.plugins-container .subfeature:hover .author-name {
+			color: var(--text-accent);
+		}
+
+		.suggestion-highlight {
+			color: var(--text-accent);
+			font-weight: bold;
+		}
+
+		input.plugin-search {
+			font-size: 18px;
+			padding: 20px;
+		}
+	</style>
 </head>
 <body class="theme-dark">
 <div class="static-full-page-container mod-publish">
@@ -69,64 +114,18 @@
 
 	<div class="hero-container">
 		<div class="hero-inner">
-			<h1 class="hero-headline">Peace of mind<br>for your second brain.</h1>
+			<h1 class="hero-headline">Obsidian Plugins</h1>
 			<div class="hero-intro-text">
-				<p>Obsidian Sync is the encrypted sync built into Obsidian.</p>
+				Directory of all <span class="plugin-count"></span> current community plugins.
 			</div>
-			<div class="hero-button-container">
-				<a href="/account">
-					<button class="mod-cta">
-						Buy now
-						<br>
-						<span class="u-muted u-small">$4/month, billed annually</span>
-					</button>
-				</a>
-				<p class="cta-explanation">With 50% early bird pricing for a limited time
-				</p>
-			</div>
+			<p>
+				<input type="text" placeholder="Search plugins..." class="plugin-search">
+			</p>
 		</div>
 	</div>
 
-	<div class="feature-row mod-stripe">
-		<div class="feature-row-inner">
-			<h1 class="feature-title">Stay in sync</h1>
-			<p class="feature-explanation">Obsidian Sync keeps your vaults in sync on multiple devices, including our upcoming mobile app.</p>
-			<p class="feature-explanation">Immediately pick up where you left off when switching between computers.</p>
-		</div>
-	</div>
+	<div class="plugins-container">
 
-	<div class="feature-row">
-		<div class="feature-row-inner">
-			<h1 class="feature-title">Private & encrypted</h1>
-			<p class="feature-explanation">Even when using Obsidian Sync, your data is still primarily on your own hard disk.</p>
-			<p class="feature-explanation">All data going out of or into your device is encrypted. Write freely in your complete privacy.</p>
-		</div>
-	</div>
-
-	<div class="feature-row mod-stripe">
-		<div class="feature-row-inner">
-			<h1 class="feature-title">Your time machine</h1>
-			<p class="feature-explanation">Obsidian Sync comes with 1 year of version history, making it breeze to revert to an earlier version if anything goes wrong.</p>
-			<p class="feature-explanation">All your version histories are encrypted too.</p>
-		</div>
-	</div>
-
-	<div class="feature-row">
-		<div class="feature-row-inner">
-			<h1 class="hero-headline">Obsidian Sync</h1>
-			<p class="hero-intro-text">Peace of mind for your second brain.</p>
-
-			<div class="feature-button-container">
-				<a href="/account">
-					<button class="mod-cta">
-						Buy now
-						<br>
-						<span class="u-muted u-small">$4/month, billed annually</span>
-					</button>
-				</a>
-				<p class="cta-explanation">With 50% early bird pricing for a limited time</p>
-			</div>
-		</div>
 	</div>
 
 	<div class="static-footer">
@@ -154,10 +153,12 @@
 				<li><a href="https://alternativeto.net/software/obsidian/about/" target="_blank">Like us on
 					AlternativeTo</a>
 				</li>
-				<li><a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
-				       target="_blank">Like
+				<li><a
+					href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
+					target="_blank">Like
 					us on Slant</a></li>
-				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on YourStack</a>
+				<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on
+					YourStack</a>
 				</li>
 			</ul>
 
@@ -190,9 +191,208 @@
 <script src="enhance.js"></script>
 <script src="static.js"></script>
 <script>
-	let galleryEl = fish('.hero-gallery');
-	let galleryInnerContainer = fish('.hero-gallery-inner-container');
-	galleryInnerContainer.scrollLeft = (galleryInnerContainer.scrollWidth - galleryEl.scrollWidth) / 2 + 50;
+	(async () => {
+		function renderMatches(el, text, matches) {
+			if (!matches) {
+				el.appendChild(document.createTextNode(text));
+				return;
+			}
+			matches = matches.matches;
+			let i = 0;
+			for (let m = 0; i < text.length && m < matches.length; m++) {
+				let match = matches[m];
+				let start = match[0];
+				let end = match[1];
+				if (end <= 0) {
+					continue;
+				}
+				if (start >= text.length) {
+					break;
+				}
+				if (start < 0) {
+					start = 0;
+				}
+				if (start !== i) {
+					el.appendChild(document.createTextNode(text.substring(i, start)));
+				}
+				el.createSpan({cls: 'suggestion-highlight', text: text.substring(start, end)});
+				i = end;
+			}
+			if (i < text.length) {
+				el.appendChild(document.createTextNode(text.substring(i)));
+			}
+		}
+
+		function sortMatches(a, b) {
+			return a[0] - b[0];
+		}
+
+		function collapseMatches(matches) {
+			if (matches.length === 0) return matches;
+			matches.sort(sortMatches);
+			let results = [matches[0]];
+			for (let i = 1; i < matches.length; i++) {
+				let top = results.last();
+				if (top[1] < matches[i][0]) {
+					results.push(matches[i]);
+				} else if (top[1] < matches[i][1]) {
+					top[1] = matches[i][1];
+				}
+			}
+			return results;
+		}
+
+		function searchSimple(words, query, text) {
+			let lowerText = text.toLowerCase();
+			let matches = [];
+			for (let word of words) {
+				if (!word) {
+					continue;
+				}
+				let matched = false;
+				let index = -1;
+				let len = word.length;
+				while ((index = lowerText.indexOf(word, index)) !== -1) {
+					matched = true;
+					matches.push([index, index + len]);
+					index += len + 1;
+				}
+				if (!matched) {
+					return null;
+				}
+			}
+
+			matches = collapseMatches(matches);
+			if (!matches) {
+				return null;
+			}
+			let score = 0;
+			if (matches.length > 0) {
+				score -= Math.max(0, matches.length - 1);
+				let start = matches[0][0];
+				let end = matches[matches.length - 1][1];
+				score -= ((end - start + 1) - query.length) / 100;
+				score -= start / 1000;
+				score -= (text.length / 10000);
+			}
+			return {score, matches};
+		}
+
+		function getRawGithubUrl(repo, branch, file) {
+			return 'https://raw.githubusercontent.com/' + repo + '/' + (branch || 'master') + '/' + file;
+		}
+
+		const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
+		const THEMES_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-css-themes.json');
+
+		let shuffle = (array) => {
+			var currentIndex = array.length, randomIndex;
+
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex--;
+
+				// And swap it with the current element.
+				[array[currentIndex], array[randomIndex]] = [
+					array[randomIndex], array[currentIndex]];
+			}
+
+			return array;
+		}
+
+		let getCommunityPlugins = async () => {
+			let result = await ajaxPromise({url: COMMUNITY_PLUGIN_URL});
+
+			if (!Array.isArray(result)) {
+				throw new Error('Failed to parse community plugins.');
+			}
+
+			return result;
+		};
+
+		let getCommunityThemes = async () => {
+			let result = await ajaxPromise({url: THEMES_URL});
+
+			if (!Array.isArray(result)) {
+				throw new Error('Failed to parse community plugins.');
+			}
+
+			return result;
+		};
+
+		let pluginsEl = fish('.plugins-container');
+		let pluginCountEl = fish('.plugin-count');
+		let pluginSearchEl = fish('.plugin-search');
+		let plugins = await getCommunityPlugins();
+
+		pluginCountEl.setText(plugins.length);
+		shuffle(plugins);
+
+		function renderPlugins(query) {
+			query = (query || '').trim();
+			let words = query.split(' ');
+			pluginsEl.empty();
+
+			let results = [];
+
+			for (let plugin of plugins) {
+				let score = -Infinity;
+				let nameMatch, descMatch, authorMatch;
+				if (query) {
+					nameMatch = searchSimple(words, query, plugin.name);
+					descMatch = searchSimple(words, query, plugin.description);
+					authorMatch = searchSimple(words, query, plugin.author);
+					if (!nameMatch && !descMatch && !authorMatch) {
+						continue;
+					}
+
+					if (nameMatch) {
+						score = Math.max(nameMatch.score, score);
+					}
+					if (descMatch) {
+						score = Math.max(descMatch.score, score);
+					}
+					if (authorMatch) {
+						score = Math.max(authorMatch.score, score);
+					}
+				}
+
+				let el = createDiv({cls: 'subfeature'}, el => {
+					let nameEl = el.createDiv({cls: 'subfeature-title'});
+					renderMatches(nameEl, plugin.name, nameMatch);
+					el.createEl('p', {cls: 'author-container', text: 'By '}, el => {
+						let authorEl = el.createEl('span', {cls: 'author-name'});
+						renderMatches(authorEl, plugin.author, authorMatch);
+					});
+					let descEl = el.createEl('p', {cls: 'u-muted'});
+					renderMatches(descEl, plugin.description, descMatch);
+
+					el.addEventListener('click', () => {
+						window.open('https://github.com/' + plugin.repo, '_blank');
+					});
+				});
+
+				results.push({score: score, el: el});
+			}
+
+			results.sort(function(a, b) {
+				return a.score - b.score;
+			});
+
+			for (let result of results) {
+				pluginsEl.appendChild(result.el);
+			}
+		}
+
+		renderPlugins();
+		pluginSearchEl.addEventListener('input', () => {
+			let searchTerm = pluginSearchEl.value;
+			renderPlugins(searchTerm);
+		});
+	})();
 </script>
 </body>
 </html>

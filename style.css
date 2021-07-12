@@ -2206,6 +2206,27 @@ button.mod-disabled {
 }
 .static-header-pop-up-nav-container {
   display: none;
+  background-color: var(--background-primary-alt);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
+  left: 20px;
+  line-height: 40px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 35px 0 15px 0;
+  perspective: 2000px;
+  pointer-events: none;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  transform-origin: 100% 0;
+  transform: scale(0.95);
+  transition-duration: 0.25s;
+  transition-property: transform, opacity;
+  white-space: nowrap;
+  width: calc(100% - 40px);
+  will-change: transform, opacity;
+  z-index: 2;
 }
 .static-full-page-container .nav-logo {
   position: absolute;
@@ -2262,6 +2283,7 @@ button.mod-disabled {
 .hero-inner {
   width: 800px;
   margin: 0 auto;
+  max-width: 100%;
 }
 .hero-headline,
 .feature-title {
@@ -2314,8 +2336,8 @@ button.mod-disabled {
   max-width: 800px;
 }
 .mobile-hero-screenshot.mod-phone {
-  height: 700px;
-  width: auto;
+  height: auto;
+  width: 40%;
   position: absolute;
   right: -50px;
   bottom: -40px;
@@ -2393,7 +2415,7 @@ button.mod-disabled {
 }
 .mobile-store-badge {
   display: inline-block;
-  margin: 10px 15px;
+  margin: 10px 4px;
   position: relative;
   opacity: 0.7;
 }
@@ -2433,6 +2455,7 @@ button.mod-disabled {
 .feature-row-inner {
   width: 800px;
   margin: 0 auto;
+  max-width: 100%;
 }
 .feature-row.mod-stripe {
   background-color: var(--background-secondary-alt);
@@ -2637,14 +2660,8 @@ span.mod-huge-punctuation {
   .hero-screenshot-container {
     display: none;
   }
-  .mobile-hero-screenshot-container {
-    max-width: calc(100vw - 50px);
-  }
-  .mobile-hero-screenshot.mod-phone {
-    display: none;
-  }
 }
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 960px) {
   .app-header {
     height: 50px;
     padding: 0 20px;
@@ -2652,6 +2669,12 @@ span.mod-huge-punctuation {
   }
   .app-header .nav-logo-text {
     right: 6px;
+  }
+  .static-header-menu {
+    display: inline-block;
+  }
+  .app-header-link {
+    display: none;
   }
   .static-full-page-container .nav-logo {
     left: 5px;
@@ -2673,12 +2696,55 @@ span.mod-huge-punctuation {
   .app-header-link.mod-twitter {
     display: none;
   }
+  .static-header-pop-up-nav-container {
+    display: block;
+  }
+  .static-header-pop-up-nav-container.is-active {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .static-header-pop-up-nav-close-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+  .static-header-pop-up-nav-close-button:before,
+  .static-header-pop-up-nav-close-button:after {
+    content: '';
+    position: absolute;
+    background-color: var(--text-faint);
+    left: 14px;
+    right: 14px;
+    top: 24px;
+    height: 2px;
+    transition: background 0.1s;
+  }
+  .static-header-pop-up-nav-close-button:before {
+    transform: rotate(45deg);
+  }
+  .static-header-pop-up-nav-close-button:after {
+    transform: rotate(-45deg);
+  }
+  .static-header-pop-up-nav-close-button:hover:before,
+  .static-header-pop-up-nav-close-button:hover:after {
+    background: #999;
+  }
+  .mobile-hero-screenshot.mod-phone {
+    right: -20px;
+  }
+}
+@media only screen and (max-width: 720px) {
   .hero-container {
     padding: 150px 0 100px 0;
     background-image: none;
   }
   .mobile-hero-screenshot-container {
     margin-top: 30px;
+    max-width: calc(100vw - 50px);
   }
   .hero-button-container {
     margin-top: 40px;
@@ -2734,70 +2800,6 @@ span.mod-huge-punctuation {
   .feature-explanation.mod-heading {
     font-size: 22px;
   }
-  .static-header-pop-up-nav-container {
-    display: block;
-    background-color: var(--background-primary-alt);
-    border-radius: 4px;
-    box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
-    left: 20px;
-    line-height: 40px;
-    opacity: 0;
-    overflow: hidden;
-    padding: 35px 0 15px 0;
-    perspective: 2000px;
-    pointer-events: none;
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    transform-origin: 100% 0;
-    transform: scale(0.95);
-    transition-duration: 0.25s;
-    transition-property: transform, opacity;
-    white-space: nowrap;
-    width: calc(100% - 40px);
-    will-change: transform, opacity;
-    z-index: 2;
-  }
-  .static-header-pop-up-nav-container.is-active {
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .static-header-pop-up-nav-close-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-  }
-  .static-header-pop-up-nav-close-button:before,
-  .static-header-pop-up-nav-close-button:after {
-    content: '';
-    position: absolute;
-    background-color: var(--text-faint);
-    left: 14px;
-    right: 14px;
-    top: 24px;
-    height: 2px;
-    transition: background 0.1s;
-  }
-  .static-header-pop-up-nav-close-button:before {
-    transform: rotate(45deg);
-  }
-  .static-header-pop-up-nav-close-button:after {
-    transform: rotate(-45deg);
-  }
-  .static-header-pop-up-nav-close-button:hover:before,
-  .static-header-pop-up-nav-close-button:hover:after {
-    background: #999;
-  }
-  .static-header-menu {
-    display: inline-block;
-  }
-  .app-header-link {
-    display: none;
-  }
   .modal {
     padding: 30px 10px;
     display: flex;
@@ -2808,13 +2810,22 @@ span.mod-huge-punctuation {
     flex: 1 1 auto;
     overflow: auto;
   }
+  .hero-container {
+    padding: 150px 0 40px 0;
+  }
+  .feature-row {
+    padding: 30px 20px;
+  }
+  .feature-row-inner {
+    padding: 20px 10px;
+  }
+  .mobile-hero-screenshot-container {
+    margin-top: 10px;
+  }
 }
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 500px) {
   .mobile-hero-screenshot.mod-tablet {
     display: none;
-  }
-  .mobile-hero-screenshot-container.mod-tablet-only .mobile-hero-screenshot.mod-tablet {
-    display: block;
   }
   .mobile-hero-screenshot.mod-phone {
     display: block;
@@ -3149,9 +3160,13 @@ body {
 .footer-groups {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .footer-copyright {
   margin-top: 20px;
+}
+.footer-link-group {
+  margin: 0 30px 30px 30px;
 }
 @media only screen and (max-width: 720px) {
   .input-label {
@@ -3184,6 +3199,10 @@ body {
   }
   .static-full-page-container.mod-features .static-container img {
     max-width: 80vw !important;
+  }
+  .footer-groups {
+    display: flex;
+    justify-content: flex-start;
   }
 }
 .stripe-badge {
