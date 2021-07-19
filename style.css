@@ -1226,7 +1226,8 @@ textarea {
   color: var(--text-muted);
 }
 .u-pop {
-  color: var(--text-accent-hover);
+  color: var(--text-accent);
+  font-weight: 600;
 }
 .u-muted {
   color: var(--text-muted);
