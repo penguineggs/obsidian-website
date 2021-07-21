@@ -2616,6 +2616,7 @@ span.mod-huge-punctuation {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--text-normal);
+  line-height: 1.5;
 }
 .subfeature-title img {
   width: 50px;
@@ -2811,7 +2812,16 @@ span.mod-huge-punctuation {
     padding: 150px 0 40px 0;
   }
   .feature-row {
-    padding: 30px 20px;
+    padding: 30px 0;
+  }
+  .subfeature {
+    padding: 25px 20px;
+  }
+  .feature-button {
+    margin: 10px 0 0 0;
+  }
+  .subfeature-title img {
+    margin-bottom: 10px;
   }
   .feature-row-inner {
     padding: 20px 10px;
