@@ -209,6 +209,17 @@
 					<a class="js-change-password">Update</a>
 				</div>
 			</div>
+			<div class="setting-item">
+				<div class="setting-item-info">
+					<div class="setting-item-name">Delete account</div>
+					<div class="setting-item-description">
+						Delete your account completely along with your licenses and subscriptions.
+					</div>
+				</div>
+				<div class="setting-item-control">
+					<button class="js-delete-account mod-warning">Delete</button>
+				</div>
+			</div>
 
 			<div class="card-container mod-horizontal">
 				<h1 class="u-center-text">Your license</h1>
@@ -1099,6 +1110,39 @@
 			<div class="modal-button-container">
 				<button class="mod-cta js-confirm-change-password">Confirm change</button>
 				<button class="js-close-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-delete-account" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Delete account</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-error" style="display: none;"></div>
+				</div>
+				<p>
+					<span class="mod-warning">When your account gets deleted, all your commercial licenses, Catalyst licenses,
+					Obsidian Publish and Obsidian Sync subscriptions will be removed, as well as your Obsidian Sync remote vaults and Obsidian Publish sites.</span>
+				</p>
+				<p>
+					You won't be able to continue using these licenses and services. <span class="mod-warning">This action is not reversible
+					and your account cannot be recovered.</span>
+				</p>
+				<p>
+					By typing your password below, you verify that you understand the consequences stated above and wish
+					to continue.
+				</p>
+				<p>
+					<label class="input-label">Password</label>
+					<input class="delete-account-password" type="password" placeholder="Enter password to confirm...">
+				</p>
+			</div>
+			<div class="modal-button-container">
+				<button class="mod-warning js-confirm-delete-account">Confirm deletion</button>
+				<button class="mod-cta js-close-modal">Cancel</button>
 			</div>
 		</div>
 	</div>

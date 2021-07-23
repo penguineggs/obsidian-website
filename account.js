@@ -9,6 +9,7 @@ const RESET_PASS_URL = BASE_URL + '/user/resetpass';
 const CHANGE_NAME_URL = BASE_URL + '/user/changename';
 const CHANGE_EMAIL_URL = BASE_URL + '/user/changeemail';
 const CHANGE_PASSWORD_URL = BASE_URL + '/user/changepass';
+const DELETE_ACCOUNT_URL = BASE_URL + '/user/deleteaccount';
 const LIST_SUBSCRIPTION_URL = BASE_URL + '/subscription/list';
 const GET_STRIPE_SECRET_URL = BASE_URL + '/subscription/stripe/start';
 const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
@@ -144,6 +145,11 @@ window.setTimeout(() => {
 		let changePasswordNewPasswordInputEl = fish('.change-password-new-password');
 		let confirmChangePasswordButtonEl = fish('.js-confirm-change-password');
 		let changePasswordErrorEl = fish('.modal-container.mod-change-password .message.mod-error');
+		let deleteAccountButtonEl = fish('.js-delete-account');
+		let deleteAccountModalEl = fish('.modal-container.mod-delete-account');
+		let deleteAccountPasswordInputEl = fish('.delete-account-password');
+		let confirmDeleteAccountButtonEl = fish('.js-confirm-delete-account');
+		let deleteAccountErrorEl = fish('.modal-container.mod-delete-account .message.mod-error');
 		let changeInfoSuccessModalEl = fish('.modal-container.mod-change-info-success');
 		let logoutButtonEl = fish('.js-logout');
 		let getPublishCardEl = fish('.card.mod-publish');
@@ -1532,7 +1538,37 @@ window.setTimeout(() => {
 					changeInfoSuccessModalEl.show();
 				}
 			});
+		});
 
+		deleteAccountButtonEl.addEventListener('click', () => {
+			deleteAccountModalEl.show();
+		});
+
+		confirmDeleteAccountButtonEl.addEventListener('click', () => {
+			deleteAccountErrorEl.hide();
+
+			let password = deleteAccountPasswordInputEl.value;
+
+			if (password === '') {
+				deleteAccountErrorEl.setText('Please enter your password to confirm account deletion.');
+				deleteAccountErrorEl.show();
+				return;
+			}
+
+			request(DELETE_ACCOUNT_URL, {
+				password
+			}, (err, data) => {
+				if (err) {
+					deleteAccountErrorEl.setText(err);
+					deleteAccountErrorEl.show();
+					return;
+				}
+				else {
+					closeModal();
+					refreshAfterClosing = true;
+					changeInfoSuccessModalEl.show();
+				}
+			});
 		});
 	});
 }, 500);
