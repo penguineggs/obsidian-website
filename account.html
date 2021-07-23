@@ -170,23 +170,45 @@
 		</div>
 
 		<div class="welcome" style="display: none;">
-			<h1 class="page-header">Welcome, <span class="welcome-name"></span>!</h1>
+			<h1 class="page-header">Obsidian account</h1>
 
-			<p>
-				Your account is <span class="welcome-email u-pop"></span>
-				<button class="js-logout mod-float-right">Log out</button>
+			<p class="u-align-right">
+				<button class="js-logout logout-button">Log out</button>
 			</p>
 
-			<hr>
-
-			<div class="u-center-text">
-				<h1 class="u-center-text">Account settings</h1>
-				<button class="js-change-email">Change email</button>
-				<button class="js-change-name">Change name</button>
-				<button class="js-change-password">Change password</button>
+			<div class="setting-item">
+				<div class="setting-item-info">
+					<div class="setting-item-name">Your email</div>
+					<div class="setting-item-description">
+						Your current email is <span class="welcome-email u-pop"></span>.
+					</div>
+				</div>
+				<div class="setting-item-control">
+					<a class="js-change-email">Change email</a>
+				</div>
 			</div>
-
-			<hr>
+			<div class="setting-item">
+				<div class="setting-item-info">
+					<div class="setting-item-name">Your name</div>
+					<div class="setting-item-description">
+						We have your name as <span class="welcome-name u-pop"></span>.
+					</div>
+				</div>
+				<div class="setting-item-control">
+					<a class="js-change-name">Change name</a>
+				</div>
+			</div>
+			<div class="setting-item">
+				<div class="setting-item-info">
+					<div class="setting-item-name">Password</div>
+					<div class="setting-item-description">
+						We recommend using a strong and unique password to protect your account.
+					</div>
+				</div>
+				<div class="setting-item-control">
+					<a class="js-change-password">Update</a>
+				</div>
+			</div>
 
 			<div class="card-container mod-horizontal">
 				<h1 class="u-center-text">Your license</h1>
