@@ -2181,6 +2181,7 @@ button.mod-disabled {
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
 }
 .app-header {
   height: 66px;
@@ -2588,6 +2589,12 @@ span.mod-huge-punctuation {
   display: flex;
   flex-direction: column;
 }
+.testimonial-container {
+  display: flex;
+  padding: 10px 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .subfeature {
   padding: 25px 50px;
   margin: 10px 20px 40px 20px;
@@ -2601,6 +2608,43 @@ span.mod-huge-punctuation {
 .subfeature:hover {
   background-color: var(--background-primary);
   color: var(--text-normal);
+}
+.testimonial {
+  padding: 25px 30px;
+  margin: 10px 20px 20px 20px;
+  font-size: 17px;
+  line-height: 1.5;
+  max-width: 600px;
+  color: var(--text-muted);
+  width: calc(50% - 60px);
+}
+.testimonial.mod-full-width {
+  max-width: 800px;
+  width: 100%;
+}
+.testimonial a {
+  text-decoration: none;
+}
+.testimonial-text {
+  color: var(--text-muted);
+  font-size: 20px;
+}
+.testimonial-person {
+  margin-top: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-normal);
+}
+.testimonial-person a {
+  color: var(--text-normal);
+  transition: color 150ms ease-in-out;
+}
+.testimonial-person a:hover {
+  color: var(--text-accent);
+}
+.testimonial-title {
+  font-size: 15px;
+  margin-top: 4px;
 }
 .subfeature-screenshot {
   width: 80px;
@@ -2653,6 +2697,10 @@ span.mod-huge-punctuation {
 }
 .u-gradient-pop:hover {
   opacity: 1;
+}
+.u-stand-out {
+  color: var(--text-normal);
+  font-weight: 600;
 }
 @media only screen and (max-width: 1130px) {
   .hero-screenshot-container {
@@ -2828,6 +2876,12 @@ span.mod-huge-punctuation {
   }
   .mobile-hero-screenshot-container {
     margin-top: 10px;
+  }
+  .testimonial {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+    margin: 20px 10px;
   }
 }
 @media only screen and (max-width: 500px) {

@@ -6,6 +6,9 @@ const SIGNUP_URL = BASE_URL + '/user/signup';
 const LOGOUT_URL = BASE_URL + '/user/signout';
 const FORGOT_PASS_URL = BASE_URL + '/user/forgetpass';
 const RESET_PASS_URL = BASE_URL + '/user/resetpass';
+const CHANGE_NAME_URL = BASE_URL + '/user/changename';
+const CHANGE_EMAIL_URL = BASE_URL + '/user/changeemail';
+const CHANGE_PASSWORD_URL = BASE_URL + '/user/changepass';
 const LIST_SUBSCRIPTION_URL = BASE_URL + '/subscription/list';
 const GET_STRIPE_SECRET_URL = BASE_URL + '/subscription/stripe/start';
 const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
@@ -124,6 +127,24 @@ window.setTimeout(() => {
 		let signupPasswordEl = fish('.signup-password');
 		let userNameEl = fish('.welcome-name');
 		let userEmailEl = fish('.welcome-email');
+		let changeEmailButtonEl = fish('.js-change-email');
+		let changeEmailModalEl = fish('.modal-container.mod-change-email');
+		let changeEmailNewEmailInputEl = fish('.change-email-new-email');
+		let changeEmailPasswordInputEl = fish('.change-email-password');
+		let confirmChangeEmailButtonEl = fish('.js-confirm-change-email');
+		let changeEmailErrorEl = fish('.modal-container.mod-change-email .message.mod-error');
+		let changeNameButtonEl = fish('.js-change-name');
+		let changeNameModalEl = fish('.modal-container.mod-change-name');
+		let changeNameNewNameInputEl = fish('.change-name-new-name');
+		let confirmChangeNameButtonEl = fish('.js-confirm-change-name');
+		let changeNameErrorEl = fish('.modal-container.mod-change-name .message.mod-error');
+		let changePasswordButtonEl = fish('.js-change-password');
+		let changePasswordModalEl = fish('.modal-container.mod-change-password');
+		let changePasswordOldPasswordInputEl = fish('.change-password-old-password');
+		let changePasswordNewPasswordInputEl = fish('.change-password-new-password');
+		let confirmChangePasswordButtonEl = fish('.js-confirm-change-password');
+		let changePasswordErrorEl = fish('.modal-container.mod-change-password .message.mod-error');
+		let changeInfoSuccessModalEl = fish('.modal-container.mod-change-info-success');
 		let logoutButtonEl = fish('.js-logout');
 		let getPublishCardEl = fish('.card.mod-publish');
 		let getSyncCardEl = fish('.card.mod-sync');
@@ -290,9 +311,7 @@ window.setTimeout(() => {
 			}
 		};
 
-		let hasSyncSubscription = false;
 		let catalystLicenseTier = '';
-		let hasCommercialLicense = false;
 		let buyingLicense = null;
 		let buyingVariation = null;
 		let buyingRenew = null;
@@ -528,7 +547,7 @@ window.setTimeout(() => {
 					// console.log(err);
 					return;
 				}
-				if (data.business && data.business !== null) {
+				if (data.business && data.business !== null && data.business.expiry >= Date.now()) {
 					let bizLicense = data.business;
 
 					commercialLicenseKeyEl.setText(bizLicense.key);
@@ -1405,5 +1424,115 @@ window.setTimeout(() => {
 				el.removeClass('mod-disabled');
 			});
 		}));
+
+		changeEmailButtonEl.addEventListener('click', () => {
+			changeEmailModalEl.show();
+		});
+
+		confirmChangeEmailButtonEl.addEventListener('click', () => {
+			changeEmailErrorEl.hide();
+
+			let newEmail = changeEmailNewEmailInputEl.value;
+			let password = changeEmailPasswordInputEl.value;
+
+			if (newEmail === '') {
+				changeEmailErrorEl.setText('New email cannot be empty.');
+				changeEmailErrorEl.show();
+				return;
+			}
+
+			if (password === '') {
+				changeEmailErrorEl.setText('Password cannot be empty.');
+				changeEmailErrorEl.show();
+				return;
+			}
+
+			request(CHANGE_EMAIL_URL, {
+				password,
+				email: newEmail
+			}, (err, data) => {
+				if (err) {
+					changeEmailErrorEl.setText(err);
+					changeEmailErrorEl.show();
+					return;
+				}
+				else {
+					closeModal();
+					refreshAfterClosing = true;
+					changeInfoSuccessModalEl.show();
+				}
+			});
+		});
+
+		changeNameButtonEl.addEventListener('click', () => {
+			changeNameModalEl.show();
+		});
+
+		confirmChangeNameButtonEl.addEventListener('click', () => {
+			changeNameErrorEl.hide();
+
+			let name = changeNameNewNameInputEl.value;
+
+			if (name === '') {
+				changeNameErrorEl.setText('New name cannot be empty.');
+				changeNameErrorEl.show();
+				return;
+			}
+
+			request(CHANGE_NAME_URL, {
+				name
+			}, (err, data) => {
+				if (err) {
+					changeNameErrorEl.setText(err);
+					changeNameErrorEl.show();
+					return;
+				}
+				else {
+					closeModal();
+					refreshAfterClosing = true;
+					changeInfoSuccessModalEl.show();
+				}
+			});
+		});
+
+		changePasswordButtonEl.addEventListener('click', () => {
+			changePasswordModalEl.show();
+		});
+
+		confirmChangePasswordButtonEl.addEventListener('click', () => {
+			changePasswordErrorEl.hide();
+
+			let oldPassword = changePasswordOldPasswordInputEl.value;
+			let newPassword = changePasswordNewPasswordInputEl.value;
+
+			if (oldPassword === '') {
+				changePasswordErrorEl.setText('Current password cannot be empty.');
+				changePasswordErrorEl.show();
+				return;
+			}
+
+			if (oldPassword === '') {
+				changePasswordErrorEl.setText('New password cannot be empty.');
+				changePasswordErrorEl.show();
+				return;
+			}
+
+			request(CHANGE_PASSWORD_URL, {
+				old_password: oldPassword,
+				new_password: newPassword
+			}, (err, data) => {
+				if (err) {
+					changePasswordErrorEl.setText(err);
+					changePasswordErrorEl.show();
+					return;
+				}
+				else {
+					closeModal();
+					refreshAfterClosing = true;
+					changeInfoSuccessModalEl.show();
+				}
+			});
+
+		});
 	});
 }, 500);

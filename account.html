@@ -172,9 +172,19 @@
 		<div class="welcome" style="display: none;">
 			<h1 class="page-header">Welcome, <span class="welcome-name"></span>!</h1>
 
-			<p>Your account is <span class="welcome-email u-pop"></span>
+			<p>
+				Your account is <span class="welcome-email u-pop"></span>
 				<button class="js-logout mod-float-right">Log out</button>
 			</p>
+
+			<hr>
+
+			<div class="u-center-text">
+				<h1 class="u-center-text">Account settings</h1>
+				<button class="js-change-email">Change email</button>
+				<button class="js-change-name">Change name</button>
+				<button class="js-change-password">Change password</button>
+			</div>
 
 			<hr>
 
@@ -191,8 +201,7 @@
 						<div class="active-text">
 							<p>
 								You have purchased the Catalyst personal license. Thank you for your support! It helps
-								us
-								stay independent so we can pursue our vision.
+								us stay independent so we can pursue our vision.
 							</p>
 							<p>
 								To access insider builds, please refer to <a
@@ -948,10 +957,12 @@
 				<p>Thanks so much for supporting us by upgrading to Catalyst!</p>
 				<p>To get insider builds, <a href="https://help.obsidian.md/Advanced+topics/Insider+builds"
 				                             target="_blank">here's a guide</a>.</p>
-				<p>If you're looking for the mobile app which is in closed beta right now, you can access it by <a href="#" class="claim-forum-badge-button">getting
-						your Discord badge</a> first and then <a
-						href="https://help.obsidian.md/Obsidian/Mobile+app+beta#Getting+access" target="_blank">follow the instructions
-						here</a>.</p>
+				<p>If you're looking for the mobile app which is in closed beta right now, you can access it by <a
+					href="#" class="claim-forum-badge-button">getting
+					your Discord badge</a> first and then <a
+					href="https://help.obsidian.md/Obsidian/Mobile+app+beta#Getting+access" target="_blank">follow the
+					instructions
+					here</a>.</p>
 				<p>To claim your community badges:</p>
 				<p class="u-center-text">
 					<button class="claim-discord-badge-button mod-cta">Get Discord badge</button>
@@ -991,6 +1002,94 @@
 				<p>To learn more about how to use the in-app plugin to sync your vaults, <a
 					href="https://help.obsidian.md/Licenses+%26+add-on+services/Obsidian+Sync"
 					target="_blank">here's a guide</a>.</p>
+			</div>
+			<div class="modal-button-container">
+				<button class="mod-cta js-close-modal">Got it</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-change-email" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Change email</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-error" style="display: none;"></div>
+				</div>
+				<p>
+					<label class="input-label">New email</label>
+					<input class="change-email-new-email" type="email" placeholder="Your new email...">
+				</p>
+				<p>
+					<label class="input-label">Password</label>
+					<input class="change-email-password" type="password" placeholder="Enter your password...">
+				</p>
+			</div>
+			<div class="modal-button-container">
+				<button class="mod-cta js-confirm-change-email">Confirm change</button>
+				<button class="js-close-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-change-name" style="display: none;">
+		<div class="modal-bg"></div>
+
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Change your name</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-error" style="display: none;"></div>
+				</div>
+				<p>
+					<label class="input-label">New name</label>
+					<input class="change-name-new-name" type="text" placeholder="Your new name...">
+				</p>
+			</div>
+			<div class="modal-button-container">
+				<button class="mod-cta js-confirm-change-name">Confirm change</button>
+				<button class="js-close-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-change-password" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Change password</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-error" style="display: none;"></div>
+				</div>
+				<p>
+					<label class="input-label">Current password</label>
+					<input class="change-password-old-password" type="password" placeholder="Your current password...">
+				</p>
+				<p>
+					<label class="input-label">New password</label>
+					<input class="change-password-new-password" type="password" placeholder="New password...">
+				</p>
+			</div>
+			<div class="modal-button-container">
+				<button class="mod-cta js-confirm-change-password">Confirm change</button>
+				<button class="js-close-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-change-info-success" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Successfully updated</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="message mod-success">Your account has been successfully updated!</div>
+				</div>
 			</div>
 			<div class="modal-button-container">
 				<button class="mod-cta js-close-modal">Got it</button>
