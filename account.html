@@ -267,7 +267,7 @@
 								<p>Your license key is: </p>
 								<div class="commercial-license-key">License key not found</div>
 								<p>Registered to "<span class="commercial-license-company-name"></span>" for <span
-									class="commercial-license-seat-number"></span> users. Valid until <span
+									class="commercial-license-seat-number">0 seats</span>. Valid until <span
 									class="commercial-license-expiry-date"></span>.</p>
 								<p>To activate the license, go to Settings -> About in Obsidian.</p>
 							</div>
@@ -289,6 +289,20 @@
 									<a class="js-stop-commercial-auto-renewal">Stop</a>
 								</div>
 							</div>
+
+							<div class="setting-item">
+								<div class="setting-item-info">
+									<div class="setting-item-name">Seats</div>
+									<div class="setting-item-description">Your commercial license is currently for <span
+										class="commercial-license-seat-number">0 seats</span>.
+									</div>
+								</div>
+								<div class="setting-item-control mod-vertical">
+									<button class="js-commercial-license-change-seat">Add seats</button>
+									<a class="js-commercial-license-reduce-seat">Remove seats</a>
+								</div>
+							</div>
+
 							<div class="setting-item">
 								<div class="setting-item-info">
 									<div class="setting-item-name">Manage payment</div>
@@ -644,15 +658,15 @@
 				<div class="message-container">
 					<div class="payment-error message mod-error" style="display: none;"></div>
 				</div>
-				<p>
+				<p class="commercial-license-creation-only">
 					<label class="input-label">Business name</label>
 					<input class="business-name-input" type="text" placeholder="Name of your business...">
 				</p>
 				<p>
-					<label class="input-label">Number of users</label>
+					<label class="input-label">Seats</label>
 					<input class="commercial-license-seat" type="number" placeholder="1" min="1" value="1">
 				</p>
-				<p>
+				<p class="commercial-license-creation-only">
 					<label class="input-label">Auto-renewal</label>
 					<span class="checkbox-container commercial-license-auto-renewal is-enabled"></span>
 				</p>
@@ -1143,6 +1157,28 @@
 			<div class="modal-button-container">
 				<button class="mod-warning js-confirm-delete-account">Confirm deletion</button>
 				<button class="mod-cta js-close-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-commercial-license-reduce-seats" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Pay for fewer seats</div>
+			<div class="modal-content">
+				<div class="message-container">
+					<div class="payment-error message mod-error" style="display: none;"></div>
+				</div>
+				<p>
+					<label class="input-label">Seats to remove</label>
+					<input class="commercial-license-reduce-seat-input" type="number" placeholder="Enter a number..." min="1"
+					       value="1" step="1">
+				</p>
+				<div class="modal-button-container">
+					<button class="mod-cta js-update-reduce-seats">Update</button>
+					<button class="js-close-modal">Cancel</button>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -15,6 +15,7 @@ const GET_STRIPE_SECRET_URL = BASE_URL + '/subscription/stripe/start';
 const FINISH_STRIPE_URL = BASE_URL + '/subscription/stripe/end';
 const CHECK_PRICE_URL = BASE_URL + '/subscription/price';
 const BIZ_RENAME_URL = BASE_URL + '/subscription/business/rename';
+const REDUCE_COMMERCIAL_LICENSE_URL = BASE_URL + '/subscription/business/reduce';
 const UPDATE_PLAN_URL = BASE_URL + '/subscription/renew';
 const REDUCE_SITES_URL = BASE_URL + '/subscription/publish/reduce';
 const GET_PAYMENT_INFO_URL = BASE_URL + '/subscription/paymentmethod';
@@ -177,10 +178,11 @@ window.setTimeout(() => {
 		let businessNameInputEl = fish('.business-name-input');
 		let commercialLicenseKeyEl = fish('.commercial-license-key');
 		let commercialLicenseCompanyEl = fish('.commercial-license-company-name');
-		let commercialLicenseSeatNumberEl = fish('.commercial-license-seat-number');
+		let commercialLicenseSeatNumberEl = fishAll('.commercial-license-seat-number');
 		let commercialLicenseExpiryEl = fish('.commercial-license-expiry-date');
 		let commercialLicenseCardEl = fish('.card.mod-commercial-license');
 		let commercialLicenseModal = fish('.modal-container.mod-commercial-license');
+		let commercialLicenseTitle = fish('.modal-container.mod-commercial-license .modal-title');
 		let personalLicenseModal = fish('.modal-container.mod-personal-license');
 		let personalLicenseTierEl = fish('.catalyst-tier');
 		let personalLicenseUpgradeButtonEl = fish('.catalyst-upgrade-button');
@@ -298,6 +300,12 @@ window.setTimeout(() => {
 		let catalystPaymentSuccessModal = fish('.modal-container.mod-catalyst-payment-success');
 		let publishPaymentSuccessModal = fish('.modal-container.mod-publish-payment-success');
 		let syncPaymentSuccessModal = fish('.modal-container.mod-sync-payment-success');
+		let commercialLicenseChangeSeatEl = fish('.js-commercial-license-change-seat');
+		let commercialLicenseReduceSeatEl = fish('.js-commercial-license-reduce-seat');
+		let commercialLicenseReduceSeatModal = fish('.modal-container.mod-commercial-license-reduce-seats');
+		let commercialLicenseReduceSeatInputEl = fish('.commercial-license-reduce-seat-input');
+		let commercialLicenseReduceSeatConfirmEl = fish('.js-update-reduce-seats');
+		let commercialLicenseReduceSeatErrorEl = fish('.modal-container.mod-commercial-license-reduce-seats .payment-error');
 
 		let stripeStyles = {
 			base: {
@@ -325,6 +333,8 @@ window.setTimeout(() => {
 		let resetPasswordId = null;
 		let resetPasswordKey = null;
 		let refreshAfterClosing = false;
+		let commercialLicense = null;
+		let isUpdatingCommercialLicense = false;
 
 		let stripe = window.Stripe(STRIPE_PUBLIC_KEY);
 		let elements = stripe.elements();
@@ -403,18 +413,22 @@ window.setTimeout(() => {
 
 			let companyName = businessNameInputEl.value;
 
-			if (!companyName) {
+			if (!companyName && !isUpdatingCommercialLicense) {
 				paymentErrorEl.setText(`Please enter a business name.`);
 				paymentErrorEl.show();
 				return;
 			}
 
-			let autoRenewal = commercialLicenseRenewalToggleEl.hasClass('is-enabled');
-
-			if (autoRenewal) {
-				buyingRenew = 'yearly';
+			if (isUpdatingCommercialLicense) {
+				buyingRenew = commercialLicense.renew;
 			} else {
-				buyingRenew = '';
+				let autoRenewal = commercialLicenseRenewalToggleEl.hasClass('is-enabled');
+
+				if (autoRenewal) {
+					buyingRenew = 'yearly';
+				} else {
+					buyingRenew = '';
+				}
 			}
 
 			// Complete payment when the submit button is clicked
@@ -455,7 +469,7 @@ window.setTimeout(() => {
 					paymentErrorEl.show();
 				} else {
 					let companyName = businessNameInputEl.value;
-					if (buyingLicense === 'business') {
+					if (buyingLicense === 'business' && !isUpdatingCommercialLicense) {
 						request(BIZ_RENAME_URL, {company: companyName}, (err, data) => {
 							if (err) {
 								paymentErrorEl.setText(err);
@@ -554,12 +568,14 @@ window.setTimeout(() => {
 					return;
 				}
 				if (data.business && data.business !== null && data.business.expiry >= Date.now()) {
-					let bizLicense = data.business;
+					commercialLicense = data.business;
 
-					commercialLicenseKeyEl.setText(bizLicense.key);
-					commercialLicenseCompanyEl.setText(bizLicense.company);
-					commercialLicenseSeatNumberEl.setText(bizLicense.seats);
-					commercialLicenseExpiryEl.setText((new Date(bizLicense.expiry).toLocaleDateString()));
+					commercialLicenseKeyEl.setText(commercialLicense.key);
+					commercialLicenseCompanyEl.setText(commercialLicense.company);
+					let seat = commercialLicense.seats;
+					let seatText = seat === 1 ? '1 seat' : seat + ' seats';
+					commercialLicenseSeatNumberEl.forEach(el => el.setText(seatText));
+					commercialLicenseExpiryEl.setText((new Date(commercialLicense.expiry).toLocaleDateString()));
 					commercialLicensePitchEl.hide();
 					existingCommercialLicenseEl.show();
 				} else {
@@ -891,6 +907,10 @@ window.setTimeout(() => {
 		};
 
 		let updateBizPrice = () => {
+			if (isUpdatingCommercialLicense) {
+				buyingVariation = (parseInt(buyingVariation) + commercialLicense.seats).toString();
+			}
+
 			paymentErrorEl.hide();
 			request(CHECK_PRICE_URL, {
 				type: buyingLicense,
@@ -970,8 +990,13 @@ window.setTimeout(() => {
 			if (commercialLicenseSeatEl.value === '') {
 				return;
 			}
+			if (isUpdatingCommercialLicense && parseInt(commercialLicenseSeatEl.value) === commercialLicense.seats) {
+				return;
+			}
 
-			buyingVariation = parseInt(commercialLicenseSeatEl.value).toString();
+			let newSeatNum = parseInt(commercialLicenseSeatEl.value);
+
+			buyingVariation = newSeatNum.toString();
 
 			updateBizPrice();
 		});
@@ -1461,8 +1486,7 @@ window.setTimeout(() => {
 					changeEmailErrorEl.setText(err);
 					changeEmailErrorEl.show();
 					return;
-				}
-				else {
+				} else {
 					closeModal();
 					refreshAfterClosing = true;
 					changeInfoSuccessModalEl.show();
@@ -1492,8 +1516,7 @@ window.setTimeout(() => {
 					changeNameErrorEl.setText(err);
 					changeNameErrorEl.show();
 					return;
-				}
-				else {
+				} else {
 					closeModal();
 					refreshAfterClosing = true;
 					changeInfoSuccessModalEl.show();
@@ -1531,8 +1554,7 @@ window.setTimeout(() => {
 					changePasswordErrorEl.setText(err);
 					changePasswordErrorEl.show();
 					return;
-				}
-				else {
+				} else {
 					closeModal();
 					refreshAfterClosing = true;
 					changeInfoSuccessModalEl.show();
@@ -1562,8 +1584,58 @@ window.setTimeout(() => {
 					deleteAccountErrorEl.setText(err);
 					deleteAccountErrorEl.show();
 					return;
+				} else {
+					closeModal();
+					refreshAfterClosing = true;
+					changeInfoSuccessModalEl.show();
 				}
-				else {
+			});
+		});
+
+		commercialLicenseChangeSeatEl.addEventListener('click', () => {
+			commercialLicenseModal.addClass('is-updating');
+			paymentErrorEl = fish('.modal-container.mod-commercial-license .payment-error');
+			commercialLicenseModal.show();
+			card.mount('.modal-container.mod-commercial-license .card-element');
+
+			buyingLicense = 'business';
+			buyingVariation = parseInt(commercialLicenseSeatEl.value).toString();
+			isUpdatingCommercialLicense = true;
+			commercialLicenseTitle.setText('Add seats');
+
+			updateBizPrice();
+		});
+
+		commercialLicenseReduceSeatEl.addEventListener('click', () => {
+			commercialLicenseReduceSeatModal.show();
+		});
+
+		commercialLicenseReduceSeatConfirmEl.addEventListener('click', () => {
+			commercialLicenseReduceSeatErrorEl.hide();
+			let reduceBy = parseInt(commercialLicenseReduceSeatInputEl.value);
+			let currentSeats = commercialLicense.seats;
+
+			if (reduceBy === 0) {
+				commercialLicenseReduceSeatErrorEl.setText('The number of seats to remove cannot be 0.');
+				commercialLicenseReduceSeatErrorEl.show();
+				return;
+			}
+
+			let newSeats = currentSeats - reduceBy;
+
+			if (newSeats < 0) {
+				let currentSeatText = currentSeats === 1 ? '1 seat' : currentSeats + ' seats';
+				commercialLicenseReduceSeatErrorEl.setText('You currently have ' + currentSeatText + ' and cannot remove more seats than that.');
+				commercialLicenseReduceSeatErrorEl.show();
+				return;
+			}
+
+			request(REDUCE_COMMERCIAL_LICENSE_URL, {seats: newSeats}, (err, data) => {
+				if (err) {
+					commercialLicenseReduceSeatErrorEl.setText(err);
+					commercialLicenseReduceSeatErrorEl.show();
+					return;
+				} else {
 					closeModal();
 					refreshAfterClosing = true;
 					changeInfoSuccessModalEl.show();
