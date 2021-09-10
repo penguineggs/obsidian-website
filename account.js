@@ -149,6 +149,7 @@ window.setTimeout(() => {
 		let deleteAccountButtonEl = fish('.js-delete-account');
 		let deleteAccountModalEl = fish('.modal-container.mod-delete-account');
 		let deleteAccountPasswordInputEl = fish('.delete-account-password');
+		let deleteAccountEmailInputEl = fish('.delete-account-email');
 		let confirmDeleteAccountButtonEl = fish('.js-confirm-delete-account');
 		let deleteAccountErrorEl = fish('.modal-container.mod-delete-account .message.mod-error');
 		let changeInfoSuccessModalEl = fish('.modal-container.mod-change-info-success');
@@ -1569,7 +1570,14 @@ window.setTimeout(() => {
 		confirmDeleteAccountButtonEl.addEventListener('click', () => {
 			deleteAccountErrorEl.hide();
 
+			let email = deleteAccountEmailInputEl.value;
 			let password = deleteAccountPasswordInputEl.value;
+
+			if (email === '') {
+				deleteAccountErrorEl.setText('Please enter your email to confirm account deletion.');
+				deleteAccountErrorEl.show();
+				return;
+			}
 
 			if (password === '') {
 				deleteAccountErrorEl.setText('Please enter your password to confirm account deletion.');
@@ -1578,6 +1586,7 @@ window.setTimeout(() => {
 			}
 
 			request(DELETE_ACCOUNT_URL, {
+				email,
 				password
 			}, (err, data) => {
 				if (err) {
