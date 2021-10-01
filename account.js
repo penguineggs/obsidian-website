@@ -593,7 +593,7 @@ window.setTimeout(() => {
 				}
 
 				if (data.publish) {
-					let {sites, renew, renew_sites, expiry_ts} = data.publish;
+					let {sites, renew, renew_sites, expiry_ts, earlybird} = data.publish;
 
 					if (expiry_ts >= Date.now()) {
 						getPublishCardEl.addClass('is-active');
@@ -642,10 +642,17 @@ window.setTimeout(() => {
 
 						reduceSiteNumInputEl.value = sites;
 					}
+
+					if (earlybird === true) {
+						fish('.publish-yearly-price-per-month').setText('8');
+						fish('.publish-yearly-price-per-year').setText('96');
+						fish('.publish-yearly-price-per-month').setText('10');
+						fish('.publish-yearly-price-per-month').setText('120');
+					}
 				}
 
 				if (data.sync) {
-					let {renew, expiry_ts} = data.sync;
+					let {renew, expiry_ts, earlybird} = data.sync;
 
 					if (expiry_ts >= Date.now()) {
 						getSyncCardEl.addClass('is-active');
@@ -685,6 +692,13 @@ window.setTimeout(() => {
 
 						syncRenewalFrequencyEl.empty();
 						syncRenewalFrequencyEl.appendChild(renewalFrequencyEl);
+					}
+
+					if (earlybird === true) {
+						fish('.sync-yearly-price-per-month').setText('4');
+						fish('.sync-yearly-price-per-year').setText('48');
+						fish('.sync-yearly-price-per-month').setText('5');
+						fish('.sync-yearly-price-per-month').setText('60');
 					}
 				}
 
