@@ -22,6 +22,8 @@ const GET_PAYMENT_INFO_URL = BASE_URL + '/subscription/paymentmethod';
 const UPDATE_PAYMENT_INFO_URL = BASE_URL + '/subscription/stripe/paymentmethod';
 const CLAIM_DISCORD_ROLE_URL = BASE_URL + '/subscription/role/discord';
 const CLAIM_FORUM_ROLE_URL = BASE_URL + '/subscription/role/forum';
+const LIST_INVOICES_URL = BASE_URL + '/subscription/invoice/list';
+const REQUEST_REFUND_URL = BASE_URL + '/subscription/invoice/refund';
 const STRIPE_PUBLIC_KEY = 'pk_live_vqeOYADfYPpqKDT5FtAqCNBP00a9WEhYa6';
 // const STRIPE_PUBLIC_KEY = 'pk_test_y7CBP7qLG6kSU9sdcHV5S2db0052OC4wR8';
 
@@ -158,7 +160,7 @@ window.setTimeout(() => {
 		let getSyncCardEl = fish('.card.mod-sync');
 		let publishBoughtSiteNumEl = fish('.publish-site-num');
 		let publishRenewSiteNumEl = fish('.publish-renew-site-num');
-		let publishRenewTimeEl = fish('.publish-renewal-time');
+		let publishRenewTimeEl = fishAll('.publish-renewal-time');
 		let publishRenewInfoRenewingEl = fish('.publish-renew-info-renewing');
 		let publishRenewInfoNotRenewingEl = fish('.publish-renew-info-not-renewing');
 		let publishViewPaymentLinkEl = fishAll('.js-view-payment-info');
@@ -180,7 +182,6 @@ window.setTimeout(() => {
 		let commercialLicenseKeyEl = fish('.commercial-license-key');
 		let commercialLicenseCompanyEl = fish('.commercial-license-company-name');
 		let commercialLicenseSeatNumberEl = fishAll('.commercial-license-seat-number');
-		let commercialLicenseExpiryEl = fish('.commercial-license-expiry-date');
 		let commercialLicenseCardEl = fish('.card.mod-commercial-license');
 		let commercialLicenseModal = fish('.modal-container.mod-commercial-license');
 		let commercialLicenseTitle = fish('.modal-container.mod-commercial-license .modal-title');
@@ -280,15 +281,16 @@ window.setTimeout(() => {
 		let syncChangeToMonthlyEl = fish('.js-change-sync-to-monthly');
 		let syncChangeToYearlyEl = fish('.js-change-sync-to-yearly');
 		let syncStopRenewalEl = fish('.js-stop-sync-auto-renewal');
-		let syncRenewTimeEl = fish('.sync-renewal-time');
+		let syncRenewTimeEl = fishAll('.sync-renewal-time');
 		let syncRenewInfoRenewingEl = fish('.sync-renew-info-renewing');
 		let syncRenewInfoNotRenewingEl = fish('.sync-renew-info-not-renewing');
 		let syncRenewalFrequencyEl = fish('.setting-item-description.mod-sync-frequency');
-		let commercialRenewTimeEl = fish('.commercial-renewal-time');
+		let commercialRenewTimeEl = fishAll('.commercial-renewal-time');
 		let commercialResumeRenewalEl = fish('.js-resume-commercial-auto-renewal');
 		let commercialStopRenewalEl = fish('.js-stop-commercial-auto-renewal');
 		let commercialRenewInfoRenewingEl = fish('.commercial-renew-info-renewing');
 		let commercialRenewInfoNotRenewingEl = fish('.commercial-renew-info-not-renewing');
+		let commercialLicenseExpiryEl = fishAll('.commercial-license-expiry-time');
 		let toggleEls = fishAll('.checkbox-container');
 		let claimDiscordBadgeButtons = fishAll('.claim-discord-badge-button');
 		let claimForumBadgeButtons = fishAll('.claim-forum-badge-button');
@@ -576,7 +578,7 @@ window.setTimeout(() => {
 					let seat = commercialLicense.seats;
 					let seatText = seat === 1 ? '1 seat' : seat + ' seats';
 					commercialLicenseSeatNumberEl.forEach(el => el.setText(seatText));
-					commercialLicenseExpiryEl.setText((new Date(commercialLicense.expiry).toLocaleDateString()));
+					commercialLicenseExpiryEl.forEach(el => el.setText((new Date(commercialLicense.expiry).toLocaleDateString())));
 					commercialLicensePitchEl.hide();
 					existingCommercialLicenseEl.show();
 				} else {
@@ -614,7 +616,7 @@ window.setTimeout(() => {
 
 						if (expiry_ts) {
 							let date = new Date(expiry_ts);
-							publishRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
+							publishRenewTimeEl.forEach(el => el.setText(`on ${date.toLocaleDateString()}`));
 						}
 
 						publishRenewInfoNotRenewingEl.hide();
@@ -659,7 +661,7 @@ window.setTimeout(() => {
 
 						if (expiry_ts) {
 							let date = new Date(expiry_ts);
-							syncRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
+							syncRenewTimeEl.forEach(el => el.setText(`on ${date.toLocaleDateString()}`));
 						}
 
 						syncRenewInfoNotRenewingEl.hide();
@@ -710,7 +712,7 @@ window.setTimeout(() => {
 
 						if (expiry) {
 							let date = new Date(expiry);
-							commercialRenewTimeEl.setText(`on ${date.toLocaleDateString()}`);
+							commercialRenewTimeEl.forEach(el => el.setText(`on ${date.toLocaleDateString()}`));
 						}
 
 						commercialRenewInfoNotRenewingEl.hide();
@@ -1005,7 +1007,7 @@ window.setTimeout(() => {
 			if (commercialLicenseSeatEl.value === '') {
 				return;
 			}
-			if (isUpdatingCommercialLicense && parseInt(commercialLicenseSeatEl.value) === commercialLicense.seats) {
+			if (isUpdatingCommercialLicense && parseInt(commercialLicenseSeatEl.value) === 0) {
 				return;
 			}
 
@@ -1665,5 +1667,100 @@ window.setTimeout(() => {
 				}
 			});
 		});
+
+		let currentRefundChargeId = '';
+		let invoiceListEl = fish('.modal-container.mod-invoice-list');
+
+		fish('.js-view-invoices').addEventListener('click', () => {
+			spinnerEl.show();
+			welcomeEl.hide();
+
+			request(LIST_INVOICES_URL, {}, (err, data) => {
+				spinnerEl.hide();
+				welcomeEl.show();
+
+				invoiceListEl.show();
+				let modalContentEl = invoiceListEl.find('.invoice-list');
+				modalContentEl.empty();
+
+				for (let charge of data) {
+					modalContentEl.createDiv({cls: 'invoice-item setting-item'}, el => {
+						el.createDiv({cls: 'setting-item-info'}, el => {
+							el.createDiv({text: charge.description, cls: 'setting-item-name'});
+							el.createDiv({
+								text: (new Date(charge.created * 1000)).toLocaleString(),
+								cls: 'setting-item-description'
+							});
+						});
+						el.createDiv({cls: 'setting-item-control mod-vertical'}, el => {
+							el.createEl('button', {cls: 'mod-cta', text: 'View'}, el => {
+								el.addEventListener('click', () => {
+									let amount = (charge.amount / 100).toFixed(2);
+									let refunded = (charge.refunded / 100).toFixed(2);
+									let hasRefund = charge.refunded !== 0;
+									let savedBillingInfo = localStorage.getItem('billing-info');
+
+									fish('.invoice-date').setText(new Date(parseInt(charge.created) * 1000).toLocaleString());
+									fish('.invoice-number-title').setText(charge.receipt_number || charge.id);
+									fish('.invoice-number').setText(charge.receipt_number || charge.id);
+									fish('.invoice-description').setText(charge.description);
+									fish('.invoice-amount').setText(amount);
+									if (hasRefund) {
+										fish('.invoice-box .item.mod-refund').show();
+										fish('.invoice-refund-amount').setText(refunded);
+									} else {
+										fish('.invoice-box .item.mod-refund').hide();
+									}
+									fish('.invoice-total').setText((amount - refunded).toFixed(2));
+
+									if (savedBillingInfo) {
+										fish('.billing-info').setText(savedBillingInfo);
+									}
+
+									fish('.billing-info').addEventListener('input', () => {
+										let newInfo = fish('.billing-info').getText();
+										localStorage.setItem('billing-info', newInfo);
+									});
+
+									fish('.modal-container.mod-invoice-detail').show();
+								})
+							});
+
+							if (charge.refundable) {
+								el.createEl('a', {text: 'Get refund'}, el => {
+									el.addEventListener('click', () => {
+										currentRefundChargeId = charge.id;
+
+										fish('.modal-container.mod-confirm-refund').show();
+									});
+								});
+							}
+						});
+					})
+				}
+			})
+		});
+
+		fish('.js-confirm-refund').addEventListener('click', () => {
+			fish('.modal-container.mod-invoice-list').hide();
+			fish('.modal-container.mod-confirm-refund').hide();
+
+			spinnerEl.show();
+			welcomeEl.hide();
+
+			request(REQUEST_REFUND_URL, {charge: currentRefundChargeId}, (err, data) => {
+				spinnerEl.hide();
+				welcomeEl.show();
+
+				if (err) {
+					fish('.refund-failed-reason').setText(err);
+					fish('.modal-container.mod-refund-failed').show();
+				}
+				else {
+					refreshAfterClosing = true;
+					fish('.modal-container.mod-refund-success').show();
+				}
+			});
+		})
 	});
 }, 500);

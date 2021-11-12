@@ -211,6 +211,17 @@
 			</div>
 			<div class="setting-item">
 				<div class="setting-item-info">
+					<div class="setting-item-name">Invoices & refunds</div>
+					<div class="setting-item-description">
+						Download invoices for your past payments and request refunds.
+					</div>
+				</div>
+				<div class="setting-item-control">
+					<a class="js-view-invoices">View</a>
+				</div>
+			</div>
+			<div class="setting-item">
+				<div class="setting-item-info">
 					<div class="setting-item-name">Delete account</div>
 					<div class="setting-item-description">
 						Delete your account completely along with your licenses and subscriptions.
@@ -280,7 +291,9 @@
 											class="commercial-renewal-time">in the future</span>.
 										</div>
 										<div class="commercial-renew-info-not-renewing">
-											You will not be renewed in the future.
+											Your license expires <span
+											class="commercial-renewal-time">in the future</span>. You will not be
+											renewed in the future.
 										</div>
 									</div>
 								</div>
@@ -380,7 +393,9 @@
 												class="publish-renewal-time">in the future</span>.
 										</div>
 										<div class="publish-renew-info-not-renewing">
-											Your sites will not be renewed in the future.
+											Your Publish will expire <span
+											class="publish-renewal-time">in the future</span>. Your sites will not be
+											renewed in the future.
 										</div>
 									</div>
 								</div>
@@ -446,7 +461,9 @@
 											class="sync-renewal-time">in the future</span>.
 										</div>
 										<div class="sync-renew-info-not-renewing">
-											You will not be renewed in the future.
+											Your Sync will expire <span
+											class="sync-renewal-time">in the future</span>. You will not be renewed in
+											the future.
 										</div>
 									</div>
 								</div>
@@ -842,11 +859,12 @@
 
 				<p class="u-pop">Note that we only accept PayPal manually at the moment, so you'll need to
 					write <b>your Obsidian account email and what service you're paying for in the "Notes" section</b>.
-					Because it's a manual process, we only accept yearly payments for Sync and Publish. Monthly payments will be refunded.
+					Because it's a manual process, we only accept yearly payments for Sync and Publish. Monthly payments
+					will be refunded.
 				</p>
 
 				<p class="u-pop">After payment, please forward your PayPal receipt to <a
-					href="mailto:support@obsidian.md">suppo<!--breakspam-->rt@obsidian.md</a>.
+					href="mailto:support@obsidian.md">support@obsidian.md</a>.
 				</p>
 
 				<p>Thanks so much for your kind support! Obsidian couldn't have become what it is today without
@@ -1209,6 +1227,148 @@
 			</div>
 			<div class="modal-button-container">
 				<button class="mod-cta js-close-modal">Got it</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-invoice-list" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Your invoices</div>
+			<div class="modal-content">
+				<div class="invoice-list">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-confirm-refund" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Confirm refund</div>
+			<div class="modal-content">
+				<p>
+					Would you like to request a refund for this payment?
+				</p>
+				<p class="mod-warning">
+					The service or license you purchased will be removed, and this action is not reversible. Your
+					auto-renewal will also be cancelled.
+				</p>
+				<div class="modal-button-container">
+					<button class="mod-cta js-confirm-refund">Request refund</button>
+					<button class="js-close-modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-refund-success" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Refund success</div>
+			<div class="modal-content">
+				<p>
+					Your refund request has been successfully processed!
+				</p>
+				<p>
+					The service or license you purchased has been removed, and your auto-renewal has been cancelled.
+				</p>
+				<p>
+					You should see the refund reflected on your statement in a few business days. Thanks for trying
+					Obsidian!
+				</p>
+				<div class="modal-button-container">
+					<button class="mod-cta js-close-modal">Got it</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-refund-failed" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Refund failed</div>
+			<div class="modal-content">
+				<p>
+					Automatic refund has failed. <span class="refund-failed-reason"></span>
+				</p>
+				<p>
+					If you believe you still qualify for a refund, you can contact our support at support@obsidian.md.
+				</p>
+				<div class="modal-button-container">
+					<button class="js-close-modal">Got it</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-container mod-invoice-detail" style="display: none;">
+		<div class="modal-bg"></div>
+		<div class="modal">
+			<div class="modal-close-button"></div>
+			<div class="modal-title">Invoice #<span class="invoice-number-title"></span></div>
+			<div class="modal-content">
+				<p class="print-invoice u-center-text">
+					<button class="mod-cta" onclick="window.print()">Print invoice</button>
+				</p>
+				<div class="invoice-box">
+					<table cellpadding="0" cellspacing="0">
+						<tbody>
+						<tr class="top">
+							<td colspan="2">
+								<table>
+									<tbody>
+									<tr>
+										<td>Dynalist Inc.<br>1376 Ferncrest Road<br> Oakville, L6H 7W3<br> Ontario,
+											Canada<br> GST/HST 75064 9899 RT0001
+										</td>
+										<td>Date: <span class="invoice-date"></span><br> Invoice #<span
+											class="invoice-number"></span></td>
+									</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr class="information">
+							<td colspan="2">
+								<table>
+									<tbody>
+									<tr>
+										<td></td>
+										<td><b>Bill to:</b><br>
+											<div class="billing-info" contenteditable="true">Your billing
+												information<br>Click to edit
+											</div>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr class="heading">
+							<td>Items</td>
+							<td>Price</td>
+						</tr>
+						<tr class="item">
+							<td class="invoice-description"></td>
+							<td>$<span class="invoice-amount"></span> USD</td>
+						</tr>
+
+						<tr class="item mod-refund">
+							<td>Refund</td>
+							<td>-$<span class="invoice-refund-amount"></span> USD</td>
+						</tr>
+						<tr class="total">
+							<td></td>
+							<td>Total: $<span class="invoice-total"></span> USD</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
