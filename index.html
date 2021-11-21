@@ -117,12 +117,12 @@
 
 	<div class="testimonial-container">
 		<div class="testimonial">
-			<div class="testimonial-text">Obsidian is the kind of thing that I didn't know could exist in my workflow
-				but has proved <span class="u-stand-out">extremely helpful</span>.
+			<div class="testimonial-text">I don’t give app of the year awards, but I would <span class="u-stand-out">100% give it to Obsidian</span>
+				for slowly taking over almost everything I do that has anything to do with text files.
 			</div>
 			<div class="testimonial-person"><a href="https://www.youtube.com/user/cgpgrey" target="_blank">CGP Grey</a>
 			</div>
-			<div class="testimonial-title">Educational YouTuber</div>
+			<div class="testimonial-title">YouTuber personality</div>
 		</div>
 
 		<div class="testimonial">
@@ -137,6 +137,18 @@
 
 		<div class="testimonial">
 			<div class="testimonial-text">
+				Obsidian looks good, works great, and most importantly, I <span
+				class="u-stand-out">own and control</span> my data.
+			</div>
+			<div class="testimonial-person">Gonçalo Silva <a href="https://twitter.com/goncalossilva"
+			                                                 target="_blank">@goncalossilva</a><br>
+			</div>
+
+			<div class="testimonial-title">CTO of Doist, the company behind Todoist</div>
+		</div>
+
+		<div class="testimonial">
+			<div class="testimonial-text">
 				Obsidian is <span class="u-stand-out">life changing</span>.
 				<br>
 				It's not just a note taking app, it's a better way to think.
@@ -146,18 +158,6 @@
 			</div>
 
 			<div class="testimonial-title">Founder of Lumi</div>
-		</div>
-
-		<div class="testimonial">
-			<div class="testimonial-text">
-				Obsidian looks good, works great, and most importantly, I <span
-				class="u-stand-out">own and control</span> my data.
-			</div>
-			<div class="testimonial-person">Gonçalo Silva <a href="https://twitter.com/goncalossilva"
-			                                                 target="_blank">@goncalossilva</a><br>
-			</div>
-
-			<div class="testimonial-title">CTO of Doist</div>
 		</div>
 
 		<div class="testimonial">
@@ -283,11 +283,10 @@
 						Obsidian is built to be extensible from the ground up. We want you to build your own system,
 						play with it, tweak it, until you're happy.
 					</div>
-					<div class="subfeature-description">Obsidian is a versatile toolbox: with <a
-						href="https://help.obsidian.md/Plugins/Core+plugins" target="_blank">25 core</a> and <a
+					<div class="subfeature-description">Obsidian is a versatile toolbox: with 25 core plugins, <a
 						href="/plugins" target="_blank"><span class="community-plugin-count">200+</span>
-						community plugins</a>, 60+ themes, plus custom styling, you can tweak Obsidian to work and look
-						exactly how you want it.
+						community plugins</a>, and <span class="community-theme-count">80+</span> themes, plus custom
+						styling, you can tweak Obsidian to work and look exactly how you want it.
 					</div>
 				</div>
 
@@ -428,9 +427,9 @@
 		<div class="feature-row">
 			<div class="feature-row-inner">
 				<h1 class="feature-title">Vibrant community</h1>
-				<p class="feature-explanation">With more than 35,000 members in <a href="https://discord.gg/veuWUTm"
+				<p class="feature-explanation">With more than 45,000 members in <a href="https://discord.gg/veuWUTm"
 				                                                                   target="_blank">our Discord chat</a>
-					and 15,000 members on <a href="https://forum.obsidian.md/" target="_blank">our forum</a>, Obsidian
+					and 20,000 members on <a href="https://forum.obsidian.md/" target="_blank">our forum</a>, Obsidian
 					has one of the largest note-taking communities.</p>
 				<p class="feature-explanation">Our community welcomes anyone who uses Obsidian or is interested in
 					Obsidian,
@@ -541,7 +540,8 @@
 					<li><a href="/about">About us</a></li>
 					<li><a href="https://twitter.com/obsdmd" target="_blank">Follow us on Twitter</a></li>
 					<li><a href="https://discord.gg/veuWUTm" target="_blank">Community Discord</a></li>
-					<li><a href="https://forum.obsidian.md" target="_blank">Forum</a> / <a href="https://forum-zh.obsidian.md" target="_blank">中文论坛</a></li>
+					<li><a href="https://forum.obsidian.md" target="_blank">Forum</a> / <a
+						href="https://forum-zh.obsidian.md" target="_blank">中文论坛</a></li>
 				</ul>
 
 				<ul class="footer-link-group">
@@ -593,8 +593,9 @@
 			}
 
 			const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
-			let getCommunityPlugins = async () => {
-				let result = await ajaxPromise({url: COMMUNITY_PLUGIN_URL});
+			const COMMUNITY_THEME_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-css-themes.json');
+			let getCount = async (url) => {
+				let result = await ajaxPromise({url});
 
 				if (!Array.isArray(result)) {
 					throw new Error('Failed to parse community plugins.');
@@ -603,9 +604,8 @@
 				return result.length;
 			};
 
-			let communityPlugins = await getCommunityPlugins();
-
-			fish('.community-plugin-count').setText(communityPlugins);
+			fish('.community-plugin-count').setText(await getCount(COMMUNITY_PLUGIN_URL));
+			fish('.community-theme-count').setText(await getCount(COMMUNITY_THEME_URL));
 		})();
 	</script>
 
