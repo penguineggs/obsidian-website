@@ -2829,7 +2829,7 @@ span.mod-huge-punctuation {
 }
 .oo-title-right {
   align-self: center;
-  color: var(--interactive-accent);
+  color: var(--interactive-accent-hover);
   font-size: 160px;
   line-height: 110px;
   letter-spacing: -12px;
@@ -2951,6 +2951,9 @@ span.mod-huge-punctuation {
 @media only screen and (max-width: 1130px) {
   .hero-screenshot-container {
     display: none;
+  }
+  .oo-award-section {
+    width: 80vw;
   }
 }
 @media only screen and (max-width: 960px) {
@@ -3139,6 +3142,20 @@ span.mod-huge-punctuation {
     position: static;
     width: 100%;
     height: auto;
+  }
+  .oo-title-logofont {
+    flex-direction: column;
+  }
+  .oo-title-left {
+    align-self: center;
+    margin-bottom: 14px;
+  }
+  .oo-title,
+  .oo-award-section {
+    width: 90vw;
+  }
+  .oo-award-entry-image .js-lightbox-navigate:not(.lightbox) img {
+    width: 80vw;
   }
 }
 .badge-container {
