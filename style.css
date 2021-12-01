@@ -2881,6 +2881,7 @@ span.mod-huge-punctuation {
 }
 .oo-award-entry-blurb {
   color: var(--text-muted);
+  margin-top: 10px;
 }
 .oo-award-entry-blurb:before {
   content: 'From the judge panel:';
@@ -2895,7 +2896,11 @@ span.mod-huge-punctuation {
   margin: 20px 0;
   font-family: var(--font-monospace);
   border-bottom: 4px dotted var(--interactive-accent);
-  font-size: 26px;
+  font-size: 28px;
+}
+.oo-award-section-title.mod-secondary {
+  font-size: 18px;
+  margin: 20px 40px;
 }
 .oo-award-section-title.mod-other {
   margin-top: 50px;
