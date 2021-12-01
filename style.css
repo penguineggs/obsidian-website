@@ -252,6 +252,7 @@ body {
   color: var(--text-muted);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .menu-item:hover:not(.is-disabled):not(.is-label) {
   background-color: var(--background-secondary);
@@ -1016,7 +1017,7 @@ input.prompt-input {
   margin: 20px;
 }
 .empty-state-title {
-  margin-top: 20px;
+  margin: 20px 0;
   font-weight: 800;
   font-size: 32px;
   position: relative;
@@ -2813,6 +2814,134 @@ span.mod-huge-punctuation {
 .u-stand-out {
   color: var(--text-normal);
   font-weight: 600;
+}
+.oo-title-left {
+  display: flex;
+  flex-direction: column;
+}
+.oo-title-left > * {
+  font-size: 80px;
+  line-height: 62px;
+  font-weight: 900;
+}
+.oo-title-left > *:first-child {
+  letter-spacing: -3.7px;
+}
+.oo-title-right {
+  align-self: center;
+  color: var(--interactive-accent);
+  font-size: 160px;
+  line-height: 110px;
+  letter-spacing: -12px;
+  margin-left: 10px;
+  font-weight: 900;
+}
+.oo-title,
+.oo-award-section {
+  width: 60vw;
+  max-width: 90vw;
+  margin: 100px auto;
+}
+.oo-title-logofont {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+}
+.oo-title-links {
+  color: var(--text-muted);
+  margin-top: 28px;
+  text-align: center;
+}
+.oo-title-links > * {
+  margin: 0 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.oo-title-fine-print {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--text-faint);
+}
+.oo-award-entry {
+  margin: 50px 0 30px 0;
+  padding-bottom: 20px;
+  border-bottom: 4px dotted var(--interactive-accent);
+}
+.oo-award-body {
+  display: flex;
+  flex-direction: column;
+}
+.oo-award-entry-image {
+  margin: 0 auto 10px auto;
+}
+.oo-award-entry-image .js-lightbox-navigate:not(.lightbox) img {
+  width: 40vw;
+  border-radius: 8px;
+}
+.oo-award-entry-blurb {
+  color: var(--text-muted);
+}
+.oo-award-entry-blurb:before {
+  content: 'From the judge panel:';
+  display: block;
+  color: var(--text-normal);
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.oo-award-section-title {
+  text-align: center;
+  margin: 20px 0;
+  font-family: var(--font-monospace);
+  border-bottom: 4px dotted var(--interactive-accent);
+  font-size: 26px;
+}
+.oo-award-section-title.mod-other {
+  margin-top: 50px;
+}
+.oo-award-judge-container {
+  text-align: center;
+}
+.oo-award-judge-container:before {
+  content: 'Judges:';
+}
+.oo-award-judge-container > * {
+  display: inline-block;
+  margin: 0 4px;
+}
+.oo-award-entry-title,
+.oo-submission-entry {
+  margin: 10px 0 18px 0;
+  text-align: center;
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--text-normal);
+}
+.oo-award-entry-title .flair,
+.oo-submission-entry .flair {
+  vertical-align: middle;
+  position: relative;
+  bottom: 2px;
+  margin-right: 6px;
+}
+.oo-submission-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.oo-submission-container.mod-other {
+  flex-direction: column;
+}
+.oo-submission-entry {
+  margin: 4px 8px;
+  font-size: 16px;
+}
+.oo-submission-entry .flair {
+  margin-right: 3px;
+}
+.oo-award-entry-title {
+  display: block;
 }
 @media only screen and (max-width: 1130px) {
   .hero-screenshot-container {
