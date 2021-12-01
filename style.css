@@ -3145,6 +3145,7 @@ span.mod-huge-punctuation {
   }
   .oo-title-logofont {
     flex-direction: column;
+    margin-top: 80px;
   }
   .oo-title-left {
     align-self: center;
@@ -3153,6 +3154,7 @@ span.mod-huge-punctuation {
   .oo-title,
   .oo-award-section {
     width: 90vw;
+    margin: 60px auto;
   }
   .oo-award-entry-image .js-lightbox-navigate:not(.lightbox) img {
     width: 80vw;
