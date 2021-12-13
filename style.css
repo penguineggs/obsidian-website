@@ -1203,6 +1203,7 @@ textarea {
 }
 .list-item-part.mod-extended {
   flex-grow: 1;
+  overflow-wrap: anywhere;
 }
 .lightbox {
   display: none;
@@ -2043,10 +2044,10 @@ button.mod-float-right {
   background-color: rgba(var(--interactive-accent-rgb), 0.15);
   color: var(--text-on-accent);
 }
-.card.mod-catalyst.is-active .flair,
-.card.mod-publish.is-active .flair,
-.card.mod-sync.is-active .flair,
-.card.mod-commercial-license.is-active .flair {
+.card.mod-catalyst.is-active .flair:not(.mod-early-bird),
+.card.mod-publish.is-active .flair:not(.mod-early-bird),
+.card.mod-sync.is-active .flair:not(.mod-early-bird),
+.card.mod-commercial-license.is-active .flair:not(.mod-early-bird) {
   display: inline;
 }
 .card.mod-catalyst.is-active .active-text,
@@ -2060,6 +2061,12 @@ button.mod-float-right {
 .card.mod-sync.is-active .inactive-text,
 .card.mod-commercial-license.is-active .inactive-text {
   display: none;
+}
+.card.mod-catalyst.is-early-bird .flair.mod-early-bird,
+.card.mod-publish.is-early-bird .flair.mod-early-bird,
+.card.mod-sync.is-early-bird .flair.mod-early-bird,
+.card.mod-commercial-license.is-early-bird .flair.mod-early-bird {
+  display: inline;
 }
 .commercial-license-price {
   font-size: 18px;
@@ -3341,6 +3348,7 @@ span.mod-huge-punctuation {
   z-index: var(--layer-tooltip);
   pointer-events: none;
   white-space: pre-wrap;
+  word-break: break-all;
 }
 .tooltip.mod-right {
   animation: pop-right 200ms forwards ease-in-out;

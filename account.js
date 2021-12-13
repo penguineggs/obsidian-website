@@ -650,6 +650,8 @@ window.setTimeout(() => {
 						fish('.publish-yearly-price-per-year').setText('96');
 						fish('.publish-monthly-price-per-month').setText('10');
 						fish('.publish-monthly-price-per-year').setText('120');
+
+						getPublishCardEl.addClass('is-early-bird');
 					}
 				}
 
@@ -701,6 +703,8 @@ window.setTimeout(() => {
 						fish('.sync-yearly-price-per-year').setText('48');
 						fish('.sync-monthly-price-per-month').setText('5');
 						fish('.sync-monthly-price-per-year').setText('60');
+
+						getSyncCardEl.addClass('is-early-bird');
 					}
 				}
 
