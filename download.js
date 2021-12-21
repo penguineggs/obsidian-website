@@ -19,22 +19,22 @@ let osDownloadInfo = {
 	'Windows': {
 		buttonName: 'Windows',
 		descriptionName: 'Windows',
-		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.19/Obsidian.0.12.19.exe'
+		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.13.14/Obsidian.0.13.14.exe'
 	},
 	'MacOS': {
 		buttonName: 'macOS',
 		descriptionName: 'macOS',
-		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.19/Obsidian-0.12.19-universal.dmg',
+		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.13.14/Obsidian-0.13.14-universal.dmg',
 	},
 	'Linux': {
 		buttonName: 'Linux (AppImage)',
 		descriptionName: 'Linux (AppImage)',
-		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.19/Obsidian-0.12.19.AppImage'
+		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.13.14/Obsidian-0.13.14.AppImage'
 	},
 	'Linux-Snap': {
 		buttonName: 'Linux',
 		descriptionName: 'Linux (Snap)',
-		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.19/obsidian_0.12.19_amd64.snap'
+		downloadLink: 'https://github.com/obsidianmd/obsidian-releases/releases/download/v0.13.14/obsidian_0.13.14_amd64.snap'
 	},
 	'Linux-Flatpak': {
 		buttonName: 'Linux',
