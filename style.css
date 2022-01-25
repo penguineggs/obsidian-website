@@ -3218,6 +3218,10 @@ span.mod-huge-punctuation {
   .oo-award-entry-image .js-lightbox-navigate:not(.lightbox) img {
     width: 80vw;
   }
+  .oo-title.mod-goty .oo-title-right {
+    font-size: 136px;
+    letter-spacing: -10px;
+  }
 }
 .badge-container {
   display: flex;
