@@ -2086,7 +2086,8 @@ button.mod-float-right {
   padding: 0 8px;
   border-radius: 4px;
 }
-.payment-line.mod-discount {
+.payment-line.mod-discount,
+.payment-line.mod-credit {
   background-color: var(--background-modifier-success);
 }
 .payment-form {
@@ -2835,6 +2836,34 @@ span.mod-huge-punctuation {
 .oo-title-left > *:first-child {
   letter-spacing: -3.7px;
 }
+.oo-title-left .logo {
+  width: 56px;
+  height: 50px;
+  display: inline-block;
+}
+.oo-title-left .logo svg {
+  width: 80px;
+  height: 71px;
+}
+.oo-title.mod-goty .oo-title-left {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.oo-title.mod-goty .oo-title-left > *:first-child {
+  letter-spacing: -4px;
+  font-size: 70px;
+  line-height: 82px;
+  display: flex;
+  justify-items: center;
+}
+.oo-title.mod-goty .oo-title-left > *:last-child {
+  text-transform: uppercase;
+  font-size: 92px;
+  line-height: 70px;
+  position: relative;
+  left: 4px;
+}
 .oo-title-right {
   align-self: center;
   color: var(--interactive-accent-hover);
@@ -2843,6 +2872,11 @@ span.mod-huge-punctuation {
   letter-spacing: -12px;
   margin-left: 10px;
   font-weight: 900;
+}
+.oo-title.mod-goty .oo-title-right {
+  font-size: 205px;
+  line-height: 100px;
+  letter-spacing: -18px;
 }
 .oo-title,
 .oo-award-section {
@@ -2883,8 +2917,15 @@ span.mod-huge-punctuation {
 .oo-award-entry-image {
   margin: 0 auto 10px auto;
 }
+.oo-award-trophy {
+  margin: 10px auto;
+}
 .oo-award-entry-image .js-lightbox-navigate:not(.lightbox) img {
   width: 40vw;
+  border-radius: 8px;
+}
+.oo-award-trophy .js-lightbox-navigate:not(.lightbox) img {
+  width: 300px;
   border-radius: 8px;
 }
 .oo-award-entry-blurb {
@@ -2898,6 +2939,9 @@ span.mod-huge-punctuation {
   text-transform: uppercase;
   font-size: 14px;
   margin-bottom: 4px;
+}
+.oo-award-section.mod-goty .oo-award-entry-blurb:before {
+  content: 'From the nominator:';
 }
 .oo-award-section-title {
   text-align: center;
@@ -2952,6 +2996,13 @@ span.mod-huge-punctuation {
 }
 .oo-submission-entry .flair {
   margin-right: 3px;
+}
+.oo-submission-container.mod-goty .oo-submission-entry .flair {
+  width: 170px;
+  display: block;
+  margin: 14px auto 4px auto;
+  font-size: 14px;
+  text-transform: inherit;
 }
 .oo-award-entry-title {
   display: block;
@@ -3702,8 +3753,8 @@ body {
 }
 .admin-user-list-container table {
   border-collapse: collapse;
-  width: 800px;
-  max-width: 95vw;
+  width: 80vw;
+  max-width: 1000px;
   margin: 20px auto;
 }
 .admin-user-list-container th,

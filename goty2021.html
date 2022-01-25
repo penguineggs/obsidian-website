@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Obsidian October 2021</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+	<link rel="shortcut icon" href="./favicon.ico">
+
+	<meta name="description" content="Obsidian: A knowledge base that works on local Markdown files.">
+	<meta name="twitter:description" content="Obsidian – A knowledge base that works on local Markdown files.">
+	<meta property="og:title" content="Obsidian: A knowledge base that works on local Markdown files."/>
+	<meta name="twitter:title" content="Obsidian: A knowledge base that works on local Markdown files.">
+	<meta property="og:description" content="Obsidian – A knowledge base that works on local Markdown files.">
+	<meta name="twitter:site" content="@obsdmd">
+	<meta name="twitter:domain" content="obsidian.md">
+	<meta name="twitter:creator" content="@obsdmd">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://obsidian.md/images/banner.png">
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="https://obsidian.md/images/banner.png"/>
+</head>
+<body class="theme-dark">
+<div class="static-full-page-container mod-landing">
+	<div class="app-header">
+		<a class="nav-logo" href="/">
+			<span class="nav-logo-icon">
+			<svg viewBox="0 0 100 100" width="30" height="30">
+			<defs>
+				<linearGradient id="a" x1="82.85" y1="30.41" x2="51.26" y2="105.9"
+				                gradientTransform="matrix(1, 0, 0, -1, -22.41, 110.97)" gradientUnits="userSpaceOnUse">
+					<stop offset="0" stop-color="#6c56cc"/>
+					<stop offset="1" stop-color="#9785e5"/>
+				</linearGradient>
+			</defs>
+			<polygon points="44.61 0 12.91 17.52 0 45.45 19.57 90.47 47.35 100 52.44 89.8 63 26.39 44.61 0"
+			         fill="#34208c"/>
+			<polygon points="63 26.39 43.44 14.41 16.43 35.7 47.35 100 52.44 89.8 63 26.39" fill="url(#a)"/>
+			<polygon points="63 26.39 63 26.39 44.61 0 43.44 14.41 63 26.39" fill="#af9ff4"/>
+			<polygon points="43.44 14.41 44.61 0 12.91 17.52 16.43 35.7 43.44 14.41" fill="#4a37a0"/>
+			<polygon points="16.43 35.7 19.57 90.47 47.35 100 16.43 35.7" fill="#4a37a0"/>
+		</svg>
+		</span>
+			<span class="nav-logo-text">Obsidian</span>
+		</a>
+
+		<a href="https://twitter.com/obsdmd" class="app-header-link mod-twitter" target="_blank">
+			<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="34px" height="24px">
+				<path
+					d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"/>
+			</svg>
+		</a>
+		<a class="app-header-link" href="/pricing">Pricing</a>
+		<a class="app-header-link" href="/mobile">Mobile</a>
+		<a class="app-header-link" href="/publish">Publish</a>
+		<a class="app-header-link" href="/sync">Sync</a>
+		<a class="app-header-link" href="/community">Community</a>
+		<a class="app-header-link" href="/account">Account</a>
+
+		<a href="#" class="static-header-menu">
+			<svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34px" height="24px">
+				<path fill="currentColor" stroke="currentColor"
+				      d="M6,18c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1s0.4-1.4,0-2 c-0.4-0.6-1-1-1.8-1H6z M6,48c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1 c0.4-0.6,0.4-1.4,0-2s-1-1-1.8-1H6z M6,78c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1 s0.4-1.4,0-2s-1-1-1.8-1H6z"/>
+			</svg>
+		</a>
+	</div>
+
+	<div class="oo-title mod-goty">
+		<div class="oo-title-logofont">
+			<div class="oo-title-left">
+				<div>
+					<span class="logo">
+						<svg viewBox="0 0 100 100" width="30" height="30">
+							<defs>
+								<linearGradient id="a" x1="82.85" y1="30.41" x2="51.26" y2="105.9"
+								                gradientTransform="matrix(1, 0, 0, -1, -22.41, 110.97)"
+								                gradientUnits="userSpaceOnUse">
+									<stop offset="0" stop-color="#6c56cc"/>
+									<stop offset="1" stop-color="#9785e5"/>
+								</linearGradient>
+							</defs>
+							<polygon
+								points="44.61 0 12.91 17.52 0 45.45 19.57 90.47 47.35 100 52.44 89.8 63 26.39 44.61 0"
+								fill="#34208c"/>
+							<polygon points="63 26.39 43.44 14.41 16.43 35.7 47.35 100 52.44 89.8 63 26.39"
+							         fill="url(#a)"/>
+							<polygon points="63 26.39 63 26.39 44.61 0 43.44 14.41 63 26.39" fill="#af9ff4"/>
+							<polygon points="43.44 14.41 44.61 0 12.91 17.52 16.43 35.7 43.44 14.41" fill="#4a37a0"/>
+							<polygon points="16.43 35.7 19.57 90.47 47.35 100 16.43 35.7" fill="#4a37a0"/>
+						</svg>
+					</span>of the
+				</div>
+				<div>Year</div>
+			</div>
+			<div class="oo-title-right">
+				2021
+			</div>
+		</div>
+
+		<div class="oo-title-links">
+			<a href="https://publish.obsidian.md/hub/01+-+Community/Events/Gems+of+the+Year+2021" target="_blank">December
+				8, 2011 ~ January 5, 2022</a>
+			•
+			<a href="https://publish.obsidian.md/hub/01+-+Community/Events/Gems+of+the+Year+2021" target="_blank">Event
+				details</a>
+			•
+			<a href="https://forum.obsidian.md/t/obsidian-gems-of-the-year-2021-voting/28759"
+			   target="_blank">Voting thread</a>
+		</div>
+		<div class="oo-title-fine-print">
+			<p>Winners are first nominated and then selected by number of votes by community members. Lucky winners were
+				chosen randomly among all participants of the same category.</p>
+		</div>
+	</div>
+
+	<div class="oo-award-section mod-goty">
+		<div class="oo-award-section-title">&lt;plugins/&gt;</div>
+		<div class="oo-award-entry">
+			<a href="https://github.com/blacksmithgu/obsidian-dataview" target="_blank"
+			   class="oo-award-entry-title"><span class="flair mod-pop">1st place</span> Dataview by Michael Brenan</a>
+			<div class="oo-award-body">
+				<div class="oo-award-entry-image">
+					<a href="#primary" class="js-lightbox-navigate">
+						<img
+							src="https://raw.githubusercontent.com/blacksmithgu/obsidian-dataview/master/docs/docs/assets/game.png"
+							alt="Dataview">
+					</a>
+					<a href="#_" class="lightbox js-lightbox-navigate" id="primary">
+						<img
+							src="https://raw.githubusercontent.com/blacksmithgu/obsidian-dataview/master/docs/docs/assets/game.png"
+							alt="Dataview">
+					</a>
+				</div>
+				<div class="oo-award-entry-blurb">
+					My words pale in comparison to what it can do for the various users of Obsidian, but personally? It
+					allows me to build landing pages and dashboards, automatically generate tables from hundreds of
+					notes, create my own wiki, and even fetch me news about upcoming video games.
+				</div>
+			</div>
+		</div>
+
+		<div class="oo-award-entry">
+			<a class="oo-award-entry-title" href="https://github.com/SilentVoid13/Templater"
+			   target="_blank"><span class="flair mod-pop">2nd place</span> Templater by SilentVoid
+			</a>
+			<div class="oo-award-body">
+				<div class="oo-award-entry-image">
+					<a href="#templater" class="js-lightbox-navigate">
+						<img
+							src="https://raw.githubusercontent.com/SilentVoid13/Templater/master/imgs/templater_demo.gif"
+							alt="Templater plugin">
+					</a>
+					<a href="#_" class="lightbox js-lightbox-navigate" id="templater">
+						<img
+							src="https://raw.githubusercontent.com/SilentVoid13/Templater/master/imgs/templater_demo.gif"
+							alt="Templater plugin">
+					</a>
+				</div>
+				<div class="oo-award-entry-blurb">
+					This plug-in is a life saver and is by far my most used plugin, saving me a lot of time entering
+					information but also helping me give consistent structure to those notes that need it. So flexible
+					and powerful!
+				</div>
+			</div>
+		</div>
+
+		<div class="oo-award-entry">
+			<a class="oo-award-entry-title" href="https://github.com/zsviczian/obsidian-excalidraw-plugin"
+			   target="_blank"><span class="flair mod-pop">3rd place</span> Excalidraw by Zsolt Viczián
+			</a>
+			<div class="oo-award-body">
+				<div class="oo-award-entry-image">
+					<a href="#excalidraw" class="js-lightbox-navigate">
+						<img
+							src="https://user-images.githubusercontent.com/14358394/125159831-336d6880-e17a-11eb-8a3d-ceabc2555a08.png"
+							alt="Excalidraw plugin">
+					</a>
+					<a href="#_" class="lightbox js-lightbox-navigate" id="excalidraw">
+						<img
+							src="https://user-images.githubusercontent.com/14358394/125159831-336d6880-e17a-11eb-8a3d-ceabc2555a08.png"
+							alt="Excalidraw plugin">
+					</a>
+				</div>
+				<div class="oo-award-entry-blurb">
+					Life changing for me. In fact, it’s the only plug-in that I’ve installed that I kept. Often, I use
+					images & spatial layouts to think & deep dive on notes, thoughts & topics. One of the limitations I
+					often run into in most knowledge base apps is they excel in text but fell short with visual layouts.
+					This plug in let’s me sketch things all & stay in my knowledge base (Obsidian). The fact that links
+					work in the images is game changing.
+				</div>
+			</div>
+		</div>
+
+		<div class="oo-submission-container mod-other mod-goty">
+			<a href="https://github.com/mgmeyers/obsidian-kanban" target="_blank" class="oo-submission-entry">
+				<span class="flair mod-pop">4th place</span>
+				Kanban by mgmeyers</a>
+			<a href="https://github.com/tgrosinger/advanced-tables-obsidian" target="_blank"
+			   class="oo-submission-entry"><span class="flair mod-pop">5th place</span> Advanced Tables by Tony
+				Grosinger</a>
+			<a href="https://github.com/valentine195/obsidian-admonition" target="_blank"
+			   class="oo-submission-entry"><span class="flair mod-pop">6th place</span> Admonition by Jeremy
+				Valentine</a>
+			</a>
+			<a href="https://github.com/vslinko/obsidian-outliner" target="_blank"
+			   class="oo-submission-entry"><span class="flair mod-pop">7th place</span> Outliner by Viacheslav
+				Slinko</a>
+			<a href="https://github.com/mgmeyers/obsidian-style-settings" target="_blank" class="oo-submission-entry">
+				<span class="flair mod-pop">8th place</span> Style Settings by mgmeyers
+			</a>
+			<a href="https://github.com/readwiseio/obsidian-readwise" target="_blank" class="oo-submission-entry"><span
+				class="flair mod-pop">9th place</span> Readwise Official by Readwise</a>
+			<a href="https://github.com/chhoumann/quickadd" target="_blank" class="oo-submission-entry"><span
+				class="flair mod-pop">10th place</span> QuickAdd by Christian B. B. Houmann</a>
+		</div>
+	</div>
+
+	<div class="oo-award-section mod-goty">
+		<div class="oo-award-section-title">&lt;themes/&gt;</div>
+		<div class="oo-award-entry">
+			<a href="https://github.com/colineckert/obsidian-things" target="_blank"
+			   class="oo-award-entry-title"><span class="flair mod-pop">1st place</span> Things by Colin Eckert</a>
+			<div class="oo-award-body">
+				<div class="oo-award-entry-image">
+					<a href="#things" class="js-lightbox-navigate">
+						<img
+							src="https://raw.githubusercontent.com/colineckert/obsidian-things/main/assets/main-demo.png"
+							alt="Things theme">
+					</a>
+					<a href="#_" class="lightbox js-lightbox-navigate" id="things">
+						<img
+							src="https://raw.githubusercontent.com/colineckert/obsidian-things/main/assets/main-demo.png"
+							alt="Things theme">
+					</a>
+				</div>
+				<div class="u-center-text">Credit and special: kepano of Minimal, Chetachi E. of Yin and Yang</div>
+				<div class="oo-award-entry-blurb">
+					I’ve long been a fan of the clean design aesthetic behind the Things app, and the Obsidian theme
+					wonderfully harks back to it. It’s modern, minimalist, clean, with subtle details that are brilliant
+					— bullets, arrows, numbered lists all have a deep grey to them that has them distinguished from the
+					body font, the iconography is clean and wonderful. The color combinations are well-designed. And as
+					someone who knows a thing or two about design and CSS, Things serves as an amazing base upon which I
+					could easily make my own modifications, tweaking in small ways to my personal preference with
+					relative ease. A wonderful, wonderful theme that when paired with key extensions like Hider has
+					Obsidian achieve a more Mac-friendly app design feel that I absolutely adore.
+				</div>
+			</div>
+		</div>
+
+		<div class="oo-award-entry">
+			<a class="oo-award-entry-title" href="https://github.com/chetachiezikeuzor/Yin-and-Yang-Theme"
+			   target="_blank"><span class="flair mod-pop">2nd place</span> Yin and Yang by Chetachi E.
+			</a>
+			<div class="oo-award-body">
+				<div class="oo-award-entry-image">
+					<a href="#yin-and-yang" class="js-lightbox-navigate">
+						<img
+							src="https://raw.githubusercontent.com/chetachiezikeuzor/Yin-and-Yang-Theme/main/assets/screenshot.png"
+							alt="Yin & Yang theme">
+					</a>
+					<a href="#_" class="lightbox js-lightbox-navigate" id="yin-and-yang">
+						<img
+							src="https://raw.githubusercontent.com/chetachiezikeuzor/Yin-and-Yang-Theme/main/assets/screenshot.png"
+							alt="Yin & Yang theme">
+					</a>
+				</div>
+				<div class="u-center-text">Credit and special thanks: mgmeyers of California Coast</div>
+				<div class="oo-award-entry-blurb">
+					What Chetachi has built is nothing short of brilliant. From scratch, she’s created one of the most
+					beloved themes in the community. Yin and Yang was my theme of choice before making my own, and I
+					leaned heavily on her work (namely Y&Y’s awesome custom icons).
+
+					The love and sweat evident in the theme’s robust design, from supporting all kinds of customization
+					to the uncompromising level of detail that makes the app feel so native, make it one of if not the
+					best theme available. I particularly enjoy using it on mobile, where the UI/UX design choices really
+					come into focus. Y&Y made opening Obsidian on my phone each day to jot quick notes and tasks a
+					blast and it deserves a nomination, if at the very least for Chetachi’s warm passion and willingness
+					to help those in the community. She’s become someone I consider a friend and is always there to
+					offer help.
+				</div>
+			</div>
+		</div>
+
+		<div class="oo-award-entry">
+			<a class="oo-award-entry-title" href="https://github.com/jdanielmourao/obsidian-sanctum"
+			   target="_blank"><span class="flair mod-pop">3rd place</span> Sanctum by José Daniel Mourão
+			</a>
+			<div class="oo-award-body">
+				<div class="oo-award-entry-image">
+					<a href="#sanctum" class="js-lightbox-navigate">
+						<img
+							src="https://raw.githubusercontent.com/jdanielmourao/obsidian-sanctum/main/cover.png"
+							alt="Sanctum theme">
+					</a>
+					<a href="#_" class="lightbox js-lightbox-navigate" id="sanctum">
+						<img
+							src="https://raw.githubusercontent.com/jdanielmourao/obsidian-sanctum/main/cover.png"
+							alt="Sanctum theme">
+					</a>
+				</div>
+				<div class="u-center-text">Credit and special thanks: kepano of Minimal, mgmeyers of California Coast</div>
+				<div class="oo-award-entry-blurb">
+					Sanctum supports all of my weird fiddly requests, like styling &lt;cite&gt; and
+					&lt;aside&gt;, faux admonitions using data-task with checkboxes, and beautiful touches for plugins
+					like
+					wordsprint, fantasy calendar, etc. It does this while having an incredible attention to detail,
+					making the entire Obsidian interface feel smooth and modern, and only using one (incredibly
+					unambiguous and easy to read) font so I don’t have to think about fonts. The developer is
+					responsive, responsible, and most importantly, prioritizes all the little details that make a
+					theme great — even on publish and mobile. Sanctum is everything I wish I had been capable of
+					building when I put together Palatinate, and I’m thrilled it exists, mostly because it has
+					finally allowed me to stop caring about CSS.
+				</div>
+			</div>
+		</div>
+
+		<div class="oo-submission-container mod-other mod-goty">
+			<a href="https://github.com/ceciliamay/obsidianmd-theme-primary" target="_blank"
+			   class="oo-submission-entry">
+				<span class="flair mod-pop">4th place</span>
+				Primary by Cecilia May</a>
+			<a href="https://github.com/mgmeyers/obsidian-california-coast-theme" target="_blank"
+			   class="oo-submission-entry"><span class="flair mod-pop">5th place</span> California Coast by mgmeyers</a>
+			<a href="https://github.com/SlRvb/Obsidian--ITS-Theme" target="_blank"
+			   class="oo-submission-entry"><span class="flair mod-pop">6th place</span> ITS by SlRvb
+			</a>
+			<a href="https://github.com/chrisgrieser/shimmering-focus" target="_blank"
+			   class="oo-submission-entry"><span class="flair mod-pop">7th place</span> Shimmering Focus by
+				pseudometa</a>
+			<a href="https://github.com/nikbrunner/obsidian-deep-work-theme" target="_blank"
+			   class="oo-submission-entry">
+				<span class="flair mod-pop">8th place</span> Deep Work by nikbrunner
+			</a>
+			<a href="https://github.com/damiankorcz/Prism-Theme" target="_blank" class="oo-submission-entry"><span
+				class="flair mod-pop">9th place</span> Prism by Damian Korcz</a>
+			<a href="https://github.com/Emrie-Candera/Bubble-Space-Theme" target="_blank"
+			   class="oo-submission-entry"><span
+				class="flair mod-pop">10th place</span> Bubble Space by Emrie Candera
+			</a>
+			<div class="u-muted u-center-text">Credit and special: ITS theme, Yin and Yang theme, bobby, crystallinedoll, pseudometa</div>
+		</div>
+
+		<div class="oo-award-section mod-goty">
+			<div class="oo-award-section-title">Content creators</div>
+
+			<div class="oo-submission-container mod-other mod-goty">
+				<a href="https://www.obsidianroundup.org" target="_blank" class="oo-submission-entry">
+					<span class="flair mod-pop">1st place</span>
+					Eleanor Konik (Obsidian Roundup)</a>
+				<a href="https://www.youtube.com/c/BryanJenksTech" target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">2nd place</span> Bryan Jenks</a>
+				<a href="https://www.linkingyourthinking.com/" target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">3rd place</span> Nick Milo (Linking Your
+					Thinking)
+				</a>
+				<a href="https://publish.obsidian.md/hub/01+-+Community/Events/Obsidian+Community+Talks" target="_blank"
+				   class="oo-submission-entry">
+					<span class="flair mod-pop">4th place</span>Obsidian Community Talks by SkepticMystic, argentum et
+					al</a>
+				<a href="https://publish.obsidian.md/hub" target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">5th place</span> Obsidian Hub by argentum,
+					Clare Macrae, koala, pseudometa, SlRvb et al</a>
+				<a href="https://santiyounger.com/" target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">6th place</span> Santi Younger
+				</a>
+				<a href="https://www.youtube.com/c/visualpkm/featured" target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">7th place</span> Zsolt Viczián</a>
+				<a href="https://www.macstories.net/author/viticci/" target="_blank"
+				   class="oo-submission-entry">
+					<span class="flair mod-pop">8th place</span> Federico Viticci (MacStories)
+				</a>
+				<a href="https://www.youtube.com/c/FilipeDonadio/featured" target="_blank"
+				   class="oo-submission-entry"><span
+					class="flair mod-pop">9th place</span> Filipe Donadio</a>
+				<a href="https://curtismchale.ca/" target="_blank" class="oo-submission-entry"><span
+					class="flair mod-pop">10th place</span> Curtis McHale</a>
+			</div>
+		</div>
+
+		<div class="oo-award-section mod-goty">
+			<div class="oo-award-section-title">Workflows</div>
+
+			<div class="oo-submission-container mod-other mod-goty">
+				<a href="https://forum.obsidian.md/t/zotero-zotfile-mdnotes-obsidian-dataview-workflow/15536"
+				   target="_blank" class="oo-submission-entry">
+					<span class="flair mod-pop">1st place</span>
+					Detailed write up of the Zotero → Obsidian workflow by Cat</a>
+				<a href="https://www.youtube.com/watch?v=F4LE-nIzefM" target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">2nd place</span> Fiction project management
+					by Eleanor Konik</a>
+				<a href="https://publish.obsidian.md/hub/04+-+Guides%2C+Workflows%2C+%26+Courses/Community+Talks/Obsidian+and+TTRP/"
+				   target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">3rd place</span> Obsidian for TTRPG by Leah
+					Ferguson, Andy Polaine, SlRvb, Jeremy Valentine, Nicole van der Hoeven
+				</a>
+				<a href="https://chris-grieser.de/Comprehensive-Academic-Workflow-from-Reading-to-Writing-in-Markdown"
+				   target="_blank" class="oo-submission-entry">
+					<span class="flair mod-pop">Lucky</span>Comprehensive Academic Workflow from Reading to Writing in
+					Markdown by pseudometa</a>
+				<a href="https://axle.design/an-integrated-qualitative-analysis-environment-with-obsidian"
+				   target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">Lucky</span> Qualitative Analysis Using
+					Obsidian by Ryan J. A. Murphy</a>
+				<a href="https://brain.lkadre.com/%C2%A7+002+WORKFLOW" target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">Lucky</span> Second brain setup by lkadre
+				</a>
+			</div>
+		</div>
+
+		<div class="oo-award-section mod-goty">
+			<div class="oo-award-section-title">Achievements</div>
+
+			<div class="oo-submission-container mod-other mod-goty">
+				<a href="https://forum.obsidian.md/t/obsidian-gems-of-the-year-2021-nomination-achievements/28228/2"
+				   target="_blank" class="oo-submission-entry">
+					<span class="flair mod-pop">1st place</span>
+					Had articles published in paying markets for the first time by Eleanor Konik</a>
+				<a href="https://forum.obsidian.md/t/obsidian-gems-of-the-year-2021-nomination-achievements/28228/6"
+				   target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">2nd place</span> Ph.D. unlocked by Verma
+					Vivek</a>
+				<a href="https://forum.obsidian.md/t/obsidian-gems-of-the-year-2021-nomination-achievements/28228/10"
+				   target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">3rd place</span> Obsidian instilled a love of
+					coding in me by Joschua
+				</a>
+				<a href="https://forum.obsidian.md/t/obsidian-gems-of-the-year-2021-nomination-achievements/28228/3"
+				   target="_blank" class="oo-submission-entry">
+					<span class="flair mod-pop">Lucky</span>Super-helper mnvwvnm has helped build a strong community of
+					practice with the help of Obsidian</a>
+				<a href="https://forum.obsidian.md/t/obsidian-gems-of-the-year-2021-nomination-achievements/28228/8"
+				   target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">Lucky</span> Apple Loves Leah by Leah
+					Ferguson</a>
+				<a href="https://forum.obsidian.md/t/obsidian-gems-of-the-year-2021-nomination-achievements/28228/4"
+				   target="_blank"
+				   class="oo-submission-entry"><span class="flair mod-pop">Lucky</span> I’m making a free tabletop
+					roleplaying game, from scratch, in Obsidian by Seraaron
+				</a>
+			</div>
+		</div>
+
+		<div class="static-footer">
+			<div class="footer-groups">
+				<ul class="footer-link-group">
+					<li class="footer-header">Obsidian</li>
+					<li><a href="https://publish.obsidian.md/help" target="_blank">Help</a></li>
+					<li><a href="/faq">FAQ</a></li>
+					<li><a href="https://forum.obsidian.md/c/announcements" target="_blank">Release notes</a></li>
+					<li><a href="https://trello.com/b/Psqfqp7I/obsidian-roadmap" target="_blank">Roadmap</a></li>
+				</ul>
+
+				<ul class="footer-link-group">
+					<li class="footer-header">Social</li>
+					<li><a href="/about">About us</a></li>
+					<li><a href="https://twitter.com/obsdmd" target="_blank">Follow us on Twitter</a></li>
+					<li><a href="https://discord.gg/veuWUTm" target="_blank">Community Discord</a></li>
+					<li><a href="https://forum.obsidian.md" target="_blank">Forum</a> / <a
+						href="https://forum-zh.obsidian.md" target="_blank">中文论坛</a></li>
+				</ul>
+
+				<ul class="footer-link-group">
+					<li class="footer-header">Spread the word</li>
+					<li><a href="https://www.producthunt.com/posts/obsidian-3" target="_blank">Featured on Product
+						Hunt</a>
+					<li><a href="https://alternativeto.net/software/obsidian/about/" target="_blank">Like us on
+						AlternativeTo</a>
+					</li>
+					<li><a
+						href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
+						target="_blank">Like
+						us on Slant</a></li>
+					<li><a href="https://yourstack.com/products/obsidian-1" target="_blank">Stack us on
+						YourStack</a>
+					</li>
+				</ul>
+
+				<ul class="footer-link-group">
+					<li class="footer-header">Legal</li>
+					<li><a href="/eula">License information (EULA)</a></li>
+					<li><a href="/terms">Terms of Service</a></li>
+					<li><a href="/privacy">Privacy policy</a></li>
+					<li><a href="/privacy-statement">Privacy statement</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-copyright u-center-text"><span>© 2022 Obsidian</span></div>
+		</div>
+	</div>
+
+	<div class="static-header-pop-up-nav-container">
+		<div class="static-header-pop-up-nav-close-button"></div>
+		<div class="static-header-pop-up-nav">
+			<a class="header-pop-up-nav-link" href="/pricing">Pricing</a>
+			<a class="header-pop-up-nav-link" href="/mobile">Mobile</a>
+			<a class="header-pop-up-nav-link" href="/publish">Publish</a>
+			<a class="header-pop-up-nav-link" href="/sync">Sync</a>
+			<a class="header-pop-up-nav-link" href="/community">Community</a>
+			<a class="header-pop-up-nav-link" href="/account">Account</a>
+		</div>
+	</div>
+
+	<script src="enhance.js"></script>
+	<script src="download.js"></script>
+	<script src="static.js"></script>
+	<script>
+		(async () => {
+			function getRawGithubUrl(repo, branch, file) {
+				return 'https://raw.githubusercontent.com/' + repo + '/' + (branch || 'master') + '/' + file;
+			}
+
+			const COMMUNITY_PLUGIN_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-plugins.json');
+			const COMMUNITY_THEME_URL = getRawGithubUrl('obsidianmd/obsidian-releases', 'master', 'community-css-themes.json');
+			let getCount = async (url) => {
+				let result = await ajaxPromise({url});
+
+				if (!Array.isArray(result)) {
+					throw new Error('Failed to parse community plugins.');
+				}
+
+				return result.length;
+			};
+
+			fish('.community-plugin-count').setText(await getCount(COMMUNITY_PLUGIN_URL));
+			fish('.community-theme-count').setText(await getCount(COMMUNITY_THEME_URL));
+		})();
+
+		let lightboxNavigateLinksEl = fishAll('.js-lightbox-navigate');
+
+		lightboxNavigateLinksEl.forEach((lightboxLinkEl) => {
+			lightboxLinkEl.addEventListener('click', (evt) => {
+				let href = lightboxLinkEl.getAttribute('href');
+
+				if (window.history) {
+					history.replaceState(undefined, undefined, href);
+				}
+			});
+		})
+	</script>
+
+</body>
+</html>
