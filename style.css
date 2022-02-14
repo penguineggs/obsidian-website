@@ -2086,8 +2086,7 @@ button.mod-float-right {
   padding: 0 8px;
   border-radius: 4px;
 }
-.payment-line.mod-discount,
-.payment-line.mod-credit {
+.payment-line.mod-discount {
   background-color: var(--background-modifier-success);
 }
 .payment-form {
@@ -2600,7 +2599,6 @@ span.mod-huge-punctuation {
   line-height: 20px;
   font-size: 100px;
   color: var(--text-accent);
-  font-family: 'Playfair Display', serif;
   font-weight: normal;
 }
 .feature-title.mod-quote:before {
@@ -2649,8 +2647,8 @@ span.mod-huge-punctuation {
 }
 .account-container {
   background-color: var(--background-secondary);
-  width: 520px;
-  max-width: 100%;
+  width: 60vw;
+  max-width: 650px;
   padding: 50px 20px;
 }
 .account-container .page-header {
@@ -3190,6 +3188,10 @@ span.mod-huge-punctuation {
     max-width: 100%;
     padding: 0 20px;
     margin: 20px 10px;
+  }
+  .account-container {
+    width: 95%;
+    max-width: 95%;
   }
 }
 @media only screen and (max-width: 500px) {
