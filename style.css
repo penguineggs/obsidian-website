@@ -93,6 +93,14 @@
   --reveal-font: var(--default-font);
   --font-monospace: 'Source Code Pro', monospace;
 }
+:root {
+  --h1: 2em;
+  --h2: 1.6em;
+  --h3: 1.37em;
+  --h4: 1.25em;
+  --h5: 1.12em;
+  --h6: 1.12em;
+}
 .theme-dark {
   --background-primary: #202020;
   --background-primary-alt: #1a1a1a;
@@ -3361,30 +3369,30 @@ span.mod-huge-punctuation {
     padding: 0;
   }
 }
-::-webkit-scrollbar-thumb {
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb-bg);
 }
-::-webkit-scrollbar {
+body:not(.native-scrollbars) ::-webkit-scrollbar {
   background-color: var(--scrollbar-bg);
 }
-::-webkit-scrollbar-thumb:active {
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:active {
   background-color: var(--scrollbar-active-thumb-bg);
 }
-::-webkit-scrollbar {
+body:not(.native-scrollbars) ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   -webkit-border-radius: 100px;
 }
-::-webkit-scrollbar-thumb {
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 100px;
 }
-::-webkit-scrollbar-thumb:active {
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:active {
   -webkit-border-radius: 100px;
 }
-::-webkit-scrollbar-corner {
+body:not(.native-scrollbars) ::-webkit-scrollbar-corner {
   background: transparent;
 }
-* {
+body:not(.native-scrollbars) * {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-bg);
 }
