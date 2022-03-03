@@ -1890,25 +1890,29 @@ button.mod-float-right {
   text-align: center;
   margin: 20px 0 10px 0;
 }
-.wechat-pay-image,
-.paypal-pay-image {
-  border-radius: 24px;
-  height: 48px;
-  opacity: 0.2;
+.paypal-button,
+.wechat-pay-button,
+.alipay-button {
   cursor: pointer;
-  padding: 8px 20px;
-  margin: 0 6px;
-  transition: opacity 150ms ease-in-out;
-}
-.wechat-pay-image:hover,
-.paypal-pay-image:hover {
+  box-sizing: content-box;
+  margin: 0 10px;
+  width: 100px;
+  height: 44px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
   opacity: 0.6;
+  padding: 2px 13px;
+  filter: grayscale();
 }
-.wechat-pay-image {
-  background-color: #ffffff;
+.paypal-button:hover,
+.wechat-pay-button:hover,
+.alipay-button:hover {
+  filter: none;
+  opacity: 1;
 }
-.paypal-pay-image {
-  background-color: #FFC439;
+.wechat-pay-button {
+  height: auto;
+  padding: 9px 15px;
 }
 .wechat-pay-qr-code {
   height: 120px;
@@ -3760,10 +3764,10 @@ body {
 }
 .stripe-badge {
   opacity: 0.5;
-  margin: 20px 0 0 0;
+  margin: 16px 0 0 0;
 }
 .stripe-badge img {
-  width: 120px;
+  width: 100px;
 }
 .admin-user-list-container table {
   border-collapse: collapse;
