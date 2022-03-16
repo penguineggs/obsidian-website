@@ -176,6 +176,10 @@
   --highlight-mix-blend-mode: darken;
 }
 body {
+  --indentation-guide: var(--background-modifier-border);
+  --indentation-guide-active: var(--text-faint);
+}
+body {
   --layer-cover: 5;
   --layer-sidedock: 10;
   --layer-status-bar: 15;
@@ -1891,13 +1895,14 @@ button.mod-float-right {
   margin: 20px 0 10px 0;
 }
 .paypal-button,
+.paypal-temp-button,
 .wechat-pay-button,
 .alipay-button {
   cursor: pointer;
   box-sizing: content-box;
-  margin: 0 10px;
+  margin: 6px 4px 0 4px;
   width: 100px;
-  height: 44px;
+  height: 36px;
   border: 1px solid #bbb;
   border-radius: 10px;
   opacity: 0.6;
@@ -1905,6 +1910,7 @@ button.mod-float-right {
   filter: grayscale();
 }
 .paypal-button:hover,
+.paypal-temp-button:hover,
 .wechat-pay-button:hover,
 .alipay-button:hover {
   filter: none;
@@ -1912,11 +1918,27 @@ button.mod-float-right {
 }
 .wechat-pay-button {
   height: auto;
-  padding: 9px 15px;
+  padding: 5px 15px;
 }
-.wechat-pay-qr-code {
-  height: 120px;
-  width: 120px;
+.paypal-button,
+.paypal-temp-button {
+  border: none;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  width: 272px;
+}
+.paypal-temp-button {
+  width: 100px;
+  margin-top: 10px;
+}
+.paypal-button {
+  display: none;
+}
+.paypal-button .paypal-buttons {
+  max-width: 272px !important;
+  min-height: 44px !important;
+  margin-top: 10px;
 }
 .modal-container.mod-wechat-pay .modal {
   width: 500px;
@@ -1964,6 +1986,9 @@ button.mod-float-right {
   display: block;
   transition: all 0.2s ease;
   width: 100%;
+}
+.payment-form button.mod-no-card {
+  border-radius: 4px;
 }
 .payment-form button:hover {
   background: var(--text-accent);

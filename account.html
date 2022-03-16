@@ -226,6 +226,16 @@
                     <a class="js-view-invoices">View</a>
                 </div>
             </div>
+            <div class="setting-item mod-obsidian-credit" style="display: none;">
+                <div class="setting-item-info">
+                    <div class="setting-item-name">Obsidian Credit</div>
+                    <div class="setting-item-description">
+                        Obsidian Credit can be spent towards all kinds of Obsidian licenses and services. You currently
+                        have <span class="u-pop">$<span class="obsidian-credit-amount">0</span></span>
+                        (USD) Obsidian Credit left.
+                    </div>
+                </div>
+            </div>
             <div class="setting-item">
                 <div class="setting-item-info">
                     <div class="setting-item-name">Delete account</div>
@@ -514,7 +524,7 @@
                             to
                             Obsidian Unlimited.</p>
                         <p class="u-center-text">
-                            <button class="mod-cta">Pay</button>
+                            <button class="mod-cta">Doante</button>
                         </p>
                     </div>
                 </div>
@@ -586,10 +596,10 @@
                         <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
                                                                    alt="Powered by Stripe"></p>
                         <p class="u-center-text">
+                            <span class="paypal-button" id="publish-paypal-button"></span>
                             <img class="wechat-pay-button" src="images/wechat-pay.png" alt="Pay with Wechat Pay">
                             <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                            <img class="paypal-button" src="images/paypal-badge.svg" alt="Pay with PayPal"
-                                 style="display: none;">
+                            <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
                         </p>
                     </form>
                 </div>
@@ -677,10 +687,10 @@
                         <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
                                                                    alt="Powered by Stripe"></p>
                         <p class="u-center-text">
+                            <span class="paypal-button" id="sync-paypal-button"></span>
                             <img class="wechat-pay-button" src="images/wechat-pay.png" alt="Pay with Wechat Pay">
                             <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                            <img class="paypal-button" src="images/paypal-badge.svg" alt="Pay with PayPal"
-                                 style="display: none;">
+                            <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
                         </p>
                     </form>
                 </div>
@@ -746,9 +756,11 @@
                     <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
                                                                alt="Powered by Stripe"></p>
                     <p class="u-center-text">
+                        <span class="paypal-button" id="business-paypal-button"></span>
                         <img class="wechat-pay-button" src="images/wechat-pay.png"
                              alt="Pay with Wechat Pay">
                         <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
+                        <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
                     </p>
                 </form>
             </div>
@@ -848,44 +860,14 @@
                         <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
                                                                    alt="Powered by Stripe"></p>
                         <p class="u-center-text">
+                            <span class="paypal-button" id="catalyst-paypal-button"></span>
                             <img class="wechat-pay-button" src="images/wechat-pay.png"
                                  alt="Pay with Wechat Pay">
                             <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                            <img class="paypal-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
+                            <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
                         </p>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-paypal-pay" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Pay with PayPal</div>
-            <div class="modal-content">
-                <p>Thanks for supporting Obsidian!</p>
-
-                <p>Please do the following in order to get your payment processed:</p>
-                <ol class="u-pop">
-                    <li>Verify you're not paying a monthly fee. Because it's a manual process, we only accept yearly payments for Sync and Publish. Monthly payments
-                        will be refunded.</li>
-                    <li>Forward your PayPal receipt to <a href="mailto:support@obsidian.md">support@obsidian.md</a> and specify what service you're purchasing.</li>
-                </ol>
-
-                <p>Your payment should be processed within 3 business days.</p>
-
-                <p>Thanks so much for your kind support! Obsidian couldn't have become what it is today
-                    without help from amazing people like you. Sorry for the trouble!</p>
-
-                <p class="u-center-text">
-                    <a href="https://paypal.me/obsidianmd" target="_blank">
-                        <img style="width: 200px; background-color: #FFC439;border-radius: 24px;padding: 8px 40px;"
-                             src="images/paypal-badge.png"
-                             alt="Pay with PayPal">
-                    </a>
-                </p>
             </div>
         </div>
     </div>
@@ -945,14 +927,12 @@
                 <div class="message-container">
                     <div class="payment-error message mod-error" style="display: none;"></div>
                 </div>
-                <p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue
-                    our
-                    vision.</p>
+                <p>Thanks for supporting Obsidian! Your support helps us stay independent, so we can pursue
+                    our vision.</p>
                 <p>
                     <label class="input-label">Amount (USD)</label>
                     <input class="donation-amount-input" type="number" placeholder="Pay what you want..."
-                           min="5"
-                           step="1">
+                           value="5" min="5" step="1">
                 </p>
                 <form class="payment-form">
                     <div class="card-element"><!--Stripe.js injects the Card Element--></div>
@@ -969,10 +949,11 @@
                                                                alt="Powered by Stripe"></p>
 
                     <p class="u-center-text">
+                        <span class="paypal-button" id="donation-paypal-button"></span>
                         <img class="wechat-pay-button" src="images/wechat-pay.png"
                              alt="Pay with Wechat Pay">
                         <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                        <img class="paypal-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
+                        <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
                     </p>
                 </form>
             </div>
@@ -1301,9 +1282,7 @@
                     cancelled.
                 </p>
                 <p>
-                    You should see the refund reflected on your statement in a few business days. Thanks for
-                    trying
-                    Obsidian!
+                    You should receive your refund in at most a few business days. Thanks for trying Obsidian!
                 </p>
                 <div class="modal-button-container">
                     <button class="mod-cta js-close-modal">Got it</button>
@@ -1396,6 +1375,37 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container mod-paypal-pay" style="display: none;">
+        <div class="modal-bg"></div>
+        <div class="modal">
+            <div class="modal-close-button"></div>
+            <div class="modal-title">Pay with PayPal</div>
+            <div class="modal-content">
+                <p>Paying with PayPal is currently a manual process, and we're working on automating it. Please do the
+                    following in order to get your payment processed:</p>
+                <ol class="u-pop">
+                    <li><span class="mod-warning">Verify you're not paying a monthly fee.</span> Because it's a manual
+                        process, we only accept yearly payments for Sync and Publish. Monthly payments
+                        will be refunded.
+                    </li>
+                    <li>Forward your PayPal receipt to <a href="mailto:support@obsidian.md">support@obsidian.md</a> and
+                        specify what service you're purchasing.
+                    </li>
+                </ol>
+                <p>Your payment should be processed within 3 business days.</p>
+                <p>Thanks so much for your kind support! Obsidian couldn't have become what it is today
+                    without help from amazing people like you. Sorry for the trouble!</p>
+                <p class="u-center-text">
+                    <a href="https://paypal.me/obsidianmd" target="_blank">
+                        <img style="width: 200px; background-color: #FFC439;border-radius: 24px;padding: 8px 40px;"
+                             src="images/paypal-badge.png"
+                             alt="Pay with PayPal">
+                    </a>
+                </p>
             </div>
         </div>
     </div>
