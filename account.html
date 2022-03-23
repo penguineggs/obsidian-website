@@ -182,6 +182,7 @@
                 <button class="js-logout logout-button">Log out</button>
             </p>
 
+            <div class="setting-item setting-item-heading">Your account</div>
             <div class="setting-item">
                 <div class="setting-item-info">
                     <div class="setting-item-name">Your email</div>
@@ -217,6 +218,19 @@
             </div>
             <div class="setting-item">
                 <div class="setting-item-info">
+                    <div class="setting-item-name">Delete account</div>
+                    <div class="setting-item-description">
+                        Delete your account completely along with your licenses and subscriptions.
+                    </div>
+                </div>
+                <div class="setting-item-control">
+                    <button class="js-delete-account mod-warning">Delete</button>
+                </div>
+            </div>
+
+            <div class="setting-item setting-item-heading">Payment & billing</div>
+            <div class="setting-item">
+                <div class="setting-item-info">
                     <div class="setting-item-name">Invoices & refunds</div>
                     <div class="setting-item-description">
                         Download invoices for your past payments and request refunds.
@@ -224,6 +238,17 @@
                 </div>
                 <div class="setting-item-control">
                     <a class="js-view-invoices">View</a>
+                </div>
+            </div>
+            <div class="setting-item mod-discount">
+                <div class="setting-item-info">
+                    <div class="setting-item-name">Discount</div>
+                    <div class="setting-item-description">
+                        You currently do not have any education or nonprofit discounts associated with your account.
+                    </div>
+                </div>
+                <div class="setting-item-control">
+                    <a class="js-apply-for-discount">Apply</a>
                 </div>
             </div>
             <div class="setting-item mod-obsidian-credit" style="display: none;">
@@ -234,17 +259,6 @@
                         have <span class="u-pop">$<span class="obsidian-credit-amount">0</span></span>
                         (USD) Obsidian Credit left.
                     </div>
-                </div>
-            </div>
-            <div class="setting-item">
-                <div class="setting-item-info">
-                    <div class="setting-item-name">Delete account</div>
-                    <div class="setting-item-description">
-                        Delete your account completely along with your licenses and subscriptions.
-                    </div>
-                </div>
-                <div class="setting-item-control">
-                    <button class="js-delete-account mod-warning">Delete</button>
                 </div>
             </div>
 
@@ -532,81 +546,6 @@
         </div>
     </div>
 
-    <div class="modal-container mod-choose-publish-plan" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Choose a plan</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="payment-error message mod-error" style="display: none;"></div>
-                </div>
-                <div class="card-container mod-horizontal">
-                    <div class="card u-center-text is-selected" data-renew="yearly">
-                        <div class="card-title" style="text-align: left;">Yearly<span
-                                    class="flair mod-pop">20% off compared to monthly</span></div>
-                        <div class="card-description">
-                            <div style="float:right;"><b class="publish-yearly-price-per-month">$16</b> USD / month
-                            </div>
-                            <div style="float:left;"><b class="publish-yearly-price-per-year">$192</b> USD / year</div>
-                        </div>
-                    </div>
-                    <div class="card u-center-text" data-renew="monthly">
-                        <div class="card-title" style="text-align: left;">Monthly</div>
-                        <div class="card-description">
-                            <div style="float:right;"><b class="publish-monthly-price-per-month">$20</b> USD / month
-                            </div>
-                            <div style="float:left;"><b class="publish-monthly-price-per-year">$240</b> USD / year</div>
-                        </div>
-                    </div>
-                </div>
-                <p>
-                    <label class="input-label">Number of sites</label>
-                    <input class="publish-sites-num" type="number" placeholder="Enter a number..." min="1" value="1">
-                </p>
-                <div class="payment-container">
-                    <div class="payment-summary">
-                        <div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-credit"><span class="payment-desc">Credit</span>: -$<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                    </div>
-                    <form class="payment-form">
-                        <div class="card-element"><!--Stripe.js injects the Card Element--></div>
-                        <button class="submit mod-cta">
-                            <div class="spinner hidden" class="spinner"></div>
-                            <span class="button-text">Pay</span>
-                        </button>
-                        <p class="card-errors" role="alert"></p>
-                        <p class="result-message hidden">
-                            Payment succeeded, see the result in your
-                            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                        </p>
-                        <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
-                                                                   alt="Powered by Stripe"></p>
-                        <p class="u-center-text">
-                            <span class="paypal-button" id="publish-paypal-button"></span>
-                            <img class="wechat-pay-button" src="images/wechat-pay.png" alt="Pay with Wechat Pay">
-                            <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                            <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="modal-container mod-publish-reduce-sites" style="display: none;">
         <div class="modal-bg"></div>
         <div class="modal">
@@ -624,249 +563,6 @@
                 <div class="modal-button-container">
                     <button class="mod-cta js-update-reduce-sites">Update</button>
                     <button class="js-close-modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-choose-sync-plan" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Choose a plan</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="payment-error message mod-error" style="display: none;"></div>
-                </div>
-                <div class="card-container mod-horizontal">
-                    <div class="card u-center-text is-selected" data-renew="yearly">
-                        <div class="card-title" style="text-align: left;">Yearly<span
-                                    class="flair mod-pop">20% off compared to monthly</span></div>
-                        <div class="card-description">
-                            <div style="float:right;"><b class="sync-yearly-price-per-month">$8</b> USD / month</div>
-                            <div style="float:left;"><b class="sync-yearly-price-per-year">$96</b> USD / year</div>
-                        </div>
-                    </div>
-                    <div class="card u-center-text" data-renew="monthly">
-                        <div class="card-title" style="text-align: left;">Monthly</div>
-                        <div class="card-description">
-                            <div style="float:right;"><b class="sync-monthly-price-per-month">$10</b> USD / month</div>
-                            <div style="float:left;"><b class="sync-monthly-price-per-year">$120</b> USD / year</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="payment-container">
-                    <div class="payment-summary">
-                        <div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-discount"><span class="payment-desc">Discount</span>: -$<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-credit"><span class="payment-desc">Credit</span>: -$<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                    </div>
-                    <form class="payment-form">
-                        <div class="card-element"><!--Stripe.js injects the Card Element--></div>
-                        <button class="submit mod-cta">
-                            <div class="spinner hidden" class="spinner"></div>
-                            <span class="button-text">Pay</span>
-                        </button>
-                        <p class="card-errors" role="alert"></p>
-                        <p class="result-message hidden">
-                            Payment succeeded, see the result in your
-                            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                        </p>
-                        <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
-                                                                   alt="Powered by Stripe"></p>
-                        <p class="u-center-text">
-                            <span class="paypal-button" id="sync-paypal-button"></span>
-                            <img class="wechat-pay-button" src="images/wechat-pay.png" alt="Pay with Wechat Pay">
-                            <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                            <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-commercial-license" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Commercial license</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="payment-error message mod-error" style="display: none;"></div>
-                </div>
-                <p class="commercial-license-creation-only">
-                    <label class="input-label">Business name</label>
-                    <input class="business-name-input" type="text"
-                           placeholder="Name of your business...">
-                </p>
-                <p>
-                    <label class="input-label">Seats</label>
-                    <input class="commercial-license-seat" type="number" placeholder="1" min="1"
-                           value="1">
-                </p>
-                <p class="commercial-license-creation-only">
-                    <label class="input-label">Auto-renewal</label>
-                    <span class="checkbox-container commercial-license-auto-renewal is-enabled"></span>
-                </p>
-            </div>
-            <div class="payment-container">
-                <div class="payment-summary">
-                    <div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-                                class="payment-amount"></span> USD
-                    </div>
-                    <div class="payment-line mod-discount"><span class="payment-desc">Discount</span>:
-                        -$<span
-                                class="payment-amount"></span> USD
-                    </div>
-                    <div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-                                class="payment-amount"></span> USD
-                    </div>
-                    <div class="payment-line mod-credit"><span class="payment-desc">Credit</span>:
-                        -$<span
-                                class="payment-amount"></span> USD
-                    </div>
-                    <div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-                                class="payment-amount"></span> USD
-                    </div>
-                </div>
-                <form class="payment-form">
-                    <div class="card-element"><!--Stripe.js injects the Card Element--></div>
-                    <button class="submit mod-cta">
-                        <div class="spinner hidden" class="spinner"></div>
-                        <span class="button-text">Pay</span>
-                    </button>
-                    <p class="card-errors" role="alert"></p>
-                    <p class="result-message hidden">
-                        Payment succeeded, see the result in your
-                        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                    </p>
-                    <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
-                                                               alt="Powered by Stripe"></p>
-                    <p class="u-center-text">
-                        <span class="paypal-button" id="business-paypal-button"></span>
-                        <img class="wechat-pay-button" src="images/wechat-pay.png"
-                             alt="Pay with Wechat Pay">
-                        <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                        <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
-                    </p>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-personal-license" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Obsidian Catalyst</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="payment-error message mod-error" style="display: none;"></div>
-                </div>
-                <p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue
-                    our
-                    vision.</p>
-                <div class="card-container mod-catalyst">
-                    <div class="card" data-tier="insider">
-                        <div class="card-title">Insider</div>
-                        <div class="card-description">
-                            <ul>
-                                <li>Early access to insider builds</li>
-                                <li><b class="u-pop">"Insider"</b> badge in the community</li>
-                            </ul>
-                        </div>
-                        <div class="button-container u-center-text">
-                            <button class="mod-cta"><b>$25</b> USD one-time</button>
-                        </div>
-                    </div>
-                    <div class="card" data-tier="supporter">
-                        <div class="card-title">Supporter</div>
-                        <div class="card-description">
-                            <ul>
-                                <li>Early access to insider builds</li>
-                                <li>Access to exclusive dev channel</li>
-                                <li><b class="u-pop">"Supporter"</b> badge in the community</li>
-                            </ul>
-                        </div>
-                        <div class="button-container u-center-text">
-                            <button class="mod-cta"><b>$50</b> USD one-time</button>
-                        </div>
-                    </div>
-                    <div class="card" data-tier="vip">
-                        <div class="card-title">VIP</div>
-                        <div class="card-description">
-                            <ul>
-                                <li>Early access to insider builds</li>
-                                <li>Access to exclusive dev channel</li>
-                                <li><b class="u-pop">"VIP"</b> badge in the community</li>
-                            </ul>
-                        </div>
-                        <div class="button-container u-center-text">
-                            <button class="mod-cta"><b>$100</b> USD one-time</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="u-muted">
-                    <p>Please select a tier to purchase or upgrade. When upgrading you only need to pay the
-                        difference.</p>
-                    <p>You will be able to claim your Discord and forum badges in the Catalyst section
-                        immediately after
-                        paying.</p>
-                </div>
-                <div class="payment-container" style="display: none;">
-                    <div class="payment-summary">
-                        <div class="payment-line mod-subtotal"><span class="payment-desc">Subtotal</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-discount"><span class="payment-desc">Discount</span>:
-                            -$<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-tax"><span class="payment-desc">Tax</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-credit"><span class="payment-desc">Credit</span>:
-                            -$<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                        <div class="payment-line mod-total"><span class="payment-desc">Total</span>: $<span
-                                    class="payment-amount"></span> USD
-                        </div>
-                    </div>
-                    <form class="payment-form">
-                        <div class="card-element"><!--Stripe.js injects the Card Element--></div>
-                        <button class="submit mod-cta">
-                            <div class="spinner hidden"></div>
-                            <span class="button-text">Pay</span>
-                        </button>
-                        <p class="card-errors" role="alert"></p>
-                        <p class="result-message hidden">
-                            Payment succeeded, see the result in your
-                            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                        </p>
-                        <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
-                                                                   alt="Powered by Stripe"></p>
-                        <p class="u-center-text">
-                            <span class="paypal-button" id="catalyst-paypal-button"></span>
-                            <img class="wechat-pay-button" src="images/wechat-pay.png"
-                                 alt="Pay with Wechat Pay">
-                            <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                            <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
-                        </p>
-                    </form>
                 </div>
             </div>
         </div>
@@ -914,165 +610,6 @@
                     <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
                                                                alt="Powered by Stripe"></p>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-donation" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Obsidian Unlimited</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="payment-error message mod-error" style="display: none;"></div>
-                </div>
-                <p>Thanks for supporting Obsidian! Your support helps us stay independent, so we can pursue
-                    our vision.</p>
-                <p>
-                    <label class="input-label">Amount (USD)</label>
-                    <input class="donation-amount-input" type="number" placeholder="Pay what you want..."
-                           value="5" min="5" step="1">
-                </p>
-                <form class="payment-form">
-                    <div class="card-element"><!--Stripe.js injects the Card Element--></div>
-                    <button class="submit mod-cta">
-                        <div class="spinner hidden"></div>
-                        <span class="button-text">Pay</span>
-                    </button>
-                    <p class="card-errors" role="alert"></p>
-                    <p class="result-message hidden">
-                        Payment succeeded, see the result in your
-                        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                    </p>
-                    <p class="stripe-badge u-center-text"><img src="images/stripe-badge.png"
-                                                               alt="Powered by Stripe"></p>
-
-                    <p class="u-center-text">
-                        <span class="paypal-button" id="donation-paypal-button"></span>
-                        <img class="wechat-pay-button" src="images/wechat-pay.png"
-                             alt="Pay with Wechat Pay">
-                        <img class="alipay-button" src="images/alipay.png" alt="Pay with Alipay">
-                        <img class="paypal-temp-button" src="images/paypal-badge.svg" alt="Pay with PayPal">
-                    </p>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-discord-success" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Added Discord badge</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="message mod-success">Successfully added badge for you!</div>
-                </div>
-                <p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue
-                    our
-                    vision.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-discord-failure" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Couldn't add Discord badge</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="message mod-error"></div>
-                </div>
-                <p>Please contact us for support or try again later. We're really sorry for the
-                    inconvenience!</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-forum-success" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Added forum badge</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="message mod-success">Successfully added badge for you!</div>
-                </div>
-                <p>Thanks for supporting Obsidian! Your support helps us stay independent so we can pursue
-                    our
-                    vision.</p>
-                <p>P.S. Your forum badge is not a "badge" in the forum system, but a shiny gold tag right
-                    next to
-                    your name in all of your posts. Hope that helps!</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-forum-failure" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Couldn't add forum badge</div>
-            <div class="modal-content">
-                <div class="message-container">
-                    <div class="message mod-error"></div>
-                </div>
-                <p>Please contact us for support or try again later. We're really sorry for the
-                    inconvenience!</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-catalyst-payment-success" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Successfully bought Catalyst</div>
-            <div class="modal-content">
-                <p>Thanks so much for supporting us by upgrading to Catalyst!</p>
-                <p>To get insider builds, <a href="https://help.obsidian.md/Insider+builds"
-                                             target="_blank">here's a guide</a>.</p>
-                <p>To claim your community badges:</p>
-                <p class="u-center-text">
-                    <button class="claim-discord-badge-button mod-cta">Get Discord badge</button>
-                    <button class="claim-forum-badge-button mod-cta">Get forum badge</button>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-publish-payment-success" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Successfully bought Obsidian Publish</div>
-            <div class="modal-content">
-                <p>Thanks so much for supporting us by using Obsidian Publish!</p>
-                <p>To learn more about how to publish your notes, <a
-                            href="https://help.obsidian.md/Obsidian+Publish/Introduction+to+Obsidian+Publish"
-                            target="_blank">here's a guide</a>.</p>
-            </div>
-            <div class="modal-button-container">
-                <button class="mod-cta js-close-modal">Got it</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-container mod-sync-payment-success" style="display: none;">
-        <div class="modal-bg"></div>
-        <div class="modal">
-            <div class="modal-close-button"></div>
-            <div class="modal-title">Successfully bought Obsidian Sync</div>
-            <div class="modal-content">
-                <p>Thanks so much for supporting us by using Obsidian Sync!</p>
-                <p>To learn more about how to use the in-app plugin to sync your vaults, <a
-                            href="https://help.obsidian.md/Obsidian+Sync/Introduction+to+Obsidian+Sync"
-                            target="_blank">here's a guide</a>.</p>
-            </div>
-            <div class="modal-button-container">
-                <button class="mod-cta js-close-modal">Got it</button>
             </div>
         </div>
     </div>
@@ -1379,33 +916,100 @@
         </div>
     </div>
 
-    <div class="modal-container mod-paypal-pay" style="display: none;">
+    <div class="modal-container mod-apply-for-discount" style="display: none;">
         <div class="modal-bg"></div>
         <div class="modal">
             <div class="modal-close-button"></div>
-            <div class="modal-title">Pay with PayPal</div>
+            <div class="modal-title">Apply for discount</div>
             <div class="modal-content">
-                <p>Paying with PayPal is currently a manual process, and we're working on automating it. Please do the
-                    following in order to get your payment processed:</p>
-                <ol class="u-pop">
-                    <li><span class="mod-warning">Verify you're not paying a monthly fee.</span> Because it's a manual
-                        process, we only accept yearly payments for Sync and Publish. Monthly payments
-                        will be refunded.
-                    </li>
-                    <li>Forward your PayPal receipt to <a href="mailto:support@obsidian.md">support@obsidian.md</a> and
-                        specify what service you're purchasing.
-                    </li>
-                </ol>
-                <p>Your payment should be processed within 3 business days.</p>
-                <p>Thanks so much for your kind support! Obsidian couldn't have become what it is today
-                    without help from amazing people like you. Sorry for the trouble!</p>
-                <p class="u-center-text">
-                    <a href="https://paypal.me/obsidianmd" target="_blank">
-                        <img style="width: 200px; background-color: #FFC439;border-radius: 24px;padding: 8px 40px;"
-                             src="images/paypal-badge.png"
-                             alt="Pay with PayPal">
-                    </a>
+                <div class="message-container">
+                    <div class="message mod-error" style="display: none;"></div>
+                </div>
+                <p>Please choose discount type you're applying for and enter your organization email. We will send an
+                    email to your organization email address to verify it.</p>
+                <p class="u-muted u-small">If you do not have an organization email, please contact us at <a
+                            href="mailto:support@obsidian.md">support@obsidian.md</a> to
+                    prove other forms of verification, such as student ID card, transcription, or employee ID card.</p>
+                <p>
+                    <label class="input-label" for="apply-discount-type">Discount type</label>
+
+                    <input type="radio" id="apply-discount-type-education" name="apply-discount-type" value="1">
+                    <label for="apply-discount-type-education">Education (student and faculty)</label>&nbsp;&nbsp;
+                    <input type="radio" id="apply-discount-type-nonprofit" name="apply-discount-type" value="2">
+                    <label for="apply-discount-type-nonprofit">Non-profit organization</label>
                 </p>
+                <p>
+                    <label class="input-label" for="apply-discount-email">Organization email</label>
+                    <input type="email" placeholder="Your email..." id="apply-discount-email">
+                </p>
+                <div class="modal-button-container">
+                    <button class="mod-cta js-send-discount-application">Send application</button>
+                    <button class="js-close-modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container mod-discount-application-success" style="display: none;">
+        <div class="modal-bg"></div>
+        <div class="modal">
+            <div class="modal-close-button"></div>
+            <div class="modal-title">Verify your email</div>
+            <div class="modal-content">
+                <p>
+                    Thanks for applying for Obsidian discount!
+                </p>
+                <p>
+                    We've sent an email to your organization email address to verify your email. Once you click on the
+                    link, the application will be submitted for review.
+                </p>
+                <p>
+                    If you don't see the email in a few minutes, please try checking your spam folder. You can try
+                    applying for a discount again.
+                </p>
+                <div class="modal-button-container">
+                    <button class="mod-cta js-close-modal">Got it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container mod-discount-verified" style="display: none;">
+        <div class="modal-bg"></div>
+        <div class="modal">
+            <div class="modal-close-button"></div>
+            <div class="modal-title">Organization email verified</div>
+            <div class="modal-content">
+                <p>
+                    Thanks for verifying your organization email! We'll take a look at your appointment as soon as you
+                    can.
+                </p>
+                <p>
+                    You'll get an email update when your discount application is approved. Have a nice day!
+                </p>
+                <div class="modal-button-container">
+                    <button class="mod-cta js-close-modal">Got it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container mod-discount-approved" style="display: none;">
+        <div class="modal-bg"></div>
+        <div class="modal">
+            <div class="modal-close-button"></div>
+            <div class="modal-title">Your discount is active</div>
+            <div class="modal-content">
+                <p>
+                    Your <span class="approved-discount-type">education</span> discount is approved!
+                </p>
+                <p>
+                    You'll see the discount applied when you try to buy Obsidian Sync or Obsidian Publish. It's not
+                    applicable to Catalyst licenses, commercial licenses, or donations.
+                </p>
+                <div class="modal-button-container">
+                    <button class="mod-cta js-close-modal">Got it</button>
+                </div>
             </div>
         </div>
     </div>
