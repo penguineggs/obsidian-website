@@ -2191,10 +2191,7 @@ button.mod-float-right {
 }
 .modal-container.mod-commercial-license .modal {
   max-width: 100vw;
-  width: 600px;
-}
-.modal-container.mod-commercial-license.is-updating .commercial-license-creation-only {
-  display: none;
+  width: 620px;
 }
 .card.is-coming-soon {
   filter: grayscale(100%);
@@ -3795,17 +3792,23 @@ body {
   width: 100px;
 }
 .admin-user-list-container table {
-  border-collapse: collapse;
   width: 80vw;
   max-width: 1000px;
   margin: 20px auto;
 }
-.admin-user-list-container th,
-.admin-user-list-container td {
+.admin-user-list-container table,
+.discount-table {
+  border-collapse: collapse;
+}
+.admin-user-list-container table th,
+.discount-table th,
+.admin-user-list-container table td,
+.discount-table td {
   padding: 8px 12px;
   border: 1px solid var(--background-modifier-border);
 }
-.admin-user-list-container tbody tr:nth-child(odd) {
+.admin-user-list-container table tr:nth-child(odd),
+.discount-table tr:nth-child(odd) {
   background-color: var(--background-primary);
 }
 .admin-user-action-link {
