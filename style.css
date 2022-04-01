@@ -3180,6 +3180,11 @@ span.mod-huge-punctuation {
     right: -20px;
   }
 }
+@media screen and (max-height: 1000px) {
+  .hero-container {
+    padding: 150px 0 80px 0;
+  }
+}
 @media only screen and (max-width: 720px) {
   .hero-container {
     padding: 150px 0 100px 0;
