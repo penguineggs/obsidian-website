@@ -896,6 +896,7 @@ input.prompt-input {
   content: '\00a0';
 }
 .tree-item-flair-outer {
+  display: flex;
   flex: 0 0 auto;
 }
 .tree-item-flair-outer:after {
@@ -1091,6 +1092,9 @@ input.prompt-input {
   text-transform: uppercase;
   vertical-align: super;
   white-space: nowrap;
+}
+.flair.mod-flat {
+  vertical-align: top;
 }
 .flair.mod-pop {
   background-color: var(--interactive-accent);
