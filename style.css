@@ -1993,9 +1993,6 @@ button.mod-float-right {
   width: 100px;
   margin-top: 10px;
 }
-.paypal-button {
-  display: none;
-}
 .paypal-button .paypal-buttons {
   max-width: 272px !important;
   min-height: 44px !important;
@@ -2160,6 +2157,12 @@ button.mod-float-right {
 .card.mod-sync.is-active .inactive-text,
 .card.mod-commercial-license.is-active .inactive-text {
   display: none;
+}
+.card.mod-catalyst:not(.is-active),
+.card.mod-publish:not(.is-active),
+.card.mod-sync:not(.is-active),
+.card.mod-commercial-license:not(.is-active) {
+  cursor: pointer;
 }
 .card.mod-catalyst.is-early-bird .flair.mod-early-bird,
 .card.mod-publish.is-early-bird .flair.mod-early-bird,
