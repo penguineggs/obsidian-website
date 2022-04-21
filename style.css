@@ -120,6 +120,7 @@ body {
   --background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.22);
   --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
   --background-modifier-success: #197300;
+  --background-modifier-success-rgb: 25, 115, 0;
   --background-modifier-error: #3d0000;
   --background-modifier-error-rgb: 61, 0, 0;
   --background-modifier-error-hover: #470000;
@@ -157,6 +158,7 @@ body {
   --background-modifier-form-field-highlighted: #fff;
   --background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
   --background-modifier-success: #A4E7C3;
+  --background-modifier-success-rgb: 164, 231, 195;
   --background-modifier-error: #990000;
   --background-modifier-error-rgb: 230, 135, 135;
   --background-modifier-error-hover: #bb0000;
@@ -3261,6 +3263,11 @@ span.mod-huge-punctuation {
     display: flex;
     flex-direction: column;
     max-height: 100%;
+    min-width: 100%;
+  }
+  .payment-form,
+  .payment-summary {
+    min-width: 100%;
   }
   .modal-content {
     flex: 1 1 auto;
