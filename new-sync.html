@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>Obsidian Sync</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./style.css">
+<link rel="shortcut icon" href="./favicon.ico">
+<meta name="twitter:title" content="Obsidian Sync">
+<meta property="og:title" content="Obsidian Sync">
+<meta name="description" content="Obsidian: A knowledge base that works on local Markdown files.">
+<meta name="twitter:description" content="Obsidian: A knowledge base that works on local Markdown files.">
+<meta property="og:description" content="Obsidian: A knowledge base that works on local Markdown files.">
+<meta name="twitter:site" content="@obsdmd">
+<meta name="twitter:domain" content="obsidian.md">
+<meta name="twitter:creator" content="@obsdmd">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://obsidian.md/images/banner.png">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://obsidian.md/images/banner.png">
+
+</head>
+<body class="theme-dark">
+<div class="static-full-page-container mod-publish">
+    <div class="app-header">
+    <a class="nav-logo" href="/">
+        <span class="nav-logo-icon">
+            <svg viewBox="0 0 100 100" width="30" height="30">
+                <defs>
+                    <linearGradient id="a" x1="82.85" y1="30.41" x2="51.26" y2="105.9"
+                                    gradientTransform="matrix(1, 0, 0, -1, -22.41, 110.97)"
+                                    gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#6c56cc"/>
+                        <stop offset="1" stop-color="#9785e5"/>
+                    </linearGradient>
+                </defs>
+                <polygon points="44.61 0 12.91 17.52 0 45.45 19.57 90.47 47.35 100 52.44 89.8 63 26.39 44.61 0"
+                         fill="#34208c"/>
+                <polygon points="63 26.39 43.44 14.41 16.43 35.7 47.35 100 52.44 89.8 63 26.39" fill="url(#a)"/>
+                <polygon points="63 26.39 63 26.39 44.61 0 43.44 14.41 63 26.39" fill="#af9ff4"/>
+                <polygon points="43.44 14.41 44.61 0 12.91 17.52 16.43 35.7 43.44 14.41" fill="#4a37a0"/>
+                <polygon points="16.43 35.7 19.57 90.47 47.35 100 16.43 35.7" fill="#4a37a0"/>
+            </svg>
+        </span>
+        <span class="nav-logo-text">Obsidian</span>
+    </a>
+    <a class="app-header-link mod-twitter" href="https://twitter.com/obsdmd" rel="noopener noreferrer" target="_blank">
+        <svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="34px" height="24px">
+            <path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"/>
+        </svg>
+    </a>
+    <a class="app-header-link" href="/pricing">Pricing</a>
+    <a class="app-header-link" href="/mobile">Mobile</a>
+    <a class="app-header-link" href="/publish">Publish</a>
+    <a class="app-header-link" href="/sync">Sync</a>
+    <a class="app-header-link" href="/community">Community</a>
+    <a class="app-header-link" href="/account">Account</a>
+    <a class="static-header-menu" href="#">
+        <svg fill="#555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34px" height="24px">
+            <path fill="currentColor" stroke="currentColor"
+                  d="M6,18c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1s0.4-1.4,0-2 c-0.4-0.6-1-1-1.8-1H6z M6,48c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1 c0.4-0.6,0.4-1.4,0-2s-1-1-1.8-1H6z M6,78c-0.7,0-1.4,0.4-1.8,1c-0.4,0.6-0.4,1.4,0,2c0.4,0.6,1,1,1.8,1h88c0.7,0,1.4-0.4,1.8-1 s0.4-1.4,0-2s-1-1-1.8-1H6z"/>
+        </svg>
+    </a>
+</div>
+<div class="static-header-pop-up-nav-container">
+    <div class="static-header-pop-up-nav-close-button"></div>
+    <div class="static-header-pop-up-nav">
+        <a class="header-pop-up-nav-link" href="/pricing">Pricing</a>
+        <a class="header-pop-up-nav-link" href="/mobile">Mobile</a>
+        <a class="header-pop-up-nav-link" href="/publish">Publish</a>
+        <a class="header-pop-up-nav-link" href="/sync">Sync</a>
+        <a class="header-pop-up-nav-link" href="/community">Community</a>
+        <a class="header-pop-up-nav-link" href="/account">Account</a>
+    </div>
+</div>
+
+    <div class="hero-container">
+        <div class="hero-inner">
+            <h1 class="hero-headline">Peace of mind,<br>for your second brain.</h1>
+            <div class="hero-intro-text">
+                <p>Too busy to set up sync and deal with accidents?<br>
+                    Try the bulletproof, encrypted sync that's built into Obsidian.</p>
+            </div>
+            <div class="hero-button-container">
+                <a href="/account">
+                    <button class="mod-cta">
+                        Buy now
+                        <br>
+                        <span class="u-muted u-small">$10 per month or $96 per year</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature-row mod-stripe">
+        <div class="feature-row-inner">
+            <h1 class="feature-title">So good it's invisible</h1>
+            <p class="feature-explanation">For sync, the best workflow is to stay out of your workflow.</p>
+            <p class="feature-explanation">Obsidian Sync seamlessly relays your changes between devices, so seamless you
+                won't even feel it.</p>
+
+            <div class="subfeature-boxes">
+                <div class="subfeature">
+                    <div class="subfeature-title">
+                        <img src="images/beach.png" alt="">
+                        Set & forget
+                    </div>
+
+                    <div class="subfeature-description">Set up only once on each device in less than a minute.</div>
+                    <div class="subfeature-description">After that, it's all set! Switch between vaults on different
+                        devices like they were one.
+                    </div>
+
+                    <p class="feature-button">
+                        <a href="https://help.obsidian.md/Obsidian+Sync/Set+up+Obsidian+Sync" target="_blank">
+                            Learn more -&gt;
+                        </a>
+                    </p>
+                </div>
+
+                <div class="subfeature">
+                    <div class="subfeature-title">
+                        <img src="images/lightning.png" alt="">
+                        Lightning fast
+                    </div>
+
+                    <div class="subfeature-description">Obsidian Sync is specifically engineered to sync notes rather
+                        than generic files. We sync changes more readily, so that you can pick things up exactly where
+                        you
+                        left them.
+                    </div>
+                    <div class="subfeature-description">If you're in Europe or Asia, Sync will be even faster with our
+                        upcoming regional server feature.
+                    </div>
+                </div>
+
+                <div class="subfeature">
+                    <div class="subfeature-title">
+                        <img src="images/obsidian.png" alt="">
+                        All within Obsidian
+                    </div>
+
+                    <div class="subfeature-description">Obsidian Sync is built into Obsidian, so there's nothing to
+                        install once you have Obsidian.
+                    </div>
+                    <div class="subfeature-description">By existing within Obsidian, Sync lets you view sync status
+                        in the status bar or pull up version history directly from a note.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature-row">
+        <div class="feature-row-inner">
+            <h1 class="feature-title">Secure & private</h1>
+            <p class="feature-explanation">Obsidian Sync is end-to-end encrypted. Write freely in complete privacy.</p>
+
+            <div class="subfeature-boxes">
+                <div class="subfeature">
+                    <div class="subfeature-title">
+                        <img src="images/vault.png" alt="">
+                        Top notch security
+                    </div>
+
+                    <div class="subfeature-description">Obsidian Sync uses military strength AES-256 encryption to
+                        ensure your
+                        data is safe. Your data is encrypted both in transit and at rest.
+                    </div>
+                    <div class="subfeature-description">Choose your encryption password for ultimate security, or let
+                        Obsidian manage the encryption key for you. Two-factor authentication is coming soon for an
+                        extra lawyer of security.
+                    </div>
+
+                    <p class="feature-button">
+                        <a href="https://help.obsidian.md/Obsidian+Sync/Security+and+privacy" target="_blank">
+                            Learn more -&gt;
+                        </a>
+                    </p>
+                </div>
+
+                <!--                <div class="subfeature">-->
+                <!--                    <div class="subfeature-title">-->
+                <!--                        <img src="images/eyes-crossed.png" alt="">-->
+                <!--                        Your data is still yours-->
+                <!--                    </div>-->
+
+                <!--                    <div class="subfeature-description">By using Obsidian Sync, we cannot see your data-->
+                <!--                    </div>-->
+                <!--                    <div class="subfeature-description">If you're in Europe or Asia, Sync will be even faster with our-->
+                <!--                        upcoming regional server feature.-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+                <div class="subfeature">
+                    <div class="subfeature-title">
+                        <img src="images/checkmark.png" alt="">
+                        Always available
+                    </div>
+
+                    <div class="subfeature-description">
+                        Obsidian Sync is just the mailman between your devices.
+                    </div>
+                    <div class="subfeature-description">Even if network or Obsidian Sync is down, you can still work on
+                        your notes as usual. Sync will resume once the lights are back on.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature-row mod-stripe">
+        <div class="feature-row-inner">
+            <h1 class="feature-title">More than just sync</h1>
+            <p class="feature-explanation">Unlock workflow possibilities, beyond just syncing notes.</p>
+
+            <div class="subfeature-boxes">
+                <div class="subfeature">
+                    <div class="subfeature-title">
+                        <img src="images/team.png" alt="">
+                        Collaborate securely
+                    </div>
+
+                    <div class="subfeature-description">
+                        Work together on the same vault in almost real-time.
+                    </div>
+                    <div class="subfeature-description">
+                        Even if two people work on the same file at the same time, Obsidian Sync will use Google's
+                        diff-match-patch algorithm to resolve the conflicts. And both versions are saved, so you never
+                        lose anything.
+                    </div>
+                </div>
+            </div>
+
+            <div class="subfeature">
+                <div class="subfeature-title">
+                    <img src="images/versions.png" alt="">
+                    Trace changes
+                </div>
+
+                <div class="subfeature-description">All changes and deletions are saved for up
+                    to a year. All the revisions are encrypted as well.
+                </div>
+                <div class="subfeature-description">Tracing changes between devices is a breeze when accidents
+                    inevitably happen.
+                </div>
+
+                <p class="feature-button">
+                    <a href="https://help.obsidian.md/Obsidian+Sync/Version+history" target="_blank">
+                        Learn more -&gt;
+                    </a>
+                </p>
+            </div>
+
+            <div class="subfeature">
+                <div class="subfeature-title">
+                    <img src="images/obsidian.png" alt="">
+                    Built for Obsidian, by Obsidian
+                </div>
+
+                <div class="subfeature-description">
+                    Unlike generic sync solutions, Obsidian Sync has Obsidian specific features baked right in.
+                </div>
+                <div class="subfeature-description">
+                    You can selectively sync Obsidian configurations, plugins, themes, and files based on file types.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="feature-row">
+    <div class="feature-row-inner">
+        <h1 class="hero-headline">Obsidian Sync</h1>
+        <p class="hero-intro-text">Peace of mind for your second brain.</p>
+
+        <div class="feature-button-container">
+            <a href="/account">
+                <button class="mod-cta">
+                    Buy now
+                    <br>
+                    <span class="u-muted u-small">$10 per month or $96 per year</span>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="static-footer">
+    <div class="footer-groups">
+        <ul class="footer-link-group">
+            <li class="footer-header">Obsidian</li>
+            <li><a href="https://publish.obsidian.md/help" target="_blank">Help</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="https://forum.obsidian.md/c/announcements" target="_blank">Release notes</a></li>
+            <li><a href="https://trello.com/b/Psqfqp7I/obsidian-roadmap" rel="noopener noreferrer" target="_blank">Roadmap</a>
+            </li>
+        </ul>
+        <ul class="footer-link-group">
+            <li class="footer-header">Social</li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="https://twitter.com/obsdmd" rel="noopener noreferrer" target="_blank">Follow us on Twitter</a>
+            </li>
+            <li><a href="https://discord.gg/veuWUTm" rel="noopener noreferrer" target="_blank">Community Discord</a>
+            </li>
+            <li><a href="https://forum.obsidian.md" target="_blank">Forum</a> / <a href="https://forum-zh.obsidian.md"
+                                                                                   target="_blank">中文论坛</a></li>
+        </ul>
+        <ul class="footer-link-group">
+            <li class="footer-header">Spread the word</li>
+            <li><a href="https://www.producthunt.com/posts/obsidian-3" rel="noopener noreferrer" target="_blank">Featured on Product Hunt</a>
+            <li><a href="https://alternativeto.net/software/obsidian/about/" rel="noopener noreferrer" target="_blank">Like us on AlternativeTo</a></li>
+            <li><a href="https://www.slant.co/topics/4962/viewpoints/33/~personal-knowledge-base-apps~obsidian"
+                   rel="noopener noreferrer" target="_blank">Like us on Slant</a></li>
+            <li><a href="https://yourstack.com/products/obsidian-1" rel="noopener noreferrer" target="_blank">Stack us on YourStack</a></li>
+        </ul>
+        <ul class="footer-link-group">
+            <li class="footer-header">Legal</li>
+            <li><a href="/eula">License information (EULA)</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy policy</a></li>
+            <li><a href="/privacy-statement">Privacy statement</a></li>
+        </ul>
+    </div>
+    <div class="footer-copyright u-center-text"><span>© 2022 Obsidian</span></div>
+</div>
+
+</div>
+<script src="static.js"></script>
+<script>
+	let galleryEl = fish('.hero-gallery');
+	let galleryInnerContainer = fish('.hero-gallery-inner-container');
+	galleryInnerContainer.scrollLeft = (galleryInnerContainer.scrollWidth - galleryEl.scrollWidth) / 2 + 50;
+</script>
+</body>
+</html>
