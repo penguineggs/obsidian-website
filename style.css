@@ -87,16 +87,20 @@
   font-display: swap;
   src: url('./fonts/flow-circular.woff');
 }
+@font-face {
+  font-family: '??';
+  unicode-range: U+0;
+}
 body {
   --font-default: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
-  --font-interface-override: '';
-  --font-interface-theme: '';
-  --font-interface: var(--font-interface-override), var(--font-interface-theme), var(--default-font, ""), var(--font-default);
-  --font-text-override: '';
-  --font-text-theme: '';
+  --font-interface-override: '??';
+  --font-interface-theme: '??';
+  --font-interface: var(--font-interface-override), var(--font-interface-theme), var(--default-font, '??'), var(--font-default);
+  --font-text-override: '??';
+  --font-text-theme: '??';
   --font-text: var(--font-text-override), var(--font-text-theme), var(--font-interface);
-  --font-monospace-override: '';
-  --font-monospace-theme: '';
+  --font-monospace-override: '??';
+  --font-monospace-theme: '??';
   --font-monospace: var(--font-monospace-override), var(--font-monospace-theme), 'Source Code Pro', monospace;
   --font-text-size: 16px;
   --font-mermaid: var(--font-text);
@@ -3779,10 +3783,7 @@ body {
 .static-full-page-container {
   background-color: var(--background-secondary);
   margin: 0;
-  height: 100%;
-  width: 100%;
   color: var(--text-normal);
-  overflow-y: auto;
 }
 .static-full-page-container ::selection {
   background-color: rgba(var(--interactive-accent-rgb), 0.4);
