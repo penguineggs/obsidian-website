@@ -2898,12 +2898,17 @@ span.mod-huge-punctuation {
   margin-top: 4px;
 }
 .subfeature-screenshot {
-  width: 80px;
+  width: 300px;
   height: auto;
   margin: 0 auto;
 }
 .subfeature-screenshot img {
   width: 100%;
+  border-radius: 10px;
+  border: 2px solid var(--background-modifier-border);
+}
+.subfeature-screenshot .lightbox img {
+  width: unset;
 }
 .subfeature-title {
   margin-bottom: 20px;
