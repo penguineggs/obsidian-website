@@ -82,7 +82,7 @@
             <div class="hero-intro-text">
                 <p>Obsidian Sync is the hassle-free way to sync vaults between devices.<br>Windows, macOS, Linux,
                     Android,
-                    iOS... Anywhere you have Obsidian.</p>
+                    iOS... Anywhere you use Obsidian.</p>
             </div>
             <div class="hero-button-container">
                 <a href="/account">
@@ -113,7 +113,7 @@
                         Set & forget
                     </div>
 
-                    <div class="subfeature-description">To sync, you only nned to set up once on each device in under a
+                    <div class="subfeature-description">To sync, you only need to set up once on each device in under a
                         minute.
                     </div>
                     <div class="subfeature-description">After that, it's all set! Jump between vaults on different
@@ -134,12 +134,10 @@
                     </div>
 
                     <div class="subfeature-description">Obsidian Sync is specifically engineered to sync notes rather
-                        than generic files. We sync changes more readily, so that you can pick things up exactly where
-                        you
-                        left them.
+                        than generic files, so we can optimize the experience for knowledge work.
                     </div>
-                    <div class="subfeature-description">If you're in Europe or Asia, Sync will be even faster with our
-                        upcoming regional servers.
+                    <div class="subfeature-description">We sync changes more readily, so you can pick things up exactly
+                        where you left them.
                     </div>
                 </div>
 
@@ -242,11 +240,31 @@
                     </div>
 
                     <div class="subfeature-description">
-                        Work together on the team vault with end-to-end encryption.
+                        Connect the dots together in real-time with a shared team vault, all while trusting that your
+                        great ideas are safeguarded with end-to-end encryption.
                     </div>
                     <div class="subfeature-description">
-                        Access your team vault from anywhere, and share page links with teammates that will directly open Obsidian.
+                        Access your team vault from anywhere, and share page links with teammates that will directly
+                        open Obsidian.
                     </div>
+                </div>
+            </div>
+
+            <div class="subfeature">
+                <div class="subfeature-title">
+                    <img src="images/comments.png" alt="">
+                    Work together in real-time <b class="flair u-pop">Coming soon</b>
+                </div>
+
+                <div class="subfeature-description">
+                    <span class="animated-caret mod-erica"><span class="animated-caret-char" data-alt-text="Check out">See</span></span>
+                    what your teammates are working on in real-time.
+                </div>
+
+                <div class="subfeature-description">
+                    Celebrate <span class="animated-caret mod-shida"><span class="animated-caret-char"
+                                                                           data-alt-text="even higher">higher</span></span>
+                    remote productivity while keeping everything secure and local.
                 </div>
             </div>
 
@@ -256,31 +274,19 @@
                     Smart conflict resolution
                 </div>
 
-                <div class="subfeature-description"> Even if two people work on the same file at the same time, Obsidian
+                <div class="subfeature-description">Even if two people work on the same file at the same time, Obsidian
                     Sync will smartly resolve the conflicts down to character level.
                 </div>
-                <div class="subfeature-description">Both versions are saved in version history, so you never lose anything.
+                <div class="subfeature-description">Both versions are saved in version history, so you never lose
+                    anything.
                 </div>
 
                 <p class="feature-button">
-                    <a href="https://help.obsidian.md/Obsidian+Sync/Troubleshoot+Obsidian+Sync#Conflict+resolution" target="_blank">
+                    <a href="https://help.obsidian.md/Obsidian+Sync/Troubleshoot+Obsidian+Sync#Conflict+resolution"
+                       target="_blank">
                         Learn more -&gt;
                     </a>
                 </p>
-            </div>
-
-            <div class="subfeature">
-                <div class="subfeature-title">
-                    <img src="images/comments.png" alt="">
-                    Collaborate in real-time <b class="flair u-pop">Coming soon</b>
-                </div>
-
-                <div class="subfeature-description">
-                    See what your teammates are working on in real-time.
-                </div>
-                <div class="subfeature-description">
-                    With labelled carets moving around, celebrate higher remote productivity while keeping everything secure and local.
-                </div>
             </div>
         </div>
     </div>
@@ -346,9 +352,33 @@
 </div>
 <script src="static.js"></script>
 <script>
-	let galleryEl = fish('.hero-gallery');
-	let galleryInnerContainer = fish('.hero-gallery-inner-container');
-	galleryInnerContainer.scrollLeft = (galleryInnerContainer.scrollWidth - galleryEl.scrollWidth) / 2 + 50;
+	const TYPING_SPEED = 100;
+	const DELETE_SPEED = 50;
+	const PAUSE = 1500;
+
+	async function animateCaret(el) {
+		let content = el.getText();
+		let altContent = el.getAttr('data-alt-text');
+		el.setAttr('data-alt-text', content);
+
+		for (let i = 1; i <= content.length; i++) {
+			el.setText(content.slice(0, content.length - i));
+			await new Promise(resolve => setTimeout(resolve, DELETE_SPEED));
+		}
+		await new Promise(resolve => setTimeout(resolve, PAUSE));
+
+		for (let i = 0; i < altContent.length; i++) {
+			el.setText(altContent.slice(0, i + 1));
+			await new Promise(resolve => setTimeout(resolve, TYPING_SPEED));
+		}
+		await new Promise(resolve => setTimeout(resolve, PAUSE));
+
+		animateCaret(el);
+	}
+
+	let caretSpans = fishAll('.animated-caret-char');
+	caretSpans.forEach(el => animateCaret(el));
+
 </script>
 </body>
 </html>

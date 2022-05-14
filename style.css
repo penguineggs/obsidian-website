@@ -3366,6 +3366,43 @@ span.mod-huge-punctuation {
     letter-spacing: -10px;
   }
 }
+.animated-caret {
+  position: relative;
+  margin-right: 4px;
+}
+.animated-caret:before {
+  position: absolute;
+  bottom: calc(100% - 2px);
+  left: 100%;
+  color: #eee;
+  padding: 0 8px;
+  font-size: 13px;
+  border-radius: 3px;
+  border-bottom-left-radius: 0;
+}
+.animated-caret:after {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 3px;
+  content: ' ';
+}
+.animated-caret.mod-erica:before {
+  content: 'Erica';
+  background-color: #8d160c;
+}
+.animated-caret.mod-erica:after {
+  background-color: #8d160c;
+}
+.animated-caret.mod-shida:before {
+  content: 'Shida';
+  background-color: #bd611f;
+}
+.animated-caret.mod-shida:after {
+  background-color: #bd611f;
+}
 .badge-container {
   display: flex;
   justify-content: space-evenly;
