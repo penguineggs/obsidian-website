@@ -2898,7 +2898,7 @@ span.mod-huge-punctuation {
   margin-top: 4px;
 }
 .subfeature-screenshot {
-  width: 300px;
+  width: 100%;
   height: auto;
   margin: 0 auto;
 }
