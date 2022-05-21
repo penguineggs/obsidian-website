@@ -3831,6 +3831,7 @@ body {
   background-color: var(--background-secondary);
   margin: 0;
   color: var(--text-normal);
+  overflow: auto;
 }
 .static-full-page-container ::selection {
   background-color: rgba(var(--interactive-accent-rgb), 0.4);
