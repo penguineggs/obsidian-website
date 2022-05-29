@@ -1066,6 +1066,7 @@ input.prompt-input {
   margin: 20px 0;
   font-weight: 800;
   font-size: 32px;
+  line-height: 1.2em;
   position: relative;
 }
 .empty-state-action-list {
