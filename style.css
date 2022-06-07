@@ -908,7 +908,6 @@ input.prompt-input {
   content: '\00a0';
 }
 .tree-item-flair-outer {
-  display: flex;
   flex: 0 0 auto;
 }
 .tree-item-flair-outer:after {
