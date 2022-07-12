@@ -140,6 +140,7 @@ body {
 }
 .theme-dark {
   --background-primary: #202020;
+  --background-primary-rgb: 32, 32, 32;
   --background-primary-alt: #1a1a1a;
   --background-secondary: #161616;
   --background-secondary-alt: #000000;
@@ -175,9 +176,11 @@ body {
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
   --highlight-mix-blend-mode: lighten;
+  color-scheme: dark;
 }
 .theme-light {
   --background-primary: #ffffff;
+  --background-primary-rgb: 255, 255, 255;
   --background-primary-alt: #f5f6f8;
   --background-secondary: #f2f3f5;
   --background-secondary-alt: #e3e5e8;
@@ -213,10 +216,14 @@ body {
   --scrollbar-bg: rgba(0, 0, 0, 0.05);
   --scrollbar-thumb-bg: rgba(0, 0, 0, 0.1);
   --highlight-mix-blend-mode: darken;
+  color-scheme: light;
 }
 body {
   --indentation-guide: var(--background-modifier-border);
   --indentation-guide-active: var(--text-faint);
+}
+iframe {
+  color-scheme: normal;
 }
 body {
   --layer-cover: 5;
