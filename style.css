@@ -508,7 +508,7 @@ body {
 .modal.mod-trust-folder {
   max-width: 700px;
 }
-.is-mobile .menu {
+.is-phone .menu {
   max-height: calc(100% - 100px);
   width: calc(100% - 20px);
   max-width: calc(100% - 20px);
@@ -521,7 +521,7 @@ body {
   top: unset !important;
   overflow-y: auto;
 }
-.is-mobile .menu-item {
+.is-phone .menu-item {
   font-size: 18px;
   padding: 12px 16px;
   height: unset;
@@ -598,6 +598,13 @@ body {
 }
 .menu-item-title {
   display: inline-block;
+}
+.menu.mod-tab-list .menu-item-title {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
 }
 body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb-bg);
