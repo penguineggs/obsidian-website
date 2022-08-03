@@ -606,6 +606,12 @@ body {
   white-space: nowrap;
   vertical-align: bottom;
 }
+.menu-arrow {
+  color: var(--text-faint);
+  float: right;
+  position: relative;
+  top: 2px;
+}
 body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb-bg);
 }
