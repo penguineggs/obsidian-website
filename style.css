@@ -4107,7 +4107,6 @@ body {
 .static-full-page-container.mod-community .static-container .card img {
   margin-top: 10px;
   border-radius: 2px;
-  border: 1px solid var(--background-modifier-border);
 }
 .static-full-page-container.mod-community .static-container .card-description {
   line-height: 24px;
