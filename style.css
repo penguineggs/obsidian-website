@@ -422,6 +422,8 @@ body {
   --slider-thumb-width: 18px;
   --slider-thumb-y: -6px;
   --slider-thumb-radius: 50%;
+  --slider-s-thumb-size-: 15px;
+  --slider-s-thumb-position: -5px;
   /* Status bar */
   --status-bar-background: var(--background-secondary);
   --status-bar-border-color: var(--divider-color);
@@ -497,6 +499,10 @@ body {
   --toggle-thumb-radius: 18px;
   --toggle-thumb-height: 18px;
   --toggle-thumb-width: 18px;
+  --toggle-s-border-width: 2px;
+  --toggle-s-width: 34px;
+  --toggle-s-thumb-height: 15px;
+  --toggle-s-thumb-width: 15px;
   /* Vault name */
   --vault-name-font-size: var(--font-ui-small);
   --vault-name-font-weight: var(--font-medium);
@@ -575,7 +581,7 @@ body {
   --color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 5%));
   --background-secondary-alt: var(--color-base-05);
   --background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
-  --background-modifier-cover: rgba(220, 220, 220, 0);
+  --background-modifier-cover: rgba(220, 220, 220, 0.4);
   --text-highlight-bg: rgba(255, 208, 0, 0.4);
   --text-highlight-bg-active: rgba(255, 128, 0, 0.4);
   --input-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12),
@@ -4107,6 +4113,30 @@ body {
 .static-full-page-container.mod-community .static-container .card img {
   margin-top: 10px;
   border-radius: 2px;
+}
+.static-full-page-container.mod-community .static-container .card .team-photo {
+  position: relative;
+}
+.static-full-page-container.mod-community .static-container .card .team-photo img {
+  transition: opacity ease-in-out 100ms;
+  border-radius: 10px;
+}
+.static-full-page-container.mod-community .static-container .card .team-photo img:first-child {
+  z-index: 2;
+}
+.static-full-page-container.mod-community .static-container .card .team-photo img:first-child:hover {
+  opacity: 0;
+}
+.static-full-page-container.mod-community .static-container .card .img-alt {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10px;
+  margin: auto;
+  opacity: 0;
+}
+.static-full-page-container.mod-community .static-container .card .img-alt:hover {
+  opacity: 1;
 }
 .static-full-page-container.mod-community .static-container .card-description {
   line-height: 24px;
