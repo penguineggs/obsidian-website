@@ -3290,7 +3290,6 @@ span.mod-huge-punctuation {
   margin: 0 3px;
 }
 .account-container {
-  background-color: var(--background-secondary);
   width: 60vw;
   max-width: 650px;
   padding: 50px 20px;
@@ -4084,6 +4083,12 @@ body {
 }
 .card {
   background-color: var(--color-base-20);
+}
+a {
+  cursor: pointer;
+}
+button {
+  cursor: default;
 }
 .static-full-page-container.mod-community .static-container {
   width: 900px;
