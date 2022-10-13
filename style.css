@@ -3037,6 +3037,19 @@ button.mod-disabled {
   background-size: 800px;
   background-repeat: repeat-x;
 }
+.hero-banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.hero-banner {
+  display: flex;
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 100px;
+  font-size: 16px;
+}
 .hero-button-container {
   margin-top: 40px;
 }
@@ -3115,6 +3128,13 @@ button.mod-disabled {
 .mobile-hero-screenshot {
   border-radius: 6px;
   margin: 0 auto;
+}
+.mobile-hero-screenshot.mod-universal {
+  width: 100%;
+  height: auto;
+}
+.mobile-hero-screenshot.mod-universal.mod-portrait {
+  max-width: 800px;
 }
 .mobile-hero-screenshot.mod-tablet {
   width: 100%;
@@ -3890,6 +3910,16 @@ span.mod-huge-punctuation {
   }
 }
 @media only screen and (max-width: 500px) {
+  .hero-banner-container {
+    margin-top: calc(0px - (150px - 50px));
+  }
+  .hero-banner {
+    font-size: 14px;
+    margin: 0;
+    border-radius: 0;
+    justify-content: center;
+    width: 100%;
+  }
   .mobile-hero-screenshot.mod-tablet {
     display: none;
   }
