@@ -149,7 +149,7 @@ body {
   --callout-content-background: transparent;
   /* Checkboxes */
   --checkbox-radius: var(--radius-s);
-  --checkbox-size: 15px;
+  --checkbox-size: var(--font-text-size);
   --checkbox-marker-color: var(--background-primary);
   --checkbox-color: var(--interactive-accent);
   --checkbox-color-hover: var(--interactive-accent-hover);
@@ -366,9 +366,9 @@ body {
   --list-marker-color-collapsed: var(--text-accent);
   --list-bullet-border: none;
   --list-bullet-radius: 50%;
-  --list-bullet-size: 5px;
+  --list-bullet-size: 0.3em;
   --list-bullet-transform: none;
-  --list-numbered-style: auto;
+  --list-numbered-style: decimal;
   /* File navigator */
   --nav-item-size: var(--font-ui-small);
   --nav-item-color: var(--text-muted);
@@ -594,6 +594,7 @@ body {
   --text-muted: var(--color-base-70);
   --text-faint: var(--color-base-50);
   --text-on-accent: white;
+  --text-on-accent-inverted: black;
   --text-error: var(--color-red);
   --text-success: var(--color-green);
   --text-selection: hsla(var(--color-accent-hsl), 0.2);
@@ -2274,9 +2275,6 @@ textarea {
   z-index: var(--layer-dragged-item);
   max-width: 300px;
   pointer-events: none;
-}
-.drag-reorder-ghost {
-  opacity: 0.7;
 }
 .drag-ghost-self {
   display: flex;
