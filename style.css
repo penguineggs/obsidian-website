@@ -147,6 +147,28 @@ body {
   --callout-title-size: inherit;
   --callout-content-padding: 0;
   --callout-content-background: transparent;
+  --callout-bug: var(--color-red-rgb);
+  --callout-default: var(--color-blue-rgb);
+  --callout-error: var(--color-red-rgb);
+  --callout-example: var(--color-purple-rgb);
+  --callout-fail: var(--color-red-rgb);
+  --callout-important: var(--color-cyan-rgb);
+  --callout-info: var(--color-blue-rgb);
+  --callout-question: var(--color-yellow-rgb);
+  --callout-success: var(--color-green-rgb);
+  --callout-summary: var(--color-cyan-rgb);
+  --callout-tip: var(--color-cyan-rgb);
+  --callout-todo: var(--color-blue-rgb);
+  --callout-warning: var(--color-orange-rgb);
+  --callout-quote: 158, 158, 158;
+  /* Canvas */
+  --canvas-dot-pattern: var(--color-base-30);
+  --canvas-color-1: var(--color-red-rgb);
+  --canvas-color-2: var(--color-orange-rgb);
+  --canvas-color-3: var(--color-yellow-rgb);
+  --canvas-color-4: var(--color-green-rgb);
+  --canvas-color-5: var(--color-cyan-rgb);
+  --canvas-color-6: var(--color-purple-rgb);
   /* Checkboxes */
   --checkbox-radius: var(--radius-s);
   --checkbox-size: var(--font-text-size);
@@ -193,6 +215,7 @@ body {
   --drag-ghost-text-color: #fff;
   /* Embeds */
   --embed-max-height: 4000px;
+  --embed-canvas-max-height: 400px;
   --embed-background: inherit;
   --embed-border-left: 2px solid var(--interactive-accent);
   --embed-border-right: none;
@@ -297,10 +320,12 @@ body {
   --icon-s: 16px;
   --icon-m: 18px;
   --icon-l: 18px;
+  --icon-xl: 32px;
   --icon-xs-stroke-width: 2px;
   --icon-s-stroke-width: 2px;
   --icon-m-stroke-width: 1.75px;
   --icon-l-stroke-width: 1.75px;
+  --icon-xl-stroke-width: 1.25px;
   --icon-color: var(--text-muted);
   --icon-color-hover: var(--text-muted);
   --icon-color-active: var(--text-accent);
@@ -611,16 +636,22 @@ body {
   --highlight-mix-blend-mode: darken;
   --mono-rgb-0: 255, 255, 255;
   --mono-rgb-100: 0, 0, 0;
-  --color-red-rgb: 228, 55, 75;
-  --color-red: #E4374B;
-  --color-green-rgb: 12, 181, 79;
-  --color-green: #0cb54f;
-  --color-orange: #d96c00;
-  --color-yellow: #BD8E37;
-  --color-cyan: #2db7b5;
+  --color-red-rgb: 233, 49, 71;
+  --color-red: #E93147;
+  --color-green-rgb: 8, 185, 78;
+  --color-green: #08B94E;
+  --color-orange-rgb: 236, 117, 0;
+  --color-orange: #ec7500;
+  --color-yellow-rgb: 224, 172, 0;
+  --color-yellow: #e0ac00;
+  --color-cyan-rgb: 0, 191, 188;
+  --color-cyan: #00bfbc;
+  --color-blue-rgb: 8, 109, 221;
   --color-blue: #086DDD;
-  --color-purple: #876be0;
-  --color-pink: #C32B74;
+  --color-purple-rgb: 120, 82, 238;
+  --color-purple: #7852EE;
+  --color-pink-rgb: 213, 57, 132;
+  --color-pink: #D53984;
   --color-base-00: #ffffff;
   --color-base-05: #fcfcfc;
   --color-base-10: #fafafa;
@@ -668,13 +699,19 @@ body {
   --mono-rgb-100: 255, 255, 255;
   --color-red-rgb: 251, 70, 76;
   --color-red: #fb464c;
+  --color-orange-rgb: 233, 151, 63;
+  --color-orange: #E9973F;
+  --color-yellow-rgb: 224, 222, 113;
+  --color-yellow: #E0DE71;
   --color-green-rgb: 68, 207, 110;
   --color-green: #44CF6E;
-  --color-orange: #E9973F;
-  --color-yellow: #E0DE71;
+  --color-cyan-rgb: 83, 223, 221;
   --color-cyan: #53DFDD;
+  --color-blue-rgb: 2, 122, 255;
   --color-blue: #027aff;
+  --color-purple-rgb: 168, 130, 255;
   --color-purple: #a882ff;
+  --color-pink-rgb: 250, 153, 205;
   --color-pink: #FA99CD;
   --color-base-00: #1e1e1e;
   --color-base-10: #242424;
@@ -4419,4 +4456,11 @@ button {
 .admin-user-action-link {
   margin: 0 6px;
   cursor: pointer;
+}
+.setting-item a {
+  text-decoration: none;
+  white-space: nowrap;
+}
+#mod-rejection-selector {
+  max-width: 40%;
 }

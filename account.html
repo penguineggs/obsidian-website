@@ -224,6 +224,28 @@
             </div>
             <div class="setting-item">
                 <div class="setting-item-info">
+                    <div class="setting-item-name">Contact support</div>
+                    <div class="setting-item-description">
+                        Contact support for account, billing, or paid service inquries.
+                    </div>
+                </div>
+                <div class="setting-item-control">
+                    <a class="landing-link" href="mailto:support@obsidian.md">Email support</a>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-item-info">
+                    <div class="setting-item-name">Remotely log out everywhere</div>
+                    <div class="setting-item-description">
+                        If you suspect your account or any of your devices is compromised, this option lets you log out on all devices. You will need to reconnect on each device afterwards.
+                    </div>
+                </div>
+                <div class="setting-item-control">
+                    <a class="js-logout-everywhere">Log out</a>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-item-info">
                     <div class="setting-item-name">Delete account</div>
                     <div class="setting-item-description">
                         Delete your account completely along with your licenses and subscriptions.
@@ -262,7 +284,7 @@
                 <div class="setting-item-info">
                     <div class="setting-item-name">Obsidian Credit</div>
                     <div class="setting-item-description">
-                        Obsidian Credit can be used to pay for any Obsidian license or service, including Sync and Publish. 
+                        Obsidian Credit can be used to pay for any Obsidian license or service, including Sync and Publish.
                         Any Obsidian Credit in your account will be used before we charge your card or PayPal. You currently
                         have <span class="u-pop">$<span class="obsidian-credit-amount">0</span></span>
                         (USD) Obsidian Credit left.
@@ -717,6 +739,36 @@
             <div class="modal-button-container">
                 <button class="mod-cta js-confirm-change-password">Confirm change</button>
                 <button class="js-close-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container mod-logout-everywhere" style="display: none;">
+        <div class="modal-bg"></div>
+        <div class="modal">
+            <div class="modal-close-button"></div>
+            <div class="modal-title">Log out everywhere</div>
+            <div class="modal-content">
+                <div class="message-container">
+                    <div class="message mod-error" style="display: none;"></div>
+                </div>
+                <p>
+					Any devices currently logged into your Obsidian account will lose their connection.
+                </p>
+                <p>
+                    <span class="mod-warning">
+                        This action is not reversible.
+                    </span>
+                </p>
+                <p>
+                    <label class="input-label">Password</label>
+                    <input class="logout-everywhere-password" type="password"
+                           placeholder="Enter password to confirm...">
+                </p>
+            </div>
+            <div class="modal-button-container">
+                <button class="mod-warning js-confirm-logout-everywhere">Confirm log out</button>
+                <button class="mod-cta js-close-modal">Cancel</button>
             </div>
         </div>
     </div>
