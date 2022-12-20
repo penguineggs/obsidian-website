@@ -181,7 +181,7 @@
                         </div>
                         <div class="tutorial-toc-inner">
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Create canvas">
                                     Create canvas (3 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -195,7 +195,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Card types">
                                     Card types (6 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -213,14 +213,14 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Create cards">
                                     Create cards (10 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
                                     <div class="tutorial-toc-item" data-video="10-create-card">Click toolbar to create
                                         text
                                         card</div>
-                                    <div class="tutorial-toc-item" data-video="11-create-card">Click toobar to create
+									<div class="tutorial-toc-item" data-video="11-create-card">Click toolbar to create
                                         note
                                         card</div>
                                     <div class="tutorial-toc-item" data-video="12-create-card-double-click">Double click
@@ -248,7 +248,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Modify cards">
                                     Modify cards (7 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -295,7 +295,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Pan & Scroll">
                                     Pan & Scroll (4 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -312,7 +312,7 @@
                                         or right click to pan</div>
                                 </div>
                             </div>
-                            <div class="tutorial-toc-section">
+							<div class="tutorial-toc-section" data-title="Zoom">
                                 <div class="tutorial-toc-section-title">
                                     Zoom (6 tips)
                                 </div>
@@ -332,7 +332,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Select cards">
                                     Select cards (5 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -344,7 +344,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Arrange cards">
                                     Arrange cards (10 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -361,7 +361,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Grouping">
                                     Grouping (6 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -374,7 +374,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Coloring">
                                     Coloring (6 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -386,7 +386,7 @@
                                 </div>
                             </div>
                             <div class="tutorial-toc-section">
-                                <div class="tutorial-toc-section-title">
+								<div class="tutorial-toc-section-title" data-title="Export">
                                     Export (2 tips)
                                 </div>
                                 <div class="tutorial-toc-section-items">
@@ -556,6 +556,20 @@
         });
 
         let tutorialItems = fishAll('.tutorial-toc-item');
+        let timerEls = fishAll('.canvas-time-until-release');
+        let time = new Date('2022-12-20T15:00:00.000Z');
+        let updateTime = () => {
+            let dt = time - new Date();
+            let hours = Math.max(1, Math.round(dt / 1000 / 60 / 60));
+
+            timerEls.forEach(element => {
+                element.innerText = 'about ' + hours + ' ' + (hours > 1 ? 'hours' : 'hour');
+            });
+        };
+        updateTime();
+        setInterval(updateTime, 60 * 1000);
+
+		let sections = fishAll('.tutorial-toc-section');
         let videoEl = fish('.tutorial-video-container video');
         tutorialItems.forEach(el => {
             el.addEventListener('click', () => {
@@ -577,8 +591,18 @@
                 }
                 else {
                     el.toggle(el.getText().toLowerCase().contains(value.toLowerCase()));
-                }
-            })
+				}
+			});
+
+			for (let section of sections) {
+				let titleEl = section.find('.tutorial-toc-section-title');
+				let sectionItems = section.findAll('.tutorial-toc-item');
+
+				let numVisibleItems = sectionItems.filter(el => el.isShown()).length;
+				let title = titleEl.getAttribute('data-title');
+				titleEl.innerText = title + ' (' + numVisibleItems + ')';
+				titleEl.toggle(numVisibleItems > 0);
+			}
         });
     </script>
     <script src="download.js"></script>
