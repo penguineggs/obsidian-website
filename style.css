@@ -3770,7 +3770,7 @@ span.mod-huge-punctuation {
 .tutorial-container .tutorial-video-container {
   background-color: #fff;
   width: 1000px;
-  height: 564px;
+  height: 506px;
 }
 .tutorial-container video {
   width: 100%;
@@ -3788,7 +3788,7 @@ span.mod-huge-punctuation {
   display: flex;
   max-width: 100%;
   width: 1200px;
-  height: 564px;
+  height: 506px;
   margin: 0 auto;
   background-color: var(--background-primary-alt);
   border-radius: 10px;
@@ -3834,7 +3834,7 @@ span.mod-huge-punctuation {
 }
 .tutorial-toc-inner {
   overflow: auto;
-  height: 534px;
+  height: 476px;
 }
 .tutorial-toc-section-title {
   text-transform: uppercase;
