@@ -540,9 +540,9 @@ body {
   --table-header-border-width: var(--table-border-width);
   --table-header-border-color: var(--table-border-color);
   --table-header-font: inherit;
-  --table-header-size: var(--font-smaller);
-  --table-header-weight: var(--font-normal);
-  --table-header-color: var(--text-muted);
+  --table-header-size: var(--font-text-size);
+  --table-header-weight: var(--bold-weight);
+  --table-header-color: var(--text-normal);
   --table-text-size: inherit;
   --table-text-color: inherit;
   --table-column-max-width: none;
@@ -3220,17 +3220,18 @@ button.mod-disabled {
 }
 .hero-gallery:before {
   left: 50px;
-  background: linear-gradient(to right, var(--background-secondary), transparent);
+  background: linear-gradient(to right, var(--background-primary), transparent);
 }
 .hero-gallery:after {
   right: 50px;
-  background: linear-gradient(to right, transparent, var(--background-secondary));
+  background: linear-gradient(to right, transparent, var(--background-primary));
 }
 .hero-gallery-inner-container {
   display: flex;
   margin: 0 50px;
   overflow: auto;
   padding: 0 50px 50px 50px;
+  align-items: baseline;
 }
 .hero-gallery-inner-container::-webkit-scrollbar,
 .hero-gallery-inner-container::-webkit-scrollbar-thumb {
@@ -3263,6 +3264,10 @@ button.mod-disabled {
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.2);
+}
+.hero-gallery-item iframe {
+  width: 280px;
+  height: 158px;
 }
 .hero-gallery-item span {
   margin-top: 10px;
