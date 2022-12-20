@@ -3769,22 +3769,26 @@ span.mod-huge-punctuation {
 }
 .tutorial-container .tutorial-video-container {
   background-color: #fff;
-  width: 600px;
-  height: 338px;
+  width: 1000px;
+  height: 564px;
 }
 .tutorial-container video {
   width: 100%;
   height: auto;
 }
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 1200px) {
   .tutorial-container {
+    display: none;
+  }
+  .hero-gallery {
     display: none;
   }
 }
 .tutorial-inner-container {
   display: flex;
-  width: 900px;
-  height: 338px;
+  max-width: 100%;
+  width: 1200px;
+  height: 564px;
   margin: 0 auto;
   background-color: var(--background-primary-alt);
   border-radius: 10px;
@@ -3830,7 +3834,7 @@ span.mod-huge-punctuation {
 }
 .tutorial-toc-inner {
   overflow: auto;
-  height: 300px;
+  height: 534px;
 }
 .tutorial-toc-section-title {
   text-transform: uppercase;

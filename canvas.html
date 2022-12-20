@@ -87,12 +87,8 @@
                         <p>An infinite space to visualize and make sense of your ideas.
                         </p>
                     </div>
-                    <div class="hero-banner-container" style="margin-top: 20px">
-                        <p><button class="hero-banner mod-cta">Public launch in&nbsp;
-                                <span class="canvas-time-until-release">about 12 hours</span>
-                            </button></p>
-                    </div>
-                    <!-- <div class="hero-button-container">
+
+                    <div class="hero-button-container">
                         <a class="download-button"
                             href="https://github.com/obsidianmd/obsidian-releases/releases/download/v1.1.8/Obsidian.1.1.8.exe">
                             <button class="mod-cta">
@@ -111,7 +107,7 @@
                             and <a href="https://flathub.org/apps/details/md.obsidian.Obsidian" class="alt-os-4">Linux
                                 (Flatpak)</a>. <a href="/download">More platforms</a>.
                         </p>
-                    </div> -->
+                    </div>
                 </div>
 
                 <div class="mobile-hero-screenshot-container">
@@ -145,7 +141,7 @@
                         another Canvas.</p>
                 </div>
                 <div class="mobile-hero-screenshot-container mod-tablet-only">
-                    <img class="mobile-hero-screenshot mod-tablet" src="images/canvas/demo-help-vault.png"
+                    <img class="mobile-hero-screenshot mod-universal" src="images/canvas/demo-help-vault.png"
                         alt="Obsidian 1.0 for desktop and mobile">
                 </div>
             </div>
@@ -164,7 +160,7 @@
                     </p>
                 </div>
                 <div class="mobile-hero-screenshot-container mod-tablet-only">
-                    <img class="mobile-hero-screenshot mod-tablet" src="images/canvas/canvas-hero.png"
+                    <img class="mobile-hero-screenshot mod-universal" src="images/canvas/canvas-hero.png"
                         alt="Obsidian 1.0 for desktop and mobile">
                 </div>
             </div>
@@ -481,12 +477,7 @@
                     <div class="feature-button-container">
                         <p class="feature-explanation u-center-text">An infinite space to visualize and make sense of
                             your ideas.</p>
-                        <div class="hero-banner-container" style="margin-top: 20px">
-                            <p><button class="hero-banner mod-cta">Public launch in&nbsp;
-                                    <span class="canvas-time-until-release">about 12 hours</span>
-                                </button></p>
-                        </div>
-                        <!-- <a class="download-button"
+                        <a class="download-button"
                             href="https://github.com/obsidianmd/obsidian-releases/releases/download/v1.1.8/Obsidian.1.1.8.exe">
                             <button class="mod-cta">
                                 Get Obsidian for <span class="download-os">Windows</span>
@@ -503,7 +494,7 @@
                                 class="alt-os-3">Linux (Snap)</a>,
                             and <a href="https://flathub.org/apps/details/md.obsidian.Obsidian" class="alt-os-4">Linux
                                 (Flatpak)</a>. <a href="/download">More platforms</a>.
-                        </p> -->
+                        </p>
                     </div>
                 </div>
             </div>
@@ -563,20 +554,6 @@
             let galleryEl = el.parentElement;
             el.scrollLeft = (el.scrollWidth - galleryEl.scrollWidth) / 2 + 50;
         });
-
-        let timerEls = fishAll('.canvas-time-until-release');
-        let time = new Date('2022-12-20T15:00:00.000Z');
-        let updateTime = () => {
-            let dt = time - new Date();
-            let hours = Math.max(1, Math.round(dt / 1000 / 60 / 60));
-
-            timerEls.forEach(element => {
-                element.innerText = 'about ' + hours + ' ' + (hours > 1 ? 'hours' : 'hour');
-            });
-        };
-        updateTime();
-        setInterval(updateTime, 60 * 1000);
-
 
         let tutorialItems = fishAll('.tutorial-toc-item');
         let videoEl = fish('.tutorial-video-container video');
