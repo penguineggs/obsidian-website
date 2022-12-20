@@ -3761,6 +3761,99 @@ span.mod-huge-punctuation {
 .oo-award-entry-title {
   display: block;
 }
+.tutorial-container {
+  display: flex;
+  flex-direction: column;
+  margin: -100px 30px 50px 30px;
+  padding-top: 100px;
+}
+.tutorial-container .tutorial-video-container {
+  background-color: #fff;
+  width: 600px;
+  height: 338px;
+}
+.tutorial-container video {
+  width: 100%;
+  height: auto;
+}
+@media only screen and (max-width: 840px) {
+  .tutorial-container {
+    display: none;
+  }
+}
+.tutorial-inner-container {
+  display: flex;
+  width: 900px;
+  height: 338px;
+  margin: 0 auto;
+  background-color: var(--background-primary-alt);
+  border-radius: 10px;
+  padding: 20px 0 20px 20px;
+  box-sizing: content-box;
+}
+.tutorial-header {
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.tutorial-header-inner {
+  display: inline-block;
+  margin: 0 auto;
+  box-decoration-break: clone;
+}
+.tutorial-toc {
+  font-size: 14px;
+  flex: 1 0 300px;
+}
+.tutorial-toc-tools {
+  margin-bottom: 10px;
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+}
+.tutorial-toc-tools input {
+  margin: 0 10px;
+  width: 100%;
+  font-size: 14px;
+  color: var(--text-accent);
+}
+.tutorial-toc-tools .tutorial-autoplay-next {
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+}
+.tutorial-toc-tools .tutorial-autoplay-next.is-active,
+.tutorial-toc-tools .tutorial-autoplay-next:hover {
+  color: var(--text-accent);
+}
+.tutorial-toc-inner {
+  overflow: auto;
+  height: 300px;
+}
+.tutorial-toc-section-title {
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.tutorial-toc-section {
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+.tutorial-toc-section-items {
+  padding-left: 20px;
+}
+.tutorial-toc-item {
+  cursor: pointer;
+  padding: 2px 8px;
+  margin: 2px 8px 2px 0;
+  border-radius: 4px;
+}
+.tutorial-toc-item:hover,
+.tutorial-toc-item.is-active {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
 @media only screen and (max-width: 1130px) {
   .hero-screenshot-container {
     display: none;
