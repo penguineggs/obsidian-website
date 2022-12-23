@@ -162,13 +162,16 @@ body {
   --callout-warning: var(--color-orange-rgb);
   --callout-quote: 158, 158, 158;
   /* Canvas */
-  --canvas-dot-pattern: var(--color-base-30);
+  --canvas-background: var(--background-primary);
+  --canvas-card-label-color: var(--text-faint);
+  --canvas-card-label-display: block;
   --canvas-color-1: var(--color-red-rgb);
   --canvas-color-2: var(--color-orange-rgb);
   --canvas-color-3: var(--color-yellow-rgb);
   --canvas-color-4: var(--color-green-rgb);
   --canvas-color-5: var(--color-cyan-rgb);
   --canvas-color-6: var(--color-purple-rgb);
+  --canvas-dot-pattern: var(--color-base-30);
   /* Checkboxes */
   --checkbox-radius: var(--radius-s);
   --checkbox-size: var(--font-text-size);
@@ -1152,7 +1155,7 @@ body:not(.native-scrollbars) * {
 }
 /* Add this attribute to the element that needs a tooltip */
 .tooltip {
-  animation: pop-down 200ms forwards ease-in-out;
+  animation: pop-down 700ms forwards ease-in-out;
   box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
   background-color: var(--background-modifier-message);
   border-radius: var(--radius-s);
@@ -1173,11 +1176,11 @@ body:not(.native-scrollbars) * {
   overflow-wrap: anywhere;
 }
 .tooltip.mod-right {
-  animation: pop-right 200ms forwards ease-in-out;
+  animation: pop-right 700ms forwards ease-in-out;
   transform: translateY(-50%);
 }
 .tooltip.mod-left {
-  animation: pop-right 200ms forwards ease-in-out;
+  animation: pop-right 700ms forwards ease-in-out;
   transform: translateY(-50%);
 }
 .tooltip.mod-error {
@@ -1241,11 +1244,15 @@ body:not(.native-scrollbars) * {
     opacity: 0;
     transform: translateX(-50%) scale(1);
   }
-  20% {
+  70% {
+    opacity: 0;
+    transform: translateX(-50%) scale(1);
+  }
+  71% {
     opacity: 0.7;
     transform: translateX(-50%) scale(1.02);
   }
-  40% {
+  80% {
     opacity: 1;
     transform: translateX(-50%) scale(1.05);
   }
@@ -1259,11 +1266,15 @@ body:not(.native-scrollbars) * {
     opacity: 0;
     transform: translateY(-50%) scale(1);
   }
-  20% {
+  70% {
+    opacity: 0;
+    transform: translateY(-50%) scale(1);
+  }
+  71% {
     opacity: 0.7;
     transform: translateY(-50%) scale(1.02);
   }
-  40% {
+  80% {
     opacity: 1;
     transform: translateY(-50%) scale(1.05);
   }
